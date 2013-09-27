@@ -1,0 +1,2 @@
+mvn install:install-file -Dfile=D:/projetos/provenance_collector_maven/libs/KettlePluginTools.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=KettlePluginTools -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=D:/projetos/provenance_collector_maven/libs/SparqlPlugin.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=SparqlPlugin -Dversion=1.0 -Dpackaging=jar

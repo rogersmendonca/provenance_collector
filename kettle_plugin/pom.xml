@@ -1,0 +1,170 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>ProvenanceCollectorJob</name>
+	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+	<artifactId>provenancecollectorjob</artifactId>
+	<version>1.0-SNAPSHOT</version>	
+	<packaging>jar</packaging>
+	<url>https://github.com/rogersmendonca/provenance_collector</url>
+
+	<repositories>
+		<repository>
+			<id>pentaho-repo</id>
+			<url>http://repo.pentaho.org/artifactory/pentaho/</url>
+		</repository>
+		<repository>
+			<id>pentaho-third-party</id>
+			<url>http://repo.pentaho.org/artifactory/third-party/</url>
+		</repository>
+		<!-- Run ${basedir}/libs/maven_install_libs.bat to install the local libraries 
+			into maven local repository -->
+		<repository>
+			<id>local-repository</id>
+			<url>file://${basedir}/libs</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>		
+			
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>		
+			
+		<pdi.version>4.3.0-stable</pdi.version>
+		<pdi.home>D:/programas/pdi-ce-4.3.0-stable</pdi.home>
+		<pdi.plugin.dir>plugins/jobentries/${project.name}</pdi.plugin.dir>
+		<pdi.plugin.lib_name>provenancecollectorjob</pdi.plugin.lib_name>
+	</properties>
+
+	<dependencies>
+		<!-- kettle core -->
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-core</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-db</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-dbdialog</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-engine</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-test</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-ui-swt</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-vfs</groupId>
+			<artifactId>commons-vfs</artifactId>
+			<version>20100924-pentaho</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- local dependencies -->
+		<dependency>
+			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+			<artifactId>KettlePluginTools</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+			<artifactId>SparqlPlugin</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs -->
+			<!-- http://maven.apache.org/plugins/maven-eclipse-plugin/examples/attach-library-sources.html -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>copy-files-to-kettle</id>
+						<phase>install</phase>
+						<configuration>
+							<target name="copy-files-to-kettle">
+								<echo
+									message="Copying ${basedir}\etc\*.[png,xml,properties] to ${pdi.home}\${pdi.plugin.dir}" />
+								<copy todir="${pdi.home}/${pdi.plugin.dir}" overwrite="true">
+									<fileset dir="${basedir}/etc" includes="**/*.png,**/*.xml,**/*.properties" />
+								</copy>
+
+								<echo
+									message="Copying ${basedir}\libs\*.jar to ${pdi.home}/${pdi.plugin.dir}" />
+								<copy todir="${pdi.home}/${pdi.plugin.dir}" overwrite="true">
+									<fileset dir="${basedir}/libs" includes="**/*.jar" />
+								</copy>
+
+								<echo
+									message="Copying ${project.build.directory}\${project.build.finalName}.jar to ${pdi.home}/${pdi.plugin.dir}" />
+								<copy
+									file="${project.build.directory}/${project.build.finalName}.jar"
+									tofile="${pdi.home}/${pdi.plugin.dir}/${pdi.plugin.lib_name}.jar"
+									overwrite="true" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
