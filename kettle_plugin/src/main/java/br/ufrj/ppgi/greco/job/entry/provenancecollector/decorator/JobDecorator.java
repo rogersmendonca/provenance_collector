@@ -71,6 +71,12 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ParentProvenanc
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
 import br.ufrj.ppgi.greco.lodbr.plugin.sparql.SparqlStepMeta;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ * 
+ */
 public class JobDecorator extends Job
 {
     // for i18n purposes, needed by Translator2!! $NON-NLS-1$
@@ -287,10 +293,35 @@ public class JobDecorator extends Job
     protected long getProspId(Database db, String tableName)
             throws KettleException
     {
+        return getProspId(db, tableName, null);
+    }
+
+    protected long getProspId(Database db, String tableName,
+            Map<String, Long> restriction) throws KettleException
+    {
         try
         {
-            ResultSet res = db.openQuery("SELECT COUNT(*) + 1 AS id FROM "
-                    + tableName);
+            StringBuilder SQL = new StringBuilder(String.format(
+                    "SELECT COUNT(*) + 1 AS id FROM %s ", tableName));
+            if (restriction != null && restriction.size() > 0)
+            {
+                boolean where = true;
+                for (Map.Entry<String, Long> entry : restriction.entrySet())
+                {
+                    if (where)
+                    {
+                        SQL.append(String.format(" WHERE %s = %d ",
+                                entry.getKey(), entry.getValue()));
+                        where = false;
+                    }
+                    else
+                    {
+                        SQL.append(String.format(" AND %s = %d ",
+                                entry.getKey(), entry.getValue()));
+                    }
+                }
+            }
+            ResultSet res = db.openQuery(SQL.toString());
             long id = res.next() ? res.getLong("id") : 0;
             db.closeQuery(res);
             return id;
@@ -519,7 +550,6 @@ public class JobDecorator extends Job
         long prospHopId = 0;
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_process",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_from",
@@ -537,8 +567,6 @@ public class JobDecorator extends Job
         int i = 0;
         if (hop instanceof JobHopMeta)
         {
-            prospHopId = getProspId(db, tableName);
-            data[i++] = prospHopId;
             data[i++] = prospProcessId;
             data[i++] = prospJobEntryMetaMap.get(from);
             data[i++] = prospJobEntryMetaMap.get(to);
@@ -548,8 +576,6 @@ public class JobDecorator extends Job
         }
         else if (hop instanceof TransHopMeta)
         {
-            prospHopId = getProspId(db, tableName);
-            data[i++] = prospHopId;
             data[i++] = prospProcessId;
             data[i++] = prospStepMetaMap.get(from);
             data[i++] = prospStepMetaMap.get(to);
@@ -740,11 +766,6 @@ public class JobDecorator extends Job
         {
             throw new KettleException(e.toString());
         }
-
-        /*
-         * if (fieldList != null) { for (FieldNameAndValues field : fieldList) {
-         * insertProspStepAttr(db, prospStepId, field); } }
-         */
     }
 
     protected void extractProvenanceDataFromStepAttribute(Database db,
@@ -850,7 +871,8 @@ public class JobDecorator extends Job
             }
 
             // Merge Join
-            else if (isFineGrainedEnabled(EnumStepType.MERGE_JOIN) && (smi instanceof MergeJoinMeta))
+            else if (isFineGrainedEnabled(EnumStepType.MERGE_JOIN)
+                    && (smi instanceof MergeJoinMeta))
             {
                 MergeJoinMeta mjm = (MergeJoinMeta) smi;
 
@@ -908,7 +930,9 @@ public class JobDecorator extends Job
             throws KettleException
     {
         String tableName = "prosp_step";
-        long stepId = getProspId(db, tableName);
+        HashMap<String, Long> restriction = new HashMap<String, Long>();
+        restriction.put("id_process", processId);
+        long stepId = getProspId(db, tableName, restriction);
 
         RowMetaInterface fields = new RowMeta();
         fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
@@ -950,40 +974,14 @@ public class JobDecorator extends Job
         return stepId;
     }
 
-    protected void insertProspStepAttr(Database db, long stepId,
-            FieldNameAndValues field) throws KettleException
-    {
-        String tableName = "prosp_step_attr";
-
-        RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_step",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("type",
-                ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("name",
-                ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("value",
-                ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("ind",
-                ValueMetaInterface.TYPE_INTEGER));
-
-        Object[] data = new Object[fields.size()];
-        int i = 0;
-        data[i++] = getProspId(db, tableName);
-        data[i++] = stepId;
-        data[i++] = field.type;
-        data[i++] = field.name;
-        data[i++] = field.value;
-        data[i++] = field.index;
-
-        db.insertRow(tableName, fields, data);
-    }
-
     protected void insertProspStepField(Database db, Object step,
             String fieldName, String fieldValue) throws KettleException
     {
         String tableName = "prosp_step_field";
+        Long stepId = getProspStepId(step);
+        HashMap<String, Long> restriction = new HashMap<String, Long>();
+        restriction.put("id_step", stepId);
+        Long fieldId = getProspId(db, tableName, restriction);
 
         RowMetaInterface fields = new RowMeta();
         fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
@@ -996,8 +994,8 @@ public class JobDecorator extends Job
 
         Object[] data = new Object[fields.size()];
         int i = 0;
-        data[i++] = getProspId(db, tableName);
-        data[i++] = getProspStepId(step);
+        data[i++] = fieldId;
+        data[i++] = stepId;
         data[i++] = fieldName;
         data[i++] = fieldValue;
 

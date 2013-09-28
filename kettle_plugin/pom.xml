@@ -6,7 +6,7 @@
 	<artifactId>provenancecollectorjob</artifactId>
 	<version>1.0-SNAPSHOT</version>	
 	<packaging>jar</packaging>
-	<url>https://github.com/rogersmendonca/provenance_collector</url>
+	<url>https://github.com/rogersmendonca/provenance_collector.git</url>
 
 	<repositories>
 		<repository>
@@ -140,7 +140,7 @@
 						<configuration>
 							<target name="copy-files-to-kettle">
 								<echo
-									message="Copying ${basedir}\etc\*.[png,xml,properties] to ${pdi.home}\${pdi.plugin.dir}" />
+									message="Copying ${basedir}\etc\*.[png,xml,properties] to ${pdi.home}/${pdi.plugin.dir}" />
 								<copy todir="${pdi.home}/${pdi.plugin.dir}" overwrite="true">
 									<fileset dir="${basedir}/etc" includes="**/*.png,**/*.xml,**/*.properties" />
 								</copy>
@@ -154,8 +154,8 @@
 								<echo
 									message="Copying ${project.build.directory}\${project.build.finalName}.jar to ${pdi.home}/${pdi.plugin.dir}" />
 								<copy
-									file="${project.build.directory}/${project.build.finalName}.jar"
-									tofile="${pdi.home}/${pdi.plugin.dir}/${pdi.plugin.lib_name}.jar"
+									file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
+									tofile="${pdi.home}/${pdi.plugin.dir}/${pdi.plugin.lib_name}.${project.packaging}"
 									overwrite="true" />
 							</target>
 						</configuration>

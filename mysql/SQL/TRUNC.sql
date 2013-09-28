@@ -1,0 +1,15 @@
+TRUNCATE TABLE retrosp_step_row;
+TRUNCATE TABLE retrosp_step;
+TRUNCATE TABLE prosp_hop;
+TRUNCATE TABLE prosp_process_repository;
+TRUNCATE TABLE prosp_process_note;
+TRUNCATE TABLE prosp_step_field;
+TRUNCATE TABLE retrosp_process;
+TRUNCATE TABLE prosp_step;
+TRUNCATE TABLE prosp_repository;
+TRUNCATE TABLE prosp_note;
+TRUNCATE TABLE prosp_note;
+ALTER TABLE prosp_process CHANGE id_root id_root INT( 11 ) NULL;
+UPDATE prosp_process SET id_root = NULL, id_parent = NULL;
+TRUNCATE TABLE prosp_process;
+ALTER TABLE prosp_process CHANGE id_root id_root INT( 11 ) NOT NULL;

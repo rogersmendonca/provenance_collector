@@ -1,17 +1,30 @@
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela prosp_process
+-- CREATE TABLE prosp_repository
+--
+
+CREATE TABLE IF NOT EXISTS prosp_repository (
+  id int(11) NOT NULL auto_increment,
+  name varchar(255) NOT NULL,
+  location varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;  
+
+-- --------------------------------------------------------
+
+--
+-- CREATE TABLE prosp_process
 --
 
 CREATE TABLE IF NOT EXISTS prosp_process (
   id int(11) NOT NULL auto_increment,
-  object_id varchar(100) NOT NULL,
-  name varchar(100) NOT NULL,
+  object_id varchar(255) NOT NULL,
+  name varchar(255) NOT NULL,
   description text default NULL,
-  created_user varchar(100) default NULL,
+  created_user varchar(255) default NULL,
   created_date timestamp NOT NULL,
-  modified_user varchar(100) default NULL,
+  modified_user varchar(255) default NULL,
   modified_date timestamp NOT NULL,
   id_root int(11) NOT NULL,
   id_parent int(11) NULL,  
@@ -25,36 +38,23 @@ CREATE TABLE IF NOT EXISTS prosp_process (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela prosp_repository
---
-
-CREATE TABLE IF NOT EXISTS prosp_repository (
-  id int(11) NOT NULL auto_increment,
-  name varchar(100) NOT NULL,
-  location varchar(100) NOT NULL,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;  
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela prosp_repository
+-- CREATE TABLE prosp_repository
 --
 
 CREATE TABLE IF NOT EXISTS prosp_process_repository (
   id_process int(11) NOT NULL,
   id_repository int(11) NOT NULL,
   PRIMARY KEY (id_process, id_repository),
-  KEY fk_process (id_process),
   KEY fk_repository (id_repository),  
-  CONSTRAINT cstr_prosp_process_repository_fk_process FOREIGN KEY (id_process) REFERENCES prosp_process (id),
-  CONSTRAINT cstr_prosp_process_repository_fk_repository FOREIGN KEY (id_repository) REFERENCES prosp_repository (id)
+  KEY fk_process (id_process),  
+  CONSTRAINT cstr_prosp_process_repository_fk_repository FOREIGN KEY (id_repository) REFERENCES prosp_repository (id),  
+  CONSTRAINT cstr_prosp_process_repository_fk_process FOREIGN KEY (id_process) REFERENCES prosp_process (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela prosp_note
+-- CREATE TABLE prosp_note
 --
 
 CREATE TABLE IF NOT EXISTS prosp_note (
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS prosp_note (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela prosp_process_note
+-- CREATE TABLE prosp_process_note
 --
 
 CREATE TABLE IF NOT EXISTS prosp_process_note (
@@ -82,17 +82,17 @@ CREATE TABLE IF NOT EXISTS prosp_process_note (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela prosp_step
+-- CREATE TABLE prosp_step
 --
 
 CREATE TABLE IF NOT EXISTS prosp_step (
   id int(11) NOT NULL auto_increment,
   id_process int(11) NOT NULL,
-  type varchar(100) NOT NULL,  
-  name varchar(100) NOT NULL,
+  type varchar(255) NOT NULL,  
+  name varchar(255) NOT NULL,
   description text default NULL,
   nr int(11) NOT NULL,
-  PRIMARY KEY (id),
+  PRIMARY KEY (id, id_process),
   KEY fk_process (id_process),  
   CONSTRAINT cstr_prosp_step_fk_process FOREIGN KEY (id_process) REFERENCES prosp_process (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -100,33 +100,15 @@ CREATE TABLE IF NOT EXISTS prosp_step (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela prosp_step_attr
---
-
-CREATE TABLE IF NOT EXISTS prosp_step_attr (
-  id int(11) NOT NULL auto_increment,
-  id_step int(11) NOT NULL,    
-  name varchar(100) NOT NULL,
-  type varchar(100) default NULL,  
-  value varchar(100) default NULL,
-  ind int(11) default NULL,
-  PRIMARY KEY (id),
-  KEY fk_step (id_step),  
-  CONSTRAINT cstr_prosp_step_attr_fk_step FOREIGN KEY (id_step) REFERENCES prosp_step (id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela prosp_step_field
+-- CREATE TABLE prosp_step_field
 --
 
 CREATE TABLE IF NOT EXISTS prosp_step_field (
   id int(11) NOT NULL auto_increment,
   id_step int(11) NOT NULL,    
-  name varchar(100) NOT NULL, 
+  name varchar(255) NOT NULL, 
   value text default NULL,  
-  PRIMARY KEY (id),
+  PRIMARY KEY (id, id_step),
   KEY fk_step (id_step),  
   CONSTRAINT cstr_prosp_step_field_fk_step FOREIGN KEY (id_step) REFERENCES prosp_step (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -134,18 +116,17 @@ CREATE TABLE IF NOT EXISTS prosp_step_field (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela prosp_hop
+-- CREATE TABLE prosp_hop
 --
 
 CREATE TABLE IF NOT EXISTS prosp_hop (
-  id int(11) NOT NULL auto_increment,
   id_process int(11) NOT NULL,
   id_from int(11) NOT NULL,
   id_to int(11) NOT NULL,
   enabled char(1) NOT NULL default 'N',
   evaluation char(1) NOT NULL default 'N',
   unconditional char(1) NOT NULL default 'N',
-  PRIMARY KEY (id),
+  PRIMARY KEY (id_process, id_from, id_to),
   KEY fk_process (id_process),  
   KEY fk_from (id_from),
   KEY fk_to (id_to),
@@ -157,7 +138,7 @@ CREATE TABLE IF NOT EXISTS prosp_hop (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela retrosp_process
+-- CREATE TABLE retrosp_process
 --
 
 CREATE TABLE IF NOT EXISTS retrosp_process (
@@ -165,7 +146,7 @@ CREATE TABLE IF NOT EXISTS retrosp_process (
   id_prosp_process int(11) NOT NULL,  
   start_date timestamp NULL default NULL,
   finish_date timestamp NULL default NULL,
-  user varchar(100) default NULL,
+  user varchar(255) default NULL,
   success char(1) NOT NULL default 'N',
   PRIMARY KEY (id, id_prosp_process),  
   KEY fk_prosp_process (id_prosp_process),
@@ -175,7 +156,7 @@ CREATE TABLE IF NOT EXISTS retrosp_process (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela retrosp_step
+-- CREATE TABLE retrosp_step
 --
 
 CREATE TABLE IF NOT EXISTS retrosp_step (
@@ -198,7 +179,7 @@ CREATE TABLE IF NOT EXISTS retrosp_step (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela retrosp_step_row
+-- CREATE TABLE retrosp_step_row
 --
 
 CREATE TABLE IF NOT EXISTS retrosp_step_row (
@@ -208,7 +189,7 @@ CREATE TABLE IF NOT EXISTS retrosp_step_row (
   seq int(11) NOT NULL,  
   row_count int(11) NOT NULL,
   event char(1) NOT NULL,
-  field_name varchar(100) NULL,
+  field_name varchar(255) NULL,
   field_value text default NULL,  
   PRIMARY KEY (id_process, id_prosp_process, id_prosp_step, seq, row_count, event, field_name), 
   KEY fk_process (id_process),

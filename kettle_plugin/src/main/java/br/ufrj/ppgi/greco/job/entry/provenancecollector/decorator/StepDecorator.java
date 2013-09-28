@@ -24,6 +24,12 @@ import org.pentaho.di.trans.step.StepMetaInterface;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ParentProvenanceListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class StepDecorator implements StepInterface
 {
     private StepInterface step;

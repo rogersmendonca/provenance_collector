@@ -7,7 +7,8 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.JobEntryProvenanceCollec
 /**
  * List of potential step types to collect fine grained provenance data.
  * 
- * @author rogers (maio/2013)
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
  * 
  */
 public enum EnumStepType

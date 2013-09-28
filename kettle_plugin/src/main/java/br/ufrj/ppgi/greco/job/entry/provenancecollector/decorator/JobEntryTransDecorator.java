@@ -56,7 +56,12 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ProvenanceTrans
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ProvenanceTransStoppedListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 
-//public class JobEntryTransDecorator extends JobEntryTrans
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class JobEntryTransDecorator implements VariableSpace,
         CheckResultSourceInterface, ResourceHolderInterface,
         LoggingObjectInterface, Cloneable, JobEntryInterface

@@ -2,6 +2,12 @@ package br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util;
 
 import org.pentaho.di.core.row.RowMetaInterface;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class DMLOperation
 {
     public enum DB_OPERATION_TYPE

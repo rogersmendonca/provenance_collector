@@ -3,6 +3,12 @@ package br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization;
 import org.pentaho.di.core.Result;
 import org.pentaho.di.job.entries.job.JobEntryJobRunner;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class JobRunnableAdapter implements IJobRunnable
 {
     private JobEntryJobRunner runner;

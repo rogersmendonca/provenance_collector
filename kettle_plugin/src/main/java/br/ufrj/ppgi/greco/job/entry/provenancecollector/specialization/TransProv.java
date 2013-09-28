@@ -30,6 +30,12 @@ import org.pentaho.di.trans.step.StepMetaDataCombi;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.StepDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ParentProvenanceListener;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class TransProv extends Trans
 {
     private static Class<?> PKG = Trans.class; // for i18n purposes, needed by

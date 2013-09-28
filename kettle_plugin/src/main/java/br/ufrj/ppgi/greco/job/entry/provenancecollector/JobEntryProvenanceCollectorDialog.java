@@ -64,6 +64,12 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         JobEntryDialogInterface
 {

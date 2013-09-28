@@ -13,6 +13,12 @@ import org.pentaho.di.core.variables.VariableSpace;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public abstract class ParentProvenanceListener
 {
     protected Database db;

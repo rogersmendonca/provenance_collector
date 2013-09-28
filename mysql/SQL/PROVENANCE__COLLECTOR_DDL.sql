@@ -1,5 +1,5 @@
 --
--- Banco de Dados: pdi_provenance
+-- Database: pdi_provenance
 --
 
 DROP DATABASE IF EXISTS pdi_provenance;

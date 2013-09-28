@@ -7,6 +7,12 @@ import org.pentaho.di.trans.TransListener;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class ProvenanceTransListener extends ParentProvenanceTransListener
         implements TransListener
 {

@@ -14,6 +14,12 @@ import org.pentaho.di.job.Job;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.IRetrospJobListener;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class ProvJobEntryJobRunner implements IJobRunnable
 {
     private static Class<?> PKG = Job.class; // for i18n purposes, needed by

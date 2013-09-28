@@ -69,6 +69,12 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.JobRunnab
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.ProvJobEntryJobRunner;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ * 
+ */
 public class JobEntryProvenanceCollector extends JobEntryBase implements
         Cloneable, JobEntryInterface
 {
@@ -1212,8 +1218,7 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                     if (provConnection != null)
                     {
                         // Cria uma lista para armazenar as conexoes abertas
-                        // para
-                        // disconectar no final da execucao do Job
+                        // para disconectar no final da execucao do Job
                         Database db = null;
 
                         // Rogers: Empacota o job em um objeto da classe

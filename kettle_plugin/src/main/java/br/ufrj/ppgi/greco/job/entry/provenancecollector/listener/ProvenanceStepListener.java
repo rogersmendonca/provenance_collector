@@ -20,6 +20,12 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperati
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class ProvenanceStepListener extends ParentProvenanceListener implements
         StepListener
 {

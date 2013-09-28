@@ -21,6 +21,12 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperati
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since nov-2012
+ *
+ */
 public class ProvenanceRowListener extends ParentProvenanceListener implements
         RowListener
 {
