@@ -17,16 +17,17 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperati
  * 
  * @author Rogers Reiche de Mendonca
  * @since nov-2012
- *
+ * 
  */
 public abstract class ParentProvenanceListener
 {
     protected Database db;
-    
-    public ParentProvenanceListener(Database db) {
+
+    public ParentProvenanceListener(Database db)
+    {
         this.db = db;
     }
-    
+
     public static Database getDatabase(
             LoggingObjectInterface loggingObjectInterface,
             VariableSpace variableSpace, DatabaseMeta logcon)
@@ -41,18 +42,20 @@ public abstract class ParentProvenanceListener
             throws KettleDatabaseException
     {
         Database db = new Database(loggingObjectInterface, logcon);
-        //Database db = new Database2(loggingObjectInterface, logcon);
+        // Database db = new Database2(loggingObjectInterface, logcon);
         db.shareVariablesWith(variableSpace);
         db.connect();
         db.setAutoCommit(autoCommit);
         return db;
     }
-    
-    public static long getId(Database db, String tableName) throws KettleException
+
+    public static long getId(Database db, String tableName)
+            throws KettleException
     {
         try
         {
-            ResultSet res = db.openQuery("SELECT COUNT(*) + 1 AS id FROM " + tableName);
+            ResultSet res = db.openQuery("SELECT COUNT(*) + 1 AS id FROM "
+                    + tableName);
             long id = res.next() ? res.getLong("id") : 0;
             db.closeQuery(res);
             return id;
@@ -71,7 +74,7 @@ public abstract class ParentProvenanceListener
             DMLOperation oper = operations.get(i);
             switch (oper.getType())
             {
-                case INSERT:                   
+                case INSERT:
                     db.insertRow(oper.getTableName(), oper.getFields(),
                             oper.getData());
                     break;
@@ -90,12 +93,20 @@ public abstract class ParentProvenanceListener
             }
         }
 
-        if (!db.isAutoCommit())
-            db.commit(true);
+        try
+        {
+            if (!db.getConnection().getAutoCommit())
+                db.commit(true);
+        }
+        catch (SQLException e)
+        {
+            db.rollback();
+            throw new KettleDatabaseException(e.getMessage());
+        }
     }
 
     public Database getDb()
     {
         return db;
-    }    
+    }
 }

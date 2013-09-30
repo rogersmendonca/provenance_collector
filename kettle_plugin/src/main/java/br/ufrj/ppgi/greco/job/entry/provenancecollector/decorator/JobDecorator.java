@@ -318,7 +318,8 @@ public class JobDecorator extends Job
 
             collectSubProcessProvenance(db, processMeta);
 
-            if (processMeta.equals(this.getJobMeta()))
+            if (processMeta.equals(this.getJobMeta())
+                    && (!db.getConnection().getAutoCommit()))
             {
                 db.commit(true);
             }
@@ -602,13 +603,20 @@ public class JobDecorator extends Job
         long prospHopId = 0;
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id_repository", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_from", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_to", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("enabled", ValueMetaInterface.TYPE_BOOLEAN));
-        fields.addValueMeta(new ValueMeta("evaluation", ValueMetaInterface.TYPE_BOOLEAN));
-        fields.addValueMeta(new ValueMeta("unconditional", ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_repository",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_from",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_to",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("enabled",
+                ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("evaluation",
+                ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("unconditional",
+                ValueMetaInterface.TYPE_BOOLEAN));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
@@ -616,8 +624,8 @@ public class JobDecorator extends Job
         {
             data[i++] = this.prospRepoId;
             data[i++] = prospProcessId;
-            data[i++] = prospJobEntryMetaMap.get(prospProcessId).get(from);
-            data[i++] = prospJobEntryMetaMap.get(prospProcessId).get(to);
+            data[i++] = getProspStepId(from);
+            data[i++] = getProspStepId(to);
             data[i++] = ((JobHopMeta) hop).isEnabled();
             data[i++] = ((JobHopMeta) hop).getEvaluation();
             data[i++] = ((JobHopMeta) hop).isUnconditional();
@@ -627,8 +635,8 @@ public class JobDecorator extends Job
 
             data[i++] = this.prospRepoId;
             data[i++] = prospProcessId;
-            data[i++] = prospStepMetaMap.get(prospProcessId).get(from);
-            data[i++] = prospStepMetaMap.get(prospProcessId).get(to);
+            data[i++] = getProspStepId(from);
+            data[i++] = getProspStepId(to);
             data[i++] = ((TransHopMeta) hop).isEnabled();
             data[i++] = true;
             data[i++] = true;
@@ -670,6 +678,8 @@ public class JobDecorator extends Job
             String tableName = "prosp_process_note";
 
             RowMetaInterface fields = new RowMeta();
+            fields.addValueMeta(new ValueMeta("id_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
             fields.addValueMeta(new ValueMeta("id_process",
                     ValueMetaInterface.TYPE_INTEGER));
             fields.addValueMeta(new ValueMeta("id_note",
@@ -709,6 +719,7 @@ public class JobDecorator extends Job
                 }
                 data = new Object[fields.size()];
                 i = 0;
+                data[i++] = this.prospRepoId;
                 data[i++] = this.getProspProcessId(processMeta);
                 data[i++] = prospNoteId;
 
@@ -737,7 +748,8 @@ public class JobDecorator extends Job
                             jobEntry, prospStepId);
 
                     // INSERE OS PARAMETROS DO STEP
-                    extractProvenanceDataFromStepAttribute(db, step, prospProcessId);
+                    extractProvenanceDataFromStepAttribute(db, step,
+                            prospProcessId);
                 }
             }
             else if (step instanceof StepMeta)
@@ -754,7 +766,8 @@ public class JobDecorator extends Job
                             stepMeta, prospStepId);
 
                     // Rogers (16/03/2013)
-                    extractProvenanceDataFromStepAttribute(db, step, prospProcessId);
+                    extractProvenanceDataFromStepAttribute(db, step,
+                            prospProcessId);
                 }
             }
             else
@@ -828,20 +841,22 @@ public class JobDecorator extends Job
                     // Endpoint URI
                     if (endpoint != null)
                     {
-                        insertProspStepParam(db, step, processId, "ENDPOINT_URI", endpoint);
+                        insertProspStepParam(db, step, processId,
+                                "ENDPOINT_URI", endpoint);
                     }
 
                     // Default Graph
                     if (defaultGraph != null)
                     {
-                        insertProspStepParam(db, step, processId, "DEFAULT_GRAPH",
-                                defaultGraph);
+                        insertProspStepParam(db, step, processId,
+                                "DEFAULT_GRAPH", defaultGraph);
                     }
 
                     // SPARQL
                     if (sparqlInput != null)
                     {
-                        insertProspStepParam(db, step, processId, "SPARQL", sparqlInput);
+                        insertProspStepParam(db, step, processId, "SPARQL",
+                                sparqlInput);
                     }
                 }
                 catch (IllegalAccessException e)
@@ -881,20 +896,23 @@ public class JobDecorator extends Job
                 String[] steps = mjm.getStepIOMeta().getInfoStepnames();
                 if (steps[0] != null)
                 {
-                    insertProspStepParam(db, step, processId, "FIRST_STEP", steps[0]);
+                    insertProspStepParam(db, step, processId, "FIRST_STEP",
+                            steps[0]);
                 }
 
                 // Second Step
                 if (steps[1] != null)
                 {
-                    insertProspStepParam(db, step, processId, "SECOND_STEP", steps[1]);
+                    insertProspStepParam(db, step, processId, "SECOND_STEP",
+                            steps[1]);
                 }
 
                 // Join Type
                 String joinType = mjm.getJoinType();
                 if (joinType != null)
                 {
-                    insertProspStepParam(db, step, processId, "JOIN_TYPE", joinType);
+                    insertProspStepParam(db, step, processId, "JOIN_TYPE",
+                            joinType);
                 }
 
                 // Keys 1
@@ -980,8 +998,9 @@ public class JobDecorator extends Job
         return stepId;
     }
 
-    protected void insertProspStepParam(Database db, Object step, long processId,
-            String fieldName, String fieldValue) throws KettleException
+    protected void insertProspStepParam(Database db, Object step,
+            long processId, String fieldName, String fieldValue)
+            throws KettleException
     {
         String tableName = "prosp_step_parameter";
         Long stepId = getProspStepId(step);
@@ -992,12 +1011,18 @@ public class JobDecorator extends Job
         Long paramId = generateId(db, tableName, restriction);
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id_repository", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));        
-        fields.addValueMeta(new ValueMeta("id_step", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_step_param", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("name", ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("value", ValueMetaInterface.TYPE_STRING));
+        fields.addValueMeta(new ValueMeta("id_repository",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_step",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_step_param",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("name",
+                ValueMetaInterface.TYPE_STRING));
+        fields.addValueMeta(new ValueMeta("value",
+                ValueMetaInterface.TYPE_STRING));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
@@ -2473,12 +2498,62 @@ public class JobDecorator extends Job
         if (step instanceof JobEntryCopy)
         {
             JobEntryCopy jec = (JobEntryCopy) step;
-            stepId = prospJobEntryMetaMap.get(jec.getParentJobMeta()).get(jec);
+            Map<JobEntryCopy, Long> map = prospJobEntryMetaMap.get(jec.getParentJobMeta());
+            if (map == null)
+            {
+                Set<Map.Entry<JobMeta, Map<JobEntryCopy, Long>>> entries = prospJobEntryMetaMap.entrySet();
+                for (Map.Entry<JobMeta, Map<JobEntryCopy, Long>> entry : entries)
+                {
+                    if (entry.getKey().equals(jec.getParentJobMeta()))
+                    {
+                        map = entry.getValue();
+                        break;
+                    }
+                }
+            }
+            stepId = map.get(jec);
+            if (stepId == null)
+            {
+                Set<Map.Entry<JobEntryCopy, Long>> entries = map.entrySet();
+                for (Map.Entry<JobEntryCopy, Long> entry : entries)
+                {
+                    if (entry.getKey().equals(jec))
+                    {
+                        stepId = entry.getValue();
+                        break;
+                    }
+                }
+            }            
         }
         else if (step instanceof StepMeta)
         {
             StepMeta sm = (StepMeta) step;
-            stepId = prospStepMetaMap.get(sm.getParentTransMeta()).get(sm);
+            Map<StepMeta, Long> map = prospStepMetaMap.get(sm.getParentTransMeta());
+            if (map == null)
+            {
+                Set<Map.Entry<TransMeta, Map<StepMeta, Long>>> entries = prospStepMetaMap.entrySet();
+                for (Map.Entry<TransMeta, Map<StepMeta, Long>> entry : entries)
+                {
+                    if (entry.getKey().equals(sm.getParentTransMeta()))
+                    {
+                        map = entry.getValue();
+                        break;
+                    }
+                }
+            }
+            stepId = map.get(sm);
+            if (stepId == null)
+            {
+                Set<Map.Entry<StepMeta, Long>> entries = map.entrySet();
+                for (Map.Entry<StepMeta, Long> entry : entries)
+                {
+                    if (entry.getKey().equals(sm))
+                    {
+                        stepId = entry.getValue();
+                        break;
+                    }
+                }
+            } 
         }
         return stepId;
     }
