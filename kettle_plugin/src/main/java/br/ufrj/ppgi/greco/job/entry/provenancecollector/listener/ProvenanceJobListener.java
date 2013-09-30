@@ -40,24 +40,25 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
     public void jobStarted(Job job) throws KettleException
     {
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("start_date", ValueMetaInterface.TYPE_DATE));
         fields.addValueMeta(new ValueMeta("user", ValueMetaInterface.TYPE_STRING));
         fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
-        data[i++] = job.getBatchId();
+        data[i++] = rootJob.getProspRepoId();
         data[i++] = rootJob.getProspProcessId(job.getJobMeta());
+        data[i++] = job.getBatchId();        
         data[i++] = new Date(System.currentTimeMillis());
         IUser user = job.getRep().getUserInfo();
         data[i++] = (user != null) ? user.getLogin() : "-";
         data[i++] = false;
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT, tableName,
-                fields, data));
+        operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT, tableName, fields, data));
 
         executeDML(db, operations);
     }
@@ -67,14 +68,11 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
             throws KettleException
     {
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("finish_date",
-                ValueMetaInterface.TYPE_DATE));
-        fields.addValueMeta(new ValueMeta("success",
-                ValueMetaInterface.TYPE_BOOLEAN));
-        fields.addValueMeta(new ValueMeta("id",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process",
-                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("finish_date", ValueMetaInterface.TYPE_DATE));
+        fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
@@ -85,13 +83,12 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
 
         String[] sets = { "finish_date", "success" };
 
-        String[] codes = { "id", "id_prosp_process" };
+        String[] codes = { "id_prosp_repository", "id_prosp_process", "id_process" };
 
-        String[] condition = { "=", "=" };
+        String[] condition = { "=", "=", "=" };
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName,
-                fields, data, codes, condition, sets));
+        operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName, fields, data, codes, condition, sets));
 
         // Executa os comandos DML
         executeDML(db, operations);

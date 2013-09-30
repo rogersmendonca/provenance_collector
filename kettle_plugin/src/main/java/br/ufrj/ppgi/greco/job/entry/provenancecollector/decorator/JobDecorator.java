@@ -87,16 +87,18 @@ public class JobDecorator extends Job
     protected int maxJobEntriesLogged;
 
     protected Job job;
-    protected long prospJobId;
-    protected Map<StepMeta, Long> prospStepMetaMap;
-    protected Map<JobEntryCopy, Long> prospJobEntryMetaMap;
-    protected Map<TransMeta, Long> prospTransMetaMap;
+
     protected Map<JobMeta, Long> prospJobMetaMap;
+    protected Map<TransMeta, Long> prospTransMetaMap;
+    protected Map<JobMeta, Map<JobEntryCopy, Long>> prospJobEntryMetaMap;
+    protected Map<TransMeta, Map<StepMeta, Long>> prospStepMetaMap;
     protected List<IRetrospJobListener> retrospJobListeners;
     protected Database db;
     protected Set<Database> connectionPool;
     protected RepositoryMeta repoMeta;
     protected String repoLoc;
+    protected long prospJobId;
+    protected long prospRepoId;
     protected Map<EnumStepType, Boolean> mapFineGrainedEnabled;
 
     public JobDecorator(Job job, Database db,
@@ -110,22 +112,23 @@ public class JobDecorator extends Job
                 1000);
 
         this.job = job;
-        this.prospStepMetaMap = new HashMap<StepMeta, Long>();
-        this.prospJobEntryMetaMap = new HashMap<JobEntryCopy, Long>();
         this.prospJobMetaMap = new HashMap<JobMeta, Long>();
         this.prospTransMetaMap = new HashMap<TransMeta, Long>();
+        this.prospJobEntryMetaMap = new HashMap<JobMeta, Map<JobEntryCopy, Long>>();
+        this.prospStepMetaMap = new HashMap<TransMeta, Map<StepMeta, Long>>();
         this.retrospJobListeners = new ArrayList<IRetrospJobListener>();
         this.db = db;
         this.mapFineGrainedEnabled = mapFineGrainedEnabled;
         this.connectionPool = new HashSet<Database>();
         addDatabaseInConnectionPool(this.db);
-        setRepoMetaAndLocation();
+        setRepoMetaAndLocation(this.db);
+        setProspIdRepository(this.db, getRepoMeta().getName(), getRepoLoc());
 
         collectProspectiveProvenance(db, null, this.getJobMeta());
     }
 
     // Seta o valor dos atributos repoMeta e repoLoc
-    private void setRepoMetaAndLocation() throws KettleException
+    private void setRepoMetaAndLocation(Database db) throws KettleException
     {
         this.repoMeta = this.getRep().getRepositoryMeta();
         this.repoLoc = null;
@@ -149,6 +152,79 @@ public class JobDecorator extends Job
         else
         {
             throw new KettleException("Kettle Repository Type not supported.");
+        }
+    }
+
+    protected long getProspIdRepository(Database db, String repoName,
+            String repoLoc) throws KettleDatabaseException
+    {
+        StringBuilder SQL = new StringBuilder();
+        SQL.append("SELECT t1.id_repository ");
+        SQL.append("FROM prosp_repository t1 ");
+        SQL.append("WHERE t1.name = ? ");
+        SQL.append("AND   t1.location = ? ");
+
+        RowMetaInterface fields = new RowMeta();
+        fields.addValueMeta(new ValueMeta("name",
+                ValueMetaInterface.TYPE_STRING));
+        fields.addValueMeta(new ValueMeta("location",
+                ValueMetaInterface.TYPE_STRING));
+
+        Object[] data = new Object[fields.size()];
+        int i = 0;
+        data[i++] = repoName;
+        data[i++] = repoLoc;
+
+        long id = -1;
+        ResultSet res = db.openQuery(SQL.toString(), fields, data);
+        try
+        {
+            id = res.next() ? res.getLong("id_repository") : 0;
+        }
+        catch (SQLException e)
+        {
+            throw new KettleDatabaseException(e.getMessage());
+        }
+        finally
+        {
+            db.closeQuery(res);
+        }
+
+        return id;
+    }
+
+    protected void setProspIdRepository(Database db, String repoName,
+            String repoLoc) throws KettleException
+    {
+        this.prospRepoId = -1;
+        long id = getProspIdRepository(db, repoName, repoLoc);
+
+        // Se existir, seta o id. Senao, insere repositorio e seta o id.
+        if (id > 0)
+        {
+            this.prospRepoId = id;
+        }
+        else
+        {
+            String tableName = "prosp_repository";
+            id = generateId(db, tableName);
+
+            RowMetaInterface fields = new RowMeta();
+            fields.addValueMeta(new ValueMeta("id_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("name",
+                    ValueMetaInterface.TYPE_STRING));
+            fields.addValueMeta(new ValueMeta("location",
+                    ValueMetaInterface.TYPE_STRING));
+
+            Object[] data = new Object[fields.size()];
+            int i = 0;
+            data[i++] = id;
+            data[i++] = getRepoMeta().getName();
+            data[i++] = getRepoLoc();
+
+            db.insertRow(tableName, fields, data);
+            this.prospRepoId = id;
         }
     }
 
@@ -188,9 +264,6 @@ public class JobDecorator extends Job
 
                 // PROCESS (JOB ou TRANSFORMATION)
                 prospProcessId = insertProspProcess(db, parentMeta, processMeta);
-
-                // REPOSITORY
-                insertProspRepository(db, prospProcessId);
 
                 // NOTE
                 insertProspNote(db, previousProspProcessId, processMeta);
@@ -290,13 +363,14 @@ public class JobDecorator extends Job
         }
     }
 
-    protected long getProspId(Database db, String tableName)
+    /* METODOS GET ID */
+    public long generateId(Database db, String tableName)
             throws KettleException
     {
-        return getProspId(db, tableName, null);
+        return generateId(db, tableName, null);
     }
 
-    protected long getProspId(Database db, String tableName,
+    public long generateId(Database db, String tableName,
             Map<String, Long> restriction) throws KettleException
     {
         try
@@ -338,12 +412,9 @@ public class JobDecorator extends Job
             throws KettleException, SQLException
     {
         StringBuilder SQL = new StringBuilder();
-        SQL.append("SELECT t1.id ");
-        SQL.append("FROM  prosp_process t1, prosp_process_repository t2, prosp_repository t3 ");
-        SQL.append("WHERE t2.id_process = t1.id ");
-        SQL.append("AND   t2.id_repository = t3.id ");
-        SQL.append("AND   t3.name = ? ");
-        SQL.append("AND   t3.location = ? ");
+        SQL.append("SELECT t1.id_process as id ");
+        SQL.append("FROM  prosp_process t1 ");
+        SQL.append("WHERE t1.id_repository = ? ");
         SQL.append("AND   t1.object_id = ? ");
         if (parentMeta != null)
         {
@@ -353,13 +424,11 @@ public class JobDecorator extends Job
         {
             SQL.append("AND   t1.modified_date = ? ");
         }
-        SQL.append("ORDER BY t1.id DESC");
+        SQL.append("ORDER BY t1.id_process DESC");
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("name",
-                ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("location",
-                ValueMetaInterface.TYPE_STRING));
+        fields.addValueMeta(new ValueMeta("id_repository",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("object_id",
                 ValueMetaInterface.TYPE_STRING));
         if (parentMeta != null)
@@ -375,8 +444,7 @@ public class JobDecorator extends Job
 
         Object[] data = new Object[fields.size()];
         int i = 0;
-        data[i++] = getRepoMeta().getName();
-        data[i++] = getRepoLoc();
+        data[i++] = getProspRepoId();
         data[i++] = processMeta.getObjectId();
         if (parentMeta != null)
         {
@@ -406,15 +474,15 @@ public class JobDecorator extends Job
         return id;
     }
 
-    protected long getProspIdNote(Database db, long jobId, NotePadMeta notePad)
-            throws KettleDatabaseException, SQLException
+    protected long getProspIdNote(Database db, long processId,
+            NotePadMeta notePad) throws KettleDatabaseException, SQLException
     {
-        if (jobId > 0)
+        if (processId > 0)
         {
             StringBuilder SQL = new StringBuilder();
-            SQL.append("SELECT t1.id ");
+            SQL.append("SELECT t1.id_note as id ");
             SQL.append("FROM prosp_note t1, prosp_process_note t2 ");
-            SQL.append("WHERE t1.id = t2.id_note ");
+            SQL.append("WHERE t1.id_note = t2.id_note ");
             SQL.append("AND t2.id_process = ? ");
             SQL.append("AND t1.text = ? ");
 
@@ -426,7 +494,7 @@ public class JobDecorator extends Job
 
             Object[] data = new Object[fields.size()];
             int i = 0;
-            data[i++] = jobId;
+            data[i++] = processId;
             data[i++] = notePad.getNote();
 
             ResultSet res = db.openQuery(SQL.toString(), fields, data);
@@ -441,39 +509,14 @@ public class JobDecorator extends Job
         }
     }
 
-    protected long getProspIdRepository(Database db, String repoName,
-            String repoLoc) throws KettleDatabaseException, SQLException
-    {
-        StringBuilder SQL = new StringBuilder();
-        SQL.append("SELECT t1.id ");
-        SQL.append("FROM prosp_repository t1 ");
-        SQL.append("WHERE t1.name = ? ");
-        SQL.append("AND   t1.location = ? ");
-
-        RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("name",
-                ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("location",
-                ValueMetaInterface.TYPE_STRING));
-
-        Object[] data = new Object[fields.size()];
-        int i = 0;
-        data[i++] = repoName;
-        data[i++] = repoLoc;
-
-        ResultSet res = db.openQuery(SQL.toString(), fields, data);
-        long id = res.next() ? res.getLong("id") : 0;
-        db.closeQuery(res);
-
-        return id;
-    }
-
     protected long insertProspProcess(Database db,
             LoggingObjectInterface parentMeta,
             LoggingObjectInterface processMeta) throws KettleException
     {
         String tableName = "prosp_process";
-        long prospProcessId = getProspId(db, tableName);
+        HashMap<String, Long> restriction = new HashMap<String, Long>();
+        restriction.put("id_repository", this.prospRepoId);
+        long prospProcessId = generateId(db, tableName);
 
         if ((processMeta instanceof JobMeta)
                 && ((JobMeta) processMeta).equals(this.getJobMeta()))
@@ -482,7 +525,10 @@ public class JobDecorator extends Job
         }
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_repository",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("object_id",
                 ValueMetaInterface.TYPE_STRING));
         fields.addValueMeta(new ValueMeta("name",
@@ -497,6 +543,8 @@ public class JobDecorator extends Job
                 ValueMetaInterface.TYPE_STRING));
         fields.addValueMeta(new ValueMeta("modified_date",
                 ValueMetaInterface.TYPE_DATE));
+        fields.addValueMeta(new ValueMeta("id_root_repository",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_root",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_parent",
@@ -506,6 +554,7 @@ public class JobDecorator extends Job
         int i = 0;
         if (processMeta instanceof JobMeta)
         {
+            data[i++] = this.prospRepoId;
             data[i++] = prospProcessId;
             data[i++] = ((JobMeta) processMeta).getObjectId();
             data[i++] = ((JobMeta) processMeta).getName();
@@ -514,11 +563,13 @@ public class JobDecorator extends Job
             data[i++] = ((JobMeta) processMeta).getCreatedDate();
             data[i++] = ((JobMeta) processMeta).getModifiedUser();
             data[i++] = ((JobMeta) processMeta).getModifiedDate();
+            data[i++] = this.prospRepoId;
             data[i++] = this.prospJobId;
             data[i++] = this.getProspProcessId(parentMeta);
         }
         else if (processMeta instanceof TransMeta)
         {
+            data[i++] = this.prospRepoId;
             data[i++] = prospProcessId;
             data[i++] = ((TransMeta) processMeta).getObjectId();
             data[i++] = ((TransMeta) processMeta).getName();
@@ -527,6 +578,7 @@ public class JobDecorator extends Job
             data[i++] = ((TransMeta) processMeta).getCreatedDate();
             data[i++] = ((TransMeta) processMeta).getModifiedUser();
             data[i++] = ((TransMeta) processMeta).getModifiedDate();
+            data[i++] = this.prospRepoId;
             data[i++] = this.prospJobId;
             data[i++] = this.getProspProcessId(parentMeta);
         }
@@ -550,35 +602,33 @@ public class JobDecorator extends Job
         long prospHopId = 0;
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id_process",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_from",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_to",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("enabled",
-                ValueMetaInterface.TYPE_BOOLEAN));
-        fields.addValueMeta(new ValueMeta("evaluation",
-                ValueMetaInterface.TYPE_BOOLEAN));
-        fields.addValueMeta(new ValueMeta("unconditional",
-                ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_repository", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_from", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_to", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("enabled", ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("evaluation", ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("unconditional", ValueMetaInterface.TYPE_BOOLEAN));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
         if (hop instanceof JobHopMeta)
         {
+            data[i++] = this.prospRepoId;
             data[i++] = prospProcessId;
-            data[i++] = prospJobEntryMetaMap.get(from);
-            data[i++] = prospJobEntryMetaMap.get(to);
+            data[i++] = prospJobEntryMetaMap.get(prospProcessId).get(from);
+            data[i++] = prospJobEntryMetaMap.get(prospProcessId).get(to);
             data[i++] = ((JobHopMeta) hop).isEnabled();
             data[i++] = ((JobHopMeta) hop).getEvaluation();
             data[i++] = ((JobHopMeta) hop).isUnconditional();
         }
         else if (hop instanceof TransHopMeta)
         {
+
+            data[i++] = this.prospRepoId;
             data[i++] = prospProcessId;
-            data[i++] = prospStepMetaMap.get(from);
-            data[i++] = prospStepMetaMap.get(to);
+            data[i++] = prospStepMetaMap.get(prospProcessId).get(from);
+            data[i++] = prospStepMetaMap.get(prospProcessId).get(to);
             data[i++] = ((TransHopMeta) hop).isEnabled();
             data[i++] = true;
             data[i++] = true;
@@ -628,7 +678,7 @@ public class JobDecorator extends Job
             String tableName2 = "prosp_note";
 
             RowMetaInterface fields2 = new RowMeta();
-            fields2.addValueMeta(new ValueMeta("id",
+            fields2.addValueMeta(new ValueMeta("id_note",
                     ValueMetaInterface.TYPE_INTEGER));
             fields2.addValueMeta(new ValueMeta("text",
                     ValueMetaInterface.TYPE_STRING));
@@ -649,7 +699,7 @@ public class JobDecorator extends Job
                 }
                 if (prospNoteId <= 0)
                 {
-                    prospNoteId = getProspId(db, tableName2);
+                    prospNoteId = generateId(db, tableName2);
                     data = new Object[fields2.size()];
                     i = 0;
                     data[i++] = prospNoteId;
@@ -667,93 +717,44 @@ public class JobDecorator extends Job
         }
     }
 
-    protected void insertProspRepository(Database db, long processId)
-            throws KettleException
-    {
-        String tableName = null;
-        long prospRepoId = -1;
-        try
-        {
-            prospRepoId = getProspIdRepository(db, getRepoMeta().getName(),
-                    getRepoLoc());
-        }
-        catch (SQLException e)
-        {
-            throw new KettleException(e.toString());
-        }
-        if (prospRepoId <= 0)
-        {
-            tableName = "prosp_repository";
-            prospRepoId = getProspId(db, tableName);
-
-            RowMetaInterface fields = new RowMeta();
-            fields.addValueMeta(new ValueMeta("id",
-                    ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("name",
-                    ValueMetaInterface.TYPE_STRING));
-            fields.addValueMeta(new ValueMeta("location",
-                    ValueMetaInterface.TYPE_STRING));
-
-            Object[] data = new Object[fields.size()];
-            int i = 0;
-            data[i++] = prospRepoId;
-            data[i++] = getRepoMeta().getName();
-            data[i++] = getRepoLoc();
-
-            db.insertRow(tableName, fields, data);
-        }
-
-        // PROCESS <===> REPOSITORY
-        tableName = "prosp_process_repository";
-
-        RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id_process",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_repository",
-                ValueMetaInterface.TYPE_INTEGER));
-
-        Object[] data = new Object[fields.size()];
-        int i = 0;
-        data[i++] = processId;
-        data[i++] = prospRepoId;
-
-        db.insertRow(tableName, fields, data);
-    }
-
     protected void insertProspHopStep(Database db, Object step,
             long prospProcessId) throws KettleException
     {
-        // List<FieldNameAndValues> fieldList = null;
         long prospStepId = -1;
         try
         {
             if (step instanceof JobEntryCopy)
             {
-                if (!prospJobEntryMetaMap.keySet().contains(step))
+                JobEntryCopy jobEntry = (JobEntryCopy) step;
+                if (!prospJobEntryMetaMap.get(jobEntry.getParentJobMeta())
+                        .keySet().contains(step))
                 {
+                    // INSERE STEP NO BANCO DE DADOS
                     prospStepId = insertProspStep(db, step, prospProcessId);
 
-                    prospJobEntryMetaMap.put((JobEntryCopy) step, prospStepId);
+                    // INSERE STEP NO MAPEAMENTO
+                    prospJobEntryMetaMap.get(jobEntry.getParentJobMeta()).put(
+                            jobEntry, prospStepId);
 
-                    // Rogers (16/03/2013)
-                    extractProvenanceDataFromStepAttribute(db, step);
-
-                    // fieldList = getFieldNamesAndValues(((JobEntryCopy)
-                    // step).getEntry());
+                    // INSERE OS PARAMETROS DO STEP
+                    extractProvenanceDataFromStepAttribute(db, step, prospProcessId);
                 }
             }
             else if (step instanceof StepMeta)
             {
-                if (!prospStepMetaMap.keySet().contains(step))
+                StepMeta stepMeta = (StepMeta) step;
+                if (!prospStepMetaMap.get(stepMeta.getParentTransMeta())
+                        .keySet().contains(step))
                 {
+                    // INSERE STEP NO BANCO DE DADOS
                     prospStepId = insertProspStep(db, step, prospProcessId);
 
-                    prospStepMetaMap.put((StepMeta) step, prospStepId);
+                    // INSERE STEP NO MAPEAMENTO
+                    prospStepMetaMap.get(stepMeta.getParentTransMeta()).put(
+                            stepMeta, prospStepId);
 
                     // Rogers (16/03/2013)
-                    extractProvenanceDataFromStepAttribute(db, step);
-
-                    // fieldList = getFieldNamesAndValues(step);
+                    extractProvenanceDataFromStepAttribute(db, step, prospProcessId);
                 }
             }
             else
@@ -769,7 +770,7 @@ public class JobDecorator extends Job
     }
 
     protected void extractProvenanceDataFromStepAttribute(Database db,
-            Object step) throws KettleException
+            Object step, long processId) throws KettleException
     {
         if (step instanceof JobEntryCopy)
         {
@@ -789,7 +790,7 @@ public class JobDecorator extends Job
                 DatabaseMeta databaseMeta = tim.getDatabaseMeta();
                 if (databaseMeta != null)
                 {
-                    insertProspStepField(db, step, "CONNECTION",
+                    insertProspStepParam(db, step, processId, "CONNECTION",
                             databaseMeta.getName());
                 }
 
@@ -797,14 +798,14 @@ public class JobDecorator extends Job
                 String sqlInput = tim.getSQL();
                 if (sqlInput != null)
                 {
-                    insertProspStepField(db, step, "SQL", sqlInput);
+                    insertProspStepParam(db, step, processId, "SQL", sqlInput);
                 }
 
                 // LOOKUP_STEP
                 StepMeta lookupStep = tim.getLookupFromStep();
                 if (lookupStep != null)
                 {
-                    insertProspStepField(db, step, "LOOKUP_STEP",
+                    insertProspStepParam(db, step, processId, "LOOKUP_STEP",
                             lookupStep.getName());
                 }
             }
@@ -827,20 +828,20 @@ public class JobDecorator extends Job
                     // Endpoint URI
                     if (endpoint != null)
                     {
-                        insertProspStepField(db, step, "ENDPOINT_URI", endpoint);
+                        insertProspStepParam(db, step, processId, "ENDPOINT_URI", endpoint);
                     }
 
                     // Default Graph
                     if (defaultGraph != null)
                     {
-                        insertProspStepField(db, step, "DEFAULT_GRAPH",
+                        insertProspStepParam(db, step, processId, "DEFAULT_GRAPH",
                                 defaultGraph);
                     }
 
                     // SPARQL
                     if (sparqlInput != null)
                     {
-                        insertProspStepField(db, step, "SPARQL", sparqlInput);
+                        insertProspStepParam(db, step, processId, "SPARQL", sparqlInput);
                     }
                 }
                 catch (IllegalAccessException e)
@@ -880,20 +881,20 @@ public class JobDecorator extends Job
                 String[] steps = mjm.getStepIOMeta().getInfoStepnames();
                 if (steps[0] != null)
                 {
-                    insertProspStepField(db, step, "FIRST_STEP", steps[0]);
+                    insertProspStepParam(db, step, processId, "FIRST_STEP", steps[0]);
                 }
 
                 // Second Step
                 if (steps[1] != null)
                 {
-                    insertProspStepField(db, step, "SECOND_STEP", steps[1]);
+                    insertProspStepParam(db, step, processId, "SECOND_STEP", steps[1]);
                 }
 
                 // Join Type
                 String joinType = mjm.getJoinType();
                 if (joinType != null)
                 {
-                    insertProspStepField(db, step, "JOIN_TYPE", joinType);
+                    insertProspStepParam(db, step, processId, "JOIN_TYPE", joinType);
                 }
 
                 // Keys 1
@@ -902,7 +903,7 @@ public class JobDecorator extends Job
                 {
                     for (int k = 0; k < keyFields1.length; k++)
                     {
-                        insertProspStepField(db, step, "KEYS1_" + k,
+                        insertProspStepParam(db, step, processId, "KEYS1_" + k,
                                 keyFields1[k]);
                     }
                 }
@@ -913,7 +914,7 @@ public class JobDecorator extends Job
                 {
                     for (int k = 0; k < keyFields2.length; k++)
                     {
-                        insertProspStepField(db, step, "KEYS2_" + k,
+                        insertProspStepParam(db, step, processId, "KEYS2_" + k,
                                 keyFields2[k]);
                     }
                 }
@@ -931,12 +932,16 @@ public class JobDecorator extends Job
     {
         String tableName = "prosp_step";
         HashMap<String, Long> restriction = new HashMap<String, Long>();
+        restriction.put("id_repository", this.prospRepoId);
         restriction.put("id_process", processId);
-        long stepId = getProspId(db, tableName, restriction);
+        long stepId = generateId(db, tableName, restriction);
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_repository",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_process",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_step",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("type",
                 ValueMetaInterface.TYPE_STRING));
@@ -948,8 +953,9 @@ public class JobDecorator extends Job
 
         Object[] data = new Object[fields.size()];
         int i = 0;
-        data[i++] = stepId;
+        data[i++] = this.prospRepoId;
         data[i++] = processId;
+        data[i++] = stepId;
         if (step instanceof JobEntryCopy)
         {
             data[i++] = ((JobEntryCopy) step).getEntry().getPluginId();
@@ -974,28 +980,31 @@ public class JobDecorator extends Job
         return stepId;
     }
 
-    protected void insertProspStepField(Database db, Object step,
+    protected void insertProspStepParam(Database db, Object step, long processId,
             String fieldName, String fieldValue) throws KettleException
     {
-        String tableName = "prosp_step_field";
+        String tableName = "prosp_step_parameter";
         Long stepId = getProspStepId(step);
         HashMap<String, Long> restriction = new HashMap<String, Long>();
+        restriction.put("id_repository", this.prospRepoId);
+        restriction.put("id_process", processId);
         restriction.put("id_step", stepId);
-        Long fieldId = getProspId(db, tableName, restriction);
+        Long paramId = generateId(db, tableName, restriction);
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_step",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("name",
-                ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("value",
-                ValueMetaInterface.TYPE_STRING));
+        fields.addValueMeta(new ValueMeta("id_repository", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));        
+        fields.addValueMeta(new ValueMeta("id_step", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_step_param", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("name", ValueMetaInterface.TYPE_STRING));
+        fields.addValueMeta(new ValueMeta("value", ValueMetaInterface.TYPE_STRING));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
-        data[i++] = fieldId;
+        data[i++] = this.prospRepoId;
+        data[i++] = processId;
         data[i++] = stepId;
+        data[i++] = paramId;
         data[i++] = fieldName;
         data[i++] = fieldValue;
 
@@ -1007,11 +1016,16 @@ public class JobDecorator extends Job
     {
         if (processMeta instanceof JobMeta)
         {
-            this.prospJobMetaMap.put((JobMeta) processMeta, prospProcessId);
+            JobMeta jobMeta = (JobMeta) processMeta;
+            this.prospJobMetaMap.put(jobMeta, prospProcessId);
+            this.prospJobEntryMetaMap.put(jobMeta,
+                    new HashMap<JobEntryCopy, Long>());
         }
         else if (processMeta instanceof TransMeta)
         {
-            this.prospTransMetaMap.put((TransMeta) processMeta, prospProcessId);
+            TransMeta transMeta = (TransMeta) processMeta;
+            this.prospTransMetaMap.put(transMeta, prospProcessId);
+            this.prospStepMetaMap.put(transMeta, new HashMap<StepMeta, Long>());
         }
         else
         {
@@ -1025,49 +1039,62 @@ public class JobDecorator extends Job
     {
         // Popula o mapeamento de Steps (JOB ENTRY COPY ou STEP)
         StringBuilder SQL = new StringBuilder();
-        SQL.append("SELECT t1.id, t1.name, t1.nr ");
+        SQL.append("SELECT t1.id_step as id, t1.name, t1.nr ");
         SQL.append("FROM  prosp_step t1 ");
-        SQL.append("WHERE id_process = ? ");
+        SQL.append("WHERE t1.id_repository = ? ");
+        SQL.append("AND   id_process = ? ");
 
         RowMetaInterface fields = new RowMeta();
+        fields.addValueMeta(new ValueMeta("id_repository",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_process",
                 ValueMetaInterface.TYPE_INTEGER));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
+        data[i++] = this.prospRepoId;
         data[i++] = processId;
 
         ResultSet res = db.openQuery(SQL.toString(), fields, data);
         try
         {
-            while (res.next())
+            if (processMeta instanceof JobMeta)
             {
-                long prospStepId = res.getLong("id");
-                String name = res.getString("name");
-                int nr = res.getInt("nr");
-                if (processMeta instanceof JobMeta)
+                JobMeta jobMeta = (JobMeta) processMeta;
+                Map<JobEntryCopy, Long> jobEntryMap = new HashMap<JobEntryCopy, Long>();
+                while (res.next())
                 {
-                    JobEntryCopy jec = ((JobMeta) processMeta).findJobEntry(
-                            name, nr, true);
-
+                    long prospStepId = res.getLong("id");
+                    String name = res.getString("name");
+                    int nr = res.getInt("nr");
+                    JobEntryCopy jec = jobMeta.findJobEntry(name, nr, true);
                     if (jec != null)
                     {
-                        prospJobEntryMetaMap.put(jec, prospStepId);
+                        jobEntryMap.put(jec, prospStepId);
                     }
                 }
-                else if (processMeta instanceof TransMeta)
+                prospJobEntryMetaMap.put(jobMeta, jobEntryMap);
+            }
+            else if (processMeta instanceof TransMeta)
+            {
+                TransMeta transMeta = (TransMeta) processMeta;
+                Map<StepMeta, Long> stepMap = new HashMap<StepMeta, Long>();
+                while (res.next())
                 {
-                    StepMeta kStep = ((TransMeta) processMeta).findStep(name);
-                    if (kStep != null)
+                    long prospStepId = res.getLong("id");
+                    String name = res.getString("name");
+                    StepMeta sm = transMeta.findStep(name);
+                    if (sm != null)
                     {
-                        prospStepMetaMap.put(kStep, prospStepId);
+                        stepMap.put(sm, prospStepId);
                     }
                 }
-                else
-                {
-                    throw new KettleException(
-                            "The process is not a kettle job or kettle transformation");
-                }
+                prospStepMetaMap.put(transMeta, stepMap);
+            }
+            else
+            {
+                throw new KettleException(
+                        "The process is not a kettle job or kettle transformation");
             }
         }
         catch (SQLException e)
@@ -2445,11 +2472,13 @@ public class JobDecorator extends Job
         Long stepId = null;
         if (step instanceof JobEntryCopy)
         {
-            stepId = prospJobEntryMetaMap.get(step);
+            JobEntryCopy jec = (JobEntryCopy) step;
+            stepId = prospJobEntryMetaMap.get(jec.getParentJobMeta()).get(jec);
         }
         else if (step instanceof StepMeta)
         {
-            stepId = prospStepMetaMap.get(step);
+            StepMeta sm = (StepMeta) step;
+            stepId = prospStepMetaMap.get(sm.getParentTransMeta()).get(sm);
         }
         return stepId;
     }
@@ -2494,6 +2523,11 @@ public class JobDecorator extends Job
             removeDatabaseFromConnectionPool(((ParentProvenanceListener) jobListener)
                     .getDb());
         }
+    }
+
+    public long getProspRepoId()
+    {
+        return prospRepoId;
     }
 
     public RepositoryMeta getRepoMeta()

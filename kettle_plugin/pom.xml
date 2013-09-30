@@ -7,6 +7,16 @@
 	<version>1.0-SNAPSHOT</version>	
 	<packaging>jar</packaging>
 	<url>https://github.com/rogersmendonca/provenance_collector.git</url>
+	
+	<developers>
+		<developer>
+			<id>rogersmendonca</id>
+			<name>Rogers Reiche de Mendonca</name>
+			<email>rogers.rj@gmail.com</email>
+			<organization>UFRJ (PPGI/GRECO)</organization>
+			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
+		</developer>
+	</developers>
 
 	<repositories>
 		<repository>

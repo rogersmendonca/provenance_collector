@@ -51,35 +51,29 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
         // registrando o inicio da execucao do Step
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id_process",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_step",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("seq",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("start_date",
-                ValueMetaInterface.TYPE_DATE));
-        fields.addValueMeta(new ValueMeta("finish_date",
-                ValueMetaInterface.TYPE_DATE));        
-        fields.addValueMeta(new ValueMeta("success",
-                ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));            
+        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));            
+        fields.addValueMeta(new ValueMeta("id_prosp_step", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("seq", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("start_date", ValueMetaInterface.TYPE_DATE));
+        fields.addValueMeta(new ValueMeta("finish_date", ValueMetaInterface.TYPE_DATE));        
+        fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
 
-        data[i++] = transProv.getBatchId();
+        data[i++] = rootJob.getProspRepoId();
         data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
+        data[i++] = transProv.getBatchId();            
         data[i++] = rootJob.getProspStepId(stepMeta);
-        data[i++] = transProv.generateStepMetaSeq(step);
+        data[i++] = transProv.generateStepMetaSeq(step);        
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = null;        
         data[i++] = false;
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT, tableName,
-                fields, data));
+        operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT, tableName, fields, data));
 
         // Executa os comandos DML
         synchronized (db)
@@ -107,36 +101,31 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
 
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("finish_date",
-                ValueMetaInterface.TYPE_DATE));
-        fields.addValueMeta(new ValueMeta("success",
-                ValueMetaInterface.TYPE_BOOLEAN));
-        fields.addValueMeta(new ValueMeta("id_process",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_step",
-                ValueMetaInterface.TYPE_INTEGER));        
-        fields.addValueMeta(new ValueMeta("seq",
-                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("finish_date", ValueMetaInterface.TYPE_DATE));
+        fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));            
+        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));            
+        fields.addValueMeta(new ValueMeta("id_prosp_step", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("seq", ValueMetaInterface.TYPE_INTEGER));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = (step.getErrors() == 0);
-        data[i++] = trans.getBatchId();
+        data[i++] = rootJob.getProspRepoId();
         data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
+        data[i++] = transProv.getBatchId();            
         data[i++] = rootJob.getProspStepId(stepMeta);
-        data[i++] = transProv.getStepMetaSeq(step);
+        data[i++] = transProv.generateStepMetaSeq(step); 
 
         String[] sets = { "finish_date", "success" };
 
-        String[] codes = { "id_process", "id_prosp_process", "id_prosp_step", "seq" };
+        String[] codes = { "id_prosp_repository", "id_prosp_process", "id_process",  "id_prosp_step", "seq" };
 
-        String[] condition = { "=", "=", "=", "=" };
+        String[] condition = { "=", "=", "=", "=", "=" };
 
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName,
-                fields, data, codes, condition, sets));
+        operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName, fields, data, codes, condition, sets));
 
         // Executa os comandos DML
         synchronized (db)
