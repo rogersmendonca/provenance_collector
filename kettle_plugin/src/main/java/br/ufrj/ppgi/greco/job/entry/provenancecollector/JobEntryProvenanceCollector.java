@@ -351,7 +351,6 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                 XMLHandler.addTagValue("set_append_logfile", setAppendLogfile));
 
         // Rogers (05/2013): Provenance Tab
-        // int kkk = "xx";
         // 1- Provenance Connection
         retval.append("      ").append(
                 XMLHandler.addTagValue(
@@ -512,7 +511,6 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
             }
 
             // Rogers (05/2013): Provenance Tab
-            // int kkk = "xx";
             // 1- Provenance Connection
             String dbname = XMLHandler.getTagValue(entrynode, "provConnection");
             provConnection = DatabaseMeta.findDatabase(databases, dbname);
@@ -625,7 +623,6 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                     "pass_all_parameters", true);
 
             // Rogers (05/2013): Provenance Tab
-            // int kkk = "xx";
             // 1- Provenance Connection
             provConnection = rep.loadDatabaseMetaFromJobEntryAttribute(
                     id_jobentry, "provConnection", "id_database", databases);
@@ -732,7 +729,6 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                     "pass_all_parameters", passingAllParameters);
 
             // Rogers (05/2013): Provenance Tab
-            // int kkk = "xx";
             // 1- Save Provenance Connection
             rep.saveDatabaseMetaJobEntryAttribute(id_job, getObjectId(),
                     "provConnection", "id_database", provConnection);
@@ -1929,8 +1925,6 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
     }
 
     // Rogers (05/2013): Provenance Tab
-    // int kkk = "xx";
-
     public DatabaseMeta getProvConnection()
     {
         return provConnection;

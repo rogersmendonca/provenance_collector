@@ -117,7 +117,7 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
         data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
         data[i++] = transProv.getBatchId();            
         data[i++] = rootJob.getProspStepId(stepMeta);
-        data[i++] = transProv.generateStepMetaSeq(step); 
+        data[i++] = transProv.getStepMetaSeq(step); 
 
         String[] sets = { "finish_date", "success" };
 

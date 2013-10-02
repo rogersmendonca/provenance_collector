@@ -97,8 +97,9 @@ public abstract class ParentProvenanceTransListener extends
         int i = 0;
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = (trans.getErrors() == 0);
-        data[i++] = trans.getBatchId();
+        data[i++] = rootJob.getProspRepoId();        
         data[i++] = rootJob.getProspProcessId(trans.getTransMeta());
+        data[i++] = trans.getBatchId();
 
         String[] sets = { "finish_date", "success" };
 

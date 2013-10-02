@@ -61,15 +61,12 @@ import org.pentaho.di.repository.kdr.KettleDatabaseRepositoryMeta;
 import org.pentaho.di.trans.TransHopMeta;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.StepMeta;
-import org.pentaho.di.trans.step.StepMetaInterface;
-import org.pentaho.di.trans.steps.mergejoin.MergeJoinMeta;
-import org.pentaho.di.trans.steps.tableinput.TableInputMeta;
 import org.pentaho.di.www.SocketRepository;
 
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.IRetrospJobListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ParentProvenanceListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
-import br.ufrj.ppgi.greco.lodbr.plugin.sparql.SparqlStepMeta;
 
 /**
  * 
@@ -746,10 +743,6 @@ public class JobDecorator extends Job
                     // INSERE STEP NO MAPEAMENTO
                     prospJobEntryMetaMap.get(jobEntry.getParentJobMeta()).put(
                             jobEntry, prospStepId);
-
-                    // INSERE OS PARAMETROS DO STEP
-                    extractProvenanceDataFromStepAttribute(db, step,
-                            prospProcessId);
                 }
             }
             else if (step instanceof StepMeta)
@@ -765,9 +758,9 @@ public class JobDecorator extends Job
                     prospStepMetaMap.get(stepMeta.getParentTransMeta()).put(
                             stepMeta, prospStepId);
 
-                    // Rogers (16/03/2013)
-                    extractProvenanceDataFromStepAttribute(db, step,
-                            prospProcessId);
+                    // Rogers (30/09/2013)                    
+                    ParentProspStepParamCmd.get((StepMeta) step).execute(this, db,
+                            step, prospProcessId);
                 }
             }
             else
@@ -779,169 +772,6 @@ public class JobDecorator extends Job
         catch (IllegalArgumentException e)
         {
             throw new KettleException(e.toString());
-        }
-    }
-
-    protected void extractProvenanceDataFromStepAttribute(Database db,
-            Object step, long processId) throws KettleException
-    {
-        if (step instanceof JobEntryCopy)
-        {
-
-        }
-        else if (step instanceof StepMeta)
-        {
-            StepMetaInterface smi = ((StepMeta) step).getStepMetaInterface();
-
-            // Table Input
-            if (isFineGrainedEnabled(EnumStepType.TABLE_INPUT)
-                    && (smi instanceof TableInputMeta))
-            {
-                TableInputMeta tim = (TableInputMeta) smi;
-
-                // Database connection
-                DatabaseMeta databaseMeta = tim.getDatabaseMeta();
-                if (databaseMeta != null)
-                {
-                    insertProspStepParam(db, step, processId, "CONNECTION",
-                            databaseMeta.getName());
-                }
-
-                // SQL
-                String sqlInput = tim.getSQL();
-                if (sqlInput != null)
-                {
-                    insertProspStepParam(db, step, processId, "SQL", sqlInput);
-                }
-
-                // LOOKUP_STEP
-                StepMeta lookupStep = tim.getLookupFromStep();
-                if (lookupStep != null)
-                {
-                    insertProspStepParam(db, step, processId, "LOOKUP_STEP",
-                            lookupStep.getName());
-                }
-            }
-
-            // Sparql Endpoint
-            else if (isFineGrainedEnabled(EnumStepType.SPARQL_INPUT)
-                    && (smi.getClass().toString().equals(SparqlStepMeta.class
-                            .toString())))
-            {
-                try
-                {
-                    // Obtem valores dos campos por reflection
-                    String endpoint = (String) smi.getClass()
-                            .getMethod("getEndpointUri").invoke(smi);
-                    String defaultGraph = (String) smi.getClass()
-                            .getMethod("getDefaultGraph").invoke(smi);
-                    String sparqlInput = (String) smi.getClass()
-                            .getMethod("getQueryString").invoke(smi);
-
-                    // Endpoint URI
-                    if (endpoint != null)
-                    {
-                        insertProspStepParam(db, step, processId,
-                                "ENDPOINT_URI", endpoint);
-                    }
-
-                    // Default Graph
-                    if (defaultGraph != null)
-                    {
-                        insertProspStepParam(db, step, processId,
-                                "DEFAULT_GRAPH", defaultGraph);
-                    }
-
-                    // SPARQL
-                    if (sparqlInput != null)
-                    {
-                        insertProspStepParam(db, step, processId, "SPARQL",
-                                sparqlInput);
-                    }
-                }
-                catch (IllegalAccessException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (IllegalArgumentException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (InvocationTargetException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (NoSuchMethodException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (SecurityException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            // Merge Join
-            else if (isFineGrainedEnabled(EnumStepType.MERGE_JOIN)
-                    && (smi instanceof MergeJoinMeta))
-            {
-                MergeJoinMeta mjm = (MergeJoinMeta) smi;
-
-                // First Step
-                String[] steps = mjm.getStepIOMeta().getInfoStepnames();
-                if (steps[0] != null)
-                {
-                    insertProspStepParam(db, step, processId, "FIRST_STEP",
-                            steps[0]);
-                }
-
-                // Second Step
-                if (steps[1] != null)
-                {
-                    insertProspStepParam(db, step, processId, "SECOND_STEP",
-                            steps[1]);
-                }
-
-                // Join Type
-                String joinType = mjm.getJoinType();
-                if (joinType != null)
-                {
-                    insertProspStepParam(db, step, processId, "JOIN_TYPE",
-                            joinType);
-                }
-
-                // Keys 1
-                String[] keyFields1 = mjm.getKeyFields1();
-                if (keyFields1 != null)
-                {
-                    for (int k = 0; k < keyFields1.length; k++)
-                    {
-                        insertProspStepParam(db, step, processId, "KEYS1_" + k,
-                                keyFields1[k]);
-                    }
-                }
-
-                // Keys 2
-                String[] keyFields2 = mjm.getKeyFields2();
-                if (keyFields2 != null)
-                {
-                    for (int k = 0; k < keyFields2.length; k++)
-                    {
-                        insertProspStepParam(db, step, processId, "KEYS2_" + k,
-                                keyFields2[k]);
-                    }
-                }
-            }
-        }
-        else
-        {
-            throw new KettleException(
-                    "The step object is not a kettle job entry copy or a kettle step.");
         }
     }
 
@@ -2498,10 +2328,12 @@ public class JobDecorator extends Job
         if (step instanceof JobEntryCopy)
         {
             JobEntryCopy jec = (JobEntryCopy) step;
-            Map<JobEntryCopy, Long> map = prospJobEntryMetaMap.get(jec.getParentJobMeta());
+            Map<JobEntryCopy, Long> map = prospJobEntryMetaMap.get(jec
+                    .getParentJobMeta());
             if (map == null)
             {
-                Set<Map.Entry<JobMeta, Map<JobEntryCopy, Long>>> entries = prospJobEntryMetaMap.entrySet();
+                Set<Map.Entry<JobMeta, Map<JobEntryCopy, Long>>> entries = prospJobEntryMetaMap
+                        .entrySet();
                 for (Map.Entry<JobMeta, Map<JobEntryCopy, Long>> entry : entries)
                 {
                     if (entry.getKey().equals(jec.getParentJobMeta()))
@@ -2523,15 +2355,17 @@ public class JobDecorator extends Job
                         break;
                     }
                 }
-            }            
+            }
         }
         else if (step instanceof StepMeta)
         {
             StepMeta sm = (StepMeta) step;
-            Map<StepMeta, Long> map = prospStepMetaMap.get(sm.getParentTransMeta());
+            Map<StepMeta, Long> map = prospStepMetaMap.get(sm
+                    .getParentTransMeta());
             if (map == null)
             {
-                Set<Map.Entry<TransMeta, Map<StepMeta, Long>>> entries = prospStepMetaMap.entrySet();
+                Set<Map.Entry<TransMeta, Map<StepMeta, Long>>> entries = prospStepMetaMap
+                        .entrySet();
                 for (Map.Entry<TransMeta, Map<StepMeta, Long>> entry : entries)
                 {
                     if (entry.getKey().equals(sm.getParentTransMeta()))
@@ -2553,7 +2387,7 @@ public class JobDecorator extends Job
                         break;
                     }
                 }
-            } 
+            }
         }
         return stepId;
     }
@@ -2622,6 +2456,11 @@ public class JobDecorator extends Job
 
     public boolean isFineGrainedEnabled(EnumStepType stepType)
     {
-        return mapFineGrainedEnabled.get(stepType);
+        return (stepType != null) ? mapFineGrainedEnabled.get(stepType) : false;
+    }
+
+    public Database getDb()
+    {
+        return db;
     }
 }

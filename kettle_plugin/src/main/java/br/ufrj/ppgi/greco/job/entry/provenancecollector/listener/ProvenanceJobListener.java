@@ -78,8 +78,9 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
         int i = 0;
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = success;
-        data[i++] = job.getBatchId();
+        data[i++] = rootJob.getProspRepoId();        
         data[i++] = rootJob.getProspProcessId(job.getJobMeta());
+        data[i++] = job.getBatchId();
 
         String[] sets = { "finish_date", "success" };
 

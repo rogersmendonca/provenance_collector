@@ -16,8 +16,6 @@ import org.pentaho.di.core.row.ValueMeta;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.trans.step.RowListener;
 import org.pentaho.di.trans.step.StepInterface;
-import org.pentaho.di.trans.step.StepMetaInterface;
-import org.pentaho.di.trans.steps.mergejoin.MergeJoinMeta;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
@@ -82,11 +80,10 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
     {
         try
         {
-            StepMetaInterface smi = this.step.getStepMeta()
-                    .getStepMetaInterface();
-            // Merge Join
-            if (rootJob.isFineGrainedEnabled(EnumStepType.MERGE_JOIN)
-                    && (smi instanceof MergeJoinMeta))
+            Class<?> smiClass = this.step.getStepMeta().getStepMetaInterface()
+                    .getClass();
+
+            if (rootJob.isFineGrainedEnabled(EnumStepType.valueOf(smiClass)))
             {
                 // incrementa 1 no numero de linhas escritas, pois o metodo eh
                 // executado antes da incrementacao do contador no metodo putRow
@@ -152,7 +149,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
             data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
             data[i++] = transProv.getBatchId();
             data[i++] = rootJob.getProspStepId(step.getStepMeta());
-            data[i++] = transProv.generateStepMetaSeq(step);
+            data[i++] = transProv.getStepMetaSeq(step);
 
             ResultSet res = db.openQuery(SQL.toString(), fields, data);
             fieldMap = new HashMap<String, Long>();
@@ -185,7 +182,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                     restriction.put("id_process", transProv.getBatchId());
                     restriction.put("id_prosp_step",
                             rootJob.getProspStepId(step.getStepMeta()));
-                    restriction.put("seq", transProv.generateStepMetaSeq(step));
+                    restriction.put("seq", transProv.getStepMetaSeq(step));
                     Long fieldId = rootJob.generateId(db, tableName,
                             restriction);
 
@@ -213,7 +210,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                             .getTransMeta());
                     data[i++] = transProv.getBatchId();
                     data[i++] = rootJob.getProspStepId(step.getStepMeta());
-                    data[i++] = transProv.generateStepMetaSeq(step);
+                    data[i++] = transProv.getStepMetaSeq(step);
                     data[i++] = fieldId;
                     data[i++] = fieldName;
 
@@ -262,7 +259,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
             data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
             data[i++] = transProv.getBatchId();
             data[i++] = rootJob.getProspStepId(step.getStepMeta());
-            data[i++] = transProv.generateStepMetaSeq(step);
+            data[i++] = transProv.getStepMetaSeq(step);
             data[i++] = getFieldMap(rowMeta).get(rowMeta.getFieldNames()[k]);
             data[i++] = rowNr;
             data[i++] = event;
@@ -276,6 +273,5 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
         {
             executeDML(db, operations);
         }
-
     }
 }

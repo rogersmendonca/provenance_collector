@@ -824,7 +824,7 @@ public class JobEntryTransDecorator implements VariableSpace,
                                 stepDecorator
                                         .addProvStepListeners(new ProvenanceStepListener(
                                                 db, combi.step,
-                                                this.rootJobDec, trans));
+                                                this.rootJobDec, trans));                                
                                 stepDecorator
                                         .addRowListener(new ProvenanceRowListener(
                                                 db, combi.step,
