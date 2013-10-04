@@ -95,13 +95,6 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
     {
     }
 
-    protected RowSet getRowSet()
-    {
-        RowSet rowSet = (RowSet) ReflectionUtil.genericInvokeMethod(
-                this.step.getOriginalStep(), "currentInputStream", 0);
-        return rowSet;
-    }
-
     protected Map<String, Long> getHopFieldMap(RowMetaInterface rowMeta,
             StepInterface originStep) throws KettleException
     {
