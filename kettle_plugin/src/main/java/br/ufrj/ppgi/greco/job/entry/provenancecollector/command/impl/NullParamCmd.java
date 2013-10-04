@@ -7,6 +7,12 @@ import org.pentaho.di.trans.step.StepMeta;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 
+/**
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since out-2013
+ * 
+ */
 public class NullParamCmd extends ParentProspStepParamCmd
 {
     public void insertProvenance(JobDecorator jobRoot, Database db,

@@ -198,8 +198,6 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
     private ObjectLocationSpecificationMethod specificationMethod;
 
     // Rogers (05/2013): Provenance Tab
-    // //int kkk = "dadas";
-
     private Composite wProv;
     private CCombo wProvConnection;
     private TableView wOptionFields;
@@ -1036,7 +1034,6 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         /*
          * Rogers (05/2013): Provenance Tab (INICIO)
          */
-        // //int kkk = "dadas";
         CTabItem wProvTab = new CTabItem(wTabFolder, SWT.NONE);
         wProvTab.setText(BaseMessages.getString(PKG,
                 "JobJob.Provenance.Group.Label")); //$NON-NLS-1$
@@ -1790,7 +1787,6 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         jej.setFollowingAbortRemotely(wFollowingAbortRemotely.getSelection());
 
         // Rogers (05/2013): Provenance Tab
-        // int kkk = "aaa";
         // 1- Set Provenance Connection
         jobEntry.setProvConnection(jobMeta.findDatabase(wProvConnection
                 .getText()));

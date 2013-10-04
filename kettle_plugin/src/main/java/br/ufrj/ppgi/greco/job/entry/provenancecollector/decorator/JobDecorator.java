@@ -605,9 +605,9 @@ public class JobDecorator extends Job
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_process",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_from",
+        fields.addValueMeta(new ValueMeta("id_step_from",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_to",
+        fields.addValueMeta(new ValueMeta("id_step_to",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("enabled",
                 ValueMetaInterface.TYPE_BOOLEAN));

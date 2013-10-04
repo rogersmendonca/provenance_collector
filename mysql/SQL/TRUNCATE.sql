@@ -1,6 +1,6 @@
-TRUNCATE TABLE retrosp_step_field_row;
-TRUNCATE TABLE retrosp_step_field;
+TRUNCATE TABLE retrosp_row_field;
 TRUNCATE TABLE retrosp_step;
+TRUNCATE TABLE prosp_hop_field;
 TRUNCATE TABLE prosp_hop;
 TRUNCATE TABLE prosp_process_note;
 TRUNCATE TABLE prosp_step_parameter;

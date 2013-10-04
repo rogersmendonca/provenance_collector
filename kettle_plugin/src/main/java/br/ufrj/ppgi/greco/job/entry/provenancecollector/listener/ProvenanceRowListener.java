@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.pentaho.di.core.RowSet;
 import org.pentaho.di.core.database.Database;
 import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.core.exception.KettleStepException;
@@ -18,8 +19,10 @@ import org.pentaho.di.trans.step.RowListener;
 import org.pentaho.di.trans.step.StepInterface;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.StepDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.ReflectionUtil;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 
 /**
@@ -31,20 +34,19 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv
 public class ProvenanceRowListener extends ParentProvenanceListener implements
         RowListener
 {
-    protected StepInterface step;
+    protected StepDecorator step;
     private String tableName;
+    private String tableNameHopField;
     private JobDecorator rootJob;
     private TransProv transProv;
-    private final boolean VAR_FALSE = false;
 
-    Map<String, Long> fieldMap = null;
-
-    public ProvenanceRowListener(Database db, StepInterface step,
+    public ProvenanceRowListener(Database db, StepDecorator stepDecorator,
             JobDecorator rootJob, TransProv transProv)
     {
         super(db);
-        this.step = step;
-        this.tableName = "retrosp_step_field_row";
+        this.step = stepDecorator;
+        this.tableName = "retrosp_row_field";
+        this.tableNameHopField = "prosp_hop_field";
         this.rootJob = rootJob;
         this.transProv = transProv;
     }
@@ -58,10 +60,18 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
     {
         try
         {
-            // Rogers: Definir somente os passos em que for necessario
-            if (VAR_FALSE)
+            RowSet rowSet = (RowSet) ReflectionUtil.genericInvokeMethod(
+                    this.step.getOriginalStep(), "currentInputStream", 0);
+
+            StepInterface originStep = this.transProv.findRunThread(rowSet
+                    .getOriginStepName());
+
+            Class<?> originSmiClass = originStep.getStepMeta()
+                    .getStepMetaInterface().getClass();
+
+            if (rootJob.isFineGrainedEnabled(originSmiClass.getName()))
             {
-                registerDB(rowMeta, row, 'R', step.getLinesRead());
+                registerDB(rowMeta, row, originStep, step.getLinesRead());
             }
         }
         catch (KettleException e)
@@ -77,154 +87,116 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
     public void rowWrittenEvent(RowMetaInterface rowMeta, Object[] row)
             throws KettleStepException
     {
-        try
-        {
-            Class<?> smiClass = this.step.getStepMeta().getStepMetaInterface()
-                    .getClass();
-
-            if (rootJob.isFineGrainedEnabled(smiClass.getName()))
-            {
-                // incrementa 1 no numero de linhas escritas, pois o metodo eh
-                // executado antes da incrementacao do contador no metodo putRow
-                registerDB(rowMeta, row, 'W', step.getLinesWritten() + 1);
-            }
-        }
-        catch (KettleException e)
-        {
-            throw new KettleStepException(e.toString());
-        }
     }
 
     @Override
     public void errorRowWrittenEvent(RowMetaInterface rowMeta, Object[] row)
             throws KettleStepException
     {
-        try
-        {
-            // Rogers: Definir somente os passos em que for necessario
-            if (VAR_FALSE)
-            {
-                // incrementa 1 no numero de linhas escritas, pois o metodo eh
-                // executado antes da incrementacao do contador no metodo
-                // putError
-                registerDB(rowMeta, row, 'E', step.getLinesRejected() + 1);
-            }
-        }
-        catch (KettleException e)
-        {
-            throw new KettleStepException(e.toString());
-        }
     }
 
-    protected Map<String, Long> getFieldMap(RowMetaInterface rowMeta)
-            throws KettleException
+    protected RowSet getRowSet()
     {
-        if (fieldMap == null)
+        RowSet rowSet = (RowSet) ReflectionUtil.genericInvokeMethod(
+                this.step.getOriginalStep(), "currentInputStream", 0);
+        return rowSet;
+    }
+
+    protected Map<String, Long> getHopFieldMap(RowMetaInterface rowMeta,
+            StepInterface originStep) throws KettleException
+    {
+        StringBuilder SQL = new StringBuilder();
+        SQL.append("SELECT t1.id_field, t1.field_name ");
+        SQL.append("FROM " + this.tableNameHopField + " t1 ");
+        SQL.append("WHERE t1.id_repository = ? ");
+        SQL.append("AND   t1.id_process = ? ");
+        SQL.append("AND   t1.id_step_from = ? ");
+        SQL.append("AND   t1.id_step_to = ? ");
+
+        RowMetaInterface fields = new RowMeta();
+        fields.addValueMeta(new ValueMeta("id_repository",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_process",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_step_from",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_step_to",
+                ValueMetaInterface.TYPE_INTEGER));
+
+        Object[] data = new Object[fields.size()];
+        int i = 0;
+        data[i++] = rootJob.getProspRepoId();
+        data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
+        data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
+        data[i++] = rootJob.getProspStepId(step.getStepMeta());
+
+        ResultSet res = db.openQuery(SQL.toString(), fields, data);
+        HashMap<String, Long> hopFieldMap = new HashMap<String, Long>();
+        try
         {
-            StringBuilder SQL = new StringBuilder();
-            SQL.append("SELECT t1.id_field, t1.name ");
-            SQL.append("FROM retrosp_step_field t1 ");
-            SQL.append("WHERE t1.id_prosp_repository = ? ");
-            SQL.append("AND   t1.id_prosp_process = ? ");
-            SQL.append("AND   t1.id_process = ? ");
-            SQL.append("AND   t1.id_prosp_step = ? ");
-            SQL.append("AND   t1.seq = ? ");
-
-            RowMetaInterface fields = new RowMeta();
-            fields.addValueMeta(new ValueMeta("id_prosp_repository",
-                    ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("id_prosp_process",
-                    ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("id_process",
-                    ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("id_prosp_step",
-                    ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("seq",
-                    ValueMetaInterface.TYPE_INTEGER));
-
-            Object[] data = new Object[fields.size()];
-            int i = 0;
-            data[i++] = rootJob.getProspRepoId();
-            data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
-            data[i++] = transProv.getBatchId();
-            data[i++] = rootJob.getProspStepId(step.getStepMeta());
-            data[i++] = transProv.getStepMetaSeq(step);
-
-            ResultSet res = db.openQuery(SQL.toString(), fields, data);
-            fieldMap = new HashMap<String, Long>();
-            try
+            while (res.next())
             {
-                while (res.next())
-                {
-                    fieldMap.put(res.getString("name"), res.getLong("id_field"));
-                }
-            }
-            catch (SQLException e)
-            {
-            }
-            db.closeQuery(res);
-
-            if (fieldMap.size() != rowMeta.getFieldNames().length)
-            {
-                for (String fieldName : rowMeta.getFieldNames())
-                {
-
-                    // OBTEM O FIELD ID
-                    String tableName = "retrosp_step_field";
-                    HashMap<String, Long> restriction = new HashMap<String, Long>();
-                    restriction.put("id_prosp_repository",
-                            rootJob.getProspRepoId());
-                    restriction
-                            .put("id_prosp_process",
-                                    rootJob.getProspProcessId(transProv
-                                            .getTransMeta()));
-                    restriction.put("id_process", transProv.getBatchId());
-                    restriction.put("id_prosp_step",
-                            rootJob.getProspStepId(step.getStepMeta()));
-                    restriction.put("seq", transProv.getStepMetaSeq(step));
-                    Long fieldId = rootJob.generateId(db, tableName,
-                            restriction);
-
-                    // INSERE O FIELD NA TABELA RETROSP_STEP_FIELD
-                    fields = new RowMeta();
-                    fields.addValueMeta(new ValueMeta("id_prosp_repository",
-                            ValueMetaInterface.TYPE_INTEGER));
-                    fields.addValueMeta(new ValueMeta("id_prosp_process",
-                            ValueMetaInterface.TYPE_INTEGER));
-                    fields.addValueMeta(new ValueMeta("id_process",
-                            ValueMetaInterface.TYPE_INTEGER));
-                    fields.addValueMeta(new ValueMeta("id_prosp_step",
-                            ValueMetaInterface.TYPE_INTEGER));
-                    fields.addValueMeta(new ValueMeta("seq",
-                            ValueMetaInterface.TYPE_INTEGER));
-                    fields.addValueMeta(new ValueMeta("id_field",
-                            ValueMetaInterface.TYPE_INTEGER));
-                    fields.addValueMeta(new ValueMeta("name",
-                            ValueMetaInterface.TYPE_STRING));
-
-                    data = new Object[fields.size()];
-                    i = 0;
-                    data[i++] = rootJob.getProspRepoId();
-                    data[i++] = rootJob.getProspProcessId(transProv
-                            .getTransMeta());
-                    data[i++] = transProv.getBatchId();
-                    data[i++] = rootJob.getProspStepId(step.getStepMeta());
-                    data[i++] = transProv.getStepMetaSeq(step);
-                    data[i++] = fieldId;
-                    data[i++] = fieldName;
-
-                    db.insertRow(tableName, fields, data);
-
-                    // INSERE O FIELD NO MAPEAMENTO
-                    fieldMap.put(fieldName, fieldId);
-                }
+                hopFieldMap.put(res.getString("field_name"), res.getLong("id_field"));
             }
         }
-        return fieldMap;
+        catch (SQLException e)
+        {
+        }
+        db.closeQuery(res);
+
+        if (hopFieldMap.size() != rowMeta.getFieldNames().length)
+        {
+            hopFieldMap.clear();
+            for (String fieldName : rowMeta.getFieldNames())
+            {
+                // OBTEM O FIELD ID
+                HashMap<String, Long> restriction = new HashMap<String, Long>();
+                restriction.put("id_repository", rootJob.getProspRepoId());
+                restriction.put("id_process",
+                        rootJob.getProspProcessId(transProv.getTransMeta()));
+                restriction.put("id_step_from",
+                        rootJob.getProspStepId(originStep.getStepMeta()));
+                restriction.put("id_step_to",
+                        rootJob.getProspStepId(step.getStepMeta()));
+
+                Long fieldId = rootJob.generateId(db, tableNameHopField,
+                        restriction);
+
+                // INSERE O FIELD NA TABELA RETROSP_STEP_FIELD
+                fields = new RowMeta();
+                fields.addValueMeta(new ValueMeta("id_repository",
+                        ValueMetaInterface.TYPE_INTEGER));
+                fields.addValueMeta(new ValueMeta("id_process",
+                        ValueMetaInterface.TYPE_INTEGER));
+                fields.addValueMeta(new ValueMeta("id_step_from",
+                        ValueMetaInterface.TYPE_INTEGER));
+                fields.addValueMeta(new ValueMeta("id_step_to",
+                        ValueMetaInterface.TYPE_INTEGER));
+                fields.addValueMeta(new ValueMeta("id_field",
+                        ValueMetaInterface.TYPE_INTEGER));
+                fields.addValueMeta(new ValueMeta("field_name",
+                        ValueMetaInterface.TYPE_STRING));
+
+                data = new Object[fields.size()];
+                i = 0;
+                data[i++] = rootJob.getProspRepoId();
+                data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
+                data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
+                data[i++] = rootJob.getProspStepId(step.getStepMeta());
+                data[i++] = fieldId;
+                data[i++] = fieldName;
+
+                db.insertRow(tableNameHopField, fields, data);
+
+                // INSERE O FIELD NO MAPEAMENTO
+                hopFieldMap.put(fieldName, fieldId);
+            }
+        }
+        return hopFieldMap;
     }
 
     protected void registerDB(RowMetaInterface rowMeta, Object[] row,
-            char event, long rowNr) throws KettleException
+            StepInterface originStep, long rowNr) throws KettleException
     {
         // Inclui os campos e valores gerados
         RowMetaInterface fields = new RowMeta();
@@ -233,35 +205,39 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_prosp_process",
                 ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_step_from",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_step_to",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_field",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_process",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_step",
+        fields.addValueMeta(new ValueMeta("seq_from",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("seq",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_field",
+        fields.addValueMeta(new ValueMeta("seq_to",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("row_count",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("event",
-                ValueMetaInterface.TYPE_STRING));
         fields.addValueMeta(new ValueMeta("field_value",
                 ValueMetaInterface.TYPE_STRING));
 
         int TOTAL_COLS = rowMeta.getFieldNames().length;
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
+        Map<String, Long> hopFieldMap = getHopFieldMap(rowMeta, originStep);
         for (int k = 0; k < TOTAL_COLS; k++)
         {
             Object[] data = new Object[fields.size()];
             int i = 0;
             data[i++] = rootJob.getProspRepoId();
             data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
-            data[i++] = transProv.getBatchId();
+            data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
             data[i++] = rootJob.getProspStepId(step.getStepMeta());
+            data[i++] = hopFieldMap.get(rowMeta.getFieldNames()[k]);
+            data[i++] = transProv.getBatchId();
+            data[i++] = transProv.getStepMetaSeq(originStep);
             data[i++] = transProv.getStepMetaSeq(step);
-            data[i++] = getFieldMap(rowMeta).get(rowMeta.getFieldNames()[k]);
             data[i++] = rowNr;
-            data[i++] = event;
             data[i++] = rowMeta.getString(row, k);
             operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT,
                     tableName, fields, data));

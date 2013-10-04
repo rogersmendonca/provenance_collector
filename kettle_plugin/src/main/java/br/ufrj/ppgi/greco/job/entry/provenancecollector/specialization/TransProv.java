@@ -34,7 +34,7 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ParentProvenanc
  * 
  * @author Rogers Reiche de Mendonca
  * @since nov-2012
- *
+ * 
  */
 public class TransProv extends Trans
 {
@@ -325,8 +325,24 @@ public class TransProv extends Trans
         return getStepMetaSeq(step);
     }
 
-    public synchronized long getStepMetaSeq(StepInterface step)
+    public synchronized Long getStepMetaSeq(StepInterface step)
     {
-        return this.mapStepMetaSeq.get(step);
+        Long stepSeq = this.mapStepMetaSeq.get(step);
+
+        if (stepSeq == null)
+        {
+            Set<Map.Entry<StepInterface, Long>> entries = this.mapStepMetaSeq
+                    .entrySet();
+            for (Map.Entry<StepInterface, Long> entry : entries)
+            {
+                if (entry.getKey().getStepname().equals(step.getStepname()))
+                {
+                    stepSeq = entry.getValue();
+                    break;
+                }
+            }
+        }
+
+        return stepSeq;
     }
 }

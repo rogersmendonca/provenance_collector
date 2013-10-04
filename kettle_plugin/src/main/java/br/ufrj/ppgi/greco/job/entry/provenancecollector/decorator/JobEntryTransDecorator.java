@@ -60,7 +60,7 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv
  * 
  * @author Rogers Reiche de Mendonca
  * @since nov-2012
- *
+ * 
  */
 public class JobEntryTransDecorator implements VariableSpace,
         CheckResultSourceInterface, ResourceHolderInterface,
@@ -824,10 +824,10 @@ public class JobEntryTransDecorator implements VariableSpace,
                                 stepDecorator
                                         .addProvStepListeners(new ProvenanceStepListener(
                                                 db, combi.step,
-                                                this.rootJobDec, trans));                                
+                                                this.rootJobDec, trans));
                                 stepDecorator
                                         .addRowListener(new ProvenanceRowListener(
-                                                db, combi.step,
+                                                db, stepDecorator,
                                                 this.rootJobDec, trans));
                             }
                         }

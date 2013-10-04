@@ -8,6 +8,13 @@ import org.pentaho.di.trans.steps.mergejoin.MergeJoinMeta;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 
+/**
+ * Command registro dos dados de proveniencia prospectiva do step MERGE_JOIN.
+ * 
+ * @author Rogers Reiche de Mendonca
+ * @since out-2013
+ * 
+ */
 public class MergeJoinParamCmd extends ParentProspStepParamCmd
 {
 

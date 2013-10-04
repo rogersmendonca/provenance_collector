@@ -113,16 +113,34 @@ CREATE TABLE IF NOT EXISTS prosp_step_parameter (
 CREATE TABLE IF NOT EXISTS prosp_hop (  
   id_repository int(11) NOT NULL,
   id_process int(11) NOT NULL,
-  id_from int(11) NOT NULL,
-  id_to int(11) NOT NULL,
+  id_step_from int(11) NOT NULL,
+  id_step_to int(11) NOT NULL,
   enabled char(1) NOT NULL default 'N',
   evaluation char(1) NOT NULL default 'N',
   unconditional char(1) NOT NULL default 'N',
-  PRIMARY KEY (id_repository, id_process, id_from, id_to),  
-  KEY fk_from (id_repository, id_process, id_from),
-  KEY fk_to (id_repository, id_process, id_to),
-  CONSTRAINT cstr_prosp_hop_fk_from FOREIGN KEY (id_repository, id_process, id_from) REFERENCES prosp_step (id_repository, id_process, id_step),
-  CONSTRAINT cstr_prosp_hop_fk_to FOREIGN KEY (id_repository, id_process, id_to) REFERENCES prosp_step (id_repository, id_process, id_step)
+  PRIMARY KEY (id_repository, id_process, id_step_from, id_step_to),  
+  KEY fk_from (id_repository, id_process, id_step_from),
+  KEY fk_to (id_repository, id_process, id_step_to),
+  CONSTRAINT cstr_prosp_hop_fk_from FOREIGN KEY (id_repository, id_process, id_step_from) REFERENCES prosp_step (id_repository, id_process, id_step),
+  CONSTRAINT cstr_prosp_hop_fk_to FOREIGN KEY (id_repository, id_process, id_step_to) REFERENCES prosp_step (id_repository, id_process, id_step)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- CREATE TABLE prosp_hop_field
+--
+
+CREATE TABLE IF NOT EXISTS prosp_hop_field (
+  id_repository int(11) NOT NULL,
+  id_process int(11) NOT NULL,
+  id_step_from int(11) NOT NULL,
+  id_step_to int(11) NOT NULL,
+  id_field int(11) NOT NULL,  
+  field_name varchar(255) NOT NULL,
+  PRIMARY KEY (id_repository, id_process, id_step_from, id_step_to, id_field), 
+  KEY fk_hop (id_repository, id_process, id_step_from, id_step_to),
+  CONSTRAINT cstr_prosp_hop_field_fk_hop FOREIGN KEY (id_repository, id_process, id_step_from, id_step_to) REFERENCES prosp_hop (id_repository, id_process, id_step_from, id_step_to)  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -168,41 +186,27 @@ CREATE TABLE IF NOT EXISTS retrosp_step (
 -- --------------------------------------------------------
 
 --
--- CREATE TABLE retrosp_step_row
+-- CREATE TABLE retrosp_row_field
 --
 
-CREATE TABLE IF NOT EXISTS retrosp_step_field (
+CREATE TABLE IF NOT EXISTS retrosp_row_field (
   id_prosp_repository int(11) NOT NULL,
-  id_prosp_process int(11) NOT NULL,  
+  id_prosp_process int(11) NOT NULL,
+  id_prosp_step_from int(11) NOT NULL,
+  id_prosp_step_to int(11) NOT NULL,
+  id_prosp_field int(11) NOT NULL,  
   id_process int(11) NOT NULL,   
-  id_prosp_step int(11) NOT NULL,  
-  seq int(11) NOT NULL,
-  id_field int(11) NOT NULL,  
-  name varchar(255) NOT NULL,
-  PRIMARY KEY (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq, id_field), 
-  KEY fk_step (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq),
-  CONSTRAINT cstr_retrosp_step_field_fk_step FOREIGN KEY (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq) REFERENCES retrosp_step (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- CREATE TABLE retrosp_step_row
---
-
-CREATE TABLE IF NOT EXISTS retrosp_step_field_row (
-  id_prosp_repository int(11) NOT NULL,
-  id_prosp_process int(11) NOT NULL,  
-  id_process int(11) NOT NULL,   
-  id_prosp_step int(11) NOT NULL,  
-  seq int(11) NOT NULL,
-  id_field int(11) NOT NULL,   
+  seq_from int(11) NOT NULL,  
+  seq_to int(11) NOT NULL,   
   row_count int(11) NOT NULL,
-  event char(1) NOT NULL,
   field_value text default NULL,  
-  PRIMARY KEY (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq, id_field, row_count, event), 
-  KEY fk_step_field (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq, id_field),
-  CONSTRAINT cstr_retrosp_step_field_row_fk_step_field FOREIGN KEY (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq, id_field) REFERENCES retrosp_step_field (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq, id_field)
+  PRIMARY KEY (id_prosp_repository, id_prosp_process, id_prosp_step_from, id_prosp_step_to, id_prosp_field, id_process, seq_from, seq_to, row_count),
+  KEY fk_prosp_hop_field (id_prosp_repository, id_prosp_process, id_prosp_step_from, id_prosp_step_to, id_prosp_field),
+  KEY fk_step_from (id_prosp_repository, id_prosp_process, id_process, id_prosp_step_from, seq_from),
+  KEY fk_step_to (id_prosp_repository, id_prosp_process, id_process, id_prosp_step_to, seq_to),
+  CONSTRAINT cstr_retrosp_row_field_fk_prosp_hop_field FOREIGN KEY (id_prosp_repository, id_prosp_process, id_prosp_step_from, id_prosp_step_to, id_prosp_field) REFERENCES prosp_hop_field (id_repository, id_process, id_step_from, id_step_to, id_field),
+  CONSTRAINT cstr_retrosp_row_field_fk_step_from FOREIGN KEY (id_prosp_repository, id_prosp_process, id_process, id_prosp_step_from, seq_from) REFERENCES retrosp_step (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq),
+  CONSTRAINT cstr_retrosp_row_field_fk_step_to FOREIGN KEY (id_prosp_repository, id_prosp_process, id_process, id_prosp_step_to, seq_to) REFERENCES retrosp_step (id_prosp_repository, id_prosp_process, id_process, id_prosp_step, seq)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
