@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fineGrainedSteps>
+	<fineGrainedStepMap>
+		<!-- Extraction Steps (START) -->
+		<entry>
+			<key>SPARQL_INPUT</key>
+			<value>
+				<id>SPARQL_INPUT</id>
+				<descKey>CustomStep.TypeTooltipDesc.SparqlEndpoint</descKey>
+				<operation>E</operation>
+				<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.sparql.SparqlStepMeta</smiClassName>
+				<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.SparqlStepParamCmd</cmdClassName>
+			</value>
+		</entry>
+		
+		<entry>
+			<key>TABLE_INPUT</key>
+			<value>
+				<id>TABLE_INPUT</id>
+				<descKey>BaseStep.TypeTooltipDesc.TableInput</descKey>
+				<operation>E</operation>
+				<smiClassName>org.pentaho.di.trans.steps.tableinput.TableInputMeta</smiClassName>
+				<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.TableInputParamCmd</cmdClassName>
+			</value>
+		</entry>
+		<!-- Extraction Steps (END) -->
+		
+		<!-- Transformation Steps (START) -->
+		<entry>
+			<key>MERGE_JOIN</key>
+			<value>
+				<id>MERGE_JOIN</id>
+				<descKey>BaseStep.TypeTooltipDesc.MergeJoin</descKey>
+				<operation>T</operation>
+				<smiClassName>org.pentaho.di.trans.steps.mergejoin.MergeJoinMeta</smiClassName>
+				<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.MergeJoinParamCmd</cmdClassName>
+			</value>
+		</entry>
+		<!-- Transformation Steps (END) -->		
+		
+		<!-- Load Steps (START) -->
+		<!-- Load Steps (END) -->
+	</fineGrainedStepMap>	
+</fineGrainedSteps>

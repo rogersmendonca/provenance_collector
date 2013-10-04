@@ -2,7 +2,7 @@ package br.ufrj.ppgi.greco.job.entry.provenancecollector;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map.Entry;
+import java.util.Map;
 
 import org.apache.commons.vfs.FileObject;
 import org.eclipse.swt.SWT;
@@ -62,13 +62,14 @@ import org.pentaho.di.ui.repository.dialog.SelectObjectDialog;
 import org.pentaho.di.ui.spoon.Spoon;
 import org.pentaho.di.ui.trans.step.BaseStepDialog;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStep;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStepMap;
 
 /**
  * 
  * @author Rogers Reiche de Mendonca
  * @since nov-2012
- *
+ * 
  */
 public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         JobEntryDialogInterface
@@ -1069,7 +1070,7 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         fdlFGSteps.top = new FormAttachment(wProvConnection, margin * 2);
         wlFGSteps.setLayoutData(fdlFGSteps);
 
-        final int nrRows = EnumStepType.values().length;
+        final int nrRows = FineGrainedStepMap.get().size();
 
         colinf = new ColumnInfo[] {
                 new ColumnInfo(
@@ -1093,17 +1094,19 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
                         "JobJob.Provenance.Step.Grid.Enabled"));
 
         int i = 0;
-        for (EnumStepType stepType : EnumStepType.values())
+        Map<String, FineGrainedStep> fineGrainedMap = FineGrainedStepMap.get()
+                .getFineGrainedStepMap();
+        for (FineGrainedStep stepType : fineGrainedMap.values())
         {
             TableItem item = wOptionFields.table.getItem(i);
             item.setChecked(true);
             item.setText(0, "");
-            item.setText(1, stepType.name());
+            item.setText(1, stepType.getId());
             item.setBackground(1, GUIResource.getInstance().getColorLightGray());
             item.setText(2, stepType.getOperation().getDescription());
             item.setBackground(2, GUIResource.getInstance().getColorLightGray());
             item.setText(3, stepType.getDescription());
-            item.setBackground(3, GUIResource.getInstance().getColorLightGray());            
+            item.setBackground(3, GUIResource.getInstance().getColorLightGray());
             i++;
         }
 
@@ -1641,7 +1644,6 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
                 .isFollowingAbortRemotely());
 
         // Rogers (05/2013): Provenance Tab
-        // int kkk = "aaa";
         // 1- Provenance Connection
         if (jobEntry.getProvConnection() != null)
         {
@@ -1652,13 +1654,13 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         if (jobEntry.getMapFineGrainedEnabled() != null)
         {
             int i = 0;
-            for (Entry<EnumStepType, Boolean> entry : jobEntry
+            for (Map.Entry<FineGrainedStep, Boolean> entry : jobEntry
                     .getMapFineGrainedEnabled().entrySet())
             {
                 TableItem item = wOptionFields.table.getItem(i);
                 item.setChecked(entry.getValue());
                 item.setText(0, "");
-                item.setText(1, entry.getKey().name());
+                item.setText(1, entry.getKey().getId());
                 item.setText(2, entry.getKey().getOperation().getDescription());
                 i++;
             }
@@ -1800,8 +1802,9 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         {
             String type = wOptionFields.table.getItem(i).getText(1);
             boolean enabled = wOptionFields.table.getItem(i).getChecked();
-            jobEntry.getMapFineGrainedEnabled().put(EnumStepType.valueOf(type),
-                    enabled);
+            Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
+                    .getFineGrainedStepMap();
+            jobEntry.getMapFineGrainedEnabled().put(fgMap.get(type), enabled);
         }
     }
 

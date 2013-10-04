@@ -64,9 +64,10 @@ import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.www.SocketRepository;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStep;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStepMap;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.IRetrospJobListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ParentProvenanceListener;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
 
 /**
  * 
@@ -96,10 +97,10 @@ public class JobDecorator extends Job
     protected String repoLoc;
     protected long prospJobId;
     protected long prospRepoId;
-    protected Map<EnumStepType, Boolean> mapFineGrainedEnabled;
+    protected Map<FineGrainedStep, Boolean> mapFineGrainedEnabled;
 
     public JobDecorator(Job job, Database db,
-            Map<EnumStepType, Boolean> mapFineGrainedEnabled)
+            Map<FineGrainedStep, Boolean> mapFineGrainedEnabled)
             throws KettleException
     {
         this.initialized2 = new AtomicBoolean(false);
@@ -758,9 +759,9 @@ public class JobDecorator extends Job
                     prospStepMetaMap.get(stepMeta.getParentTransMeta()).put(
                             stepMeta, prospStepId);
 
-                    // Rogers (30/09/2013)                    
-                    ParentProspStepParamCmd.get((StepMeta) step).execute(this, db,
-                            step, prospProcessId);
+                    // Rogers (30/09/2013)
+                    ParentProspStepParamCmd.get((StepMeta) step).execute(this,
+                            db, step, prospProcessId);
                 }
             }
             else
@@ -2454,9 +2455,11 @@ public class JobDecorator extends Job
         return this.db.getDatabaseMeta();
     }
 
-    public boolean isFineGrainedEnabled(EnumStepType stepType)
+    public boolean isFineGrainedEnabled(String smiClassName)
     {
-        return (stepType != null) ? mapFineGrainedEnabled.get(stepType) : false;
+        FineGrainedStep fgStep = FineGrainedStepMap.get().findBySmiClassName(
+                smiClassName);
+        return (fgStep != null) ? mapFineGrainedEnabled.get(fgStep) : false;
     }
 
     public Database getDb()

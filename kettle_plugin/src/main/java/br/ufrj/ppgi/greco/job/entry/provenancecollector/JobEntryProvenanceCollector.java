@@ -61,13 +61,14 @@ import org.pentaho.di.www.SlaveServerJobStatus;
 import org.w3c.dom.Node;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStep;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStepMap;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ParentProvenanceListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ProvenanceJobEntryListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.ProvenanceJobListener;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.IJobRunnable;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.JobRunnableAdapter;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.ProvJobEntryJobRunner;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
 
 /**
  * 
@@ -119,9 +120,8 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
     private Job job;
 
     // Rogers (05/2013): Provenance Tab
-    // int kkk = "dadas";
     private DatabaseMeta provConnection;
-    private Map<EnumStepType, Boolean> mapFineGrainedEnabled;
+    private Map<FineGrainedStep, Boolean> mapFineGrainedEnabled;
 
     public JobEntryProvenanceCollector(String name)
     {
@@ -363,7 +363,7 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
         {
             retval.append("      ").append(
                     XMLHandler.openTag("fine_grained_steps"));
-            for (Entry<EnumStepType, Boolean> entry : mapFineGrainedEnabled
+            for (Map.Entry<FineGrainedStep, Boolean> entry : mapFineGrainedEnabled
                     .entrySet())
             {
                 // This is a better way of making the XML file.
@@ -372,7 +372,7 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
 
                 retval.append("            ").append(
                         XMLHandler.addTagValue("fgs_type", entry.getKey()
-                                .name()));
+                                .getId()));
                 retval.append("            ")
                         .append(XMLHandler.addTagValue("fgs_enabled",
                                 entry.getValue()));
@@ -516,7 +516,7 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
             provConnection = DatabaseMeta.findDatabase(databases, dbname);
 
             // 2- Fine-grained Steps Map
-            mapFineGrainedEnabled = new LinkedHashMap<EnumStepType, Boolean>();
+            mapFineGrainedEnabled = new LinkedHashMap<FineGrainedStep, Boolean>();
             Node fgStepsNode = XMLHandler.getSubNode(entrynode,
                     "fine_grained_steps"); //$NON-NLS-1$
             int nrFineGrainedSteps = XMLHandler.countNodes(fgStepsNode,
@@ -527,8 +527,10 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                         "fine_grained_step", i); //$NON-NLS-1$
 
                 String type = XMLHandler.getTagValue(knode, "fgs_type"); //$NON-NLS-1$
-                boolean enabled = "Y".equalsIgnoreCase(XMLHandler.getTagValue(knode, "fgs_enabled")); //$NON-NLS-1$
-                mapFineGrainedEnabled.put(EnumStepType.valueOf(type), enabled);
+                boolean enabled = "Y".equalsIgnoreCase(XMLHandler.getTagValue(knode, "fgs_enabled")); //$NON-NLS-1$   
+                Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
+                        .getFineGrainedStepMap();
+                mapFineGrainedEnabled.put(fgMap.get(type), enabled);
             }
         }
         catch (KettleXMLException xe)
@@ -628,7 +630,7 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                     id_jobentry, "provConnection", "id_database", databases);
 
             // 2- Fine-grained Steps Map
-            mapFineGrainedEnabled = new LinkedHashMap<EnumStepType, Boolean>();
+            mapFineGrainedEnabled = new LinkedHashMap<FineGrainedStep, Boolean>();
             int nrFineGrainedSteps = rep.countNrJobEntryAttributes(id_jobentry,
                     "fgs_type");
             for (int i = 0; i < nrFineGrainedSteps; i++)
@@ -637,7 +639,9 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                         "fgs_type");
                 boolean enabled = rep.getJobEntryAttributeBoolean(id_jobentry,
                         i, "fgs_enabled");
-                mapFineGrainedEnabled.put(EnumStepType.valueOf(type), enabled);
+                Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
+                        .getFineGrainedStepMap();
+                mapFineGrainedEnabled.put(fgMap.get(type), enabled);
             }
         }
         catch (KettleDatabaseException dbe)
@@ -737,11 +741,11 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
             if (mapFineGrainedEnabled != null)
             {
                 int i = 0;
-                for (Entry<EnumStepType, Boolean> entry : mapFineGrainedEnabled
+                for (Entry<FineGrainedStep, Boolean> entry : mapFineGrainedEnabled
                         .entrySet())
                 {
                     rep.saveJobEntryAttribute(id_job, getObjectId(), i,
-                            "fgs_type", entry.getKey().name());
+                            "fgs_type", entry.getKey().getId());
                     rep.saveJobEntryAttribute(id_job, getObjectId(), i,
                             "fgs_enabled", entry.getValue());
                     i++;
@@ -1592,13 +1596,12 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
         setAppendLogfile = false;
 
         // Rogers (05/2013): Provenance Tab
-        // int kkk = "dadas";
         provConnection = null;
         // 2- Fine-grained Steps Map
-        mapFineGrainedEnabled = new LinkedHashMap<EnumStepType, Boolean>();
-        for (EnumStepType stepType : EnumStepType.values())
+        mapFineGrainedEnabled = new LinkedHashMap<FineGrainedStep, Boolean>();
+        for (FineGrainedStep fgStep : FineGrainedStepMap.get().getFineGrainedStepMap().values())
         {
-            mapFineGrainedEnabled.put(stepType, true);
+            mapFineGrainedEnabled.put(fgStep, true);
         }
     }
 
@@ -1967,7 +1970,7 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
         return references;
     }
 
-    public Map<EnumStepType, Boolean> getMapFineGrainedEnabled()
+    public Map<FineGrainedStep, Boolean> getMapFineGrainedEnabled()
     {
         return mapFineGrainedEnabled;
     }

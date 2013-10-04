@@ -21,7 +21,6 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumStepType;
 
 /**
  * 
@@ -83,7 +82,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
             Class<?> smiClass = this.step.getStepMeta().getStepMetaInterface()
                     .getClass();
 
-            if (rootJob.isFineGrainedEnabled(EnumStepType.valueOf(smiClass)))
+            if (rootJob.isFineGrainedEnabled(smiClass.getName()))
             {
                 // incrementa 1 no numero de linhas escritas, pois o metodo eh
                 // executado antes da incrementacao do contador no metodo putRow
