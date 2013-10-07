@@ -417,6 +417,7 @@ public class JobDecorator extends Job
         SQL.append("AND   t1.object_id = ? ");
         if (parentMeta != null)
         {
+            SQL.append("AND   t1.id_parent_repository = ? ");
             SQL.append("AND   t1.id_parent = ? ");
         }
         if (filterByModifiedDate)
@@ -432,6 +433,8 @@ public class JobDecorator extends Job
                 ValueMetaInterface.TYPE_STRING));
         if (parentMeta != null)
         {
+            fields.addValueMeta(new ValueMeta("id_parent_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
             fields.addValueMeta(new ValueMeta("id_parent",
                     ValueMetaInterface.TYPE_INTEGER));
         }
@@ -447,6 +450,7 @@ public class JobDecorator extends Job
         data[i++] = processMeta.getObjectId();
         if (parentMeta != null)
         {
+            data[i++] = getProspRepoId();
             data[i++] = getProspProcessId(parentMeta);
         }
         if (filterByModifiedDate)
@@ -546,6 +550,8 @@ public class JobDecorator extends Job
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_root",
                 ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_parent_repository",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_parent",
                 ValueMetaInterface.TYPE_INTEGER));
 
@@ -553,7 +559,7 @@ public class JobDecorator extends Job
         int i = 0;
         if (processMeta instanceof JobMeta)
         {
-            data[i++] = this.prospRepoId;
+            data[i++] = getProspRepoId();
             data[i++] = prospProcessId;
             data[i++] = ((JobMeta) processMeta).getObjectId();
             data[i++] = ((JobMeta) processMeta).getName();
@@ -562,13 +568,20 @@ public class JobDecorator extends Job
             data[i++] = ((JobMeta) processMeta).getCreatedDate();
             data[i++] = ((JobMeta) processMeta).getModifiedUser();
             data[i++] = ((JobMeta) processMeta).getModifiedDate();
-            data[i++] = this.prospRepoId;
-            data[i++] = this.prospJobId;
-            data[i++] = this.getProspProcessId(parentMeta);
+            data[i++] = getProspRepoId();
+            data[i++] = getProspJobId();
+
+            // Parent Process
+            Long parentProcessId = this.getProspProcessId(parentMeta);
+            if (parentProcessId != null)
+            {
+                data[i++] = getProspRepoId();
+                data[i++] = parentProcessId;
+            }
         }
         else if (processMeta instanceof TransMeta)
         {
-            data[i++] = this.prospRepoId;
+            data[i++] = getProspRepoId();
             data[i++] = prospProcessId;
             data[i++] = ((TransMeta) processMeta).getObjectId();
             data[i++] = ((TransMeta) processMeta).getName();
@@ -577,9 +590,16 @@ public class JobDecorator extends Job
             data[i++] = ((TransMeta) processMeta).getCreatedDate();
             data[i++] = ((TransMeta) processMeta).getModifiedUser();
             data[i++] = ((TransMeta) processMeta).getModifiedDate();
-            data[i++] = this.prospRepoId;
-            data[i++] = this.prospJobId;
-            data[i++] = this.getProspProcessId(parentMeta);
+            data[i++] = getProspRepoId();
+            data[i++] = getProspJobId();
+
+            // Parent Process
+            Long parentProcessId = this.getProspProcessId(parentMeta);
+            if (parentProcessId != null)
+            {
+                data[i++] = getProspRepoId();
+                data[i++] = parentProcessId;
+            }
         }
         else
         {

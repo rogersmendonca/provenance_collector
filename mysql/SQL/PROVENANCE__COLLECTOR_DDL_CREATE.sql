@@ -28,14 +28,15 @@ CREATE TABLE IF NOT EXISTS prosp_process (
   modified_date timestamp NOT NULL,
   id_root_repository int(11) NOT NULL,
   id_root int(11) NOT NULL,
+  id_parent_repository int(11) NULL,
   id_parent int(11) NULL,  
   PRIMARY KEY (id_repository, id_process),  
   KEY fk_repository (id_repository),  
   KEY fk_root (id_root_repository, id_root),
-  KEY fk_parent (id_root_repository, id_parent),
+  KEY fk_parent (id_parent_repository, id_parent),
   CONSTRAINT cstr_prosp_process_fk_repository FOREIGN KEY (id_repository) REFERENCES prosp_repository (id_repository),
   CONSTRAINT cstr_prosp_process_fk_root FOREIGN KEY (id_root_repository, id_root) REFERENCES prosp_process (id_repository, id_process),
-  CONSTRAINT cstr_prosp_process_fk_parent FOREIGN KEY (id_root_repository, id_parent) REFERENCES prosp_process (id_repository, id_process)
+  CONSTRAINT cstr_prosp_process_fk_parent FOREIGN KEY (id_parent_repository, id_parent) REFERENCES prosp_process (id_repository, id_process)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
 
 -- --------------------------------------------------------

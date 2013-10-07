@@ -36,6 +36,16 @@
 				<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.MergeJoinParamCmd</cmdClassName>
 			</value>
 		</entry>
+		<entry>
+			<key>SELECT_VALUES</key>
+			<value>
+				<id>SELECT_VALUES</id>
+				<descKey>BaseStep.TypeTooltipDesc.SelectValues</descKey>
+				<operation>T</operation>
+				<smiClassName>org.pentaho.di.trans.steps.selectvalues.SelectValuesMeta</smiClassName>
+				<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
+			</value>
+		</entry>		
 		<!-- Transformation Steps (END) -->		
 		
 		<!-- Load Steps (START) -->

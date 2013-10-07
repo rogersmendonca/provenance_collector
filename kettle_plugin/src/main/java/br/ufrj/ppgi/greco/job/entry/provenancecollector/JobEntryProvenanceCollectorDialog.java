@@ -1093,8 +1093,9 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         int i = 0;
         Map<String, FineGrainedStep> fineGrainedMap = FineGrainedStepMap.get()
                 .getFineGrainedStepMap();
-        for (FineGrainedStep stepType : fineGrainedMap.values())
+        for (Map.Entry<String, FineGrainedStep> entry : fineGrainedMap.entrySet())
         {
+            FineGrainedStep stepType = entry.getValue();
             TableItem item = wOptionFields.table.getItem(i);
             item.setChecked(true);
             item.setText(0, "");
