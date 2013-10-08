@@ -19,8 +19,8 @@ import org.pentaho.di.job.entry.JobEntryCopy;
 import org.pentaho.di.job.entry.JobEntryInterface;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
 
 /**
  * 
@@ -78,7 +78,7 @@ public class ProvenanceJobEntryListener extends ParentProvenanceListener
             data[i++] = false;
 
             List<DMLOperation> operations = new ArrayList<DMLOperation>();
-            operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT,
+            operations.add(new DMLOperation(EnumDMLOperation.INSERT,
                     tableName, fields, data));
 
             // Executa os comandos DML
@@ -126,7 +126,7 @@ public class ProvenanceJobEntryListener extends ParentProvenanceListener
 
             String[] condition = { "=", "=", "=", "=", "=" };
 
-            operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName, fields, data, codes, condition, sets));
+            operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName, fields, data, codes, condition, sets));
 
             // Executa os comandos DML
             try

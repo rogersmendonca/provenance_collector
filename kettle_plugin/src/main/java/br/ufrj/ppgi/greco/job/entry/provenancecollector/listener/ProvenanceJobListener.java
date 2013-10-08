@@ -14,8 +14,8 @@ import org.pentaho.di.job.Job;
 import org.pentaho.di.repository.IUser;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
 
 /**
  * 
@@ -58,7 +58,7 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
         data[i++] = false;
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT, tableName, fields, data));
+        operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName, fields, data));
 
         executeDML(db, operations);
     }
@@ -89,7 +89,7 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
         String[] condition = { "=", "=", "=" };
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName, fields, data, codes, condition, sets));
+        operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName, fields, data, codes, condition, sets));
 
         // Executa os comandos DML
         executeDML(db, operations);

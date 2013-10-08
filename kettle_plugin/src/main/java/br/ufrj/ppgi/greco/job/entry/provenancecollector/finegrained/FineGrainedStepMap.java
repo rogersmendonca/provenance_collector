@@ -9,8 +9,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * Singleton com o mapeamento dos Steps de Granulosidade Fina.
@@ -19,13 +21,16 @@ import javax.xml.bind.annotation.XmlType;
  * @since out-2013
  * 
  */
-@XmlRootElement(name = "fineGrainedSteps")
+@XmlRootElement(name = "fineGrainedStepList")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(factoryClass = FineGrainedStepMap.class, factoryMethod = "get")
 public class FineGrainedStepMap
 {
     private static final String FINE_GRAINED_STEPS_XML = "/fine_grained_steps.xml";
     private static FineGrainedStepMap singleton;
+    
+    @XmlElement(name="fineGrainedSteps")
+    @XmlJavaTypeAdapter(FineGrainedStepAdapter.class)
     private Map<String, FineGrainedStep> fineGrainedStepMap;
 
     static

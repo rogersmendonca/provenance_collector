@@ -20,10 +20,10 @@ import org.pentaho.di.trans.step.StepInterface;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.StepDecorator;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.ReflectionUtil;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.ReflectionUtil;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
 
 /**
  * 
@@ -232,7 +232,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
             data[i++] = transProv.getStepMetaSeq(step);
             data[i++] = rowNr;
             data[i++] = rowMeta.getString(row, k);
-            operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT,
+            operations.add(new DMLOperation(EnumDMLOperation.INSERT,
                     tableName, fields, data));
         }
 

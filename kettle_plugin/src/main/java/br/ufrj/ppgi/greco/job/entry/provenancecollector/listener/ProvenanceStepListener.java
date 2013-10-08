@@ -16,9 +16,9 @@ import org.pentaho.di.trans.step.StepListener;
 import org.pentaho.di.trans.step.StepMeta;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
 
 /**
  * 
@@ -73,7 +73,7 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
         data[i++] = false;
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT, tableName, fields, data));
+        operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName, fields, data));
 
         // Executa os comandos DML
         synchronized (db)
@@ -125,7 +125,7 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
 
         String[] condition = { "=", "=", "=", "=", "=" };
 
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName, fields, data, codes, condition, sets));
+        operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName, fields, data, codes, condition, sets));
 
         // Executa os comandos DML
         synchronized (db)

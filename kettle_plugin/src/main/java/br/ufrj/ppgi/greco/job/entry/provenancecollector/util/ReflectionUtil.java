@@ -1,4 +1,4 @@
-package br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util;
+package br.ufrj.ppgi.greco.job.entry.provenancecollector.util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

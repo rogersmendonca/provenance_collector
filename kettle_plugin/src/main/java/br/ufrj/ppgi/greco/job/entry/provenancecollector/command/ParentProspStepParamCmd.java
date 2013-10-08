@@ -27,8 +27,8 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedS
 public abstract class ParentProspStepParamCmd
 {
     protected void insertProspStepParam(JobDecorator rootJob, Database db,
-            StepMeta stepMeta, long processId, String fieldName,
-            String fieldValue) throws KettleException
+            StepMeta stepMeta, long processId, String paramName,
+            String paramValue) throws KettleException
     {
         String tableName = "prosp_step_parameter";
         Long stepId = rootJob.getProspStepId(stepMeta);
@@ -58,8 +58,8 @@ public abstract class ParentProspStepParamCmd
         data[i++] = processId;
         data[i++] = stepId;
         data[i++] = paramId;
-        data[i++] = fieldName;
-        data[i++] = fieldValue;
+        data[i++] = paramName;
+        data[i++] = paramValue;
 
         db.insertRow(tableName, fields, data);
     }

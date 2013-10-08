@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="copy-files-to-kettle"  >
+<target name="copy-files-to-kettle">
+  <echo message="Copying D:\projetos\provenance_collector\kettle_plugin\etc\*.[png,xml,properties] to D:/programas/pdi-ce-4.3.0-stable/plugins/jobentries/ProvenanceCollectorJob"/>
+  <copy todir="D:/programas/pdi-ce-4.3.0-stable/plugins/jobentries/ProvenanceCollectorJob" overwrite="true">
+    <fileset dir="D:\projetos\provenance_collector\kettle_plugin/etc" includes="**/*.png,**/*.xml,**/*.properties"/>
+  </copy>
+  <echo message="Copying D:\projetos\provenance_collector\kettle_plugin\libs\*.jar to D:/programas/pdi-ce-4.3.0-stable/plugins/jobentries/ProvenanceCollectorJob"/>
+  <copy todir="D:/programas/pdi-ce-4.3.0-stable/plugins/jobentries/ProvenanceCollectorJob" overwrite="true">
+    <fileset dir="D:\projetos\provenance_collector\kettle_plugin/libs" includes="**/*.jar"/>
+  </copy>
+  <echo message="Copying D:\projetos\provenance_collector\kettle_plugin\target\provenancecollectorjob-1.0-SNAPSHOT.jar to D:/programas/pdi-ce-4.3.0-stable/plugins/jobentries/ProvenanceCollectorJob"/>
+  <copy file="D:\projetos\provenance_collector\kettle_plugin\target/provenancecollectorjob-1.0-SNAPSHOT.jar" tofile="D:/programas/pdi-ce-4.3.0-stable/plugins/jobentries/ProvenanceCollectorJob/provenancecollectorjob.jar" overwrite="true"/>
+</target>
+</project>

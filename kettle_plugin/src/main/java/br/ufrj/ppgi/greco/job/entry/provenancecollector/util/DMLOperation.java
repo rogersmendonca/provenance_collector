@@ -1,4 +1,4 @@
-package br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util;
+package br.ufrj.ppgi.greco.job.entry.provenancecollector.util;
 
 import org.pentaho.di.core.row.RowMetaInterface;
 
@@ -10,12 +10,12 @@ import org.pentaho.di.core.row.RowMetaInterface;
  */
 public class DMLOperation
 {
-    public enum DB_OPERATION_TYPE
+    public enum EnumDMLOperation
     {
         INSERT, UPDATE, DELETE
     };
 
-    private DB_OPERATION_TYPE type;
+    private EnumDMLOperation type;
     private String tableName;
     private RowMetaInterface fields;
     private Object[] data;
@@ -23,7 +23,7 @@ public class DMLOperation
     private String[] condition;
     private String[] sets;
 
-    public DMLOperation(DB_OPERATION_TYPE type, String tableName,
+    public DMLOperation(EnumDMLOperation type, String tableName,
             RowMetaInterface fields, Object[] data)
     {
         this.type = type;
@@ -32,7 +32,7 @@ public class DMLOperation
         this.data = data;
     }
 
-    public DMLOperation(DB_OPERATION_TYPE type, String tableName,
+    public DMLOperation(EnumDMLOperation type, String tableName,
             RowMetaInterface fields, Object[] data, String[] codes,
             String[] condition, String[] sets)
     {
@@ -42,7 +42,7 @@ public class DMLOperation
         this.sets = sets;
     }
 
-    public DB_OPERATION_TYPE getType()
+    public EnumDMLOperation getType()
     {
         return type;
     }

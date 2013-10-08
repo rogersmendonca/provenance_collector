@@ -11,7 +11,7 @@ import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.core.logging.LoggingObjectInterface;
 import org.pentaho.di.core.variables.VariableSpace;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
 
 /**
  * 

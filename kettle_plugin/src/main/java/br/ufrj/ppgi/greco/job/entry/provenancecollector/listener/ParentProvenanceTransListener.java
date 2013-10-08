@@ -14,8 +14,8 @@ import org.pentaho.di.repository.IUser;
 import org.pentaho.di.trans.Trans;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.util.DMLOperation.DB_OPERATION_TYPE;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
 
 /**
  * 
@@ -69,7 +69,7 @@ public abstract class ParentProvenanceTransListener extends
         data[i++] = (user != null) ? user.getLogin() : "-";
         data[i++] = false;
 
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.INSERT, tableName,
+        operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName,
                 fields, data));
 
         // Executa os comandos DML
@@ -109,7 +109,7 @@ public abstract class ParentProvenanceTransListener extends
         String[] condition = { "=", "=", "=" };
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(DB_OPERATION_TYPE.UPDATE, tableName,
+        operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName,
                 fields, data, codes, condition, sets));
 
         // Executa os comandos DML
