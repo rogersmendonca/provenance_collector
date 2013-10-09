@@ -21,6 +21,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -31,6 +32,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.pentaho.di.cluster.SlaveServer;
@@ -64,6 +66,7 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStep;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStepMap;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumETLOperation;
 
 /**
  * 
@@ -199,14 +202,94 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
 
     // Rogers (05/2013): Provenance Tab
     private Composite wProv;
-    private CCombo wProvConnection;
-    private TableView wOptionFields;
+    private CCombo wProvCmbConnection;
+    private TableView wProvTblFGSteps;
+    private final int COLUMN_STEP_ID = 1;
+    private final int COLUMN_ETL_OPERATION = 2;
+
+    private Group wProvGrpFGSteps;
+    private Label wProvLblSelAll;
+    private Button wProvChkSelAll;
+    private Label wProvLblSelExtract;
+    private Button wProvChkSelExtract;
+    private Label wProvLblSelTransform;
+    private Button wProvChkSelTransform;
+    private Label wProvLblSelLoad;
+    private Button wProvChkSelLoad;
 
     public JobEntryProvenanceCollectorDialog(Shell parent,
             JobEntryInterface jobEntryInt, Repository rep, JobMeta jobMeta)
     {
         super(parent, jobEntryInt, rep, jobMeta);
         jobEntry = (JobEntryProvenanceCollector) jobEntryInt;
+    }
+
+    private void selectFineGrainedStep(EnumETLOperation op, boolean enable)
+    {
+        for (TableItem item : wProvTblFGSteps.table.getItems())
+        {
+            if ((op == null)
+                    || item.getText(COLUMN_ETL_OPERATION).equals(
+                            op.getDescription()))
+            {
+                item.setChecked(enable);
+            }
+        }
+
+        selectGroupEnabledFGStep(wProvTblFGSteps.table);
+    }
+
+    private boolean getChkSelSelected(Table table, EnumETLOperation op)
+    {
+        boolean selected = true;
+        for (TableItem ti : table.getItems())
+        {
+            if (ti.getText(COLUMN_ETL_OPERATION).equals(op.getDescription())
+                    && !ti.getChecked())
+            {
+                selected = false;
+                break;
+            }
+        }
+        return selected;
+    }
+
+    private void selectGroupEnabledFGStep(Table table)
+    {
+        boolean selected;
+
+        // Extract
+        selected = getChkSelSelected(table, EnumETLOperation.E);
+        wProvChkSelExtract.setSelection(selected);
+
+        // Transform
+        selected = getChkSelSelected(table, EnumETLOperation.T);
+        wProvChkSelTransform.setSelection(selected);
+
+        // Load
+        selected = getChkSelSelected(table, EnumETLOperation.L);
+        wProvChkSelLoad.setSelection(selected);
+
+        // All
+        selectChkAll();
+    }
+
+    private void selectChkAll()
+    {
+        boolean selected = wProvChkSelExtract.getSelection()
+                && wProvChkSelTransform.getSelection()
+                && wProvChkSelLoad.getSelection();
+        wProvChkSelAll.setSelection(selected);
+
+    }
+
+    private String lPad(String msgKey, int length, char chr)
+    {
+        StringBuilder ret = new StringBuilder(BaseMessages.getString(PKG,
+                msgKey));
+        for (int i = 0; i < length; ret.insert(0, chr), i++)
+            ;
+        return ret.toString();
     }
 
     public JobEntryInterface open()
@@ -1051,20 +1134,125 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         wProv.setLayout(provLayout);
 
         // Connection line
-        wProvConnection = addConnectionLine(wProv, null, middle, margin);
+        wProvCmbConnection = addConnectionLine(wProv, null, middle, margin);
         if (jobEntry.getProvConnection() == null && jobMeta.nrDatabases() == 1)
-            wProvConnection.select(0);
-        wProvConnection.addModifyListener(lsMod);
+            wProvCmbConnection.select(0);
+        wProvCmbConnection.addModifyListener(lsMod);
+
+        // Group of enabling fine-grained steps
+        // Group
+        wProvGrpFGSteps = new Group(wProv, SWT.SHADOW_NONE);
+        props.setLook(wProvGrpFGSteps);
+        wProvGrpFGSteps.setText(BaseMessages.getString(PKG,
+                "JobJob.Provenance.Selection.Enabled.Steps.Group.Label"));
+
+        RowLayout rowLayout = new RowLayout();
+        rowLayout.wrap = true;
+        rowLayout.pack = true;
+        rowLayout.justify = false;
+        rowLayout.type = SWT.HORIZONTAL;
+        rowLayout.marginLeft = 10;
+        rowLayout.marginTop = 10;
+        rowLayout.marginRight = 10;
+        rowLayout.marginBottom = 10;
+        rowLayout.spacing = 3;
+        wProvGrpFGSteps.setLayout(rowLayout);
+
+        FormData fdProvEnabledFGSteps = new FormData();
+        fdProvEnabledFGSteps.left = new FormAttachment(0, margin);
+        fdProvEnabledFGSteps.top = new FormAttachment(wProvCmbConnection,
+                margin);
+        fdProvEnabledFGSteps.right = new FormAttachment(100, -margin);
+        wProvGrpFGSteps.setLayoutData(fdProvEnabledFGSteps);
+
+        // Check All
+        wProvLblSelAll = new Label(wProvGrpFGSteps, SWT.PUSH);
+        wProvLblSelAll.setText(BaseMessages.getString(PKG,
+                "JobJob.Provenance.Fine.Grained.Select.All.Label"));
+        props.setLook(wProvLblSelAll);
+        wProvChkSelAll = new Button(wProvGrpFGSteps, SWT.CHECK);
+        props.setLook(wProvChkSelAll);
+        wProvChkSelAll.setToolTipText(BaseMessages.getString(PKG,
+                "JobJob.Provenance.Fine.Grained.Select.All.Tooltip"));
+        wProvChkSelAll.addSelectionListener(new SelectionAdapter()
+        {
+            public void widgetSelected(SelectionEvent e)
+            {
+                selectFineGrainedStep(null, wProvChkSelAll.getSelection());
+            }
+        });
+
+        int GAP = 10;
+        char SPACE = 32;
+        // Check Extraction
+        wProvLblSelExtract = new Label(wProvGrpFGSteps, SWT.PUSH);
+        String lblExtract = lPad(
+                "JobJob.Provenance.Fine.Grained.Select.Extraction.Label", GAP,
+                SPACE);
+        wProvLblSelExtract.setText(lblExtract);
+        props.setLook(wProvLblSelExtract);
+        wProvChkSelExtract = new Button(wProvGrpFGSteps, SWT.CHECK);
+        props.setLook(wProvChkSelExtract);
+        wProvChkSelExtract.setToolTipText(BaseMessages.getString(PKG,
+                "JobJob.Provenance.Fine.Grained.Select.Extraction.Tooltip"));
+        wProvChkSelExtract.addSelectionListener(new SelectionAdapter()
+        {
+            public void widgetSelected(SelectionEvent e)
+            {
+                selectFineGrainedStep(EnumETLOperation.E,
+                        wProvChkSelExtract.getSelection());
+            }
+        });
+
+        // Check Transformation
+        wProvLblSelTransform = new Label(wProvGrpFGSteps, SWT.PUSH);
+        String lblTransf = lPad(
+                "JobJob.Provenance.Fine.Grained.Select.Transformation.Label",
+                GAP, SPACE);
+        wProvLblSelTransform.setText(lblTransf);
+        props.setLook(wProvLblSelTransform);
+        wProvChkSelTransform = new Button(wProvGrpFGSteps, SWT.CHECK);
+        props.setLook(wProvChkSelTransform);
+        wProvChkSelTransform
+                .setToolTipText(BaseMessages
+                        .getString(PKG,
+                                "JobJob.Provenance.Fine.Grained.Select.Transformation.Tooltip"));
+        wProvChkSelTransform.addSelectionListener(new SelectionAdapter()
+        {
+            public void widgetSelected(SelectionEvent e)
+            {
+                selectFineGrainedStep(EnumETLOperation.T,
+                        wProvChkSelTransform.getSelection());
+            }
+        });
+
+        // Check Load
+        wProvLblSelLoad = new Label(wProvGrpFGSteps, SWT.PUSH);
+        String lblLoad = lPad(
+                "JobJob.Provenance.Fine.Grained.Select.Load.Label", GAP, SPACE);
+        wProvLblSelLoad.setText(lblLoad);
+        props.setLook(wProvLblSelLoad);
+        wProvChkSelLoad = new Button(wProvGrpFGSteps, SWT.CHECK);
+        props.setLook(wProvChkSelLoad);
+        wProvChkSelLoad.setToolTipText(BaseMessages.getString(PKG,
+                "JobJob.Provenance.Fine.Grained.Select.Load.Tooltip"));
+        wProvChkSelLoad.addSelectionListener(new SelectionAdapter()
+        {
+            public void widgetSelected(SelectionEvent e)
+            {
+                selectFineGrainedStep(EnumETLOperation.L,
+                        wProvChkSelLoad.getSelection());
+            }
+        });
 
         // Fine-Grained Provenance Steps grid...
-
         Label wlFGSteps = new Label(wProv, SWT.NONE);
         wlFGSteps.setText(BaseMessages.getString(PKG,
                 "JobJob.Provenance.Fine.Grained.Steps.Label")); //$NON-NLS-1$
         props.setLook(wlFGSteps);
         FormData fdlFGSteps = new FormData();
         fdlFGSteps.left = new FormAttachment(0, 0);
-        fdlFGSteps.top = new FormAttachment(wProvConnection, margin * 2);
+        fdlFGSteps.top = new FormAttachment(wProvGrpFGSteps, margin * 2);
         wlFGSteps.setLayoutData(fdlFGSteps);
 
         final int nrRows = FineGrainedStepMap.get().size();
@@ -1081,23 +1269,23 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
                                 "JobJob.Provenance.Step.Grid.Description"), ColumnInfo.COLUMN_TYPE_TEXT, false, true), //$NON-NLS-1$                                
         };
 
-        wOptionFields = new TableView(jobMeta, wProv, SWT.BORDER
+        wProvTblFGSteps = new TableView(jobMeta, wProv, SWT.BORDER
                 | SWT.FULL_SELECTION | SWT.MULTI | SWT.CHECK, colinf, nrRows,
                 true, lsMod, props);
 
-        wOptionFields.setSortable(false);
-        wOptionFields.table.getColumn(0).setText(
+        wProvTblFGSteps.setSortable(false);
+        wProvTblFGSteps.table.getColumn(0).setText(
                 BaseMessages.getString(PKG,
                         "JobJob.Provenance.Step.Grid.Enabled"));
 
         int i = 0;
         Map<String, FineGrainedStep> fineGrainedMap = FineGrainedStepMap.get()
                 .getFineGrainedStepMap();
-        for (Map.Entry<String, FineGrainedStep> entry : fineGrainedMap.entrySet())
+        for (Map.Entry<String, FineGrainedStep> entry : fineGrainedMap
+                .entrySet())
         {
             FineGrainedStep stepType = entry.getValue();
-            TableItem item = wOptionFields.table.getItem(i);
-            item.setChecked(true);
+            TableItem item = wProvTblFGSteps.table.getItem(i);
             item.setText(0, "");
             item.setText(1, stepType.getId());
             item.setBackground(1, GUIResource.getInstance().getColorLightGray());
@@ -1105,18 +1293,26 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
             item.setBackground(2, GUIResource.getInstance().getColorLightGray());
             item.setText(3, stepType.getDescription());
             item.setBackground(3, GUIResource.getInstance().getColorLightGray());
+
             i++;
         }
+        wProvTblFGSteps.table.addListener(SWT.Selection, new Listener()
+        {
+            public void handleEvent(Event e)
+            {
+                selectGroupEnabledFGStep(wProvTblFGSteps.table);
+            }
+        });
 
         FormData fdOptionFields = new FormData();
         fdOptionFields.left = new FormAttachment(0, 0);
         fdOptionFields.top = new FormAttachment(wlFGSteps, margin);
         fdOptionFields.right = new FormAttachment(100, 0);
         fdOptionFields.bottom = new FormAttachment(100, 0);
-        wOptionFields.setLayoutData(fdOptionFields);
+        wProvTblFGSteps.setLayoutData(fdOptionFields);
 
-        wOptionFields.optWidth(true);
-        wOptionFields.layout();
+        wProvTblFGSteps.optWidth(true);
+        wProvTblFGSteps.layout();
 
         // Finalization
         wProv.pack();
@@ -1645,24 +1841,24 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
         // 1- Provenance Connection
         if (jobEntry.getProvConnection() != null)
         {
-            wProvConnection.setText(jobEntry.getProvConnection().getName());
+            wProvCmbConnection.setText(jobEntry.getProvConnection().getName());
         }
 
         // 2- Fine-grained Steps
         if (jobEntry.getMapFineGrainedEnabled() != null)
         {
-            int i = 0;
-            for (Map.Entry<FineGrainedStep, Boolean> entry : jobEntry
-                    .getMapFineGrainedEnabled().entrySet())
+            Map<String, FineGrainedStep> fgStepMap = FineGrainedStepMap.get()
+                    .getFineGrainedStepMap();
+            Map<FineGrainedStep, Boolean> fgEnabledMap = jobEntry
+                    .getMapFineGrainedEnabled();
+            for (TableItem item : wProvTblFGSteps.table.getItems())
             {
-                TableItem item = wOptionFields.table.getItem(i);
-                item.setChecked(entry.getValue());
-                item.setText(0, "");
-                item.setText(1, entry.getKey().getId());
-                item.setText(2, entry.getKey().getOperation().getDescription());
-                i++;
+                String stepId = item.getText(COLUMN_STEP_ID);
+                FineGrainedStep fgStep = fgStepMap.get(stepId);
+                item.setChecked(fgEnabledMap.get(fgStep));
             }
         }
+        selectGroupEnabledFGStep(wProvTblFGSteps.table);
     }
 
     private void cancel()
@@ -1789,18 +1985,18 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
 
         // Rogers (05/2013): Provenance Tab
         // 1- Set Provenance Connection
-        jobEntry.setProvConnection(jobMeta.findDatabase(wProvConnection
+        jobEntry.setProvConnection(jobMeta.findDatabase(wProvCmbConnection
                 .getText()));
 
         // 2- Set Fine-Grained Steps Map
-        nritems = wOptionFields.table.getItemCount();
+        nritems = wProvTblFGSteps.table.getItemCount();
         jobEntry.getMapFineGrainedEnabled().clear();
+        Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
+                .getFineGrainedStepMap();
         for (int i = 0; i < nritems; i++)
         {
-            String type = wOptionFields.table.getItem(i).getText(1);
-            boolean enabled = wOptionFields.table.getItem(i).getChecked();
-            Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
-                    .getFineGrainedStepMap();
+            String type = wProvTblFGSteps.table.getItem(i).getText(1);
+            boolean enabled = wProvTblFGSteps.table.getItem(i).getChecked();
             jobEntry.getMapFineGrainedEnabled().put(fgMap.get(type), enabled);
         }
     }
@@ -1818,7 +2014,7 @@ public class JobEntryProvenanceCollectorDialog extends JobEntryDialog implements
             return;
         }
 
-        if (Const.isEmpty(wProvConnection.getText()))
+        if (Const.isEmpty(wProvCmbConnection.getText()))
         {
             MessageBox mb = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
             mb.setText(BaseMessages.getString(PKG,

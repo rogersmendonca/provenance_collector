@@ -517,6 +517,12 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
 
             // 2- Fine-grained Steps Map
             mapFineGrainedEnabled = new LinkedHashMap<FineGrainedStep, Boolean>();
+            Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
+                    .getFineGrainedStepMap();
+            for (FineGrainedStep fgStep : fgMap.values())
+            {
+                mapFineGrainedEnabled.put(fgStep, false);
+            }
             Node fgStepsNode = XMLHandler.getSubNode(entrynode,
                     "fine_grained_steps"); //$NON-NLS-1$
             int nrFineGrainedSteps = XMLHandler.countNodes(fgStepsNode,
@@ -527,10 +533,13 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
                         "fine_grained_step", i); //$NON-NLS-1$
 
                 String type = XMLHandler.getTagValue(knode, "fgs_type"); //$NON-NLS-1$
-                boolean enabled = "Y".equalsIgnoreCase(XMLHandler.getTagValue(knode, "fgs_enabled")); //$NON-NLS-1$   
-                Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
-                        .getFineGrainedStepMap();
-                mapFineGrainedEnabled.put(fgMap.get(type), enabled);
+
+                if (fgMap.get(type) != null)
+                {
+                    boolean enabled = "Y".equalsIgnoreCase(XMLHandler.getTagValue(knode, "fgs_enabled")); //$NON-NLS-1$   
+
+                    mapFineGrainedEnabled.put(fgMap.get(type), enabled);
+                }
             }
         }
         catch (KettleXMLException xe)
@@ -631,17 +640,25 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
 
             // 2- Fine-grained Steps Map
             mapFineGrainedEnabled = new LinkedHashMap<FineGrainedStep, Boolean>();
+            Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
+                    .getFineGrainedStepMap();
+            for (FineGrainedStep fgStep : fgMap.values())
+            {
+                mapFineGrainedEnabled.put(fgStep, false);
+            }
             int nrFineGrainedSteps = rep.countNrJobEntryAttributes(id_jobentry,
                     "fgs_type");
             for (int i = 0; i < nrFineGrainedSteps; i++)
             {
                 String type = rep.getJobEntryAttributeString(id_jobentry, i,
                         "fgs_type");
-                boolean enabled = rep.getJobEntryAttributeBoolean(id_jobentry,
-                        i, "fgs_enabled");
-                Map<String, FineGrainedStep> fgMap = FineGrainedStepMap.get()
-                        .getFineGrainedStepMap();
-                mapFineGrainedEnabled.put(fgMap.get(type), enabled);
+
+                if (fgMap.get(type) != null)
+                {
+                    boolean enabled = rep.getJobEntryAttributeBoolean(
+                            id_jobentry, i, "fgs_enabled");
+                    mapFineGrainedEnabled.put(fgMap.get(type), enabled);
+                }
             }
         }
         catch (KettleDatabaseException dbe)
@@ -1599,9 +1616,10 @@ public class JobEntryProvenanceCollector extends JobEntryBase implements
         provConnection = null;
         // 2- Fine-grained Steps Map
         mapFineGrainedEnabled = new LinkedHashMap<FineGrainedStep, Boolean>();
-        for (FineGrainedStep fgStep : FineGrainedStepMap.get().getFineGrainedStepMap().values())
+        for (FineGrainedStep fgStep : FineGrainedStepMap.get()
+                .getFineGrainedStepMap().values())
         {
-            mapFineGrainedEnabled.put(fgStep, true);
+            mapFineGrainedEnabled.put(fgStep, false);
         }
     }
 

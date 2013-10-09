@@ -2,6 +2,7 @@
 <fineGrainedStepList>
 	<fineGrainedSteps>
 		<!-- Extraction Steps (START) -->
+		<!--
 		<fineGrainedStep>
 			<id>CSV File Input</id>
 			<descKey>BaseStep.TypeTooltipDesc.CsvInput</descKey>
@@ -97,7 +98,7 @@
 			<smiClassName>org.pentaho.di.trans.steps.sapinput.SapInputMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
 		</fineGrainedStep>
-		
+		-->
 		<fineGrainedStep>
 			<id>Sparql Endpoint</id>
 			<descKey>CustomStep.TypeTooltipDesc.SparqlEndpoint</descKey>
@@ -113,7 +114,7 @@
 			<smiClassName>org.pentaho.di.trans.steps.tableinput.TableInputMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.TableInputParamCmd</cmdClassName>
 		</fineGrainedStep>
-		
+		<!--
 		<fineGrainedStep>
 			<id>Text File Input</id>
 			<descKey>BaseStep.TypeTooltipDesc.TextInputFile</descKey>
@@ -121,7 +122,7 @@
 			<smiClassName>org.pentaho.di.trans.steps.textfileinput.TextFileInputMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
 		</fineGrainedStep>
-		
+ 		
 		<fineGrainedStep>
 			<id>XML Input</id>
 			<descKey>BaseStep.TypeTooltipDesc.XMLInput</descKey>
@@ -129,9 +130,11 @@
 			<smiClassName>org.pentaho.di.trans.steps.xmlinput.XMLInputMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
 		</fineGrainedStep>
+		-->
 		<!-- Extraction Steps (END) -->
 
-		<!-- Transformation Steps (START) -->	
+		<!-- Transformation Steps (START) -->
+		<!--	
 	    <fineGrainedStep>
 			<id>Calculator</id>
 			<descKey>BaseStep.TypeTooltipDesc.Calculator</descKey>
@@ -187,7 +190,7 @@
 			<smiClassName>org.pentaho.di.trans.steps.joinrows.JoinRowsMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
 		</fineGrainedStep>	
-				
+		-->		
 		<fineGrainedStep>
 			<id>Merge Join</id>
 			<descKey>BaseStep.TypeTooltipDesc.MergeJoin</descKey>
@@ -195,7 +198,7 @@
 			<smiClassName>org.pentaho.di.trans.steps.mergejoin.MergeJoinMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.MergeJoinParamCmd</cmdClassName>
 		</fineGrainedStep>
-		
+		<!--
 		<fineGrainedStep>
 			<id>RDF Data Property Mapping</id>
 			<descKey>CustomStep.TypeTooltipDesc.RDFDataMapping</descKey>
@@ -242,7 +245,8 @@
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.stringoperations.StringOperationsMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
-		</fineGrainedStep>				
+		</fineGrainedStep>	
+		-->			
 		<!-- Transformation Steps (END) -->
 
 		<!-- Load Steps (START) -->
