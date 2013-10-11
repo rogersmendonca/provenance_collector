@@ -1,5 +1,6 @@
-Provenance Collector Agent (Pentaho Kettle)
-===========================================
+Provenance Collector Agent 
+===========================
+Description: Pentaho Kettle Job Entry that collects retrospective and prospective provenance date during a Kettle Job execution.
 
 Author: Rogers Reiche de Mendonça (rogers.rj@gmail.com)
 
