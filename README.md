@@ -4,7 +4,7 @@ Description: Pentaho Kettle Job Entry that collects retrospective and prospectiv
 
 Author: Rogers Reiche de Mendonça (rogers.rj@gmail.com)
 
-- Installation
+Installation:
 A) Temporary provenance table
 1- Create a database in MySQL
 2- Execute the script ./mysql/SQL/PROVENANCE__COLLECTOR_DDL_CREATE.sql
