@@ -154,7 +154,6 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
             }
             catch (SQLException e)
             {
-                System.out.println(e.getMessage());
             }
             finally
             {
@@ -249,11 +248,6 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
 
         int TOTAL_COLS = rowMeta.getFieldNames().length;
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-
-        if (originStep.getStepname().equals("Input - Research Group"))
-        {
-            System.out.println("teste");
-        }
 
         Map<String, Long> hopFieldMap = getHopFieldMap(rowMeta, originStep);
         for (int k = 0; k < TOTAL_COLS; k++)
