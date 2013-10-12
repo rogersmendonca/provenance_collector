@@ -372,36 +372,39 @@ public class JobDecorator extends Job
     public long generateId(Database db, String tableName,
             Map<String, Long> restriction) throws KettleException
     {
-        try
+        synchronized (db)
         {
-            StringBuilder SQL = new StringBuilder(String.format(
-                    "SELECT COUNT(*) + 1 AS id FROM %s ", tableName));
-            if (restriction != null && restriction.size() > 0)
+            try
             {
-                boolean where = true;
-                for (Map.Entry<String, Long> entry : restriction.entrySet())
+                StringBuilder SQL = new StringBuilder(String.format(
+                        "SELECT COUNT(*) + 1 AS id FROM %s ", tableName));
+                if (restriction != null && restriction.size() > 0)
                 {
-                    if (where)
+                    boolean where = true;
+                    for (Map.Entry<String, Long> entry : restriction.entrySet())
                     {
-                        SQL.append(String.format(" WHERE %s = %d ",
-                                entry.getKey(), entry.getValue()));
-                        where = false;
-                    }
-                    else
-                    {
-                        SQL.append(String.format(" AND %s = %d ",
-                                entry.getKey(), entry.getValue()));
+                        if (where)
+                        {
+                            SQL.append(String.format(" WHERE %s = %d ",
+                                    entry.getKey(), entry.getValue()));
+                            where = false;
+                        }
+                        else
+                        {
+                            SQL.append(String.format(" AND %s = %d ",
+                                    entry.getKey(), entry.getValue()));
+                        }
                     }
                 }
+                ResultSet res = db.openQuery(SQL.toString());
+                long id = res.next() ? res.getLong("id") : 0;
+                db.closeQuery(res);
+                return id;
             }
-            ResultSet res = db.openQuery(SQL.toString());
-            long id = res.next() ? res.getLong("id") : 0;
-            db.closeQuery(res);
-            return id;
-        }
-        catch (SQLException e)
-        {
-            throw new KettleException(e.toString());
+            catch (SQLException e)
+            {
+                throw new KettleException(e.toString());
+            }
         }
     }
 

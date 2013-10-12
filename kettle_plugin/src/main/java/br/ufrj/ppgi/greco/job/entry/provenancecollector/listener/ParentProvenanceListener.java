@@ -1,13 +1,11 @@
 package br.ufrj.ppgi.greco.job.entry.provenancecollector.listener;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.pentaho.di.core.database.Database;
 import org.pentaho.di.core.database.DatabaseMeta;
 import org.pentaho.di.core.exception.KettleDatabaseException;
-import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.core.logging.LoggingObjectInterface;
 import org.pentaho.di.core.variables.VariableSpace;
 
@@ -42,28 +40,10 @@ public abstract class ParentProvenanceListener
             throws KettleDatabaseException
     {
         Database db = new Database(loggingObjectInterface, logcon);
-        // Database db = new Database2(loggingObjectInterface, logcon);
         db.shareVariablesWith(variableSpace);
         db.connect();
         db.setAutoCommit(autoCommit);
         return db;
-    }
-
-    public static long getId(Database db, String tableName)
-            throws KettleException
-    {
-        try
-        {
-            ResultSet res = db.openQuery("SELECT COUNT(*) + 1 AS id FROM "
-                    + tableName);
-            long id = res.next() ? res.getLong("id") : 0;
-            db.closeQuery(res);
-            return id;
-        }
-        catch (SQLException e)
-        {
-            throw new KettleException(e.toString());
-        }
     }
 
     protected void executeDML(Database db, List<DMLOperation> operations)

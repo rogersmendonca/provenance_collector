@@ -22,7 +22,6 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.StepDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.ReflectionUtil;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
 
 /**
@@ -60,18 +59,36 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
     {
         try
         {
-            RowSet rowSet = (RowSet) ReflectionUtil.genericInvokeMethod(
-                    this.step.getOriginalStep(), "currentInputStream", 0);
-
-            StepInterface originStep = this.transProv.findRunThread(rowSet
-                    .getOriginStepName());
-
-            Class<?> originSmiClass = originStep.getStepMeta()
-                    .getStepMetaInterface().getClass();
-
-            if (rootJob.isFineGrainedEnabled(originSmiClass.getName()))
+            // Get current Row Set
+            RowSet currentRowSet = null;
+            List<RowSet> rowSetList = this.step.getOriginalStep()
+                    .getInputRowSets();
+            for (RowSet rowSet : rowSetList)
             {
-                registerDB(rowMeta, row, originStep, step.getLinesRead());
+                if ((rowSet.getRowMeta() != null)
+                        && (rowMeta != null)
+                        && rowSet.getRowMeta().toString()
+                                .equals(rowMeta.toString()))
+                {
+                    currentRowSet = rowSet;
+                    break;
+                }
+            }
+
+            // Se o step from do hop for fine grained e estiver habilitado,
+            // registra a proveniencia
+            if (currentRowSet != null)
+            {
+                StepInterface originStep = this.transProv
+                        .findRunThread(currentRowSet.getOriginStepName());
+
+                Class<?> originSmiClass = originStep.getStepMeta()
+                        .getStepMetaInterface().getClass();
+
+                if (rootJob.isFineGrainedEnabled(originSmiClass.getName()))
+                {
+                    registerDB(rowMeta, row, originStep, step.getLinesRead());
+                }
             }
         }
         catch (KettleException e)
@@ -123,19 +140,27 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
         data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
         data[i++] = rootJob.getProspStepId(step.getStepMeta());
 
-        ResultSet res = db.openQuery(SQL.toString(), fields, data);
         HashMap<String, Long> hopFieldMap = new HashMap<String, Long>();
-        try
+        synchronized (db)
         {
-            while (res.next())
+            ResultSet res = db.openQuery(SQL.toString(), fields, data);
+            try
             {
-                hopFieldMap.put(res.getString("field_name"), res.getLong("id_field"));
+                while (res.next())
+                {
+                    hopFieldMap.put(res.getString("field_name"),
+                            res.getLong("id_field"));
+                }
+            }
+            catch (SQLException e)
+            {
+                System.out.println(e.getMessage());
+            }
+            finally
+            {
+                db.closeQuery(res);
             }
         }
-        catch (SQLException e)
-        {
-        }
-        db.closeQuery(res);
 
         if (hopFieldMap.size() != rowMeta.getFieldNames().length)
         {
@@ -179,7 +204,14 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                 data[i++] = fieldId;
                 data[i++] = fieldName;
 
-                db.insertRow(tableNameHopField, fields, data);
+                List<DMLOperation> operations = new ArrayList<DMLOperation>();
+                operations.add(new DMLOperation(EnumDMLOperation.INSERT,
+                        tableNameHopField, fields, data));
+
+                synchronized (db)
+                {
+                    executeDML(db, operations);
+                }
 
                 // INSERE O FIELD NO MAPEAMENTO
                 hopFieldMap.put(fieldName, fieldId);
@@ -217,6 +249,12 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
 
         int TOTAL_COLS = rowMeta.getFieldNames().length;
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
+
+        if (originStep.getStepname().equals("Input - Research Group"))
+        {
+            System.out.println("teste");
+        }
+
         Map<String, Long> hopFieldMap = getHopFieldMap(rowMeta, originStep);
         for (int k = 0; k < TOTAL_COLS; k++)
         {
@@ -226,14 +264,15 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
             data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
             data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
             data[i++] = rootJob.getProspStepId(step.getStepMeta());
-            data[i++] = hopFieldMap.get(rowMeta.getFieldNames()[k]);
+            Long id_prosp_field = hopFieldMap.get(rowMeta.getFieldNames()[k]);
+            data[i++] = id_prosp_field;
             data[i++] = transProv.getBatchId();
             data[i++] = transProv.getStepMetaSeq(originStep);
             data[i++] = transProv.getStepMetaSeq(step);
             data[i++] = rowNr;
             data[i++] = rowMeta.getString(row, k);
-            operations.add(new DMLOperation(EnumDMLOperation.INSERT,
-                    tableName, fields, data));
+            operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName,
+                    fields, data));
         }
 
         // Executa os comandos DML
