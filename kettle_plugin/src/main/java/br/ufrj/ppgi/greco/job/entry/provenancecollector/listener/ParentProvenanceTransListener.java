@@ -10,7 +10,6 @@ import org.pentaho.di.core.row.RowMeta;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMeta;
 import org.pentaho.di.core.row.ValueMetaInterface;
-import org.pentaho.di.repository.IUser;
 import org.pentaho.di.trans.Trans;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
@@ -32,7 +31,7 @@ public abstract class ParentProvenanceTransListener extends
     public ParentProvenanceTransListener(Database db, JobDecorator rootJob)
     {
         super(db);
-        this.tableName = "retrosp_process";
+        this.tableName = "retrosp_workflow";
         this.rootJob = rootJob;
     }
 
@@ -48,25 +47,21 @@ public abstract class ParentProvenanceTransListener extends
 
         fields.addValueMeta(new ValueMeta("id_prosp_repository",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process",
+        fields.addValueMeta(new ValueMeta("id_prosp_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process",
+        fields.addValueMeta(new ValueMeta("id_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("start_date",
-                ValueMetaInterface.TYPE_DATE));
-        fields.addValueMeta(new ValueMeta("user",
-                ValueMetaInterface.TYPE_STRING));
+                ValueMetaInterface.TYPE_DATE));        
         fields.addValueMeta(new ValueMeta("success",
                 ValueMetaInterface.TYPE_BOOLEAN));
 
         data = new Object[fields.size()];
         i = 0;
         data[i++] = rootJob.getProspRepoId();
-        data[i++] = rootJob.getProspProcessId(trans.getTransMeta());
+        data[i++] = rootJob.getProspWorkflowId(trans.getTransMeta());
         data[i++] = trans.getBatchId();
         data[i++] = new Date(System.currentTimeMillis());
-        IUser user = trans.getRepository().getUserInfo();
-        data[i++] = (user != null) ? user.getLogin() : "-";
         data[i++] = false;
 
         operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName,
@@ -88,9 +83,9 @@ public abstract class ParentProvenanceTransListener extends
                 ValueMetaInterface.TYPE_BOOLEAN));
         fields.addValueMeta(new ValueMeta("id_prosp_repository",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process",
+        fields.addValueMeta(new ValueMeta("id_prosp_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process",
+        fields.addValueMeta(new ValueMeta("id_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
 
         Object[] data = new Object[fields.size()];
@@ -98,13 +93,13 @@ public abstract class ParentProvenanceTransListener extends
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = (trans.getErrors() == 0);
         data[i++] = rootJob.getProspRepoId();        
-        data[i++] = rootJob.getProspProcessId(trans.getTransMeta());
+        data[i++] = rootJob.getProspWorkflowId(trans.getTransMeta());
         data[i++] = trans.getBatchId();
 
         String[] sets = { "finish_date", "success" };
 
-        String[] codes = { "id_prosp_repository", "id_prosp_process",
-                "id_process" };
+        String[] codes = { "id_prosp_repository", "id_prosp_workflow",
+                "id_workflow" };
 
         String[] condition = { "=", "=", "=" };
 

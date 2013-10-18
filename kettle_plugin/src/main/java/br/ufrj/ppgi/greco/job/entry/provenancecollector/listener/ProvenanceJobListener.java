@@ -11,7 +11,6 @@ import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMeta;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.job.Job;
-import org.pentaho.di.repository.IUser;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
@@ -32,7 +31,7 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
     public ProvenanceJobListener(Database db, JobDecorator rootJob)
     {
         super(db);
-        this.tableName = "retrosp_process";
+        this.tableName = "retrosp_workflow";
         this.rootJob = rootJob;
     }
 
@@ -41,20 +40,17 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
     {
         RowMetaInterface fields = new RowMeta();
         fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_workflow", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_workflow", ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("start_date", ValueMetaInterface.TYPE_DATE));
-        fields.addValueMeta(new ValueMeta("user", ValueMetaInterface.TYPE_STRING));
         fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
         data[i++] = rootJob.getProspRepoId();
-        data[i++] = rootJob.getProspProcessId(job.getJobMeta());
+        data[i++] = rootJob.getProspWorkflowId(job.getJobMeta());
         data[i++] = job.getBatchId();        
-        data[i++] = new Date(System.currentTimeMillis());
-        IUser user = job.getRep().getUserInfo();
-        data[i++] = (user != null) ? user.getLogin() : "-";
+        data[i++] = new Date(System.currentTimeMillis());        
         data[i++] = false;
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
@@ -71,20 +67,20 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
         fields.addValueMeta(new ValueMeta("finish_date", ValueMetaInterface.TYPE_DATE));
         fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
         fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_workflow", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_workflow", ValueMetaInterface.TYPE_INTEGER));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = success;
         data[i++] = rootJob.getProspRepoId();        
-        data[i++] = rootJob.getProspProcessId(job.getJobMeta());
+        data[i++] = rootJob.getProspWorkflowId(job.getJobMeta());
         data[i++] = job.getBatchId();
 
         String[] sets = { "finish_date", "success" };
 
-        String[] codes = { "id_prosp_repository", "id_prosp_process", "id_process" };
+        String[] codes = { "id_prosp_repository", "id_prosp_workflow", "id_workflow" };
 
         String[] condition = { "=", "=", "=" };
 

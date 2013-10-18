@@ -27,21 +27,21 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedS
 public abstract class ParentProspStepParamCmd
 {
     protected void insertProspStepParam(JobDecorator rootJob, Database db,
-            StepMeta stepMeta, long processId, String paramName,
+            StepMeta stepMeta, long workflowId, String paramName,
             String paramValue) throws KettleException
     {
         String tableName = "prosp_step_parameter";
         Long stepId = rootJob.getProspStepId(stepMeta);
         HashMap<String, Long> restriction = new HashMap<String, Long>();
         restriction.put("id_repository", rootJob.getProspRepoId());
-        restriction.put("id_process", processId);
+        restriction.put("id_workflow", workflowId);
         restriction.put("id_step", stepId);
         Long paramId = rootJob.generateId(db, tableName, restriction);
 
         RowMetaInterface fields = new RowMeta();
         fields.addValueMeta(new ValueMeta("id_repository",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process",
+        fields.addValueMeta(new ValueMeta("id_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_step",
                 ValueMetaInterface.TYPE_INTEGER));
@@ -55,7 +55,7 @@ public abstract class ParentProspStepParamCmd
         Object[] data = new Object[fields.size()];
         int i = 0;
         data[i++] = rootJob.getProspRepoId();
-        data[i++] = processId;
+        data[i++] = workflowId;
         data[i++] = stepId;
         data[i++] = paramId;
         data[i++] = paramName;
@@ -81,7 +81,7 @@ public abstract class ParentProspStepParamCmd
     }
 
     public void execute(JobDecorator rootJob, Database db, Object step,
-            Long processId) throws KettleException
+            Long workflowId) throws KettleException
     {
         if (step instanceof JobEntryCopy)
         {
@@ -95,11 +95,11 @@ public abstract class ParentProspStepParamCmd
 
             if (rootJob.isFineGrainedEnabled(smiClass.getName()))
             {
-                insertProvenance(rootJob, db, sm, processId);
+                insertProvenance(rootJob, db, sm, workflowId);
             }
         }
     }
 
     public abstract void insertProvenance(JobDecorator rootJob, Database db,
-            StepMeta sm, Long processId) throws KettleException;
+            StepMeta sm, Long workflowId) throws KettleException;
 }

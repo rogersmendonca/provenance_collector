@@ -119,14 +119,14 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
         SQL.append("SELECT t1.id_field, t1.field_name ");
         SQL.append("FROM " + this.tableNameHopField + " t1 ");
         SQL.append("WHERE t1.id_repository = ? ");
-        SQL.append("AND   t1.id_process = ? ");
+        SQL.append("AND   t1.id_workflow = ? ");
         SQL.append("AND   t1.id_step_from = ? ");
         SQL.append("AND   t1.id_step_to = ? ");
 
         RowMetaInterface fields = new RowMeta();
         fields.addValueMeta(new ValueMeta("id_repository",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process",
+        fields.addValueMeta(new ValueMeta("id_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_step_from",
                 ValueMetaInterface.TYPE_INTEGER));
@@ -136,7 +136,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
         Object[] data = new Object[fields.size()];
         int i = 0;
         data[i++] = rootJob.getProspRepoId();
-        data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
+        data[i++] = rootJob.getProspWorkflowId(transProv.getTransMeta());
         data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
         data[i++] = rootJob.getProspStepId(step.getStepMeta());
 
@@ -169,8 +169,8 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                 // OBTEM O FIELD ID
                 HashMap<String, Long> restriction = new HashMap<String, Long>();
                 restriction.put("id_repository", rootJob.getProspRepoId());
-                restriction.put("id_process",
-                        rootJob.getProspProcessId(transProv.getTransMeta()));
+                restriction.put("id_workflow",
+                        rootJob.getProspWorkflowId(transProv.getTransMeta()));
                 restriction.put("id_step_from",
                         rootJob.getProspStepId(originStep.getStepMeta()));
                 restriction.put("id_step_to",
@@ -183,7 +183,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                 fields = new RowMeta();
                 fields.addValueMeta(new ValueMeta("id_repository",
                         ValueMetaInterface.TYPE_INTEGER));
-                fields.addValueMeta(new ValueMeta("id_process",
+                fields.addValueMeta(new ValueMeta("id_workflow",
                         ValueMetaInterface.TYPE_INTEGER));
                 fields.addValueMeta(new ValueMeta("id_step_from",
                         ValueMetaInterface.TYPE_INTEGER));
@@ -197,7 +197,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                 data = new Object[fields.size()];
                 i = 0;
                 data[i++] = rootJob.getProspRepoId();
-                data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
+                data[i++] = rootJob.getProspWorkflowId(transProv.getTransMeta());
                 data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
                 data[i++] = rootJob.getProspStepId(step.getStepMeta());
                 data[i++] = fieldId;
@@ -227,7 +227,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
 
         fields.addValueMeta(new ValueMeta("id_prosp_repository",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_process",
+        fields.addValueMeta(new ValueMeta("id_prosp_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_prosp_step_from",
                 ValueMetaInterface.TYPE_INTEGER));
@@ -235,7 +235,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_prosp_field",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_process",
+        fields.addValueMeta(new ValueMeta("id_workflow",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("seq_from",
                 ValueMetaInterface.TYPE_INTEGER));
@@ -255,7 +255,7 @@ public class ProvenanceRowListener extends ParentProvenanceListener implements
             Object[] data = new Object[fields.size()];
             int i = 0;
             data[i++] = rootJob.getProspRepoId();
-            data[i++] = rootJob.getProspProcessId(transProv.getTransMeta());
+            data[i++] = rootJob.getProspWorkflowId(transProv.getTransMeta());
             data[i++] = rootJob.getProspStepId(originStep.getStepMeta());
             data[i++] = rootJob.getProspStepId(step.getStepMeta());
             Long id_prosp_field = hopFieldMap.get(rowMeta.getFieldNames()[k]);

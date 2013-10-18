@@ -9,6 +9,7 @@ import java.util.Map;
 import org.pentaho.di.core.Result;
 import org.pentaho.di.core.database.Database;
 import org.pentaho.di.core.exception.KettleDatabaseException;
+import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.core.row.RowMeta;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMeta;
@@ -17,6 +18,7 @@ import org.pentaho.di.job.Job;
 import org.pentaho.di.job.JobEntryListener;
 import org.pentaho.di.job.entry.JobEntryCopy;
 import org.pentaho.di.job.entry.JobEntryInterface;
+import org.pentaho.di.repository.IUser;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
@@ -26,7 +28,7 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDM
  * 
  * @author Rogers Reiche de Mendonca
  * @since nov-2012
- *
+ * 
  */
 public class ProvenanceJobEntryListener extends ParentProvenanceListener
         implements JobEntryListener
@@ -56,30 +58,49 @@ public class ProvenanceJobEntryListener extends ParentProvenanceListener
         if (job instanceof JobDecorator)
         {
             RowMetaInterface fields = new RowMeta();
-            fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));            
-            fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));            
-            fields.addValueMeta(new ValueMeta("id_prosp_step", ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("seq", ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("start_date", ValueMetaInterface.TYPE_DATE));
-            fields.addValueMeta(new ValueMeta("finish_date", ValueMetaInterface.TYPE_DATE));
-            fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
+            fields.addValueMeta(new ValueMeta("id_prosp_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_prosp_workflow",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_workflow",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_prosp_step",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("seq",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("start_date",
+                    ValueMetaInterface.TYPE_DATE));
+            fields.addValueMeta(new ValueMeta("finish_date",
+                    ValueMetaInterface.TYPE_DATE));
+            fields.addValueMeta(new ValueMeta("success",
+                    ValueMetaInterface.TYPE_BOOLEAN));
+            fields.addValueMeta(new ValueMeta("id_user",
+                    ValueMetaInterface.TYPE_INTEGER));
 
             Object[] data = new Object[fields.size()];
             int i = 0;
             this.mapJobEntryCopySeq.put(jec, seq++);
             data[i++] = rootJob.getProspRepoId();
-            data[i++] = rootJob.getProspProcessId(job.getJobMeta());
-            data[i++] = job.getBatchId();            
+            data[i++] = rootJob.getProspWorkflowId(job.getJobMeta());
+            data[i++] = job.getBatchId();
             data[i++] = rootJob.getProspStepId(jec);
             data[i++] = this.mapJobEntryCopySeq.get(jec);
             data[i++] = new Date(System.currentTimeMillis());
             data[i++] = null;
-            data[i++] = false;
+            data[i++] = false;            
+            try
+            {
+                IUser user = job.getRep().getUserInfo();
+                data[i++] = rootJob.getUserId(db, user);
+            }
+            catch (KettleException e)
+            {
+                throw new RuntimeException(e.toString());
+            }
 
             List<DMLOperation> operations = new ArrayList<DMLOperation>();
-            operations.add(new DMLOperation(EnumDMLOperation.INSERT,
-                    tableName, fields, data));
+            operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName,
+                    fields, data));
 
             // Executa os comandos DML
             try
@@ -102,31 +123,40 @@ public class ProvenanceJobEntryListener extends ParentProvenanceListener
             List<DMLOperation> operations = new ArrayList<DMLOperation>();
 
             RowMetaInterface fields = new RowMeta();
-            fields.addValueMeta(new ValueMeta("finish_date", ValueMetaInterface.TYPE_DATE));
-            fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
-            fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("id_prosp_process", ValueMetaInterface.TYPE_INTEGER));            
-            fields.addValueMeta(new ValueMeta("id_process", ValueMetaInterface.TYPE_INTEGER));            
-            fields.addValueMeta(new ValueMeta("id_prosp_step", ValueMetaInterface.TYPE_INTEGER));
-            fields.addValueMeta(new ValueMeta("seq", ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("finish_date",
+                    ValueMetaInterface.TYPE_DATE));
+            fields.addValueMeta(new ValueMeta("success",
+                    ValueMetaInterface.TYPE_BOOLEAN));
+            fields.addValueMeta(new ValueMeta("id_prosp_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_prosp_workflow",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_workflow",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_prosp_step",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("seq",
+                    ValueMetaInterface.TYPE_INTEGER));
 
             Object[] data = new Object[fields.size()];
             int i = 0;
             data[i++] = new Date(System.currentTimeMillis());
             data[i++] = (result.getNrErrors() == 0);
             data[i++] = rootJob.getProspRepoId();
-            data[i++] = rootJob.getProspProcessId(job.getJobMeta());
-            data[i++] = job.getBatchId();            
+            data[i++] = rootJob.getProspWorkflowId(job.getJobMeta());
+            data[i++] = job.getBatchId();
             data[i++] = rootJob.getProspStepId(jec);
             data[i++] = this.mapJobEntryCopySeq.get(jec);
 
             String[] sets = { "finish_date", "success" };
 
-            String[] codes = { "id_prosp_repository", "id_prosp_process", "id_process",  "id_prosp_step", "seq" };
+            String[] codes = { "id_prosp_repository", "id_prosp_workflow",
+                    "id_workflow", "id_prosp_step", "seq" };
 
             String[] condition = { "=", "=", "=", "=", "=" };
 
-            operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName, fields, data, codes, condition, sets));
+            operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName,
+                    fields, data, codes, condition, sets));
 
             // Executa os comandos DML
             try
