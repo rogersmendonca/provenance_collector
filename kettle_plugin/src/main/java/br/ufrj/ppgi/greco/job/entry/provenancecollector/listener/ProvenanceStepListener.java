@@ -17,6 +17,7 @@ import org.pentaho.di.trans.step.StepInterface;
 import org.pentaho.di.trans.step.StepListener;
 import org.pentaho.di.trans.step.StepMeta;
 
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
@@ -31,16 +32,14 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDM
 public class ProvenanceStepListener extends ParentProvenanceListener implements
         StepListener
 {
-    protected StepInterface step;
     private String tableName;
     private JobDecorator rootJob;
     private TransProv transProv;
 
-    public ProvenanceStepListener(Database db, StepInterface step,
-            JobDecorator rootJob, TransProv transProv)
+    public ProvenanceStepListener(Database db, JobDecorator rootJob,
+            TransProv transProv)
     {
         super(db);
-        this.step = step;
         this.tableName = "retrosp_step";
         this.rootJob = rootJob;
         this.transProv = transProv;
@@ -49,9 +48,12 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
     @Override
     public void stepActive(Trans trans, StepMeta stepMeta, StepInterface step)
     {
-        // Insere uma linha na tabela retrosp_jobentry,
-        // registrando o inicio da execucao do Step
+        // Inicializacoes
+        Long workflowId = trans.getBatchId();
+        Long stepId = transProv.generateStepMetaSeq(step);
 
+        // Insere uma linha na tabela retrosp_step, registrando o inicio da
+        // execucao do Step
         RowMetaInterface fields = new RowMeta();
         fields.addValueMeta(new ValueMeta("id_prosp_repository",
                 ValueMetaInterface.TYPE_INTEGER));
@@ -77,9 +79,9 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
 
         data[i++] = rootJob.getProspRepoId();
         data[i++] = rootJob.getProspWorkflowId(transProv.getTransMeta());
-        data[i++] = transProv.getBatchId();
+        data[i++] = workflowId;
         data[i++] = rootJob.getProspStepId(stepMeta);
-        data[i++] = transProv.generateStepMetaSeq(step);
+        data[i++] = stepId;
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = null;
         data[i++] = false;
@@ -108,6 +110,26 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
             {
                 throw new RuntimeException(e.toString());
             }
+        }
+
+        // Insere os parametros do Step (caso seja fine-grained)
+        try
+        {
+            StepParameterCmd.execute(rootJob, db, stepMeta, workflowId, stepId);
+            if (!db.getConnection().getAutoCommit())
+                db.commit(true);
+        }
+        catch (Exception e)
+        {
+            try
+            {
+                db.rollback();
+            }
+            catch (KettleDatabaseException e1)
+            {
+                throw new RuntimeException(e.toString());
+            }
+            throw new RuntimeException(e.toString());
         }
     }
 

@@ -65,7 +65,6 @@ import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.www.SocketRepository;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStep;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.FineGrainedStepMap;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.IRetrospJobListener;
@@ -135,18 +134,18 @@ public class JobDecorator extends Job
     private void setRepoMetaAndLocation(Database db) throws KettleException
     {
         this.repoMeta = this.getRep().getRepositoryMeta();
-        this.repoLoc = null;
+        setRepoLoc(null);
         if (this.repoMeta instanceof KettleFileRepositoryMeta)
         {
-            this.repoLoc = ((KettleFileRepositoryMeta) this.repoMeta)
-                    .getBaseDirectory();
+            setRepoLoc(((KettleFileRepositoryMeta) this.repoMeta)
+                    .getBaseDirectory());
         }
         else if (this.repoMeta instanceof KettleDatabaseRepositoryMeta)
         {
             try
             {
-                this.repoLoc = ((KettleDatabaseRepositoryMeta) this.repoMeta)
-                        .getConnection().getURL();
+                setRepoLoc(((KettleDatabaseRepositoryMeta) this.repoMeta)
+                        .getConnection().getURL());
             }
             catch (KettleDatabaseException e)
             {
@@ -462,12 +461,14 @@ public class JobDecorator extends Job
                 SQL.append("SELECT t1.id_user ");
                 SQL.append("FROM " + tableName + " t1 ");
                 SQL.append("WHERE t1.login = ? ");
+                SQL.append("AND t1.id_repository = ? ");
                 fields = new RowMeta();
-                fields.addValueMeta(new ValueMeta("login",
-                        ValueMetaInterface.TYPE_STRING));
+                fields.addValueMeta(new ValueMeta("login", ValueMetaInterface.TYPE_STRING));
+                fields.addValueMeta(new ValueMeta("id_repository", ValueMetaInterface.TYPE_INTEGER));
                 data = new Object[fields.size()];
                 int i = 0;
                 data[i++] = login;
+                data[i++] = getProspRepoId();
                 ResultSet res = db.openQuery(SQL.toString(), fields, data);
                 try
                 {
@@ -490,6 +491,8 @@ public class JobDecorator extends Job
                 {
                     userId = generateId(db, tableName);
                     fields = new RowMeta();
+                    fields.addValueMeta(new ValueMeta("id_repository",
+                            ValueMetaInterface.TYPE_INTEGER));
                     fields.addValueMeta(new ValueMeta("id_user",
                             ValueMetaInterface.TYPE_INTEGER));
                     fields.addValueMeta(new ValueMeta("login",
@@ -506,6 +509,7 @@ public class JobDecorator extends Job
                             && !login.equals(UNDEFINED_USER))
                     {
                         IUser user = securityManager.loadUserInfo(login);
+                        data[i++] = getProspRepoId();
                         data[i++] = userId;
                         data[i++] = user.getLogin();
                         data[i++] = user.getName();
@@ -513,6 +517,7 @@ public class JobDecorator extends Job
                     }
                     else
                     {
+                        data[i++] = getProspRepoId();
                         data[i++] = userId;
                         data[i++] = login;
                         data[i++] = login;
@@ -915,10 +920,6 @@ public class JobDecorator extends Job
                     // INSERE STEP NO MAPEAMENTO
                     prospStepMetaMap.get(stepMeta.getParentTransMeta()).put(
                             stepMeta, prospStepId);
-
-                    // Rogers (30/09/2013)
-                    ParentProspStepParamCmd.get((StepMeta) step).execute(this,
-                            db, step, prospWorkflowId);
                 }
             }
             else
@@ -2607,6 +2608,12 @@ public class JobDecorator extends Job
     public String getRepoLoc()
     {
         return this.repoLoc;
+    }
+
+    private void setRepoLoc(String repoLoc)
+    {
+        this.repoLoc = (repoLoc != null) ? repoLoc.replaceAll("\\\\", "/")
+                : null;
     }
 
     public DatabaseMeta getProvConnection()

@@ -1,11 +1,10 @@
 package br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl;
 
-import org.pentaho.di.core.database.Database;
-import org.pentaho.di.core.exception.KettleException;
+import java.util.Map;
+
 import org.pentaho.di.trans.step.StepMeta;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 
 /**
  * 
@@ -13,10 +12,13 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
  * @since out-2013
  * 
  */
-public class NullParamCmd extends ParentProspStepParamCmd
+public class NullParamCmd extends StepParameterCmd
 {
-    public void insertProvenance(JobDecorator jobRoot, Database db,
-            StepMeta sm, Long processId) throws KettleException
+
+    @Override
+    public void populaStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
+
     }
+
 }

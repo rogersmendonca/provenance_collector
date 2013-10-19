@@ -18,7 +18,7 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.listener.IRetrospJobList
  * 
  * @author Rogers Reiche de Mendonca
  * @since nov-2012
- *
+ * 
  */
 public class ProvJobEntryJobRunner implements IJobRunnable
 {
@@ -71,12 +71,17 @@ public class ProvJobEntryJobRunner implements IJobRunnable
         }
         finally
         {
-            // Rogers (Nov/2012): Insere uma linha com o id do job executado
+            // Rogers (out/2013): Insere uma linha com:
+            // 1- id_prosp_repository = id do repositorio
+            // 2- id_workflow = id do job executado
             RowMetaInterface fields = new RowMeta();
-            fields.addValueMeta(new ValueMeta("id_job",
+            fields.addValueMeta(new ValueMeta("id_prosp_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_workflow",
                     ValueMetaInterface.TYPE_INTEGER));
             result.getRows().clear();
-            RowMetaAndData row = new RowMetaAndData(fields, job.getBatchId());
+            RowMetaAndData row = new RowMetaAndData(fields,
+                    job.getProspRepoId(), job.getBatchId());
             result.getRows().add(row);
 
             try

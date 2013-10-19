@@ -1,51 +1,35 @@
 package br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl;
 
-import org.pentaho.di.core.database.Database;
-import org.pentaho.di.core.exception.KettleException;
+import java.util.Map;
+
 import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.steps.mergejoin.MergeJoinMeta;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 
 /**
- * Command registro dos dados de proveniencia prospectiva do step MERGE_JOIN.
  * 
  * @author Rogers Reiche de Mendonca
  * @since out-2013
  * 
  */
-public class MergeJoinParamCmd extends ParentProspStepParamCmd
+public class MergeJoinParamCmd extends StepParameterCmd
 {
-
     @Override
-    public void insertProvenance(JobDecorator jobRoot, Database db,
-            StepMeta sm, Long processId) throws KettleException
+    public void populaStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
         MergeJoinMeta mjm = (MergeJoinMeta) sm.getStepMetaInterface();
-
+        
         // First Step
         String[] steps = mjm.getStepIOMeta().getInfoStepnames();
-        if (steps[0] != null)
-        {
-            insertProspStepParam(jobRoot, db, sm, processId, "FIRST_STEP",
-                    steps[0]);
-        }
+        stepParamMap.put("step1", steps[0]);
 
         // Second Step
-        if (steps[1] != null)
-        {
-            insertProspStepParam(jobRoot, db, sm, processId, "SECOND_STEP",
-                    steps[1]);
-        }
+        stepParamMap.put("step2", steps[1]);
 
         // Join Type
         String joinType = mjm.getJoinType();
-        if (joinType != null)
-        {
-            insertProspStepParam(jobRoot, db, sm, processId, "JOIN_TYPE",
-                    joinType);
-        }
+        stepParamMap.put("join_type", joinType);
 
         // Keys 1
         String[] keyFields1 = mjm.getKeyFields1();
@@ -53,8 +37,7 @@ public class MergeJoinParamCmd extends ParentProspStepParamCmd
         {
             for (int k = 0; k < keyFields1.length; k++)
             {
-                insertProspStepParam(jobRoot, db, sm, processId, "KEYS1_" + k,
-                        keyFields1[k]);
+                stepParamMap.put("keys_1_" + k, keyFields1[k]);
             }
         }
 
@@ -64,8 +47,7 @@ public class MergeJoinParamCmd extends ParentProspStepParamCmd
         {
             for (int k = 0; k < keyFields2.length; k++)
             {
-                insertProspStepParam(jobRoot, db, sm, processId, "KEYS2_" + k,
-                        keyFields2[k]);
+                stepParamMap.put("keys_2_" + k, keyFields2[k]);
             }
         }
     }

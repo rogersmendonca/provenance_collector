@@ -3,24 +3,27 @@
 -- CREATE TABLE prosp_repository
 --
 
-CREATE TABLE IF NOT EXISTS user (
-  id_user int(11) NOT NULL auto_increment,
-  login varchar(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS prosp_repository (
+  id_repository int(11) NOT NULL,
   name varchar(255) NOT NULL,
-  description text default NULL,
-  PRIMARY KEY (id_user)
+  location varchar(255) NOT NULL,
+  PRIMARY KEY (id_repository)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 --
--- CREATE TABLE prosp_repository
+-- CREATE TABLE user
 --
 
-CREATE TABLE IF NOT EXISTS prosp_repository (
-  id_repository int(11) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS user (
+  id_repository int(11) NOT NULL,
+  id_user int(11) NOT NULL,
+  login varchar(255) NOT NULL,
   name varchar(255) NOT NULL,
-  location varchar(255) NOT NULL,
-  PRIMARY KEY (id_repository)
+  description text default NULL,
+  PRIMARY KEY (id_repository, id_user),
+  KEY fk_repository (id_repository),
+  CONSTRAINT cstr_user_fk_repository FOREIGN KEY (id_repository) REFERENCES prosp_repository (id_repository)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -46,13 +49,13 @@ CREATE TABLE IF NOT EXISTS prosp_workflow (
   id_parent int(11) NULL,  
   PRIMARY KEY (id_repository, id_workflow),  
   KEY fk_repository (id_repository),
-  KEY fk_created_user (id_created_user),
-  KEY fk_modified_user (id_modified_user),
+  KEY fk_created_user (id_repository, id_created_user),
+  KEY fk_modified_user (id_repository, id_modified_user),
   KEY fk_root (id_root_repository, id_root),
   KEY fk_parent (id_parent_repository, id_parent),  
   CONSTRAINT cstr_prosp_workflow_fk_repository FOREIGN KEY (id_repository) REFERENCES prosp_repository (id_repository),
-  CONSTRAINT cstr_prosp_workflow_fk_created FOREIGN KEY (id_created_user) REFERENCES user (id_user),
-  CONSTRAINT cstr_prosp_workflow_fk_modified FOREIGN KEY (id_modified_user) REFERENCES user (id_user),
+  CONSTRAINT cstr_prosp_workflow_fk_created FOREIGN KEY (id_repository, id_created_user) REFERENCES user (id_repository, id_user),
+  CONSTRAINT cstr_prosp_workflow_fk_modified FOREIGN KEY (id_repository, id_modified_user) REFERENCES user (id_repository, id_user),
   CONSTRAINT cstr_prosp_workflow_fk_root FOREIGN KEY (id_root_repository, id_root) REFERENCES prosp_workflow (id_repository, id_workflow),
   CONSTRAINT cstr_prosp_workflow_fk_parent FOREIGN KEY (id_parent_repository, id_parent) REFERENCES prosp_workflow (id_repository, id_workflow)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
@@ -64,7 +67,7 @@ CREATE TABLE IF NOT EXISTS prosp_workflow (
 --
 
 CREATE TABLE IF NOT EXISTS prosp_note (
-  id_note int(11) NOT NULL auto_increment,
+  id_note int(11) NOT NULL,
   text text NOT NULL,  
   PRIMARY KEY (id_note)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
@@ -116,8 +119,7 @@ CREATE TABLE IF NOT EXISTS prosp_step_parameter (
   id_workflow int(11) NOT NULL,
   id_step int(11) NOT NULL,  
   id_step_param int(11) NOT NULL,      
-  name varchar(255) NOT NULL, 
-  value text default NULL,  
+  param_name varchar(255) NOT NULL,  
   PRIMARY KEY (id_repository, id_workflow, id_step, id_step_param),
   KEY fk_step (id_repository, id_workflow, id_step),  
   CONSTRAINT cstr_prosp_step_field_fk_step FOREIGN KEY (id_repository, id_workflow, id_step) REFERENCES prosp_step (id_repository, id_workflow, id_step)
@@ -198,10 +200,30 @@ CREATE TABLE IF NOT EXISTS retrosp_step (
   PRIMARY KEY (id_prosp_repository, id_prosp_workflow, id_workflow, id_prosp_step, seq),  
   KEY fk_workflow (id_prosp_repository, id_prosp_workflow, id_workflow),
   KEY fk_prosp_step (id_prosp_repository, id_prosp_workflow, id_prosp_step),
-  KEY fk_user (id_user),
+  KEY fk_user (id_prosp_repository, id_user),
   CONSTRAINT cstr_retrosp_step_fk_workflow FOREIGN KEY (id_prosp_repository, id_prosp_workflow, id_workflow) REFERENCES retrosp_workflow (id_prosp_repository, id_prosp_workflow, id_workflow),
   CONSTRAINT cstr_retrosp_step_fk_prosp_step FOREIGN KEY (id_prosp_repository, id_prosp_workflow, id_prosp_step) REFERENCES prosp_step (id_repository, id_workflow, id_step),
-  CONSTRAINT cstr_retrosp_step_fk_user FOREIGN KEY (id_user) REFERENCES user (id_user)
+  CONSTRAINT cstr_retrosp_step_fk_user FOREIGN KEY (id_prosp_repository, id_user) REFERENCES user (id_repository, id_user)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+--
+-- CREATE TABLE retrosp_step_parameter
+--
+                           
+CREATE TABLE IF NOT EXISTS retrosp_step_parameter (
+  id_prosp_repository int(11) NOT NULL,
+  id_prosp_workflow int(11) NOT NULL,  
+  id_workflow int(11) NOT NULL,   
+  id_prosp_step int(11) NOT NULL,    
+  seq int(11) NOT NULL,
+  id_prosp_step_param int(11) NOT NULL,  
+  param_value text default NULL,    
+  PRIMARY KEY (id_prosp_repository, id_prosp_workflow, id_workflow, id_prosp_step, seq, id_prosp_step_param),  
+  KEY fk_prosp_step_param (id_prosp_repository, id_prosp_workflow, id_prosp_step, id_prosp_step_param),
+  KEY fk_step (id_prosp_repository, id_prosp_workflow, id_workflow, id_prosp_step, seq),
+  CONSTRAINT cstr_retrosp_step_param_fk_prosp_step_param FOREIGN KEY (id_prosp_repository, id_prosp_workflow, id_prosp_step, id_prosp_step_param) REFERENCES prosp_step_parameter (id_repository, id_workflow, id_step, id_step_param),
+  CONSTRAINT cstr_retrosp_step_param_fk_step FOREIGN KEY (id_prosp_repository, id_prosp_workflow, id_workflow, id_prosp_step, seq) REFERENCES retrosp_step (id_prosp_repository, id_prosp_workflow, id_workflow, id_prosp_step, seq)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

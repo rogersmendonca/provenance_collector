@@ -1,50 +1,39 @@
 package br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl;
 
-import org.pentaho.di.core.database.Database;
+import java.util.Map;
+
 import org.pentaho.di.core.database.DatabaseMeta;
-import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.steps.tableinput.TableInputMeta;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 
 /**
- * Command registro dos dados de proveniencia prospectiva do step TABLE_INPUT.
  * 
  * @author Rogers Reiche de Mendonca
  * @since out-2013
  * 
  */
-public class TableInputParamCmd extends ParentProspStepParamCmd
+public class TableInputParamCmd extends StepParameterCmd
 {
-    public void insertProvenance(JobDecorator jobRoot, Database db,
-            StepMeta sm, Long processId) throws KettleException
+    @Override
+    public void populaStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
         TableInputMeta tim = (TableInputMeta) sm.getStepMetaInterface();
 
         // Database connection
         DatabaseMeta databaseMeta = tim.getDatabaseMeta();
-        if (databaseMeta != null)
-        {
-            insertProspStepParam(jobRoot, db, sm, processId, "CONNECTION",
-                    databaseMeta.getName());
-        }
+
+        stepParamMap.put("connection",
+                (databaseMeta != null) ? databaseMeta.getName() : null);
 
         // SQL
         String sqlInput = tim.getSQL();
-        if (sqlInput != null)
-        {
-            insertProspStepParam(jobRoot, db, sm, processId, "SQL", sqlInput);
-        }
+        stepParamMap.put("sql", sqlInput);
 
         // LOOKUP_STEP
         StepMeta lookupStep = tim.getLookupFromStep();
-        if (lookupStep != null)
-        {
-            insertProspStepParam(jobRoot, db, sm, processId, "LOOKUP_STEP",
-                    lookupStep.getName());
-        }
-
+        stepParamMap.put("lookup", (lookupStep != null) ? lookupStep.getName()
+                : null);
     }
 }

@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.pentaho.di.i18n.BaseMessages;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.JobEntryProvenanceCollector;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumETLOperation;
 
@@ -32,7 +32,7 @@ public class FineGrainedStep
     private EnumETLOperation operation;
     private String smiClassName;
     private String cmdClassName;
-    private ParentProspStepParamCmd cmd;
+    private StepParameterCmd cmd;
 
     public FineGrainedStep()
     {
@@ -96,13 +96,13 @@ public class FineGrainedStep
     }
 
     @Transient
-    public ParentProspStepParamCmd getCmd()
+    public StepParameterCmd getCmd()
     {
         if (this.cmd == null)
         {
             try
             {
-                this.cmd = (ParentProspStepParamCmd) Class.forName(
+                this.cmd = (StepParameterCmd) Class.forName(
                         cmdClassName).newInstance();
             }
             catch (InstantiationException e)

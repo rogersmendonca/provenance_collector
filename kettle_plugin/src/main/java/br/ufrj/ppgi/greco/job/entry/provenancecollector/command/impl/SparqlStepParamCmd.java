@@ -1,26 +1,18 @@
 package br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
-import org.pentaho.di.core.database.Database;
-import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.step.StepMetaInterface;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.ParentProspStepParamCmd;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 
-/**
- * Command registro dos dados de proveniencia prospectiva do step SPARQL_INPUT.
- * 
- * @author Rogers Reiche de Mendonca
- * @since out-2013
- * 
- */
-public class SparqlStepParamCmd extends ParentProspStepParamCmd
+public class SparqlStepParamCmd extends StepParameterCmd
 {
-    public void insertProvenance(JobDecorator rootJob, Database db,
-            StepMeta sm, Long processId) throws KettleException
+
+    @Override
+    public void populaStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
         StepMetaInterface smi = sm.getStepMetaInterface();
 
@@ -35,25 +27,13 @@ public class SparqlStepParamCmd extends ParentProspStepParamCmd
                     .getMethod("getQueryString").invoke(smi);
 
             // Endpoint URI
-            if (endpoint != null)
-            {
-                insertProspStepParam(rootJob, db, sm, processId,
-                        "ENDPOINT_URI", endpoint);
-            }
+            stepParamMap.put("ENDPOINT_URI", endpoint);
 
             // Default Graph
-            if (defaultGraph != null)
-            {
-                insertProspStepParam(rootJob, db, sm, processId,
-                        "DEFAULT_GRAPH", defaultGraph);
-            }
+            stepParamMap.put("DEFAULT_GRAPH", defaultGraph);
 
             // SPARQL
-            if (sparqlInput != null)
-            {
-                insertProspStepParam(rootJob, db, sm, processId, "SPARQL",
-                        sparqlInput);
-            }
+            stepParamMap.put("SPARQL", sparqlInput);
         }
         catch (IllegalAccessException e)
         {

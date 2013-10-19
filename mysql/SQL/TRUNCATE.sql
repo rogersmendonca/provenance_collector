@@ -1,4 +1,5 @@
 TRUNCATE TABLE retrosp_row_field;
+TRUNCATE TABLE retrosp_step_parameter;
 TRUNCATE TABLE retrosp_step;
 TRUNCATE TABLE prosp_hop_field;
 TRUNCATE TABLE prosp_hop;
@@ -11,5 +12,5 @@ ALTER TABLE prosp_workflow CHANGE id_root id_root INT( 11 ) NULL;
 UPDATE prosp_workflow SET id_root = NULL, id_parent = NULL;
 TRUNCATE TABLE prosp_workflow;
 ALTER TABLE prosp_workflow CHANGE id_root id_root INT( 11 ) NOT NULL;
-TRUNCATE TABLE prosp_repository;
 TRUNCATE TABLE user;
+TRUNCATE TABLE prosp_repository;
