@@ -1,3 +1,5 @@
+-- TODO: ATUALIZAR A PARTIR DO PROVENANCE COLLECTOR DDL CREATE
+
 -- --------------------------------------------------------
 --
 -- CREATE TABLE prosp_repository
