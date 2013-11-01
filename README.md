@@ -1,6 +1,6 @@
 Provenance Collector Agent 
 ===========================
-Description: Pentaho Kettle Job Entry that collects retrospective and prospective provenance data during a Kettle Job execution.
+Description: Pentaho Data Integration (a.k.a. Kettle) Job Entry that collects retrospective and prospective provenance data during a Kettle Job execution.
 
 Author: Rogers Reiche de Mendonça (rogers.rj@gmail.com)
 
