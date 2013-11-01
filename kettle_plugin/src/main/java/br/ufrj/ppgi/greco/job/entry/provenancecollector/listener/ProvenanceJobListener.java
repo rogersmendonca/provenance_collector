@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.pentaho.di.core.database.Database;
 import org.pentaho.di.core.exception.KettleException;
+import org.pentaho.di.core.logging.LoggingObjectInterface;
 import org.pentaho.di.core.row.RowMeta;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMeta;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.job.Job;
 
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.JobEntryProvenanceCollector;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
@@ -20,7 +22,7 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDM
  * 
  * @author Rogers Reiche de Mendonca
  * @since nov-2012
- *
+ * 
  */
 public class ProvenanceJobListener extends ParentProvenanceListener implements
         IRetrospJobListener
@@ -39,53 +41,93 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
     public void jobStarted(Job job) throws KettleException
     {
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_workflow", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_workflow", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("start_date", ValueMetaInterface.TYPE_DATE));
-        fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_prosp_repository",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_workflow",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_workflow",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("start_date",
+                ValueMetaInterface.TYPE_DATE));
+        fields.addValueMeta(new ValueMeta("success",
+                ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_root_prosp_repository",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_root_prosp_workflow",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_root",
+                ValueMetaInterface.TYPE_INTEGER));
+        LoggingObjectInterface parentJobEntry = job.getParent();
+        Job parentJob = job.getParentJob();
+        if ((parentJob != null)
+                && !(parentJobEntry instanceof JobEntryProvenanceCollector))
+        {
+            fields.addValueMeta(new ValueMeta("id_parent_prosp_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_parent_prosp_workflow",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_parent",
+                    ValueMetaInterface.TYPE_INTEGER));
+        }
 
         Object[] data = new Object[fields.size()];
         int i = 0;
         data[i++] = rootJob.getProspRepoId();
         data[i++] = rootJob.getProspWorkflowId(job.getJobMeta());
-        data[i++] = job.getBatchId();        
-        data[i++] = new Date(System.currentTimeMillis());        
+        data[i++] = job.getBatchId();
+        data[i++] = new Date(System.currentTimeMillis());
         data[i++] = false;
+        data[i++] = rootJob.getProspRepoId();
+        data[i++] = rootJob.getProspRepoId();
+        data[i++] = rootJob.getBatchId();
+        if ((parentJob != null)
+                && !(parentJobEntry instanceof JobEntryProvenanceCollector))
+        {
+            data[i++] = rootJob.getProspRepoId();
+            data[i++] = rootJob.getProspRepoId();
+            data[i++] = parentJob.getBatchId();
+        }
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName, fields, data));
+        operations.add(new DMLOperation(EnumDMLOperation.INSERT, tableName,
+                fields, data));
 
         executeDML(db, operations);
     }
 
     @Override
-    public void jobFinished(Job job, boolean success)
-            throws KettleException
+    public void jobFinished(Job job, boolean success) throws KettleException
     {
         RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("finish_date", ValueMetaInterface.TYPE_DATE));
-        fields.addValueMeta(new ValueMeta("success", ValueMetaInterface.TYPE_BOOLEAN));
-        fields.addValueMeta(new ValueMeta("id_prosp_repository", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_prosp_workflow", ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_workflow", ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("finish_date",
+                ValueMetaInterface.TYPE_DATE));
+        fields.addValueMeta(new ValueMeta("success",
+                ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_prosp_repository",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_prosp_workflow",
+                ValueMetaInterface.TYPE_INTEGER));
+        fields.addValueMeta(new ValueMeta("id_workflow",
+                ValueMetaInterface.TYPE_INTEGER));
 
         Object[] data = new Object[fields.size()];
         int i = 0;
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = success;
-        data[i++] = rootJob.getProspRepoId();        
+        data[i++] = rootJob.getProspRepoId();
         data[i++] = rootJob.getProspWorkflowId(job.getJobMeta());
         data[i++] = job.getBatchId();
 
         String[] sets = { "finish_date", "success" };
 
-        String[] codes = { "id_prosp_repository", "id_prosp_workflow", "id_workflow" };
+        String[] codes = { "id_prosp_repository", "id_prosp_workflow",
+                "id_workflow" };
 
         String[] condition = { "=", "=", "=" };
 
         List<DMLOperation> operations = new ArrayList<DMLOperation>();
-        operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName, fields, data, codes, condition, sets));
+        operations.add(new DMLOperation(EnumDMLOperation.UPDATE, tableName,
+                fields, data, codes, condition, sets));
 
         // Executa os comandos DML
         executeDML(db, operations);

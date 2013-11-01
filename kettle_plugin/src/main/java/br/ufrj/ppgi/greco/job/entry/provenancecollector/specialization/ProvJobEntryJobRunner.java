@@ -73,15 +73,18 @@ public class ProvJobEntryJobRunner implements IJobRunnable
         {
             // Rogers (out/2013): Insere uma linha com:
             // 1- id_prosp_repository = id do repositorio
-            // 2- id_workflow = id do job executado
+            // 2- id_prosp_workflow = id da composicao do job (prospectiva)
+            // 2- id_workflow = id da execucao do job (retrospectiva)
             RowMetaInterface fields = new RowMeta();
             fields.addValueMeta(new ValueMeta("id_prosp_repository",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("id_prosp_workflow",
                     ValueMetaInterface.TYPE_INTEGER));
             fields.addValueMeta(new ValueMeta("id_workflow",
                     ValueMetaInterface.TYPE_INTEGER));
             result.getRows().clear();
             RowMetaAndData row = new RowMetaAndData(fields,
-                    job.getProspRepoId(), job.getBatchId());
+                    job.getProspRepoId(), job.getProspJobId(), job.getBatchId());
             result.getRows().add(row);
 
             try
