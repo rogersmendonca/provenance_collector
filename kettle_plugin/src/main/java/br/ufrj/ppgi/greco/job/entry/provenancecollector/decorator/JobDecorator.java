@@ -275,18 +275,23 @@ public class JobDecorator extends Job
                 // PASSOS DO PROCESSO
                 if (workflowMeta instanceof JobMeta)
                 {
-                    // JOB ENTRIES e JOB HOPS
-                    List<JobHopMeta> jobHops = ((JobMeta) workflowMeta)
-                            .getJobhops();
+                    JobMeta jm = (JobMeta) workflowMeta;
+                    
+                    // INSERE JOB ENTRIES
+                    for(int i = 0; i < jm.nrJobEntries(); i++) 
+                    {
+                        insertProspHopStep(db, jm.getJobCopies().get(i), prospWorkflowId);
+                    }
+                                        
+                    // INSERE JOB HOPS
+                    List<JobHopMeta> jobHops = jm.getJobhops();
                     for (JobHopMeta hop : jobHops)
                     {
                         // FROM
                         JobEntryCopy from = hop.getFromEntry();
-                        insertProspHopStep(db, from, prospWorkflowId);
 
                         // TO
                         JobEntryCopy to = hop.getToEntry();
-                        insertProspHopStep(db, to, prospWorkflowId);
 
                         // JOB HOP
                         insertProspHop(db, hop, from, to, prospWorkflowId);
@@ -294,22 +299,28 @@ public class JobDecorator extends Job
                 }
                 else if (workflowMeta instanceof TransMeta)
                 {
+                    TransMeta tm = (TransMeta) workflowMeta;
+                    
+                    // INSERE KETTLE STEPS
+                    for(int i = 0; i < tm.nrSteps(); i++) 
+                    {
+                        insertProspHopStep(db, tm.getSteps().get(i), prospWorkflowId);
+                    }
+                    
+                    
                     // KETTLE STEPS e TRANS HOPS
-                    int totalHops = ((TransMeta) workflowMeta).nrTransHops();
+                    int totalHops = tm.nrTransHops();
                     for (int t = 0; t < totalHops; t++)
                     {
-                        TransHopMeta hop = ((TransMeta) workflowMeta)
-                                .getTransHop(t);
+                        TransHopMeta hop = tm.getTransHop(t);
 
                         // FROM
                         StepMeta from = hop.getFromStep();
-                        insertProspHopStep(db, from, prospWorkflowId);
 
                         // TO
                         StepMeta to = hop.getToStep();
-                        insertProspHopStep(db, to, prospWorkflowId);
 
-                        // JOB HOP
+                        // TRANSFORMATION HOP
                         insertProspHop(db, hop, from, to, prospWorkflowId);
                     }
                 }

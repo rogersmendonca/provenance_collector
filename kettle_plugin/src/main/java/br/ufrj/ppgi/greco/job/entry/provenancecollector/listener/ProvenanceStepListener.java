@@ -48,9 +48,14 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
     @Override
     public void stepActive(Trans trans, StepMeta stepMeta, StepInterface step)
     {
+
         // Inicializacoes
         Long workflowId = trans.getBatchId();
         Long stepId = transProv.generateStepMetaSeq(step);
+        
+        if (stepMeta.getName().trim().equalsIgnoreCase("NTriple Generator")) {
+            stepId = stepId * 1;
+        }
 
         // Insere uma linha na tabela retrosp_step, registrando o inicio da
         // execucao do Step
