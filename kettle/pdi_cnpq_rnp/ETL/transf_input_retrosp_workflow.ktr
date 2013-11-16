@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;08 21:56:21.210</modified_date>
+  <modified_date>2013&#47;11&#47;16 18:31:15.022</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,9 +168,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Input Retrosp. Provenance - Workflow</from><to>Generate Resource URI WF Exec.</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Resource URI WF Exec.</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Retrosp. Provenance - Workflow</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Input Retrosp. Provenance - Workflow</from><to>Generate Resource URI - WF Exec.</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Resource URI - WF Exec.</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Retrosp. Provenance - Workflow</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Generate Resource URI WF Exec.</name>
+    <name>Generate Resource URI - WF Exec.</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -204,7 +204,9 @@ var uri_exec = replace(uri_base_exec,&apos;&lt;NAME&gt;&apos;,prosp_name,&apos;&
 var uri_exec_root = replace(uri_base_exec,&apos;&lt;NAME&gt;&apos;,prosp_root_name,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_root_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_root_prosp_workflow,&apos;&lt;ID_EXECUTION&gt;&apos;,id_root);
 var uri_exec_parent = replace(uri_base_exec,&apos;&lt;NAME&gt;&apos;,prosp_parent_name,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_parent_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_root_prosp_workflow,&apos;&lt;ID_EXECUTION&gt;&apos;,id_parent);
 var uri_comp = replace(uri_base_comp,&apos;&lt;NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow);
-var title = replace(title_fmt,&apos;&lt;NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;ID_EXECUTION&gt;&apos;,id_workflow);</jsScript_script>
+var title = replace(title_fmt,&apos;&lt;NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;ID_EXECUTION&gt;&apos;,id_workflow);
+
+var workflow_system = &apos;http:&#47;&#47;kettle.pentaho.com&#47;&apos;;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>uri_exec</name>
         <rename>uri_exec</rename>
         <type>String</type>
@@ -231,6 +233,12 @@ var title = replace(title_fmt,&apos;&lt;NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID
         <replace>N</replace>
       </field>      <field>        <name>title</name>
         <rename>title</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>workflow_system</name>
+        <rename>workflow_system</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>

@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;01 20:09:33.663</modified_date>
+  <modified_date>2013&#47;11&#47;16 18:03:36.271</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,9 +168,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Input Retrosp. Provenance - Step Parameter</from><to>Generate Resource URI Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Retrosp. Provenance - Step Parameter</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Resource URI Step Param</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Input Retrosp. Provenance - Step Parameter</from><to>Generate Resource URI - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Retrosp. Provenance - Step Parameter</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Resource URI - Step Param</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Generate Resource URI Step Param</name>
+    <name>Generate Resource URI - Step Param</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -195,11 +195,11 @@ var param_name2 = defineName(param_name);
 
 var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;;
 var uri_base_exec = uri_prefix + &apos;WorkflowExecutionArtifact&#47;&lt;PARAM_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;P_ID_STEP&gt;&lt;ID_WORKFLOW&gt;&lt;ID_SEQ&gt;&lt;ID_PARAM&gt;&apos;;
-var uri_base_comp = uri_prefix + &apos;ParameterVariable&#47;ParameterVariable&#47;&lt;P_W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;_&lt;P_STEP_NAME&gt;&lt;P_ID_STEP&gt;_&lt;PARAM_NAME&gt;&lt;ID_PARAM&gt;&apos;;
+var uri_base_comp = uri_prefix + &apos;ParameterVariable&#47;ParameterVariable&#47;&lt;PARAM_NAME&gt;_&lt;ID_STEP_TYPE&gt;&lt;ID_PARAM&gt;&apos;;
 var uri_base_step_exec = uri_prefix + &apos;WorkflowExecutionProcess&#47;&lt;STEP_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;P_ID_STEP&gt;&lt;ID_SEQ&gt;&apos;;
 
 var uri_exec = replace(uri_base_exec,&apos;&lt;PARAM_NAME&gt;&apos;,param_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;ID_SEQ&gt;&apos;,seq,&apos;&lt;ID_PARAM&gt;&apos;,id_prosp_step_param);
-var uri_comp = replace(uri_base_comp,&apos;&lt;P_W_NAME&gt;&apos;,w_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;P_STEP_NAME&gt;&apos;,step_name2,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;PARAM_NAME&gt;&apos;,param_name2,&apos;&lt;ID_PARAM&gt;&apos;,id_prosp_step_param);
+var uri_comp = replace(uri_base_comp,&apos;&lt;PARAM_NAME&gt;&apos;,param_name2,&apos;&lt;ID_STEP_TYPE&gt;&apos;,id_prosp_step_type,&apos;&lt;ID_PARAM&gt;&apos;,id_prosp_step_param);
 var uri_step_exec = replace(uri_base_step_exec,&apos;&lt;STEP_NAME&gt;&apos;,step_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;ID_SEQ&gt;&apos;,seq);</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>uri_exec</name>
         <rename>uri_exec</rename>
@@ -244,6 +244,7 @@ var uri_step_exec = replace(uri_base_step_exec,&apos;&lt;STEP_NAME&gt;&apos;,ste
 , t2.id_workflow
 , t2.id_prosp_step
 , t2.seq
+, t2.id_prosp_step_type
 , t2.id_prosp_step_param
 , t2.param_value
 , t3.param_name
@@ -256,15 +257,14 @@ AND t1.id_root = ?
 AND t2.id_prosp_repository = t1.id_prosp_repository
 AND t2.id_prosp_workflow = t1.id_prosp_workflow
 AND t2.id_workflow = t1.id_workflow
-AND t3.id_repository = t2.id_prosp_repository
-AND t3.id_workflow = t2.id_prosp_workflow
-AND t3.id_step = t2.id_prosp_step
+AND t3.id_step_type = t2.id_prosp_step_type
 AND t3.id_step_param = t2.id_prosp_step_param
 AND t4.id_repository = t2.id_prosp_repository
 AND t4.id_workflow = t2.id_prosp_workflow
 AND t5.id_repository = t2.id_prosp_repository
 AND t5.id_workflow = t2.id_prosp_workflow
-AND t5.id_step = t2.id_prosp_step</sql>
+AND t5.id_step = t2.id_prosp_step
+AND t5.id_step_type = t2.id_prosp_step_type</sql>
     <limit>0</limit>
     <lookup>Mapping input specification</lookup>
     <execute_each_row>N</execute_each_row>
