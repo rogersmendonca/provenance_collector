@@ -102,6 +102,9 @@ public class JobDecorator extends Job
     protected long prospRepoId;
     protected Map<FineGrainedStep, Boolean> mapFineGrainedEnabled;
     protected Map<String, Long> userMap;
+    // Rogers (nov/2013): Armazena o mapeamento do type name (step ou job entry)
+    // e o id
+    protected Map<String, Long> prospStepTypeMap;
 
     public JobDecorator(Job job, Database db,
             Map<FineGrainedStep, Boolean> mapFineGrainedEnabled)
@@ -122,6 +125,7 @@ public class JobDecorator extends Job
         this.db = db;
         this.mapFineGrainedEnabled = mapFineGrainedEnabled;
         this.userMap = new HashMap<String, Long>();
+        this.prospStepTypeMap = new HashMap<String, Long>();
         this.connectionPool = new HashSet<Database>();
         addDatabaseInConnectionPool(this.db);
         setRepoMetaAndLocation(this.db);
@@ -276,13 +280,14 @@ public class JobDecorator extends Job
                 if (workflowMeta instanceof JobMeta)
                 {
                     JobMeta jm = (JobMeta) workflowMeta;
-                    
+
                     // INSERE JOB ENTRIES
-                    for(int i = 0; i < jm.nrJobEntries(); i++) 
+                    for (int i = 0; i < jm.nrJobEntries(); i++)
                     {
-                        insertProspHopStep(db, jm.getJobCopies().get(i), prospWorkflowId);
+                        insertProspHopStep(db, jm.getJobCopies().get(i),
+                                prospWorkflowId);
                     }
-                                        
+
                     // INSERE JOB HOPS
                     List<JobHopMeta> jobHops = jm.getJobhops();
                     for (JobHopMeta hop : jobHops)
@@ -300,14 +305,14 @@ public class JobDecorator extends Job
                 else if (workflowMeta instanceof TransMeta)
                 {
                     TransMeta tm = (TransMeta) workflowMeta;
-                    
+
                     // INSERE KETTLE STEPS
-                    for(int i = 0; i < tm.nrSteps(); i++) 
+                    for (int i = 0; i < tm.nrSteps(); i++)
                     {
-                        insertProspHopStep(db, tm.getSteps().get(i), prospWorkflowId);
+                        insertProspHopStep(db, tm.getSteps().get(i),
+                                prospWorkflowId);
                     }
-                    
-                    
+
                     // KETTLE STEPS e TRANS HOPS
                     int totalHops = tm.nrTransHops();
                     for (int t = 0; t < totalHops; t++)
@@ -474,8 +479,10 @@ public class JobDecorator extends Job
                 SQL.append("WHERE t1.login = ? ");
                 SQL.append("AND t1.id_repository = ? ");
                 fields = new RowMeta();
-                fields.addValueMeta(new ValueMeta("login", ValueMetaInterface.TYPE_STRING));
-                fields.addValueMeta(new ValueMeta("id_repository", ValueMetaInterface.TYPE_INTEGER));
+                fields.addValueMeta(new ValueMeta("login",
+                        ValueMetaInterface.TYPE_STRING));
+                fields.addValueMeta(new ValueMeta("id_repository",
+                        ValueMetaInterface.TYPE_INTEGER));
                 data = new Object[fields.size()];
                 int i = 0;
                 data[i++] = login;
@@ -945,6 +952,80 @@ public class JobDecorator extends Job
         }
     }
 
+    public long getStepTypeId(Object step) throws KettleException
+    {
+        String tableName = "prosp_step_type";
+
+        // Se o mapemaento de step types estah vazio, popula o mapeamento
+        if ((this.prospStepTypeMap == null)
+                || (this.prospStepTypeMap.size() == 0))
+        {
+            this.prospStepTypeMap = new HashMap<String, Long>();
+            // Popula o mapeamento de Steps (JOB ENTRY COPY ou STEP)
+            StringBuilder SQL = new StringBuilder();
+            SQL.append("SELECT t1.id_step_type as id, t1.name ");
+            SQL.append("FROM  " + tableName + " t1 ");
+
+            RowMetaInterface fields = new RowMeta();
+            Object[] data = new Object[fields.size()];
+
+            ResultSet res = db.openQuery(SQL.toString(), fields, data);
+
+            try
+            {
+                while (res.next())
+                {
+                    long id = res.getLong("id");
+                    String name = res.getString("name");
+                    this.prospStepTypeMap.put(name, id);
+                }
+            }
+            catch (SQLException e)
+            {
+                throw new KettleException(e.toString());
+            }
+
+            db.closeQuery(res);
+        }
+
+        String typeName = null;
+        if (step instanceof JobEntryCopy)
+        {
+            typeName = ((JobEntryCopy) step).getEntry().getPluginId();
+        }
+        else if (step instanceof StepMeta)
+        {
+            typeName = ((StepMeta) step).getTypeId();
+        }
+        else
+        {
+            throw new KettleException(
+                    "The step object is not a kettle job entry copy or a kettle step.");
+        }
+
+        Long typeId = this.prospStepTypeMap.get(typeName.trim());
+        // Se o step type nao estah no mapeamento, insere na tabela
+        // prosp_step_type e no respectivo mapeamento
+        if (typeId == null)
+        {
+            typeId = generateId(db, tableName);
+
+            RowMetaInterface fields = new RowMeta();
+            fields.addValueMeta(new ValueMeta("id_step_type",
+                    ValueMetaInterface.TYPE_INTEGER));
+            fields.addValueMeta(new ValueMeta("name",
+                    ValueMetaInterface.TYPE_STRING));
+
+            Object[] data = new Object[fields.size()];
+            int i = 0;
+            data[i++] = typeId;
+            data[i++] = typeName;
+            db.insertRow(tableName, fields, data);
+            this.prospStepTypeMap.put(typeName, typeId);
+        }
+        return typeId;
+    }
+
     protected long insertProspStep(Database db, Object step, long workflowId)
             throws KettleException
     {
@@ -961,8 +1042,8 @@ public class JobDecorator extends Job
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_step",
                 ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("type",
-                ValueMetaInterface.TYPE_STRING));
+        fields.addValueMeta(new ValueMeta("id_step_type",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("name",
                 ValueMetaInterface.TYPE_STRING));
         fields.addValueMeta(new ValueMeta("description",
@@ -975,16 +1056,15 @@ public class JobDecorator extends Job
         data[i++] = this.prospRepoId;
         data[i++] = workflowId;
         data[i++] = stepId;
+        data[i++] = this.getStepTypeId(step);
         if (step instanceof JobEntryCopy)
-        {
-            data[i++] = ((JobEntryCopy) step).getEntry().getPluginId();
+        {            
             data[i++] = ((JobEntryCopy) step).getEntry().getName();
             data[i++] = ((JobEntryCopy) step).getEntry().getDescription();
             data[i++] = new Long((long) ((JobEntryCopy) step).getNr());
         }
         else if (step instanceof StepMeta)
         {
-            data[i++] = ((StepMeta) step).getTypeId();
             data[i++] = ((StepMeta) step).getName();
             data[i++] = ((StepMeta) step).getDescription();
             data[i++] = new Long(0);
@@ -997,44 +1077,6 @@ public class JobDecorator extends Job
 
         db.insertRow(tableName, fields, data);
         return stepId;
-    }
-
-    protected void insertProspStepParam(Database db, Object step,
-            long workflowId, String fieldName, String fieldValue)
-            throws KettleException
-    {
-        String tableName = "prosp_step_parameter";
-        Long stepId = getProspStepId(step);
-        HashMap<String, Long> restriction = new HashMap<String, Long>();
-        restriction.put("id_repository", this.prospRepoId);
-        restriction.put("id_workflow", workflowId);
-        restriction.put("id_step", stepId);
-        Long paramId = generateId(db, tableName, restriction);
-
-        RowMetaInterface fields = new RowMeta();
-        fields.addValueMeta(new ValueMeta("id_repository",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_workflow",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_step",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("id_step_param",
-                ValueMetaInterface.TYPE_INTEGER));
-        fields.addValueMeta(new ValueMeta("name",
-                ValueMetaInterface.TYPE_STRING));
-        fields.addValueMeta(new ValueMeta("value",
-                ValueMetaInterface.TYPE_STRING));
-
-        Object[] data = new Object[fields.size()];
-        int i = 0;
-        data[i++] = this.prospRepoId;
-        data[i++] = workflowId;
-        data[i++] = stepId;
-        data[i++] = paramId;
-        data[i++] = fieldName;
-        data[i++] = fieldValue;
-
-        db.insertRow(tableName, fields, data);
     }
 
     protected void populateProspWorkflowMap(

@@ -16,7 +16,7 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd
 public class MergeJoinParamCmd extends StepParameterCmd
 {
     @Override
-    public void populaStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
+    public void populateStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
         MergeJoinMeta mjm = (MergeJoinMeta) sm.getStepMetaInterface();
         

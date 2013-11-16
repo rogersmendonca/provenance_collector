@@ -12,7 +12,7 @@ public class SparqlStepParamCmd extends StepParameterCmd
 {
 
     @Override
-    public void populaStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
+    public void populateStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
         StepMetaInterface smi = sm.getStepMetaInterface();
 

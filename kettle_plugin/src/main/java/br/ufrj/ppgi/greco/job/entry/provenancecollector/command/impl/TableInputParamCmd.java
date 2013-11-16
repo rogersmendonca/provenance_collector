@@ -17,7 +17,7 @@ import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd
 public class TableInputParamCmd extends StepParameterCmd
 {
     @Override
-    public void populaStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
+    public void populateStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
         TableInputMeta tim = (TableInputMeta) sm.getStepMetaInterface();
 
