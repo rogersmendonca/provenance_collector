@@ -9,6 +9,7 @@ DROP TABLE prosp_step_parameter;
 DROP TABLE prosp_workflow_note;
 DROP TABLE prosp_note;
 DROP TABLE prosp_step;
+DROP TABLE prosp_step_type;
 DROP TABLE prosp_workflow;
 DROP TABLE user;
 DROP TABLE prosp_repository;

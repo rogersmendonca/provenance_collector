@@ -11,6 +11,7 @@ TRUNCATE TABLE retrosp_workflow;
 ALTER TABLE retrosp_workflow CHANGE id_root id_root INT( 11 ) NOT NULL;
 TRUNCATE TABLE retrosp_workflow;
 TRUNCATE TABLE prosp_step;
+TRUNCATE TABLE prosp_step_type;
 TRUNCATE TABLE prosp_note;
 ALTER TABLE prosp_workflow CHANGE id_root id_root INT( 11 ) NULL;
 UPDATE prosp_workflow SET id_root = NULL, id_parent = NULL;
