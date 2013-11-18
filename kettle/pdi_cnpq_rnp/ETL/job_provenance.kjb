@@ -8,7 +8,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;09&#47;10 16:20:44.686</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;16 19:41:56.778</modified_date>
+  <modified_date>2013&#47;11&#47;17 22:08:02.339</modified_date>
     <parameters>
     </parameters>
   <connection>
@@ -160,8 +160,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>920</xloc>
-      <yloc>168</yloc>
+      <xloc>963</xloc>
+      <yloc>177</yloc>
       </entry>
     <entry>
       <name>Provenance Publishing (PROV-O)</name>
@@ -192,8 +192,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>374</xloc>
-      <yloc>253</yloc>
+      <xloc>344</xloc>
+      <yloc>261</yloc>
       </entry>
     <entry>
       <name>Provenance Collector Agent</name>
@@ -261,8 +261,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>374</xloc>
-      <yloc>60</yloc>
+      <xloc>344</xloc>
+      <yloc>68</yloc>
       </entry>
     <entry>
       <name>Prospective Provenance Publishing (OPMW)</name>
@@ -293,8 +293,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>634</xloc>
-      <yloc>62</yloc>
+      <xloc>604</xloc>
+      <yloc>70</yloc>
       </entry>
     <entry>
       <name>Retrospective Provenance Publishing (OPMW)</name>
@@ -325,8 +325,40 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>635</xloc>
-      <yloc>253</yloc>
+      <xloc>605</xloc>
+      <yloc>261</yloc>
+      </entry>
+    <entry>
+      <name>Provenance Publishing (Cogs)</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>rep_ref</specification_method>
+      <trans_object_id>&#47;transf_provenance_cogs.ktr</trans_object_id>
+      <filename/>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>870</xloc>
+      <yloc>72</yloc>
       </entry>
   </entries>
   <hops>
@@ -377,6 +409,15 @@
     </hop>
     <hop>
       <from>Retrospective Provenance Publishing (OPMW)</from>
+      <to>Provenance Publishing (Cogs)</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Provenance Publishing (Cogs)</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
