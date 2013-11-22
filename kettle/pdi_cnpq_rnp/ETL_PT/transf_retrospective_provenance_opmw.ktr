@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;11&#47;26 17:19:08.862</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;16 19:39:34.353</modified_date>
+  <modified_date>2013&#47;11&#47;18 15:18:27.467</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,9 +168,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Triple Store Insert</from><to>Insert Verification</to><enabled>Y</enabled> </hop>  <hop> <from>Insert Verification</from><to>Error</to><enabled>Y</enabled> </hop>  <hop> <from>Insert Verification</from><to>Success</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copy IDs to Result</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Non Literal Object NTriple</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Literal Object NTriple</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Workflow</from><to>Object Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Step Parameter</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Step Parameter</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Row Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Row Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Retrosp. Row Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Retrosp. Step Parameter</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Retrosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Retrosp. Workflow</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copia IDs para Result</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Object Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Param</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Param</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Row Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Workflow</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Copy IDs to Result</name>
+    <name>Copia IDs para Result</name>
     <type>RowsToResult</type>
     <description/>
     <distribute>Y</distribute>
@@ -550,7 +550,7 @@
     </step>
 
   <step>
-    <name>Error</name>
+    <name>Erro</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -637,7 +637,7 @@
     </step>
 
   <step>
-    <name>Generate Literal Object NTriple</name>
+    <name>Gera NTriple - Objeto Literal</name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -663,7 +663,7 @@
     </step>
 
   <step>
-    <name>Generate Non Literal Object NTriple</name>
+    <name>Gera NTriple - Objeto Nao Literal</name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -719,7 +719,191 @@
     </step>
 
   <step>
-    <name>Insert Verification</name>
+    <name>Input - Retrosp. Row Field</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id/>
+    <trans_name>transf_input_retrosp_row_field</trans_name>
+    <filename/>
+    <directory_path>&#47;</directory_path>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
+       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
+       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>    <inherit_all_vars>N</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>331</xloc>
+      <yloc>520</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Retrosp. Step</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id/>
+    <trans_name>transf_input_retrosp_step</trans_name>
+    <filename/>
+    <directory_path>&#47;</directory_path>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
+       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
+       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>    <inherit_all_vars>N</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>334</xloc>
+      <yloc>260</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Retrosp. Step Param</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id/>
+    <trans_name>transf_input_retrosp_step_parameter</trans_name>
+    <filename/>
+    <directory_path>&#47;</directory_path>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
+       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
+       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>    <inherit_all_vars>N</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>333</xloc>
+      <yloc>390</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Retrosp. Workflow</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id/>
+    <trans_name>transf_input_retrosp_workflow</trans_name>
+    <filename/>
+    <directory_path>&#47;</directory_path>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
+       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
+       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>    <inherit_all_vars>N</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>339</xloc>
+      <yloc>101</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Verifica Insercao</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -728,8 +912,8 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Success</send_true_to>
-<send_false_to>Error</send_false_to>
+<send_true_to>Sucesso</send_true_to>
+<send_false_to>Erro</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -1007,7 +1191,7 @@
     </step>
 
   <step>
-    <name>Success</name>
+    <name>Sucesso</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -1025,7 +1209,7 @@
     </step>
 
   <step>
-    <name>Triple Store Insert</name>
+    <name>Output - Banco de Triplas</name>
     <type>SparqlUpdateOutput</type>
     <description/>
     <distribute>N</distribute>
@@ -1046,190 +1230,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>835</xloc>
       <yloc>299</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input Retrosp. Workflow</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_workflow</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>339</xloc>
-      <yloc>101</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input Retrosp. Step</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_step</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>334</xloc>
-      <yloc>260</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input Retrosp. Step Parameter</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_step_parameter</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>333</xloc>
-      <yloc>390</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input Retrosp. Row Field</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_row_field</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>331</xloc>
-      <yloc>520</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

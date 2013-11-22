@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;13 17:32:50.622</modified_date>
+  <modified_date>2013&#47;11&#47;18 16:30:18.515</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,9 +168,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Input Prosp. Provenance - Note</from><to>Generate Resource URI Notes Comp.</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Prosp. Provenance - Note</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Resource URI Notes Comp.</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Input Proveniencia - Prosp. Note</from><to>Gera URI - Recurso Note Comp.</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Proveniencia - Prosp. Note</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Note Comp.</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Generate Resource URI Notes Comp.</name>
+    <name>Gera URI - Recurso Note Comp.</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -246,7 +246,7 @@ var uri_modified = replace(uri_base2,&apos;&lt;LOGIN&gt;&apos;,modified_login2,&
     </step>
 
   <step>
-    <name>Input Prosp. Provenance - Note</name>
+    <name>Input Proveniencia - Prosp. Note</name>
     <type>TableInput</type>
     <description/>
     <distribute>N</distribute>

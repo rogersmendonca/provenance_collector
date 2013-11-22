@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;11&#47;26 17:19:08.862</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;17 21:45:10.160</modified_date>
+  <modified_date>2013&#47;11&#47;18 16:02:30.070</modified_date>
   </info>
   <notepads>
     <notepad>
@@ -194,9 +194,40 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Triple Store Insert</from><to>Insert Verification</to><enabled>Y</enabled> </hop>  <hop> <from>Insert Verification</from><to>Error</to><enabled>Y</enabled> </hop>  <hop> <from>Insert Verification</from><to>Success</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Cogs Type NTriple</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copy IDs to Result</to><enabled>Y</enabled> </hop>  <hop> <from>Cogs - Step Mapping</from><to>Lookup Cogs Process URI</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Cogs Process URI</from><to>If URI Cogs is not null</to><enabled>Y</enabled> </hop>  <hop> <from>If URI Cogs is not null</from><to>Add type property</to><enabled>Y</enabled> </hop>  <hop> <from>Cogs - Parameter Mapping</from><to>Lookup Cogs Object URI</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Cogs Object URI</from><to>Add type property 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add type property</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Add type property 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Generate Cogs Type NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Generate Cogs Type NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>If URI Cogs is not null</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Add type property + Cogs URI 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Generate Cogs Type NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Add type property + Cogs URI 1</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Generate Cogs Type NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Preceded By</from><to>Generate Cogs Order NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Cogs Order NTriple</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Step</from><to>Lookup Cogs Process URI</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Prosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Prosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Step Param</from><to>Lookup Cogs Object URI</to><enabled>Y</enabled> </hop>  <hop> <from>Input Retrosp. Row Field</from><to>Add type property + Cogs URI 1</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Retrosp. Row Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Hop Field</from><to>Add type property + Cogs URI 2</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Hop Field</from><to>Object Property Mapping - Preceded By</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Prosp. Hop Field</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Generate NTriple - Cogs Type</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copia IDs para Result</to><enabled>Y</enabled> </hop>  <hop> <from>Cogs - Step Mapping</from><to>Lookup Cogs Process URI</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Cogs Process URI</from><to>If URI Cogs is not null</to><enabled>Y</enabled> </hop>  <hop> <from>If URI Cogs is not null</from><to>Adiciona type property</to><enabled>Y</enabled> </hop>  <hop> <from>Cogs - Parameter Mapping</from><to>Lookup Cogs Object URI</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Cogs Object URI</from><to>Add type property 2</to><enabled>Y</enabled> </hop>  <hop> <from>Adiciona type property</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Add type property 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Generate NTriple - Cogs Type</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Generate NTriple - Cogs Type</to><enabled>Y</enabled> </hop>  <hop> <from>If URI Cogs is not null</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Adiciona type property + Cogs URI 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Generate NTriple - Cogs Type</to><enabled>Y</enabled> </hop>  <hop> <from>Adiciona type property + Cogs URI 1</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Generate NTriple - Cogs Type</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Preceded By</from><to>Generate NTriple - Cogs Preceded By</to><enabled>Y</enabled> </hop>  <hop> <from>Generate NTriple - Cogs Preceded By</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Step</from><to>Lookup Cogs Process URI</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Step Param</from><to>Lookup Cogs Object URI</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Adiciona type property + Cogs URI 1</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Row Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Hop Field</from><to>Adiciona type property + Cogs URI 2</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Hop Field</from><to>Object Property Mapping - Preceded By</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Hop Field</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Add type property</name>
+    <name>Add type property 2</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>a</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>http:&#47;&#47;www.w3.org&#47;1999&#47;02&#47;22-rdf-syntax-ns#type</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>552</xloc>
+      <yloc>221</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Adiciona type property</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
@@ -227,7 +258,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Add type property + Cogs URI 1</name>
+    <name>Adiciona type property + Cogs URI 1</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
@@ -269,7 +300,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Add type property + Cogs URI 2</name>
+    <name>Adiciona type property + Cogs URI 2</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
@@ -306,37 +337,6 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>472</xloc>
       <yloc>496</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add type property 2</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>a</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http:&#47;&#47;www.w3.org&#47;1999&#47;02&#47;22-rdf-syntax-ns#type</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>552</xloc>
-      <yloc>221</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -494,7 +494,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Copy IDs to Result</name>
+    <name>Copia IDs para Result</name>
     <type>RowsToResult</type>
     <description/>
     <distribute>Y</distribute>
@@ -530,7 +530,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Error</name>
+    <name>Erro</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -617,7 +617,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Generate Cogs Order NTriple</name>
+    <name>Generate NTriple - Cogs Preceded By</name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -636,14 +636,14 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>848</xloc>
-      <yloc>497</yloc>
+      <xloc>846</xloc>
+      <yloc>557</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Generate Cogs Type NTriple</name>
+    <name>Generate NTriple - Cogs Type</name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -708,7 +708,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Add type property</send_true_to>
+<send_true_to>Adiciona type property</send_true_to>
 <send_false_to>Dummy (do nothing)</send_false_to>
     <compare>
 <condition>
@@ -732,7 +732,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Input Prosp. Hop Field</name>
+    <name>Input - Prosp. Hop Field</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -778,7 +778,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Input Prosp. Step</name>
+    <name>Input - Prosp. Step</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -824,7 +824,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Input Prosp. Step Param</name>
+    <name>Input - Prosp. Step Param</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -870,7 +870,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Input Retrosp. Row Field</name>
+    <name>Input - Retrosp. Row Field</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -911,34 +911,6 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>218</xloc>
       <yloc>398</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Insert Verification</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Success</send_true_to>
-<send_false_to>Error</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>status_code</leftvalue>
- <function>=</function>
- <rightvalue/>
- <value><name>constant</name><type>Integer</type><text>200</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#</mask></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1037</xloc>
-      <yloc>334</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1073,6 +1045,32 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
+    <name>Output - Banco de Triplas</name>
+    <type>SparqlUpdateOutput</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<RDF_CONTENT>ntriple</RDF_CONTENT>
+<GRAPH_URI>http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance</GRAPH_URI>
+<CLEAR_GRAPH>N</CLEAR_GRAPH>
+<ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
+<USERNAME>dba</USERNAME>
+<PASSWORD>dba</PASSWORD>
+<OUT_CODE>status_code</OUT_CODE>
+<OUT_MESSAGE>status_message</OUT_MESSAGE>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>847</xloc>
+      <yloc>335</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
@@ -1197,7 +1195,7 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Success</name>
+    <name>Sucesso</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -1215,27 +1213,29 @@ encontram-se em ${Dir_Repository}&#47;cogs</note>
     </step>
 
   <step>
-    <name>Triple Store Insert</name>
-    <type>SparqlUpdateOutput</type>
+    <name>Verifica Insercao</name>
+    <type>FilterRows</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<RDF_CONTENT>ntriple</RDF_CONTENT>
-<GRAPH_URI>http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance</GRAPH_URI>
-<CLEAR_GRAPH>N</CLEAR_GRAPH>
-<ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
-<USERNAME>dba</USERNAME>
-<PASSWORD>dba</PASSWORD>
-<OUT_CODE>status_code</OUT_CODE>
-<OUT_MESSAGE>status_message</OUT_MESSAGE>
+<send_true_to>Sucesso</send_true_to>
+<send_false_to>Erro</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>status_code</leftvalue>
+ <function>=</function>
+ <rightvalue/>
+ <value><name>constant</name><type>Integer</type><text>200</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#</mask></value> </condition>
+    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>847</xloc>
-      <yloc>335</yloc>
+      <xloc>1037</xloc>
+      <yloc>334</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

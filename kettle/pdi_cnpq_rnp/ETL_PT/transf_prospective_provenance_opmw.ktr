@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;11&#47;26 17:19:08.862</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;17 20:50:04.935</modified_date>
+  <modified_date>2013&#47;11&#47;18 19:21:21.053</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,9 +168,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Triple Store Insert</from><to>Insert Verification</to><enabled>Y</enabled> </hop>  <hop> <from>Insert Verification</from><to>Error</to><enabled>Y</enabled> </hop>  <hop> <from>Insert Verification</from><to>Success</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Object Property Mapping - Root + Parent</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Object Property Mapping - Root</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root + Parent</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Non Literal Object NTriple</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Literal Object NTriple</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Note</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs2</from><to>Copy IDs to Result</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Generate Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Generate Non Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Workflow</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Workflow</from><to>Object Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Note</from><to>Data Property Mapping - Note</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Step Param</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Step Param</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Hop Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input Prosp. Hop Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs2</from><to>Input Prosp. Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs2</from><to>Input Prosp. Note</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs2</from><to>Input Prosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs2</from><to>Input Prosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs2</from><to>Input Prosp. Hop Field</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Object Property Mapping - Root + Parent</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Object Property Mapping - Root</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root + Parent</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Note</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copia IDs para Result</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Workflow</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Workflow</from><to>Object Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Note</from><to>Data Property Mapping - Note</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Step Param</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Step Param</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Hop Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Hop Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Note</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Hop Field</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Copy IDs to Result</name>
+    <name>Copia IDs para Result</name>
     <type>RowsToResult</type>
     <description/>
     <distribute>Y</distribute>
@@ -640,7 +640,7 @@
     </step>
 
   <step>
-    <name>Error</name>
+    <name>Erro</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -755,7 +755,7 @@
     </step>
 
   <step>
-    <name>Generate Literal Object NTriple</name>
+    <name>Gera NTriple - Objeto Literal</name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -781,7 +781,7 @@
     </step>
 
   <step>
-    <name>Generate Non Literal Object NTriple</name>
+    <name>Gera NTriple - Objeto Nao Literal</name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -807,7 +807,7 @@
     </step>
 
   <step>
-    <name>Get Prov Root IDs2</name>
+    <name>Get Prov Root IDs</name>
     <type>RowsFromResult</type>
     <description/>
     <distribute>N</distribute>
@@ -837,7 +837,7 @@
     </step>
 
   <step>
-    <name>Input Prosp. Hop Field</name>
+    <name>Input - Prosp. Hop Field</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -883,7 +883,7 @@
     </step>
 
   <step>
-    <name>Input Prosp. Note</name>
+    <name>Input - Prosp. Note</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -929,7 +929,7 @@
     </step>
 
   <step>
-    <name>Input Prosp. Step</name>
+    <name>Input - Prosp. Step</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -975,7 +975,7 @@
     </step>
 
   <step>
-    <name>Input Prosp. Step Param</name>
+    <name>Input - Prosp. Step Param</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -1021,7 +1021,7 @@
     </step>
 
   <step>
-    <name>Input Prosp. Workflow</name>
+    <name>Input - Prosp. Workflow</name>
     <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
@@ -1062,34 +1062,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>375</xloc>
       <yloc>118</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Insert Verification</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Success</send_true_to>
-<send_false_to>Error</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>status_code</leftvalue>
- <function>=</function>
- <rightvalue/>
- <value><name>constant</name><type>Integer</type><text>200</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#</mask></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1198</xloc>
-      <yloc>356</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1485,25 +1457,7 @@
     </step>
 
   <step>
-    <name>Success</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1195</xloc>
-      <yloc>258</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Triple Store Insert</name>
+    <name>Output - Banco de Triplas</name>
     <type>SparqlUpdateOutput</type>
     <description/>
     <distribute>N</distribute>
@@ -1524,6 +1478,52 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1008</xloc>
       <yloc>354</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sucesso</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1195</xloc>
+      <yloc>258</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Verifica Insercao</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Sucesso</send_true_to>
+<send_false_to>Erro</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>status_code</leftvalue>
+ <function>=</function>
+ <rightvalue/>
+ <value><name>constant</name><type>Integer</type><text>200</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#</mask></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1198</xloc>
+      <yloc>356</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

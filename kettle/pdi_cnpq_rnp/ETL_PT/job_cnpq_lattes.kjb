@@ -8,7 +8,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;03&#47;03 17:02:31.780</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;17 23:05:42.090</modified_date>
+  <modified_date>2013&#47;11&#47;18 14:56:57.520</modified_date>
     <parameters>
     </parameters>
   <connection>
@@ -228,7 +228,7 @@
       <yloc>115</yloc>
       </entry>
     <entry>
-      <name>Deletar Arquivos de Log</name>
+      <name>Deleta Arquivos de Log</name>
       <description/>
       <type>DELETE_FILES</type>
       <arg_from_previous>N</arg_from_previous>
@@ -249,7 +249,7 @@
   <hops>
     <hop>
       <from>START</from>
-      <to>Deletar Arquivos de Log</to>
+      <to>Deleta Arquivos de Log</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -257,7 +257,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Deletar Arquivos de Log</from>
+      <from>Deleta Arquivos de Log</from>
       <to>transf_lattes</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

@@ -63,14 +63,14 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;01&#47;20 20:19:35.807</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;17 23:26:29.142</modified_date>
+  <modified_date>2013&#47;11&#47;18 15:11:02.409</modified_date>
   </info>
   <notepads>
     <notepad>
-      <note>Extract</note>
+      <note>Extracao</note>
       <xloc>58</xloc>
       <yloc>0</yloc>
-      <width>50</width>
+      <width>61</width>
       <heigth>25</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -88,10 +88,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Transform</note>
+      <note>Transformacao</note>
       <xloc>550</xloc>
       <yloc>0</yloc>
-      <width>69</width>
+      <width>97</width>
       <heigth>25</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -109,10 +109,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Load</note>
-      <xloc>1159</xloc>
-      <yloc>0</yloc>
-      <width>39</width>
+      <note>Carga</note>
+      <xloc>1009</xloc>
+      <yloc>2</yloc>
+      <width>45</width>
       <heigth>25</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -231,7 +231,86 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Data Property Mapping - GP</from><to>Gera Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Pesquisador</from><to>Gera Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Obj. Property Mapping - GP x Coord.</from><to>Gera Nao Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Grupo de Pesquisa</from><to>Join Rows - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - GP x Coord.</from><to>Get URI - GP &amp; Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP &amp; Coord.</from><to>Obj. Property Mapping - GP x Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - GP x Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Insere no Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Gera Literal Object NTriple</from><to>Insere no Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera Nao Literal Object NTriple</from><to>Insere no Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP</from><to>Data Property Mapping - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Sort rows</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - Pesquisador</from><to>Get URI - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Pesquisador</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Unique rows</from><to>Data Property Mapping - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Pesquisador</from><to>Select values 1</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 1</from><to>Switch &#47; Case</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Data Property Mapping - Coordenador</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Data Property Mapping - Aluno</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Coordenador</from><to>Gera Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Aluno</from><to>Gera Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP &amp; Partic.</from><to>Obj. Property Mapping - GP x Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - GP x Partic.</from><to>Get URI - GP &amp; Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - GP x Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Obj. Property Mapping - GP x Partic.</from><to>Gera Nao Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Pesquisador</from><to>Define Pesq. Id 1</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 1</from><to>Join Rows - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Input - GP x Coordenador</from><to>Define Pesq. Id 2</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 2</from><to>Join Rows - GP x Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Input SQL - GP x Partic.</from><to>Define Pesq. Id 3</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 3</from><to>Join Rows - GP x Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Input Sparql - Projeto Lattes</from><to>Define Pesq. Id 4</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - GP x Projeto</from><to>Gera Nao Literal Object NTriple</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - GP</from><to>Get URI - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Rows - GP CNPq</from><to>Merge CNPq Grupos de Pesquisa x Projetos Lattes</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Rows - Projeto Lattes</from><to>Merge CNPq Grupos de Pesquisa x Projetos Lattes</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP &amp; Partic.</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Sort Rows - GP CNPq</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 4</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Sort Rows - Projeto Lattes</to><enabled>Y</enabled> </hop>  <hop> <from>Merge CNPq Grupos de Pesquisa x Projetos Lattes</from><to>Object Property Mapping - GP x Projeto</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Data Property Mapping - GP</from><to>Gera NTriple - Objeto Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Pesquisador</from><to>Gera NTriple - Objeto Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Obj. Property Mapping - GP x Coord.</from><to>Gera NTriple -Objeto Nao Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Input - Grupo de Pesquisa</from><to>Join Rows - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - GP x Coord.</from><to>Get URI - GP &amp; Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP &amp; Coord.</from><to>Obj. Property Mapping - GP x Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - GP x Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal </from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple -Objeto Nao Literal </from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP</from><to>Data Property Mapping - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Sort rows</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - Pesquisador</from><to>Get URI - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Pesquisador</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Unique rows</from><to>Data Property Mapping - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Pesquisador</from><to>Select values 1</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 1</from><to>Switch &#47; Case</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Data Property Mapping - Coordenador</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Data Property Mapping - Aluno</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Coordenador</from><to>Gera NTriple - Objeto Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Aluno</from><to>Gera NTriple - Objeto Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP &amp; Partic.</from><to>Obj. Property Mapping - GP x Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - GP x Partic.</from><to>Get URI - GP &amp; Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - GP x Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Obj. Property Mapping - GP x Partic.</from><to>Gera NTriple -Objeto Nao Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Pesquisador</from><to>Define Pesq. Id 1</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 1</from><to>Join Rows - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Input - GP x Coordenador</from><to>Define Pesq. Id 2</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 2</from><to>Join Rows - GP x Coord.</to><enabled>Y</enabled> </hop>  <hop> <from>Input - GP x Partic.</from><to>Define Pesq. Id 3</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 3</from><to>Join Rows - GP x Partic.</to><enabled>Y</enabled> </hop>  <hop> <from>Input Sparql - Projeto Lattes</from><to>Define Pesq. Id 4</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - GP x Projeto</from><to>Gera NTriple -Objeto Nao Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - GP</from><to>Get URI - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Rows - GP CNPq</from><to>Merge Grupos de Pesquisa CNPq x Projetos Lattes</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Rows - Projeto Lattes</from><to>Merge Grupos de Pesquisa CNPq x Projetos Lattes</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP &amp; Partic.</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Sort Rows - GP CNPq</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq. Id 4</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Sort Rows - Projeto Lattes</to><enabled>Y</enabled> </hop>  <hop> <from>Merge Grupos de Pesquisa CNPq x Projetos Lattes</from><to>Object Property Mapping - GP x Projeto</to><enabled>Y</enabled> </hop>  </order>
+  <step>
+    <name>Data Property Mapping - Aluno</name>
+    <type>DataPropertyMappingPlugin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>LANGTAG_OUT_FIELD_NAME</string>
+    <string>langtag</string>
+  </entry>
+  <entry>
+    <string>DATATYPE_OUT_FIELD_NAME</string>
+    <string>datatype</string>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>3</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>SUBJECT_URI_FIELD_NAME</string>
+    <string>uri_r</string>
+  </entry>
+  <entry>
+    <string>RDF_TYPE_URIS</string>
+    <list>
+      <string>http://www.cnpq.br/ontology/Student</string>
+    </list>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_TYPED_LITERAL</string>
+        <string>MAP_TABLE_LANGUAGE_TAG</string>
+        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI></MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME></MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>805</xloc>
+      <yloc>190</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Data Property Mapping - Coordenador</name>
     <type>DataPropertyMappingPlugin</type>
@@ -305,7 +384,7 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>832</xloc>
+      <xloc>803</xloc>
       <yloc>124</yloc>
       <draw>Y</draw>
       </GUI>
@@ -392,7 +471,7 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>837</xloc>
+      <xloc>808</xloc>
       <yloc>59</yloc>
       <draw>Y</draw>
       </GUI>
@@ -479,87 +558,8 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>838</xloc>
+      <xloc>809</xloc>
       <yloc>244</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Data Property Mapping - Aluno</name>
-    <type>DataPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>LANGTAG_OUT_FIELD_NAME</string>
-    <string>langtag</string>
-  </entry>
-  <entry>
-    <string>DATATYPE_OUT_FIELD_NAME</string>
-    <string>datatype</string>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>3</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_r</string>
-  </entry>
-  <entry>
-    <string>RDF_TYPE_URIS</string>
-    <list>
-      <string>http://www.cnpq.br/ontology/Student</string>
-    </list>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_TYPED_LITERAL</string>
-        <string>MAP_TABLE_LANGUAGE_TAG</string>
-        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI></MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME></MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>834</xloc>
-      <yloc>190</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -745,14 +745,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1241</xloc>
-      <yloc>452</yloc>
+      <xloc>1196</xloc>
+      <yloc>486</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Gera Literal Object NTriple</name>
+    <name>Gera NTriple - Objeto Literal </name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -771,14 +771,14 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1085</xloc>
-      <yloc>193</yloc>
+      <xloc>1030</xloc>
+      <yloc>190</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Gera Nao Literal Object NTriple</name>
+    <name>Gera NTriple -Objeto Nao Literal </name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
     <distribute>N</distribute>
@@ -797,7 +797,7 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>868</xloc>
+      <xloc>839</xloc>
       <yloc>395</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1102,7 +1102,7 @@ ORDER BY name
     </step>
 
   <step>
-    <name>Input SQL - GP x Partic.</name>
+    <name>Input - GP x Partic.</name>
     <type>TableInput</type>
     <description/>
     <distribute>N</distribute>
@@ -1259,8 +1259,8 @@ order by ?rschr_name ?prj_uri</string>
     </step>
 
   <step>
-    <name>Verifica Insercao</name>
-    <type>FilterRows</type>
+    <name>Output - Banco de Triplas</name>
+    <type>SparqlUpdateOutput</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1268,20 +1268,18 @@ order by ?rschr_name ?prj_uri</string>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Sucesso</send_true_to>
-<send_false_to>Erro</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>status_code</leftvalue>
- <function>=</function>
- <rightvalue/>
- <value><name>constant</name><type>Integer</type><text>200</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#</mask></value> </condition>
-    </compare>
+<RDF_CONTENT>ntriple</RDF_CONTENT>
+<GRAPH_URI>http:&#47;&#47;www.cnpq.br</GRAPH_URI>
+<CLEAR_GRAPH>Y</CLEAR_GRAPH>
+<ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
+<USERNAME>dba</USERNAME>
+<PASSWORD>dba</PASSWORD>
+<OUT_CODE>status_code</OUT_CODE>
+<OUT_MESSAGE>status_message</OUT_MESSAGE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1240</xloc>
-      <yloc>328</yloc>
+      <xloc>1030</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1431,7 +1429,7 @@ order by ?rschr_name ?prj_uri</string>
     </step>
 
   <step>
-    <name>Merge CNPq Grupos de Pesquisa x Projetos Lattes</name>
+    <name>Merge Grupos de Pesquisa CNPq x Projetos Lattes</name>
     <type>MergeJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1516,7 +1514,7 @@ order by ?rschr_name ?prj_uri</string>
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>835</xloc>
+      <xloc>806</xloc>
       <yloc>302</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1878,8 +1876,8 @@ order by ?rschr_name ?prj_uri</string>
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1241</xloc>
-      <yloc>196</yloc>
+      <xloc>1196</xloc>
+      <yloc>230</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1914,32 +1912,6 @@ order by ?rschr_name ?prj_uri</string>
     </step>
 
   <step>
-    <name>Insere no Banco de Triplas</name>
-    <type>SparqlUpdateOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<RDF_CONTENT>ntriple</RDF_CONTENT>
-<GRAPH_URI>http:&#47;&#47;www.cnpq.br</GRAPH_URI>
-<CLEAR_GRAPH>Y</CLEAR_GRAPH>
-<ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
-<USERNAME>dba</USERNAME>
-<PASSWORD>dba</PASSWORD>
-<OUT_CODE>status_code</OUT_CODE>
-<OUT_MESSAGE>status_message</OUT_MESSAGE>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1089</xloc>
-      <yloc>534</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Unique rows</name>
     <type>Unique</type>
     <description/>
@@ -1957,6 +1929,34 @@ order by ?rschr_name ?prj_uri</string>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>653</xloc>
       <yloc>244</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Verifica Insercao</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Sucesso</send_true_to>
+<send_false_to>Erro</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>status_code</leftvalue>
+ <function>=</function>
+ <rightvalue/>
+ <value><name>constant</name><type>Integer</type><text>200</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#</mask></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1195</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

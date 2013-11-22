@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;16 18:31:15.022</modified_date>
+  <modified_date>2013&#47;11&#47;18 16:04:21.776</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,9 +168,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Input Retrosp. Provenance - Workflow</from><to>Generate Resource URI - WF Exec.</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Resource URI - WF Exec.</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Retrosp. Provenance - Workflow</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Input Proveniencia - Retrosp. Workflow</from><to>Gera URI - Recurso WF Exec. </to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso WF Exec. </from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Proveniencia - Retrosp. Workflow</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Generate Resource URI - WF Exec.</name>
+    <name>Gera URI - Recurso WF Exec. </name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -252,7 +252,7 @@ var workflow_system = &apos;http:&#47;&#47;kettle.pentaho.com&#47;&apos;;</jsScr
     </step>
 
   <step>
-    <name>Input Retrosp. Provenance - Workflow</name>
+    <name>Input Proveniencia - Retrosp. Workflow</name>
     <type>TableInput</type>
     <description/>
     <distribute>N</distribute>

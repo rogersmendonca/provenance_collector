@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;16 18:03:27.922</modified_date>
+  <modified_date>2013&#47;11&#47;18 16:06:34.396</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,9 +168,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Input Retrosp. Provenance - Step</from><to>Generate Resource URI - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Resource URI - Step</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Retrosp. Provenance - Step</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Input Proveniencia - Retrosp. Step</from><to>Gera URI - Recurso Step</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Step</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Proveniencia - Retrosp. Step</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Generate Resource URI - Step</name>
+    <name>Gera URI - Recurso Step</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -236,7 +236,7 @@ var title = replace(title_fmt,&apos;&lt;STEP_NAME&gt;&apos;,prosp_name,&apos;&lt
     </step>
 
   <step>
-    <name>Input Retrosp. Provenance - Step</name>
+    <name>Input Proveniencia - Retrosp. Step</name>
     <type>TableInput</type>
     <description/>
     <distribute>N</distribute>
