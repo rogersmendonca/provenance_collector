@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>transf_provenance_provo</name>
+    <name>transf_prospective_provenance_opmw3</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;11&#47;26 17:19:08.862</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;23 12:34:21.250</modified_date>
+  <modified_date>2013&#47;11&#47;23 13:08:45.372</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,7 +168,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copia IDs para Result</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 1</from><to>Object Property Mapping Comp. - Root + Parent</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 1</from><to>Object Property Mapping Comp. - Root</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow Comp.</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping Comp. - Root + Parent</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping Comp. - Root</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow Comp.</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Object Property Mapping - Root + Parent</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Object Property Mapping - Root</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root + Parent</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Row</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Prosp. Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Workflow</from><to>Object Property Mapping - Workflow Comp.</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Workflow</from><to>Data Property Mapping - Workflow Comp.</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step Parameter</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Parameter</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Parameter</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Row Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Data Property Mapping - Step Row</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Prosp. Workflow</from><to>Filter rows 1</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Object Property Mapping - Root + Parent</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Object Property Mapping - Root</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root + Parent</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Root</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Note</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copia IDs para Result</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera Template Original</from><to>Gera Sistema de Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso WF Comp.</from><to>Gera Template Original</to><enabled>Y</enabled> </hop>  <hop> <from>Input Proveniencia - Prosp. Workflow</from><to>Gera URI - Recurso WF Comp.</to><enabled>Y</enabled> </hop>  <hop> <from>Gera Sistema de Workflow</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Gera Sistema de Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Gera Sistema de Workflow</from><to>Object Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Proveniencia - Prosp. Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input Proveniencia - Prosp. Note</from><to>Gera URI - Recurso Note Comp.</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Proveniencia - Prosp. Note</to><enabled>Y</enabled> </hop>  <hop> <from>Input Proveniencia - Prosp. Step</from><to>Gera URI - Recurso Step</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Note Comp.</from><to>Data Property Mapping - Note</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Proveniencia - Prosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input Proveniencia - Prosp. Step Param</from><to>Gera URI - Recurso Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Proveniencia - Prosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Step Param</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Step Param</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input Proveniencia - Prosp. Hop Field</from><to>Gera URI - Recurso Hop Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input Proveniencia - Prosp. Hop Field</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Hop Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Hop Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Copia IDs para Result</name>
     <type>RowsToResult</type>
@@ -181,8 +181,85 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>71</xloc>
-      <yloc>503</yloc>
+      <xloc>48</xloc>
+      <yloc>543</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Data Property Mapping - Note</name>
+    <type>DataPropertyMappingPlugin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>LANGTAG_OUT_FIELD_NAME</string>
+    <string>langtag</string>
+  </entry>
+  <entry>
+    <string>DATATYPE_OUT_FIELD_NAME</string>
+    <string>datatype</string>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>3</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>SUBJECT_URI_FIELD_NAME</string>
+    <string>uri</string>
+  </entry>
+  <entry>
+    <string>RDF_TYPE_URIS</string>
+    <list/>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_TYPED_LITERAL</string>
+        <string>MAP_TABLE_LANGUAGE_TAG</string>
+        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/hasDocumentation</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>text</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>634</xloc>
+      <yloc>243</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -224,12 +301,12 @@
   </entry>
   <entry>
     <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_exec</string>
+    <string>uri</string>
   </entry>
   <entry>
     <string>RDF_TYPE_URIS</string>
     <list>
-      <string>http://www.w3.org/ns/prov#Process</string>
+      <string>http://www.opmw.org/ontology/WorkflowTemplateProcess</string>
     </list>
   </entry>
   <entry>
@@ -251,6 +328,13 @@
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/description</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>description</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
       </Data>
     </DataTable>
   </entry>
@@ -260,8 +344,8 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>599</xloc>
-      <yloc>432</yloc>
+      <xloc>635</xloc>
+      <yloc>309</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -303,12 +387,13 @@
   </entry>
   <entry>
     <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_exec</string>
+    <string>uri</string>
   </entry>
   <entry>
     <string>RDF_TYPE_URIS</string>
     <list>
-      <string>http://www.w3.org/ns/prov#Entity</string>
+      <string>http://www.opmw.org/ontology/WorkflowTemplateArtifact</string>
+      <string>http://www.opmw.org/ontology/DataVariable</string>
     </list>
   </entry>
   <entry>
@@ -324,8 +409,8 @@
       </Header>
       <Data>
         <Row>
-          <MAP__TABLE__PREDICATE__URI></MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME></MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>field_name</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
@@ -339,8 +424,8 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>602</xloc>
-      <yloc>685</yloc>
+      <xloc>633</xloc>
+      <yloc>558</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -382,12 +467,13 @@
   </entry>
   <entry>
     <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_exec</string>
+    <string>uri</string>
   </entry>
   <entry>
     <string>RDF_TYPE_URIS</string>
     <list>
-      <string>http://www.w3.org/ns/prov#Entity</string>
+      <string>http://www.opmw.org/ontology/ParameterVariable</string>
+      <string>http://www.opmw.org/ontology/WorkflowTemplateArtifact</string>
     </list>
   </entry>
   <entry>
@@ -403,8 +489,8 @@
       </Header>
       <Data>
         <Row>
-          <MAP__TABLE__PREDICATE__URI></MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME></MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>param_name</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
@@ -418,88 +504,8 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>599</xloc>
-      <yloc>562</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Data Property Mapping - Step Row</name>
-    <type>DataPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>LANGTAG_OUT_FIELD_NAME</string>
-    <string>langtag</string>
-  </entry>
-  <entry>
-    <string>DATATYPE_OUT_FIELD_NAME</string>
-    <string>datatype</string>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>3</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_row</string>
-  </entry>
-  <entry>
-    <string>RDF_TYPE_URIS</string>
-    <list>
-      <string>http://www.w3.org/ns/prov#Entity</string>
-      <string>http://www.w3.org/ns/prov#Collection</string>
-    </list>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_TYPED_LITERAL</string>
-        <string>MAP_TABLE_LANGUAGE_TAG</string>
-        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI></MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME></MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>602</xloc>
-      <yloc>745</yloc>
+      <xloc>635</xloc>
+      <yloc>427</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -541,90 +547,12 @@
   </entry>
   <entry>
     <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_exec</string>
-  </entry>
-  <entry>
-    <string>RDF_TYPE_URIS</string>
-    <list>
-      <string>http://www.w3.org/ns/prov#Bundle</string>
-    </list>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_TYPED_LITERAL</string>
-        <string>MAP_TABLE_LANGUAGE_TAG</string>
-        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>name</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>599</xloc>
-      <yloc>250</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Data Property Mapping - Workflow Comp.</name>
-    <type>DataPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>LANGTAG_OUT_FIELD_NAME</string>
-    <string>langtag</string>
-  </entry>
-  <entry>
-    <string>DATATYPE_OUT_FIELD_NAME</string>
-    <string>datatype</string>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>3</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>SUBJECT_URI_FIELD_NAME</string>
     <string>uri</string>
   </entry>
   <entry>
     <string>RDF_TYPE_URIS</string>
     <list>
+      <string>http://www.opmw.org/ontology/WorkflowTemplate</string>
       <string>http://www.w3.org/ns/prov#Plan</string>
     </list>
   </entry>
@@ -640,6 +568,27 @@
         <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
       </Header>
       <Data>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/createdInWorkflowSystem</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>workflow_system</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/hasNativeSystemTemplate</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>native_system_template</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/versionNumber</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>version_nr</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
         <Row>
           <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#hadPrimarySource</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>native_system_template</MAP__TABLE__OBJECT__FIELD__NAME>
@@ -684,8 +633,8 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>662</xloc>
-      <yloc>4</yloc>
+      <xloc>705</xloc>
+      <yloc>5</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -771,42 +720,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1046</xloc>
-      <yloc>406</yloc>
+      <xloc>1061</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Filter rows 1</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Object Property Mapping Comp. - Root + Parent</send_true_to>
-<send_false_to>Object Property Mapping Comp. - Root</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>id_parent</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>394</xloc>
-      <yloc>155</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows 2</name>
+    <name>Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -827,8 +748,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>387</xloc>
-      <yloc>337</yloc>
+      <xloc>436</xloc>
+      <yloc>157</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -853,8 +774,8 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>898</xloc>
-      <yloc>144</yloc>
+      <xloc>875</xloc>
+      <yloc>222</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -879,8 +800,366 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>899</xloc>
-      <yloc>433</yloc>
+      <xloc>876</xloc>
+      <yloc>511</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera Sistema de Workflow</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>workflow_system</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>http:&#47;&#47;kettle.pentaho.com</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>498</xloc>
+      <yloc>28</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera Template Original</name>
+    <type>Script</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47; Script here
+var TEMPLATE_FORMAT = &apos;&lt;LOCATION&gt;&#47;&lt;OBJECT_ID&gt;&apos;;
+var location = replace(location,&apos;\\&apos;,&apos;&#47;&apos;);
+var native_system_template = replace(TEMPLATE_FORMAT,&apos;&lt;LOCATION&gt;&apos;,location,&apos;&lt;OBJECT_ID&gt;&apos;,object_id);</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>native_system_template</name>
+        <rename>native_system_template</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>317</xloc>
+      <yloc>28</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera URI - Recurso Hop Field</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_base = uri_prefix + &apos;DataVariable&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;FIELD_NAME&gt;&lt;ID_FROM&gt;&lt;ID_TO&gt;&lt;ID_FIELD&gt;&apos;;
+var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
+
+var field_name2 = upper(replace(field_name, &apos; &apos;, &apos;_&apos;));
+var w_name2 = upper(replace(w_name, &apos; &apos;, &apos;_&apos;));
+var from_name2 = upper(replace(from_name, &apos; &apos;, &apos;_&apos;));
+var to_name2 = upper(replace(to_name, &apos; &apos;, &apos;_&apos;));
+
+var uri = replace(uri_base,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;FIELD_NAME&gt;&apos;,field_name2,&apos;&lt;ID_FROM&gt;&apos;,id_step_from,&apos;&lt;ID_TO&gt;&apos;,id_step_to,&apos;&lt;ID_FIELD&gt;&apos;,id_field);
+var uri_from = replace(uri_base_s,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;STEP_NAME&gt;&apos;,from_name2,&apos;&lt;ID_STEP&gt;&apos;,id_step_from);
+var uri_to = replace(uri_base_s,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;STEP_NAME&gt;&apos;,to_name2,&apos;&lt;ID_STEP&gt;&apos;,id_step_to);</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri</name>
+        <rename>uri</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_from</name>
+        <rename>uri_from</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_to</name>
+        <rename>uri_to</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>436</xloc>
+      <yloc>590</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera URI - Recurso Note Comp.</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>function defineName(pName)
+{
+  pName = replace(pName, &apos;-&apos;, &apos;_&apos;);
+  pName = replace(pName, &apos; &apos;, &apos;_&apos;);
+  pName = upper(pName);
+  return pName;
+}
+var name2 = defineName(name);
+var root_name2 = defineName(root_name);
+var parent_name2 = defineName(parent_name);
+var created_login2 = defineName(created_login);
+var modified_login2 = defineName(modified_login);
+
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_base1 = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
+var uri_base2 = uri_prefix + &apos;Agent&#47;&lt;LOGIN&gt;&lt;ID_REPOSITORY&gt;&apos;;
+
+var uri = replace(uri_base1,&apos;&lt;NAME&gt;&apos;,name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
+var uri_root = replace(uri_base1,&apos;&lt;NAME&gt;&apos;,root_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_root_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_root);
+var uri_parent = replace(uri_base1,&apos;&lt;NAME&gt;&apos;,parent_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_parent_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_parent);
+var uri_created = replace(uri_base2,&apos;&lt;LOGIN&gt;&apos;,created_login2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository);
+var uri_modified = replace(uri_base2,&apos;&lt;LOGIN&gt;&apos;,modified_login2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository);
+
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri</name>
+        <rename>uri</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_root</name>
+        <rename>uri_root</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_parent</name>
+        <rename>uri_parent</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_created</name>
+        <rename>uri_created</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_modified</name>
+        <rename>uri_modified</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>428</xloc>
+      <yloc>243</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera URI - Recurso Step</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_base = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
+var uri_base_w = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
+
+var name2 = upper(replace(name, &apos; &apos;, &apos;_&apos;));
+var w_name2 = upper(replace(w_name, &apos; &apos;, &apos;_&apos;));
+
+var uri = replace(uri_base,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;STEP_NAME&gt;&apos;,name2,&apos;&lt;ID_STEP&gt;&apos;,id_step);
+var uri_w = replace(uri_base_w,&apos;&lt;NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
+
+
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri</name>
+        <rename>uri</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_w</name>
+        <rename>uri_w</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>435</xloc>
+      <yloc>366</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera URI - Recurso Step Param</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_base = uri_prefix + &apos;ParameterVariable&#47;&lt;PARAM_NAME&gt;_&lt;ID_STEP_TYPE&gt;&lt;ID_PARAM&gt;&apos;;
+var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
+
+var param_name2 = upper(replace(param_name, &apos; &apos;, &apos;_&apos;));
+var w_name2 = upper(replace(w_name, &apos; &apos;, &apos;_&apos;));
+var s_name2 = upper(replace(s_name, &apos; &apos;, &apos;_&apos;));
+
+var uri = replace(uri_base,&apos;&lt;PARAM_NAME&gt;&apos;,param_name2,&apos;&lt;ID_STEP_TYPE&gt;&apos;,id_step_type,&apos;&lt;ID_PARAM&gt;&apos;,id_step_param);
+var uri_s = replace(uri_base_s,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;STEP_NAME&gt;&apos;,s_name2,&apos;&lt;ID_STEP&gt;&apos;,id_step);
+
+
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri</name>
+        <rename>uri</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_s</name>
+        <rename>uri_s</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>436</xloc>
+      <yloc>463</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera URI - Recurso WF Comp.</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>function defineName(pName)
+{
+  pName = replace(pName, &apos;-&apos;, &apos;_&apos;);
+  pName = replace(pName, &apos; &apos;, &apos;_&apos;);
+  pName = upper(pName);
+  return pName;
+}
+var name2 = defineName(name);
+var root_name2 = defineName(root_name);
+var parent_name2 = defineName(parent_name);
+var created_login2 = defineName(created_login);
+var modified_login2 = defineName(modified_login);
+
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_base1 = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
+var uri_base2 = uri_prefix + &apos;Agent&#47;&lt;LOGIN&gt;&lt;ID_REPOSITORY&gt;&apos;;
+
+var uri = replace(uri_base1,&apos;&lt;NAME&gt;&apos;,name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
+var uri_root = replace(uri_base1,&apos;&lt;NAME&gt;&apos;,root_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_root_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_root);
+var uri_parent = replace(uri_base1,&apos;&lt;NAME&gt;&apos;,parent_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_parent_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_parent);
+var uri_created = replace(uri_base2,&apos;&lt;LOGIN&gt;&apos;,created_login2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository);
+var uri_modified = replace(uri_base2,&apos;&lt;LOGIN&gt;&apos;,modified_login2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository);
+
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri</name>
+        <rename>uri</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_root</name>
+        <rename>uri_root</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_parent</name>
+        <rename>uri_parent</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_created</name>
+        <rename>uri_created</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>uri_modified</name>
+        <rename>uri_modified</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>135</xloc>
+      <yloc>28</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -909,15 +1188,64 @@
         <precision>-1</precision>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>70</xloc>
-      <yloc>375</yloc>
+      <xloc>48</xloc>
+      <yloc>413</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Input - Prosp. Workflow</name>
-    <type>Mapping</type>
+    <name>Input Proveniencia - Prosp. Hop Field</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_provenance</connection>
+    <sql>SELECT
+  t2.id_repository
+, t2.id_workflow
+, t2.id_step_from
+, t2.id_step_to
+, t2.id_field
+, t2.field_name
+, t3.name as w_name
+, t4.name as from_name
+, t5.name as to_name
+FROM retrosp_workflow t1, prosp_hop_field t2, prosp_workflow t3, prosp_step t4, prosp_step t5
+WHERE t1.id_root_prosp_repository = ?
+AND t1.id_root_prosp_workflow = ?
+AND t1.id_root = ?
+AND t2.id_repository = t1.id_prosp_repository
+AND t2.id_workflow = t1.id_prosp_workflow
+AND t3.id_repository = t2.id_repository
+AND t3.id_workflow = t2.id_workflow
+AND t4.id_repository = t2.id_repository
+AND t4.id_workflow = t2.id_workflow
+AND t4.id_step = t2.id_step_from
+AND t5.id_repository = t2.id_repository
+AND t5.id_workflow = t2.id_workflow
+AND t5.id_step = t2.id_step_to
+</sql>
+    <limit>0</limit>
+    <lookup>Get Prov Root IDs</lookup>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>208</xloc>
+      <yloc>590</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input Proveniencia - Prosp. Note</name>
+    <type>TableInput</type>
     <description/>
     <distribute>N</distribute>
     <copies>1</copies>
@@ -925,45 +1253,136 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_prosp_workflow</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
+    <connection>db_provenance</connection>
+    <sql>SELECT
+  t2.id_repository
+, t2.id_workflow
+, t2.object_id
+, t2.name
+, t2.description
+, t2.id_created_user
+, t3.login as created_login
+, t2.created_date
+, t2.id_modified_user
+, t4.login as modified_login
+, t2.modified_date
+, t2.version_nr
+, t2.id_root_repository
+, t2.id_root
+, (SELECT t5.name FROM prosp_workflow t5 WHERE t5.id_repository = t2.id_root_repository AND t5.id_workflow = t2.id_root) as root_name
+, t2.id_parent_repository
+, t2.id_parent
+, (SELECT t6.name FROM prosp_workflow t6 WHERE t6.id_repository = t2.id_parent_repository AND t6.id_workflow = t2.id_parent) as parent_name
+FROM retrosp_workflow t1, prosp_workflow t2, user t3, user t4
+WHERE t1.id_root_prosp_repository = ?
+AND t1.id_root_prosp_workflow = ?
+AND t1.id_root = ?
+AND t2.id_repository = t1.id_prosp_repository
+AND t2.id_workflow = t1.id_prosp_workflow
+AND t2.id_repository = t3.id_repository
+AND t2.id_created_user = t3.id_user
+AND t2.id_repository = t4.id_repository
+AND t2.id_modified_user = t4.id_user</sql>
+    <limit>0</limit>
+    <lookup>Get Prov Root IDs</lookup>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>264</xloc>
-      <yloc>139</yloc>
+      <xloc>209</xloc>
+      <yloc>243</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Input - Retrosp. Row Field</name>
-    <type>Mapping</type>
+    <name>Input Proveniencia - Prosp. Step</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_provenance</connection>
+    <sql>SELECT
+  t2.id_repository
+, t2.id_workflow
+, t2.id_step
+, t3.name as type
+, t2.name
+, t2.description
+, t2.copy_nr
+, t4.name as w_name
+FROM retrosp_workflow t1, prosp_step t2, prosp_step_type t3, prosp_workflow t4
+WHERE t1.id_root_prosp_repository = ?
+AND t1.id_root_prosp_workflow = ?
+AND t1.id_root = ?
+AND t4.id_repository = t1.id_prosp_repository
+AND t4.id_workflow = t1.id_prosp_workflow 
+AND t2.id_repository = t4.id_repository
+AND t2.id_workflow = t4.id_workflow
+AND t3.id_step_type = t2.id_step_type</sql>
+    <limit>0</limit>
+    <lookup>Get Prov Root IDs</lookup>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>207</xloc>
+      <yloc>366</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input Proveniencia - Prosp. Step Param</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_provenance</connection>
+    <sql>SELECT 
+  t2.id_step_type
+, t2.id_step_param
+, t2.param_name
+, t4.id_repository
+, t4.id_workflow
+, t4.name as w_name
+, t3.id_step
+, t3.name as s_name
+FROM retrosp_workflow t1, prosp_step_parameter t2, prosp_step t3, prosp_workflow t4
+WHERE t1.id_root_prosp_repository = ?
+AND t1.id_root_prosp_workflow = ?
+AND t1.id_root = ?
+AND t4.id_repository = t1.id_prosp_repository
+AND t4.id_workflow = t1.id_prosp_workflow
+AND t3.id_repository = t4.id_repository
+AND t3.id_workflow = t4.id_workflow
+AND t2.id_step_type = t3.id_step_type</sql>
+    <limit>0</limit>
+    <lookup>Get Prov Root IDs</lookup>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>207</xloc>
+      <yloc>463</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input Proveniencia - Prosp. Workflow</name>
+    <type>TableInput</type>
     <description/>
     <distribute>N</distribute>
     <copies>1</copies>
@@ -971,590 +1390,53 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_row_field</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
+    <connection>db_provenance</connection>
+    <sql>SELECT
+  t2.id_repository
+, t2.id_workflow
+, t2.object_id
+, t2.name
+, t2.description
+, t2.id_created_user
+, t3.login as created_login
+, t2.created_date
+, t2.id_modified_user
+, t4.login as modified_login
+, t2.modified_date
+, t2.version_nr
+, t2.id_root_repository
+, t2.id_root
+, (SELECT t5.name FROM prosp_workflow t5 WHERE t5.id_repository = t2.id_root_repository AND t5.id_workflow = t2.id_root) as root_name
+, t2.id_parent_repository
+, t2.id_parent
+, (SELECT t6.name FROM prosp_workflow t6 WHERE t6.id_repository = t2.id_parent_repository AND t6.id_workflow = t2.id_parent) as parent_name
+, t7.location
+FROM retrosp_workflow t1, prosp_workflow t2, user t3, user t4, prosp_repository t7
+WHERE t1.id_root_prosp_repository = ?
+AND t1.id_root_prosp_workflow = ?
+AND t1.id_root = ?
+AND t2.id_repository = t1.id_prosp_repository
+AND t2.id_workflow = t1.id_prosp_workflow
+AND t2.id_repository = t3.id_repository
+AND t2.id_created_user = t3.id_user
+AND t2.id_repository = t4.id_repository
+AND t2.id_modified_user = t4.id_user
+AND t7.id_repository = t2.id_repository</sql>
+    <limit>0</limit>
+    <lookup>Get Prov Root IDs</lookup>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>274</xloc>
-      <yloc>645</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input - Retrosp. Step</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_step</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>267</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input - Retrosp. Step Parameter</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_step_parameter</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>268</xloc>
-      <yloc>562</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input - Retrosp. Workflow</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id/>
-    <trans_name>transf_input_retrosp_workflow</trans_name>
-    <filename/>
-    <directory_path>&#47;</directory_path>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>id_prosp_repository</parent><child>id_prosp_repository</child></connector>
-       <connector><parent>id_prosp_workflow</parent><child>id_prosp_workflow</child></connector>
-       <connector><parent>id_workflow</parent><child>id_workflow</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>N</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>N</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>262</xloc>
-      <yloc>329</yloc>
+      <xloc>212</xloc>
+      <yloc>121</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
     <name>Object Property Mapping - Root</name>
-    <type>ObjectPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>1</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/isPartOf</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec_root</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec_root</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/hasPart</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>601</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Object Property Mapping - Root + Parent</name>
-    <type>ObjectPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>1</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/isPartOf</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec_parent</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec_parent</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/hasPart</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/isPartOf</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec_root</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec_root</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/hasPart</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>597</xloc>
-      <yloc>309</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Object Property Mapping - Step</name>
-    <type>ObjectPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>1</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#wasAssociatedWith</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_user</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>601</xloc>
-      <yloc>492</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Object Property Mapping - Step Field</name>
-    <type>ObjectPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>1</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_row</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#hadMember</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_step_to</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#used</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_row</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_row</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#wasGeneratedBy</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_step_from</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_step_to</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#used</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#wasGeneratedBy</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_step_from</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>602</xloc>
-      <yloc>801</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Object Property Mapping - Step Param</name>
-    <type>ObjectPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>1</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_step_exec</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/ns/prov#used</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_exec</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>601</xloc>
-      <yloc>622</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Object Property Mapping - Workflow Comp.</name>
-    <type>ObjectPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>1</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/created</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_created</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/modified</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_modified</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>662</xloc>
-      <yloc>61</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Object Property Mapping Comp. - Root</name>
     <type>ObjectPropertyMappingPlugin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1612,14 +1494,14 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>593</xloc>
-      <yloc>181</yloc>
+      <xloc>635</xloc>
+      <yloc>183</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Object Property Mapping Comp. - Root + Parent</name>
+    <name>Object Property Mapping - Root + Parent</name>
     <type>ObjectPropertyMappingPlugin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1689,8 +1571,256 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>592</xloc>
-      <yloc>120</yloc>
+      <xloc>634</xloc>
+      <yloc>122</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Object Property Mapping - Step</name>
+    <type>ObjectPropertyMappingPlugin</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>1</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/isStepOfTemplate</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri_w</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>634</xloc>
+      <yloc>366</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Object Property Mapping - Step Field</name>
+    <type>ObjectPropertyMappingPlugin</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>1</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_from</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/isGeneratedBy</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/uses</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri_to</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>631</xloc>
+      <yloc>619</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Object Property Mapping - Step Param</name>
+    <type>ObjectPropertyMappingPlugin</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>1</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_s</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://www.opmw.org/ontology/uses</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>635</xloc>
+      <yloc>488</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Object Property Mapping - Workflow</name>
+    <type>ObjectPropertyMappingPlugin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>1</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/created</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri_created</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/modified</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri_modified</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>704</xloc>
+      <yloc>62</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1715,8 +1845,8 @@
 <OUT_MESSAGE>status_message</OUT_MESSAGE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>898</xloc>
-      <yloc>278</yloc>
+      <xloc>875</xloc>
+      <yloc>356</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1733,8 +1863,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1045</xloc>
-      <yloc>167</yloc>
+      <xloc>1062</xloc>
+      <yloc>258</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1761,8 +1891,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1046</xloc>
-      <yloc>279</yloc>
+      <xloc>1065</xloc>
+      <yloc>356</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
