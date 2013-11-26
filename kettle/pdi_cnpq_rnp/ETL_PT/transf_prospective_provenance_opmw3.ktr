@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;11&#47;26 17:19:08.862</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;23 13:08:45.372</modified_date>
+  <modified_date>2013&#47;11&#47;25 13:36:52.786</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -881,7 +881,7 @@ var native_system_template = replace(TEMPLATE_FORMAT,&apos;&lt;LOCATION&gt;&apos
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base = uri_prefix + &apos;DataVariable&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;FIELD_NAME&gt;&lt;ID_FROM&gt;&lt;ID_TO&gt;&lt;ID_FIELD&gt;&apos;;
 var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
 
@@ -946,7 +946,7 @@ var parent_name2 = defineName(parent_name);
 var created_login2 = defineName(created_login);
 var modified_login2 = defineName(modified_login);
 
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base1 = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 var uri_base2 = uri_prefix + &apos;Agent&#47;&lt;LOGIN&gt;&lt;ID_REPOSITORY&gt;&apos;;
 
@@ -1009,7 +1009,7 @@ var uri_modified = replace(uri_base2,&apos;&lt;LOGIN&gt;&apos;,modified_login2,&
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
 var uri_base_w = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 
@@ -1055,7 +1055,7 @@ var uri_w = replace(uri_base_w,&apos;&lt;NAME&gt;&apos;,w_name2,&apos;&lt;ID_REP
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base = uri_prefix + &apos;ParameterVariable&#47;&lt;PARAM_NAME&gt;_&lt;ID_STEP_TYPE&gt;&lt;ID_PARAM&gt;&apos;;
 var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
 
@@ -1115,7 +1115,7 @@ var parent_name2 = defineName(parent_name);
 var created_login2 = defineName(created_login);
 var modified_login2 = defineName(modified_login);
 
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base1 = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 var uri_base2 = uri_prefix + &apos;Agent&#47;&lt;LOGIN&gt;&lt;ID_REPOSITORY&gt;&apos;;
 
@@ -1836,7 +1836,7 @@ AND t7.id_repository = t2.id_repository</sql>
            <schema_name/>
            </partitioning>
 <RDF_CONTENT>ntriple</RDF_CONTENT>
-<GRAPH_URI>http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance</GRAPH_URI>
+<GRAPH_URI>http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance</GRAPH_URI>
 <CLEAR_GRAPH>N</CLEAR_GRAPH>
 <ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
 <USERNAME>dba</USERNAME>

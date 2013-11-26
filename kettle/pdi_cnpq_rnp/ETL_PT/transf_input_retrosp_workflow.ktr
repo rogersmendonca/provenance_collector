@@ -194,7 +194,7 @@ var prosp_name = defineName(name);
 var prosp_root_name = defineName(root_name);
 var prosp_parent_name = defineName(parent_name);
 
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var prosp_id = &apos;&lt;NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&apos;;
 var uri_base_exec = uri_prefix + &apos;WorkflowExecution&#47;&apos; + prosp_id + &apos;&lt;ID_EXECUTION&gt;&apos;;
 var uri_base_comp = uri_prefix + &apos;WorkflowTemplate&#47;&apos; + prosp_id;

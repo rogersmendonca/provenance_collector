@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;11&#47;26 17:19:08.862</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;23 13:07:47.476</modified_date>
+  <modified_date>2013&#47;11&#47;25 13:35:55.162</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -656,7 +656,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base = uri_prefix + &apos;DataVariable&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;FIELD_NAME&gt;&lt;ID_FROM&gt;&lt;ID_TO&gt;&lt;ID_FIELD&gt;&apos;;
 var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
 
@@ -720,7 +720,7 @@ var from_name2 = defineName(name_from);
 var to_name2 = defineName(name_to);
 var field_name2 = defineName(field_name);
 
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;;
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;;
 var uri_base_exec = uri_prefix + &apos;WorkflowExecutionArtifact&#47;&lt;FIELD_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;P_ID_STEP_FROM&gt;&lt;P_ID_STEP_TO&gt;&lt;ID_SEQ_FROM&gt;&lt;ID_SEQ_TO&gt;&lt;ROW_COUNT&gt;&lt;P_ID_FIELD&gt;&apos;;
 var uri_base_comp = uri_prefix + &apos;DataVariable&#47;&lt;P_W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;_&lt;FIELD_NAME&gt;&lt;P_ID_FROM&gt;&lt;P_ID_TO&gt;&lt;P_ID_FIELD&gt;&apos;;
 var uri_base_row = uri_prefix + &apos;WorkflowDataRow&#47;&lt;P_W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;P_ID_STEP_FROM&gt;&lt;P_ID_STEP_TO&gt;&lt;ID_SEQ_FROM&gt;&lt;ID_SEQ_TO&gt;&lt;ROW_COUNT&gt;&apos;;
@@ -783,7 +783,7 @@ var uri_step_to = replace(uri_base_step_exec,&apos;&lt;STEP_NAME&gt;&apos;,to_na
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
 var uri_base_w = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 
@@ -829,7 +829,7 @@ var uri_w = replace(uri_base_w,&apos;&lt;NAME&gt;&apos;,w_name2,&apos;&lt;ID_REP
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base = uri_prefix + &apos;ParameterVariable&#47;&lt;PARAM_NAME&gt;_&lt;ID_STEP_TYPE&gt;&lt;ID_PARAM&gt;&apos;;
 var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
 
@@ -1258,7 +1258,7 @@ AND t6.id_workflow = t2.id_prosp_workflow
            <schema_name/>
            </partitioning>
 <RDF_CONTENT>ntriple</RDF_CONTENT>
-<GRAPH_URI>http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance</GRAPH_URI>
+<GRAPH_URI>http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance</GRAPH_URI>
 <CLEAR_GRAPH>N</CLEAR_GRAPH>
 <ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
 <USERNAME>dba</USERNAME>

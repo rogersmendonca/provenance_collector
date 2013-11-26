@@ -183,7 +183,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;lodbr&#47;provenance&#47;resource&#47;&apos;
+        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
 var uri_base = uri_prefix + &apos;DataVariable&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;FIELD_NAME&gt;&lt;ID_FROM&gt;&lt;ID_TO&gt;&lt;ID_FIELD&gt;&apos;;
 var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
 
