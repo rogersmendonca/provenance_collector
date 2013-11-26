@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;01&#47;20 20:19:35.807</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;18 15:11:25.021</modified_date>
+  <modified_date>2013&#47;11&#47;26 17:49:13.096</modified_date>
   </info>
   <notepads>
     <notepad>
@@ -375,7 +375,6 @@
     <string>RDF_TYPE_URIS</string>
     <list>
       <string>http://lattes.cnpq.br/ontology/Researcher</string>
-      <string>http://xmlns.com/foaf/0.1/Person</string>
     </list>
   </entry>
   <entry>
@@ -391,21 +390,21 @@
       </Header>
       <Data>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/identifier</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/identifier</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_id</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://xmlns.com/foaf/0.1/name</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/name</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_nome</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://xmlns.com/foaf/0.1/gender</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/gender</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_sexo</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
@@ -434,7 +433,7 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>640</xloc>
+      <xloc>643</xloc>
       <yloc>78</yloc>
       <draw>Y</draw>
       </GUI>
@@ -483,7 +482,6 @@
     <string>RDF_TYPE_URIS</string>
     <list>
       <string>http://lattes.cnpq.br/ontology/Production</string>
-      <string>http://xmlns.com/foaf/0.1/Document</string>
     </list>
   </entry>
   <entry>
@@ -499,43 +497,36 @@
       </Header>
       <Data>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/identifier</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/identifier</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>producao_id</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/name</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>producao_titulo</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/date</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/year</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>producao_ano</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/contributor</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/contributors</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>producao_autores</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/type</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/type</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>tipo</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://xmlns.com/foaf/0.1/name</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>producao_titulo</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
@@ -550,7 +541,7 @@
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>646</xloc>
-      <yloc>141</yloc>
+      <yloc>142</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -598,7 +589,6 @@
     <string>RDF_TYPE_URIS</string>
     <list>
       <string>http://lattes.cnpq.br/ontology/Project</string>
-      <string>http://xmlns.com/foaf/0.1/Group</string>
     </list>
   </entry>
   <entry>
@@ -614,14 +604,14 @@
       </Header>
       <Data>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/identifier</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/identifier</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>projeto_id</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://xmlns.com/foaf/0.1/name</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/name</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>projeto_titulo</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
@@ -656,14 +646,14 @@
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/description</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/description</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>projeto_descricao</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/type</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/type</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>projeto_natureza</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
@@ -674,13 +664,6 @@
           <MAP__TABLE__OBJECT__FIELD__NAME>projeto_coordenador</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_titulo</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
       </Data>
@@ -722,7 +705,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${Dir_Log}\cnpq_error</name>
+      <name>${Dir_Log}\lattes_error</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -806,7 +789,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>901</xloc>
-      <yloc>159</yloc>
+      <yloc>117</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -831,8 +814,8 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>904</xloc>
-      <yloc>411</yloc>
+      <xloc>901</xloc>
+      <yloc>394</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1246,32 +1229,6 @@ FROM projeto
     </step>
 
   <step>
-    <name>Output - Banco de Triplas</name>
-    <type>SparqlUpdateOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<RDF_CONTENT>ntriple</RDF_CONTENT>
-<GRAPH_URI>http:&#47;&#47;lattes.cnpq.br</GRAPH_URI>
-<CLEAR_GRAPH>Y</CLEAR_GRAPH>
-<ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
-<USERNAME>dba</USERNAME>
-<PASSWORD>dba</PASSWORD>
-<OUT_CODE>status_code</OUT_CODE>
-<OUT_MESSAGE>status_message</OUT_MESSAGE>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>901</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Join Rows - Pesq. x Prod.</name>
     <type>JoinRows</type>
     <description/>
@@ -1486,13 +1443,13 @@ FROM projeto
         <Row>
           <MAP__TABLE__SUBJECT__FIELD__NAME>uri_p</MAP__TABLE__SUBJECT__FIELD__NAME>
           <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://xmlns.com/foaf/0.1/maker</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/producedBy</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>uri_r</MAP__TABLE__OBJECT__FIELD__NAME>
         </Row>
         <Row>
           <MAP__TABLE__SUBJECT__FIELD__NAME>uri_r</MAP__TABLE__SUBJECT__FIELD__NAME>
           <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://xmlns.com/foaf/0.1/made</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/producer</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>uri_p</MAP__TABLE__OBJECT__FIELD__NAME>
         </Row>
       </Data>
@@ -1504,7 +1461,7 @@ FROM projeto
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>645</xloc>
+      <xloc>648</xloc>
       <yloc>425</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1551,7 +1508,7 @@ FROM projeto
         <Row>
           <MAP__TABLE__SUBJECT__FIELD__NAME>uri_p</MAP__TABLE__SUBJECT__FIELD__NAME>
           <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://xmlns.com/foaf/0.1/member</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/member</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>uri_r</MAP__TABLE__OBJECT__FIELD__NAME>
         </Row>
       </Data>
@@ -1565,6 +1522,32 @@ FROM projeto
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>647</xloc>
       <yloc>355</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Output - Banco de Triplas</name>
+    <type>SparqlUpdateOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<RDF_CONTENT>ntriple</RDF_CONTENT>
+<GRAPH_URI>http:&#47;&#47;lattes.cnpq.br</GRAPH_URI>
+<CLEAR_GRAPH>Y</CLEAR_GRAPH>
+<ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
+<USERNAME>dba</USERNAME>
+<PASSWORD>dba</PASSWORD>
+<OUT_CODE>status_code</OUT_CODE>
+<OUT_MESSAGE>status_message</OUT_MESSAGE>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>901</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
