@@ -171,7 +171,7 @@
   <hop> <from>Insert Verification</from><to>Error</to><enabled>Y</enabled> </hop>  <hop> <from>Insert Verification</from><to>Success</to><enabled>Y</enabled> </hop>  <hop> <from>Triple Store Insert</from><to>Insert Verification</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping</from><to>NTriple Generator - Literal</to><enabled>Y</enabled> </hop>  <hop> <from>NTriple Generator - Literal</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping</from><to>NTriple Generator - Object</to><enabled>Y</enabled> </hop>  <hop> <from>NTriple Generator - Object</from><to>Triple Store Insert</to><enabled>Y</enabled> </hop>  <hop> <from>Sparql Endpoint - DBPedia</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>  <hop> <from>Modified Java Script Value</from><to>Data Property Mapping</to><enabled>Y</enabled> </hop>  <hop> <from>Modified Java Script Value</from><to>Object Property Mapping</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Sparql Endpoint - DBPedia</name>
-    <type>UpdatePlugin</type>
+    <type>SparqlEndpoint</type>
     <description/>
     <distribute>N</distribute>
     <copies>1</copies>

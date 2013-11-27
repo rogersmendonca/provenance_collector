@@ -63,7 +63,7 @@
   <created_user>-</created_user>
   <created_date>2013&#47;11&#47;17 12:07:39.161</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2013&#47;11&#47;17 21:39:48.440</modified_date>
+  <modified_date>2013&#47;11&#47;27 01:09:58.406</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,7 +168,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Property Input</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Data Grid</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Text file output</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Property Input</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Data Grid</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Text file output</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Data Grid 2</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Data Grid</name>
     <type>DataGrid</type>
@@ -390,6 +390,180 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>493</xloc>
       <yloc>82</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Data Property Mapping - Workflow</name>
+    <type>DataPropertyMappingPlugin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>LANGTAG_OUT_FIELD_NAME</string>
+    <string>langtag</string>
+  </entry>
+  <entry>
+    <string>DATATYPE_OUT_FIELD_NAME</string>
+    <string>datatype</string>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>3</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>SUBJECT_URI_FIELD_NAME</string>
+    <string>uri_exec</string>
+  </entry>
+  <entry>
+    <string>RDF_TYPE_URIS</string>
+    <list>
+      <string>http://www.opmw.org/ontology/WorkflowExecutionAccount</string>
+    </list>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_TYPED_LITERAL</string>
+        <string>MAP_TABLE_LANGUAGE_TAG</string>
+        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>name</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>94</xloc>
+      <yloc>441</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera NTriple - Objeto Literal</name>
+    <type>NTripleGeneratorPlugin</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<INPUT_SUBJECT_FIELD_NAME>subject</INPUT_SUBJECT_FIELD_NAME>
+<INPUT_PREDICATE_FIELD_NAME>predicate</INPUT_PREDICATE_FIELD_NAME>
+<INPUT_OBJECT_FIELD_NAME>object</INPUT_OBJECT_FIELD_NAME>
+<INPUT_DATATYPE_FIELD_NAME>datatype</INPUT_DATATYPE_FIELD_NAME>
+<INPUT_LANGTAG_FIELD_NAME>langtag</INPUT_LANGTAG_FIELD_NAME>
+<OUTPUT_NTRIPLE_FIELD_NAME>ntriple</OUTPUT_NTRIPLE_FIELD_NAME>
+<INNER_IS_LITERAL_VALUE>Y</INNER_IS_LITERAL_VALUE>
+<INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>317</xloc>
+      <yloc>441</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Output - Banco de Triplas</name>
+    <type>SparqlUpdateOutput</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<RDF_CONTENT>ntriple</RDF_CONTENT>
+<GRAPH_URI>http:&#47;&#47;teste</GRAPH_URI>
+<CLEAR_GRAPH>N</CLEAR_GRAPH>
+<ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
+<USERNAME>dba</USERNAME>
+<PASSWORD>dba</PASSWORD>
+<OUT_CODE>status_code</OUT_CODE>
+<OUT_MESSAGE>status_message</OUT_MESSAGE>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>536</xloc>
+      <yloc>442</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Data Grid 2</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>uri_exec</name>
+        <type/>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>name</name>
+        <type/>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <data>
+      <line> <item>http:&#47;&#47;openprovenance.org&#47;model&#47;opmo#Account</item><item>nome com tralha</item> </line>
+    </data>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>94</xloc>
+      <yloc>328</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

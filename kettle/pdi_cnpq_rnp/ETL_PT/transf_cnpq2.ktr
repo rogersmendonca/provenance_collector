@@ -1139,7 +1139,7 @@ ORDER BY name
 
   <step>
     <name>Input Sparql - Projeto Lattes</name>
-    <type>UpdatePlugin</type>
+    <type>SparqlEndpoint</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>

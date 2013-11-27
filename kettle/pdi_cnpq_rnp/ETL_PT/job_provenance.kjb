@@ -8,7 +8,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;09&#47;10 16:20:44.686</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;25 14:07:59.830</modified_date>
+  <modified_date>2013&#47;11&#47;27 02:00:17.380</modified_date>
     <parameters>
     </parameters>
   <connection>
@@ -200,7 +200,7 @@
       <description/>
       <type>ProvenanceCollectorJobPlugin</type>
       <specification_method>rep_ref</specification_method>
-      <job_object_id>&#47;job_cnpq_lattes.kjb</job_object_id>
+      <job_object_id>&#47;job_cnpq_rnp.kjb</job_object_id>
       <filename/>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
@@ -220,10 +220,22 @@
       <parameters>        <pass_all_parameters>Y</pass_all_parameters>
       </parameters>      <set_append_logfile>N</set_append_logfile>
       <provConnection>db_provenance</provConnection>
-      <fine_grained_steps>            <fine_grained_step>            <fgs_type>Sparql Endpoint</fgs_type>
+      <fine_grained_steps>            <fine_grained_step>            <fgs_type>CSV File Input</fgs_type>
+            <fgs_enabled>N</fgs_enabled>
+            </fine_grained_step>            <fine_grained_step>            <fgs_type>Data Grid</fgs_type>
+            <fgs_enabled>N</fgs_enabled>
+            </fine_grained_step>            <fine_grained_step>            <fgs_type>Get data from XML</fgs_type>
+            <fgs_enabled>N</fgs_enabled>
+            </fine_grained_step>            <fine_grained_step>            <fgs_type>Microsoft Excel Input</fgs_type>
+            <fgs_enabled>N</fgs_enabled>
+            </fine_grained_step>            <fine_grained_step>            <fgs_type>Sparql Endpoint</fgs_type>
             <fgs_enabled>Y</fgs_enabled>
             </fine_grained_step>            <fine_grained_step>            <fgs_type>Table Input</fgs_type>
             <fgs_enabled>Y</fgs_enabled>
+            </fine_grained_step>            <fine_grained_step>            <fgs_type>Text File Input</fgs_type>
+            <fgs_enabled>N</fgs_enabled>
+            </fine_grained_step>            <fine_grained_step>            <fgs_type>Calculator</fgs_type>
+            <fgs_enabled>N</fgs_enabled>
             </fine_grained_step>            <fine_grained_step>            <fgs_type>Merge Join</fgs_type>
             <fgs_enabled>Y</fgs_enabled>
             </fine_grained_step>      </fine_grained_steps>      <parallel>N</parallel>
