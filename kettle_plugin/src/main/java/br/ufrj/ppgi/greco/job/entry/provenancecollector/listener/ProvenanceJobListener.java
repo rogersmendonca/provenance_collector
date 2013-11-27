@@ -78,13 +78,13 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = false;
         data[i++] = rootJob.getProspRepoId();
-        data[i++] = rootJob.getProspRepoId();
+        data[i++] = rootJob.getProspJobId();
         data[i++] = rootJob.getBatchId();
         if ((parentJob != null)
                 && !(parentJobEntry instanceof JobEntryProvenanceCollector))
         {
             data[i++] = rootJob.getProspRepoId();
-            data[i++] = rootJob.getProspRepoId();
+            data[i++] = rootJob.getProspWorkflowId(parentJob.getJobMeta());
             data[i++] = parentJob.getBatchId();
         }
 

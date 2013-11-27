@@ -30,6 +30,9 @@ public abstract class StepParameterCmd
 {
     private String tableProspStepParam = "prosp_step_parameter";
     private String tableRetrospStepParam = "retrosp_step_parameter";
+    // Mapeamento entre o nome do parametro na composicao do step, normalmente
+    // alinhado com o nome utilizado no metodo getXML do StepMetaInterface por
+    // exemplo, e o respectivo id da tabelaprosp_step_parameter.
     private Map<String, Long> prospStepParamMap = null;
 
     public static void execute(JobDecorator rootJob, Database db,
@@ -55,6 +58,7 @@ public abstract class StepParameterCmd
 
             if (rootJob.isFineGrainedEnabled(smiClassName))
             {
+                // Mapeamento entre o nome e o valor dos parametros.
                 HashMap<String, String> stepParamMap = new HashMap<String, String>();
                 cmd.populateStepParamMap(stepParamMap, sm);
                 cmd.populateProspStepParamProvenance(rootJob, db, sm,
@@ -194,4 +198,27 @@ public abstract class StepParameterCmd
 
     protected abstract void populateStepParamMap(
             Map<String, String> stepParamMap, StepMeta sm);
+
+    protected String boolToStr(boolean value)
+    {
+        return value ? "Y" : "N";
+    }
+
+    protected void putListParamInStepParamMap(Map<String, String> stepParamMap,
+            String label, String[] paramValues)
+    {
+        if (paramValues != null)
+        {
+            stepParamMap.put(label + "_count",
+                    String.valueOf(paramValues.length));
+            for (int i = 0; i < paramValues.length; i++)
+            {
+                stepParamMap.put(label + "#" + i, paramValues[i]);
+            }
+        }
+    }
+    
+    protected int getArraySize(Object[] arr) {
+        return (arr != null) ? arr.length : 0;
+    }
 }

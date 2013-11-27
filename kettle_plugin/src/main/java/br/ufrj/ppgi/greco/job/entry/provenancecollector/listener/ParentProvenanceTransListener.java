@@ -85,12 +85,12 @@ public abstract class ParentProvenanceTransListener extends
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = false;
         data[i++] = rootJob.getProspRepoId();
-        data[i++] = rootJob.getProspRepoId();
+        data[i++] = rootJob.getProspJobId();
         data[i++] = rootJob.getBatchId();
         if ((parent != null) && ((parentJob != null) || (parentTrans != null)))
         {
             data[i++] = rootJob.getProspRepoId();
-            data[i++] = rootJob.getProspRepoId();
+            data[i++] = rootJob.getProspWorkflowId((parentJob != null) ? parentJob.getJobMeta() : parentTrans.getTransMeta());
             data[i++] = (parentJob != null) ? parentJob.getBatchId()
                     : parentTrans.getBatchId();
         }

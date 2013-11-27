@@ -8,14 +8,14 @@ import org.pentaho.di.trans.step.StepMetaInterface;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 
-public class SparqlStepParamCmd extends StepParameterCmd
+public class SparqlEndpointParamCmd extends StepParameterCmd
 {
 
     @Override
     public void populateStepParamMap(Map<String, String> stepParamMap, StepMeta sm)
     {
         StepMetaInterface smi = sm.getStepMetaInterface();
-
+        
         try
         {
             // Obtem valores dos campos por reflection
