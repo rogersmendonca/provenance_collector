@@ -100,6 +100,7 @@
 		</dependency>
 
 		<!-- local dependencies -->
+		<!-- obs: para instalar as dependencias locais, rodar o script maven_install_libs.bat -->
 		<dependency>
 			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 			<artifactId>KettlePluginTools</artifactId>
@@ -110,6 +111,13 @@
 		<dependency>
 			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 			<artifactId>SparqlPlugin</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+			<artifactId>DataPropertyMapping</artifactId>
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>

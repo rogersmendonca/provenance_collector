@@ -9,7 +9,12 @@
    	
    	<libraries>
    		<library name="provenancecollectorjob.jar" />
-		<library name="SparqlPlugin.jar" />
+		<library name="DataPropertyMapping.jar" />
 		<library name="KettlePluginTools.jar" />
+		<library name="NTripleGenerator.jar" />
+		<library name="ObjectPropertyMapping.jar" />
+		<library name="SparqlPlugin.jar" />
+		<library name="SparqlUpdate.jar" />
+		<library name="SparqlUpdatePlugin.jar" />				
 	</libraries>	   
 </plugin>
