@@ -41,8 +41,7 @@
 			<smiClassName>org.pentaho.di.trans.steps.propertyinput.PropertyInputMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.PropertyInputParamCmd</cmdClassName>
 		</fineGrainedStep>
-		
-		
+				
 		<fineGrainedStep>
 			<id>Sparql Endpoint</id>
 			<descKey>CustomStep.TypeTooltipDesc.SparqlEndpoint</descKey>
@@ -58,6 +57,7 @@
 			<smiClassName>org.pentaho.di.trans.steps.tableinput.TableInputMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.TableInputParamCmd</cmdClassName>
 		</fineGrainedStep>
+		
 		<fineGrainedStep>
 			<id>Text File Input</id>
 			<descKey>BaseStep.TypeTooltipDesc.TextFileInput</descKey>
@@ -132,7 +132,15 @@
 		-->
 		<!-- Extraction Steps (END) -->
 
-		<!-- Transformation Steps (START) -->	
+		<!-- Transformation Steps (START) -->
+		<fineGrainedStep>
+			<id>Add Constants</id>
+			<descKey>BaseStep.TypeTooltipDesc.Addconstants</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.constant.ConstantMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.ConstantParamCmd</cmdClassName>
+		</fineGrainedStep>	
+		
 	    <fineGrainedStep>
 			<id>Calculator</id>
 			<descKey>BaseStep.TypeTooltipDesc.Calculator</descKey>
@@ -147,48 +155,16 @@
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.filterrows.FilterRowsMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.FilterRowsParamCmd</cmdClassName>
-		</fineGrainedStep>
-		<!--			
-		<fineGrainedStep>
-			<id>Formula</id>
-			<descKey>BaseStep.TypeTooltipDesc.Formula</descKey>
-			<operation>T</operation>
-			<smiClassName>org.pentaho.di.trans.steps.formula.FormulaMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
-		</fineGrainedStep>
-		
-		<fineGrainedStep>
-			<id>Java Filter</id>
-			<descKey>BaseStep.TypeTooltipDesc.JavaFilter</descKey>
-			<operation>T</operation>
-			<smiClassName>org.pentaho.di.trans.steps.javafilter.JavaFilterMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
-		</fineGrainedStep>
-		
-		<fineGrainedStep>
-			<id>Modified Java Script Value</id>
-			<descKey>BaseStep.TypeTooltipDesc.JavaScriptValueMod</descKey>
-			<operation>T</operation>
-			<smiClassName>org.pentaho.di.trans.steps.script.ScriptMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
-		</fineGrainedStep>
-		
-		<fineGrainedStep>
-			<id>User Defined Java Expression</id>
-			<descKey>BaseStep.TypeTooltipDesc.Janino</descKey>
-			<operation>T</operation>
-			<smiClassName>org.pentaho.di.trans.steps.janino.JaninoMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
-		</fineGrainedStep>
+		</fineGrainedStep>							
 		
 		<fineGrainedStep>
 			<id>Join Rows</id>
 			<descKey>BaseStep.TypeTooltipDesc.JoinRows</descKey>
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.joinrows.JoinRowsMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.JoinRowsParamCmd</cmdClassName>
 		</fineGrainedStep>	
-		-->		
+				
 		<fineGrainedStep>
 			<id>Merge Join</id>
 			<descKey>BaseStep.TypeTooltipDesc.MergeJoin</descKey>
@@ -196,13 +172,13 @@
 			<smiClassName>org.pentaho.di.trans.steps.mergejoin.MergeJoinMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.MergeJoinParamCmd</cmdClassName>
 		</fineGrainedStep>
-		<!--
+		
 		<fineGrainedStep>
-			<id>RDF Data Property Mapping</id>
-			<descKey>CustomStep.TypeTooltipDesc.RDFDataMapping</descKey>
+			<id>Modified Java Script Value</id>
+			<descKey>BaseStep.TypeTooltipDesc.JavaScriptValueMod</descKey>
 			<operation>T</operation>
-			<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.triplemapping.DataPropertyMappingStepMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
+			<smiClassName>org.pentaho.di.trans.steps.scriptvalues_mod.ScriptValuesMetaMod</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.ScriptValuesParamCmd</cmdClassName>
 		</fineGrainedStep>
 		
 		<fineGrainedStep>
@@ -210,15 +186,23 @@
 			<descKey>CustomStep.TypeTooltipDesc.NTripleGenerator</descKey>
 			<operation>T</operation>
 			<smiClassName>br.ufrj.ppgi.greco.trans.step.ntriplegenerator.NTripleGeneratorStepMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NTripleGeneratorParamCmd</cmdClassName>
 		</fineGrainedStep>
+		
+		<fineGrainedStep>
+			<id>RDF Data Property Mapping</id>
+			<descKey>CustomStep.TypeTooltipDesc.RDFDataMapping</descKey>
+			<operation>T</operation>
+			<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.triplemapping.DataPropertyMappingStepMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.RDFDataPropertyMappingParamCmd</cmdClassName>
+		</fineGrainedStep>				
 		
 		<fineGrainedStep>
 			<id>RDF Object Property Mapping</id>
 			<descKey>CustomStep.TypeTooltipDesc.RDFObjectMapping</descKey>
 			<operation>T</operation>
 			<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.triplemapping.ObjectPropertyMappingStepMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.RDFObjectPropertyMappingParamCmd</cmdClassName>
 		</fineGrainedStep>
 		
 		<fineGrainedStep>
@@ -226,15 +210,23 @@
 			<descKey>BaseStep.TypeTooltipDesc.ReplaceString</descKey>
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.replacestring.ReplaceStringMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
-		</fineGrainedStep>		
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.ReplaceStringParamCmd</cmdClassName>
+		</fineGrainedStep>
 		
 		<fineGrainedStep>
 			<id>Select Values</id>
 			<descKey>BaseStep.TypeTooltipDesc.SelectValues</descKey>
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.selectvalues.SelectValuesMeta</smiClassName>
-			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.SelectValuesParamCmd</cmdClassName>
+		</fineGrainedStep>
+		
+		<fineGrainedStep>
+			<id>Sort Rows</id>
+			<descKey>BaseStep.TypeTooltipDesc.Sortrows</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.sort.SortRowsMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.SortRowsParamCmd</cmdClassName>
 		</fineGrainedStep>
 		
 		<fineGrainedStep>
@@ -242,12 +234,80 @@
 			<descKey>BaseStep.TypeTooltipDesc.StringOperations</descKey>
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.stringoperations.StringOperationsMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.StringOperationsParamCmd</cmdClassName>
+		</fineGrainedStep>
+		
+		<fineGrainedStep>
+			<id>Switch / Case</id>
+			<descKey>BaseStep.TypeLongDesc.SwitchCase</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.switchcase.SwitchCaseMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.SwitchCaseParamCmd</cmdClassName>
+		</fineGrainedStep>		
+		
+		<fineGrainedStep>
+			<id>Unique Rows</id>
+			<descKey>BaseStep.TypeTooltipDesc.Uniquerows</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.uniquerows.UniqueRowsMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.UniqueRowsParamCmd</cmdClassName>
+		</fineGrainedStep>									
+		
+		<fineGrainedStep>
+			<id>User Defined Java Expression</id>
+			<descKey>BaseStep.TypeTooltipDesc.Janino</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.janino.JaninoMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.JaninoParamCmd</cmdClassName>
+		</fineGrainedStep>						
+		<!--					
+		<fineGrainedStep>
+			<id>Formula</id>
+			<descKey>BaseStep.TypeTooltipDesc.Formula</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.formula.FormulaMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
-		</fineGrainedStep>	
+		</fineGrainedStep>
+
+		<fineGrainedStep>
+			<id>Java Filter</id>
+			<descKey>BaseStep.TypeTooltipDesc.JavaFilter</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.javafilter.JavaFilterMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd</cmdClassName>
+		</fineGrainedStep>												
 		-->			
 		<!-- Transformation Steps (END) -->
 
 		<!-- Load Steps (START) -->
+		<fineGrainedStep>
+			<id>Sparql Update Output</id>
+			<descKey>CustomStep.TypeTooltipDesc.SparqlUpdateInsert</descKey>
+			<operation>L</operation>
+			<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.sparqlupdate.SparqlUpdateInsertStepMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.SparqlUpdateOutputParamCmd</cmdClassName>
+		</fineGrainedStep>
+		<fineGrainedStep>
+			<id>Table Output</id>
+			<descKey>BaseStep.TypeTooltipDesc.TableOutput</descKey>
+			<operation>L</operation>
+			<smiClassName>org.pentaho.di.trans.steps.tableoutput.TableOutputMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.TableOutputParamCmd</cmdClassName>
+		</fineGrainedStep>		
+		<fineGrainedStep>
+			<id>Text File Output</id>
+			<descKey>BaseStep.TypeLongDesc.TextFileOutput</descKey>
+			<operation>L</operation>
+			<smiClassName>org.pentaho.di.trans.steps.textfileoutput.TextFileOutputMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.TextFileOutputParamCmd</cmdClassName>
+		</fineGrainedStep>
+		<fineGrainedStep>
+			<id>XML Output</id>
+			<descKey>BaseStep.TypeTooltipDesc.XMLOutput</descKey>
+			<operation>L</operation>
+			<smiClassName>org.pentaho.di.trans.steps.xmloutput.XMLOutputMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.XMLOutputParamCmd</cmdClassName>
+		</fineGrainedStep>		
 		<!-- Load Steps (END) -->
 	</fineGrainedSteps>
 </fineGrainedStepList>	
