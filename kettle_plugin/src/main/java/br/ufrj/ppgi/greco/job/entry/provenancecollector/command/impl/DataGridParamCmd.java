@@ -34,8 +34,8 @@ public class DataGridParamCmd extends StepParameterCmd
                 List<String> row = meta.getDataLines().get(i);
                 for (int j = 0; j < row.size(); j++)
                 {
-                    String paramName = String.format("ROW_%s#%d%d",
-                            meta.getFieldName()[j], i, j);
+                    String paramName = String.format("ROW_%s#%d",
+                            meta.getFieldName()[j], i);
                     stepParamMap.put(paramName, row.get(j));
                 }
             }
