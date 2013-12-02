@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;18 16:29:38.936</modified_date>
+  <modified_date>2013&#47;12&#47;02 12:30:28.527</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -183,14 +183,22 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
-var uri_base = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;_&lt;STEP_NAME&gt;&lt;ID_STEP&gt;&apos;;
+        <jsScript_script>function defineName(pName)
+{
+  pName = replace(pName, &apos;-&apos;, &apos;_&apos;);
+  pName = replace(pName, &apos; &apos;, &apos;_&apos;);
+  pName = upper(pName);
+  return pName;
+}
+
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
+var uri_base = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;STEP_NAME&gt;&lt;ID_STEP&gt;_&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 var uri_base_w = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 
-var name2 = upper(replace(name, &apos; &apos;, &apos;_&apos;));
-var w_name2 = upper(replace(w_name, &apos; &apos;, &apos;_&apos;));
+var name2 = defineName(name);
+var w_name2 = defineName(w_name);
 
-var uri = replace(uri_base,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;STEP_NAME&gt;&apos;,name2,&apos;&lt;ID_STEP&gt;&apos;,id_step);
+var uri = replace(uri_base,&apos;&lt;STEP_NAME&gt;&apos;,name2,&apos;&lt;ID_STEP&gt;&apos;,id_step,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
 var uri_w = replace(uri_base_w,&apos;&lt;NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
 
 

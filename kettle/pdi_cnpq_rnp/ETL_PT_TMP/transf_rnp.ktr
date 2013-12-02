@@ -63,7 +63,7 @@
   <created_user>-</created_user>
   <created_date>2013&#47;11&#47;26 12:31:00.308</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2013&#47;12&#47;02 01:29:36.025</modified_date>
+  <modified_date>2013&#47;11&#47;30 21:07:48.386</modified_date>
   </info>
   <notepads>
     <notepad>
@@ -591,7 +591,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${Dir_Log}&#47;rnp_error</name>
+      <name>${Dir_Log}\rnp_error</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -876,7 +876,7 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     <rownum_field/>
     <encoding>UTF-8</encoding>
     <file>
-      <name>D:&#47;projetos&#47;provenance_collector&#47;rnp&#47;grupo_trabalho.xml</name>
+      <name>D:\projetos\provenance_collector\rnp\grupo_trabalho.xml</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1050,7 +1050,7 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     <rownum_field/>
     <encoding>UTF-8</encoding>
     <file>
-      <name>D:&#47;projetos&#47;provenance_collector&#47;rnp&#47;pesquisador.xml</name>
+      <name>D:\projetos\provenance_collector\rnp\pesquisador.xml</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1401,6 +1401,34 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     </step>
 
   <step>
+    <name>Verifica se eh Coordenador</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Adiciona Coordinator Type URI</send_true_to>
+<send_false_to>Dummy (do nothing)</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>tipo_participacao</leftvalue>
+ <function>=</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>Coordenador</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>200</xloc>
+      <yloc>214</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Sucesso</name>
     <type>Dummy</type>
     <description/>
@@ -1442,34 +1470,6 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>946</xloc>
       <yloc>253</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Verifica se eh Coordenador</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Adiciona Coordinator Type URI</send_true_to>
-<send_false_to>Dummy (do nothing)</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>tipo_participacao</leftvalue>
- <function>=</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>Coordenador</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>200</xloc>
-      <yloc>214</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

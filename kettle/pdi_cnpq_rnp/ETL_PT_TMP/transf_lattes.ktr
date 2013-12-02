@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>transf_rnp</name>
+    <name>transf_lattes</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -60,16 +60,16 @@
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
-  <created_user>-</created_user>
-  <created_date>2013&#47;11&#47;26 12:31:00.308</created_date>
-  <modified_user>-</modified_user>
-  <modified_date>2013&#47;12&#47;02 01:29:36.025</modified_date>
+  <created_user>rogers</created_user>
+  <created_date>2013&#47;01&#47;20 20:19:35.807</created_date>
+  <modified_user>rogers</modified_user>
+  <modified_date>2013&#47;11&#47;26 17:49:13.096</modified_date>
   </info>
   <notepads>
     <notepad>
       <note>Extracao</note>
-      <xloc>73</xloc>
-      <yloc>0</yloc>
+      <xloc>60</xloc>
+      <yloc>2</yloc>
       <width>61</width>
       <heigth>25</heigth>
       <fontname>Arial</fontname>
@@ -89,7 +89,7 @@
     </notepad>
     <notepad>
       <note>Transformacao</note>
-      <xloc>400</xloc>
+      <xloc>358</xloc>
       <yloc>0</yloc>
       <width>97</width>
       <heigth>25</heigth>
@@ -110,7 +110,7 @@
     </notepad>
     <notepad>
       <note>Carga</note>
-      <xloc>766</xloc>
+      <xloc>892</xloc>
       <yloc>0</yloc>
       <width>45</width>
       <heigth>25</heigth>
@@ -231,10 +231,10 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Input XML - Pesquisador</from><to>Gera URI - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Data Property Mapping - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Object Property Mapping - Pesq. x GT</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Verifica se eh Coordenador</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica se eh Coordenador</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Input XML - Grupo de Pesquisa</from><to>Gera URI - Grupo de Pesquisa</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Pesquisa</from><to>Data Property Mapping - Grupo de Pesquisa</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Pesquisa</from><to>Data Property Mapping - Instituicao</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Pesquisa</from><to>Object Property Mapping - GT x Inst.</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Pesquisador</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Grupo de Pesquisa</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Instituicao</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Pesq. x GT</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Coordenador</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - GT x Inst.</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica se eh Coordenador</from><to>Adiciona Coordinator Type URI</to><enabled>Y</enabled> </hop>  <hop> <from>Adiciona Coordinator Type URI</from><to>Object Property Mapping - Coordenador</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Data Property Mapping - Pesquisador</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - Pesquisador</from><to>Get URI - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal </from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Pesquisador</from><to>Checar Campos 1</to><enabled>Y</enabled> </hop>  <hop> <from>Checar Campos 1</from><to>Data Property Mapping - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Producao</from><to>Join Rows - Producao</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - Producao</from><to>Get URI - Producao</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - Producao</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Producao</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Projeto</from><to>Join Rows - Projeto</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - Projeto</from><to>Get URI - Projeto</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - Projeto</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Projeto</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Projeto</from><to>Checar Campos 2</to><enabled>Y</enabled> </hop>  <hop> <from>Checar Campos 2</from><to>Data Property Mapping - Projeto</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Pesq. &amp; Proj.</from><to>Obj. Property Mapping - Pesq. x Proj.</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - Pesq. x Proj.</from><to>Get URI - Pesq. &amp; Proj.</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Pesq. &amp; Prod.</from><to>Obj. Property Mapping - Pesq. x Prod.</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - Pesq. x Prod.</from><to>Get URI - Pesq. &amp; Prod.</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - Pesq. x Proj.</to><enabled>Y</enabled> </hop>  <hop> <from>Obj. Property Mapping - Pesq. x Proj.</from><to>Gera NTriple - Objeto Nao Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - Pesq. x Prod.</to><enabled>Y</enabled> </hop>  <hop> <from>Obj. Property Mapping - Pesq. x Prod.</from><to>Gera NTriple - Objeto Nao Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Input - Pesq. x Proj.</from><to>Join Rows - Pesq. x Proj.</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Pesq. x Prod.</from><to>Join Rows - Pesq. x Prod.</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Pesquisador</from><to>Seleciona Props Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Seleciona Props Pesquisador</from><to>Join Rows - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - Producao</from><to>Data Property Mapping - Producao</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Adiciona Coordinator Type URI</name>
-    <type>Constant</type>
+    <name>Checar Campos 1</name>
+    <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -244,28 +244,57 @@
            </partitioning>
     <fields>
       <field>
-        <name>uri_coord_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http:&#47;&#47;www.rnp.br&#47;ontology&#47;Coordinator</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
+        <in_stream_name>pesquisador_sexo</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Masculino</replace_string>
+        <replace_by_string>M</replace_by_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>pesquisador_sexo</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Feminino</replace_string>
+        <replace_by_string>F</replace_by_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>pesquisador_nivel</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Não informado</replace_string>
+        <replace_by_string> </replace_by_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>pesquisador_endereco_profissional</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Não informado</replace_string>
+        <replace_by_string> </replace_by_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>359</xloc>
-      <yloc>184</yloc>
+      <xloc>536</xloc>
+      <yloc>45</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Data Property Mapping - Grupo de Pesquisa</name>
-    <type>DataPropertyMappingPlugin</type>
+    <name>Checar Campos 2</name>
+    <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -273,192 +302,32 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>LANGTAG_OUT_FIELD_NAME</string>
-    <string>langtag</string>
-  </entry>
-  <entry>
-    <string>DATATYPE_OUT_FIELD_NAME</string>
-    <string>datatype</string>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>3</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_gt</string>
-  </entry>
-  <entry>
-    <string>RDF_TYPE_URIS</string>
-    <list>
-      <string>http://www.rnp.br/ontology/ResearchGroup</string>
-    </list>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_TYPED_LITERAL</string>
-        <string>MAP_TABLE_LANGUAGE_TAG</string>
-        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/identifier</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>id_gt</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/name</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>nome_gt</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/acronym</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>sigla_gt</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/phase</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>fase</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/startYear</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>ano_inicio</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/endYear</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>ano_fim</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
+    <fields>
+      <field>
+        <in_stream_name>projeto_financiadores</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Não informado</replace_string>
+        <replace_by_string> </replace_by_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>projeto_integrantes</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Não informado</replace_string>
+        <replace_by_string> </replace_by_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>532</xloc>
-      <yloc>316</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Data Property Mapping - Instituicao</name>
-    <type>DataPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>LANGTAG_OUT_FIELD_NAME</string>
-    <string>langtag</string>
-  </entry>
-  <entry>
-    <string>DATATYPE_OUT_FIELD_NAME</string>
-    <string>datatype</string>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>3</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_inst</string>
-  </entry>
-  <entry>
-    <string>RDF_TYPE_URIS</string>
-    <list>
-      <string>http://www.rnp.br/ontology/Institution</string>
-    </list>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_TYPED_LITERAL</string>
-        <string>MAP_TABLE_LANGUAGE_TAG</string>
-        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/name</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>nome_instituicao</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/acronym</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>sigla_instituicao</MAP__TABLE__OBJECT__FIELD__NAME>
-          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
-          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
-          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>534</xloc>
-      <yloc>384</yloc>
+      <xloc>529</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -500,12 +369,12 @@
   </entry>
   <entry>
     <string>SUBJECT_URI_FIELD_NAME</string>
-    <string>uri_p</string>
+    <string>uri_r</string>
   </entry>
   <entry>
     <string>RDF_TYPE_URIS</string>
     <list>
-      <string>http://www.rnp.br/ontology/Researcher</string>
+      <string>http://lattes.cnpq.br/ontology/Researcher</string>
     </list>
   </entry>
   <entry>
@@ -521,15 +390,36 @@
       </Header>
       <Data>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/identifier</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>id_pesquisador</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/identifier</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_id</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/name</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>nome_pesquisador</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/name</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_nome</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/gender</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_sexo</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/researcherlevel</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_nivel</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/professionaladdress</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>pesquisador_endereco_profissional</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
@@ -543,15 +433,15 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>528</xloc>
-      <yloc>60</yloc>
+      <xloc>643</xloc>
+      <yloc>78</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
+    <name>Data Property Mapping - Producao</name>
+    <type>DataPropertyMappingPlugin</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -559,10 +449,234 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-     <cluster_schema/>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>LANGTAG_OUT_FIELD_NAME</string>
+    <string>langtag</string>
+  </entry>
+  <entry>
+    <string>DATATYPE_OUT_FIELD_NAME</string>
+    <string>datatype</string>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>3</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>SUBJECT_URI_FIELD_NAME</string>
+    <string>uri_p</string>
+  </entry>
+  <entry>
+    <string>RDF_TYPE_URIS</string>
+    <list>
+      <string>http://lattes.cnpq.br/ontology/Production</string>
+    </list>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_TYPED_LITERAL</string>
+        <string>MAP_TABLE_LANGUAGE_TAG</string>
+        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/identifier</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>producao_id</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/name</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>producao_titulo</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/year</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>producao_ano</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/contributors</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>producao_autores</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/type</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>tipo</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>359</xloc>
-      <yloc>245</yloc>
+      <xloc>646</xloc>
+      <yloc>142</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Data Property Mapping - Projeto</name>
+    <type>DataPropertyMappingPlugin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>LANGTAG_OUT_FIELD_NAME</string>
+    <string>langtag</string>
+  </entry>
+  <entry>
+    <string>DATATYPE_OUT_FIELD_NAME</string>
+    <string>datatype</string>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>3</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>SUBJECT_URI_FIELD_NAME</string>
+    <string>uri_p</string>
+  </entry>
+  <entry>
+    <string>RDF_TYPE_URIS</string>
+    <list>
+      <string>http://lattes.cnpq.br/ontology/Project</string>
+    </list>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_TYPED_LITERAL</string>
+        <string>MAP_TABLE_LANGUAGE_TAG</string>
+        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/identifier</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_id</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/name</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_titulo</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/startYear</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_ano_inicio</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/endYear</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_ano_termino</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/sponsors</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_financiadores</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/participants</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_integrantes</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/description</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_descricao</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/type</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_natureza</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/coordinator</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>projeto_coordenador</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>646</xloc>
+      <yloc>222</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -591,7 +705,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${Dir_Log}&#47;rnp_error</name>
+      <name>${Dir_Log}\lattes_error</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -648,8 +762,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>947</xloc>
-      <yloc>362</yloc>
+      <xloc>1080</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -658,7 +772,7 @@
     <name>Gera NTriple - Objeto Literal</name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -674,17 +788,17 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>152</yloc>
+      <xloc>901</xloc>
+      <yloc>117</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Gera NTriple - Objeto Nao Literal</name>
+    <name>Gera NTriple - Objeto Nao Literal </name>
     <type>NTripleGeneratorPlugin</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -700,15 +814,15 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>778</xloc>
-      <yloc>367</yloc>
+      <xloc>901</xloc>
+      <yloc>394</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Gera URI - Grupo de Pesquisa</name>
-    <type>ScriptValueMod</type>
+    <name>Get Prefixos dos Recursos</name>
+    <type>DataGrid</type>
     <description/>
     <distribute>N</distribute>
     <copies>1</copies>
@@ -716,71 +830,52 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>function retirarAcento(varString) {
-  var stringAcentos = new String(&apos;àâêôûãõáéíóúçüÀÂÊÔÛÃÕÁÉÍÓÚÇÜñÑöÖ&apos;);
-  var stringSemAcento = new String(&apos;aaeouaoaeioucuAAEOUAOAEIOUCUnNoO&apos;);
- 
-  var cString = new String();
-  var varRes = new String();
- 
-  for (var i = 0; i &lt; varString.length; i++)
-  {
-    cString = varString.substring(i, i + 1);
-    if ((cString.charCodeAt(0) == 45) || (cString.charCodeAt(0) == 8211))
-    {
-      cString = &apos;&apos;;
-    }
-    else
-    {
-      for (var j = 0; j &lt; stringAcentos.length; j++)
-      {
-        if (cString == stringAcentos.substring(j, j + 1))
-        {
-          cString = stringSemAcento.substring(j, j + 1);
-        }
-      }
-    }
-    varRes += cString;
-  }
-  return varRes;
-}
-
-var uri_prefix = &apos;http:&#47;&#47;www.rnp.br&#47;resource&#47;&apos;;
-var uri_base_gt = uri_prefix + &apos;ResearchGroup&#47;&lt;NOME&gt;&lt;ID&gt;&lt;FASE&gt;&apos;;
-var uri_base_inst = uri_prefix + &apos;Institution&#47;&lt;SIGLA&gt;&apos;;
-
-var nome_gt = upper(replace(retirarAcento(nome_gt), &apos; &apos;, &apos;_&apos;));
-var nome_inst = upper(replace(retirarAcento(nome_instituicao), &apos; &apos;, &apos;_&apos;));
-
-var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&gt;&apos;,id_gt,&apos;&lt;FASE&gt;&apos;,fase);
-var uri_inst = replace(uri_base_inst,&apos;&lt;SIGLA&gt;&apos;,sigla_instituicao);</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri_gt</name>
-        <rename>uri_gt</rename>
+    <fields>
+      <field>
+        <name>prefix_researcher</name>
         <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_inst</name>
-        <rename>uri_inst</rename>
+      </field>
+      <field>
+        <name>prefix_production</name>
         <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
+      </field>
+      <field>
+        <name>prefix_project</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <data>
+      <line> <item>http:&#47;&#47;lattes.cnpq.br&#47;resource&#47;Researcher&#47;</item><item>http:&#47;&#47;lattes.cnpq.br&#47;resource&#47;Production&#47;</item><item>http:&#47;&#47;lattes.cnpq.br&#47;resource&#47;Project&#47;</item> </line>
+    </data>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>281</xloc>
-      <yloc>384</yloc>
+      <xloc>66</xloc>
+      <yloc>291</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Gera URI - Pesquisador</name>
-    <type>ScriptValueMod</type>
+    <name>Get URI - Pesq. &amp; Prod.</name>
+    <type>Calculator</type>
     <description/>
     <distribute>N</distribute>
     <copies>1</copies>
@@ -788,73 +883,91 @@ var uri_inst = replace(uri_base_inst,&apos;&lt;SIGLA&gt;&apos;,sigla_instituicao
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>function retirarAcento(varString) {
-  var stringAcentos = new String(&apos;àâêôûãõáéíóúçüÀÂÊÔÛÃÕÁÉÍÓÚÇÜñÑöÖ&apos;);
-  var stringSemAcento = new String(&apos;aaeouaoaeioucuAAEOUAOAEIOUCUnNoO&apos;);
- 
-  var cString = new String();
-  var varRes = new String();
- 
-  for (var i = 0; i &lt; varString.length; i++)
-  {
-    cString = varString.substring(i, i + 1);
-    if ((cString.charCodeAt(0) == 45) || (cString.charCodeAt(0) == 8211))
-    {
-      cString = &apos;&apos;;
-    }
-    else
-    {
-      for (var j = 0; j &lt; stringAcentos.length; j++)
-      {
-        if (cString == stringAcentos.substring(j, j + 1))
-        {
-          cString = stringSemAcento.substring(j, j + 1);
-        }
-      }
-    }
-    varRes += cString;
-  }
-  return varRes;
-}
-
-var uri_prefix = &apos;http:&#47;&#47;www.rnp.br&#47;resource&#47;&apos;;
-var uri_base_p = uri_prefix + &apos;Researcher&#47;&lt;NOME&gt;&lt;ID&gt;&apos;;
-var uri_base_gt = uri_prefix + &apos;ResearchGroup&#47;&lt;NOME&gt;&lt;ID&gt;&lt;FASE&gt;&apos;;
-
-
-var nome_p = upper(replace(retirarAcento(nome_pesquisador), &apos; &apos;, &apos;_&apos;));
-var nome_gt = upper(replace(retirarAcento(nome_gt), &apos; &apos;, &apos;_&apos;));
-
-
-var uri_p = replace(uri_base_p,&apos;&lt;NOME&gt;&apos;,nome_p,&apos;&lt;ID&gt;&apos;,id_pesquisador);
-var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&gt;&apos;,id_gt,&apos;&lt;FASE&gt;&apos;,fase);</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri_p</name>
-        <rename>uri_p</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_gt</name>
-        <rename>uri_gt</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
+       <calculation><field_name>uri_p</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_production</field_a>
+<field_b>producao_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>uri_r</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_researcher</field_a>
+<field_b>pesquisador_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>268</xloc>
-      <yloc>60</yloc>
+      <xloc>434</xloc>
+      <yloc>425</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Input XML - Grupo de Pesquisa</name>
-    <type>getXMLData</type>
+    <name>Get URI - Pesq. &amp; Proj.</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>uri_p</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_project</field_a>
+<field_b>projeto_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>uri_r</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_researcher</field_a>
+<field_b>pesquisador_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>436</xloc>
+      <yloc>355</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get URI - Pesquisador</name>
+    <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -862,173 +975,63 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
-    <encoding>UTF-8</encoding>
-    <file>
-      <name>D:&#47;projetos&#47;provenance_collector&#47;rnp&#47;grupo_trabalho.xml</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>id_gt</name>
-        <xpath>id_gt</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>nome_gt</name>
-        <xpath>nome_gt</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>sigla_gt</name>
-        <xpath>sigla_gt</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>fase</name>
-        <xpath>fase</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>ano_inicio</name>
-        <xpath>ano_inicio</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>ano_fim</name>
-        <xpath>ano_fim</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>nome_instituicao</name>
-        <xpath>nome_instituicao</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>sigla_instituicao</name>
-        <xpath>sigla_instituicao</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <loopxpath>&#47;Rows&#47;Row</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
+       <calculation><field_name>uri_r</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_researcher</field_a>
+<field_b>pesquisador_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>84</xloc>
-      <yloc>384</yloc>
+      <xloc>432</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Input XML - Pesquisador</name>
-    <type>getXMLData</type>
+    <name>Get URI - Producao</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>uri_p</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_production</field_a>
+<field_b>producao_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>437</xloc>
+      <yloc>142</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get URI - Projeto</name>
+    <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1036,157 +1039,371 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
-    <encoding>UTF-8</encoding>
-    <file>
-      <name>D:&#47;projetos&#47;provenance_collector&#47;rnp&#47;pesquisador.xml</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>id_pesquisador</name>
-        <xpath>id_pesquisador</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>nome_pesquisador</name>
-        <xpath>nome_pesquisador</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>id_gt</name>
-        <xpath>id_gt</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>nome_gt</name>
-        <xpath>nome_gt</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>sigla_gt</name>
-        <xpath>sigla_gt</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>fase</name>
-        <xpath>fase</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>tipo_participacao</name>
-        <xpath>tipo_participacao</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <loopxpath>&#47;Rows&#47;Row</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
+       <calculation><field_name>uri_p</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_project</field_a>
+<field_b>projeto_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>87</xloc>
-      <yloc>60</yloc>
+      <xloc>433</xloc>
+      <yloc>222</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Object Property Mapping - Coordenador</name>
+    <name>Input - Pesq. x Prod.</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_lattes</connection>
+    <sql>SELECT
+  pesquisador_id
+, producao_id
+FROM rleautordeproducaobibliografica t1
+UNION 
+SELECT
+  pesquisador_id
+, producao_id
+FROM rleautordeproducaotecnica
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>64</xloc>
+      <yloc>425</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Pesq. x Proj.</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_lattes</connection>
+    <sql>SELECT
+  pesquisador_id
+, projeto_id
+FROM rlatuaemprojeto
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>66</xloc>
+      <yloc>355</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Pesquisador</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_lattes</connection>
+    <sql>SELECT
+  pesquisador_id
+, pesquisador_nome
+, pesquisador_sexo
+, pesquisador_maior_formacao
+, pesquisador_nivel
+, pesquisador_nome_citacao
+, pesquisador_url_foto
+, pesquisador_endereco_profissional
+, pesquisador_numero_orientacoes
+, pesquisador_numero_bancas
+, pesquisador_numero_producoes
+FROM pesquisador
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>66</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Producao</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_lattes</connection>
+    <sql>SELECT producao_id, producao_titulo, producao_ano, producao_autores, &apos;Bibliográfica&apos; as tipo
+FROM  producaobibliografica
+UNION
+SELECT producao_id, producao_titulo, producao_ano, producao_autores, &apos;Técnica&apos; as tipo
+FROM  producaotecnica</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>67</xloc>
+      <yloc>141</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Projeto</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_lattes</connection>
+    <sql>SELECT
+  projeto_id
+, projeto_titulo
+, projeto_ano_inicio
+, projeto_ano_termino
+, projeto_financiadores
+, projeto_integrantes
+, projeto_descricao
+, projeto_natureza
+, projeto_situacao
+, projeto_coordenador
+FROM projeto
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>65</xloc>
+      <yloc>222</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows - Pesq. x Prod.</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>prefix_researcher</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>prefix_production</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>279</xloc>
+      <yloc>425</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows - Pesq. x Proj.</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>prefix_researcher</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>prefix_project</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>280</xloc>
+      <yloc>355</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows - Pesquisador</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>prefix_researcher</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>286</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows - Producao</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>prefix_production</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>286</xloc>
+      <yloc>141</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows - Projeto</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>prefix_project</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>286</xloc>
+      <yloc>222</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Obj. Property Mapping - Pesq. x Prod.</name>
     <type>ObjectPropertyMappingPlugin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1226,13 +1443,13 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
         <Row>
           <MAP__TABLE__SUBJECT__FIELD__NAME>uri_p</MAP__TABLE__SUBJECT__FIELD__NAME>
           <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_coord_type</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/producedBy</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri_r</MAP__TABLE__OBJECT__FIELD__NAME>
         </Row>
         <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_gt</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_r</MAP__TABLE__SUBJECT__FIELD__NAME>
           <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/coordinator</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/producer</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>uri_p</MAP__TABLE__OBJECT__FIELD__NAME>
         </Row>
       </Data>
@@ -1244,14 +1461,14 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>533</xloc>
-      <yloc>214</yloc>
+      <xloc>648</xloc>
+      <yloc>425</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Object Property Mapping - GT x Inst.</name>
+    <name>Obj. Property Mapping - Pesq. x Proj.</name>
     <type>ObjectPropertyMappingPlugin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1289,16 +1506,10 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
       </Header>
       <Data>
         <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_gt</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_p</MAP__TABLE__SUBJECT__FIELD__NAME>
           <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/institution</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_inst</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME></MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI></MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME></MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://lattes.cnpq.br/property/member</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri_r</MAP__TABLE__OBJECT__FIELD__NAME>
         </Row>
       </Data>
     </DataTable>
@@ -1309,67 +1520,8 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>535</xloc>
-      <yloc>458</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Object Property Mapping - Pesq. x GT</name>
-    <type>ObjectPropertyMappingPlugin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<DATA_ROOT_NODE><map>
-  <entry>
-    <string>SUBJECT_OUT_FIELD_NAME</string>
-    <string>subject</string>
-  </entry>
-  <entry>
-    <string>KEEP_INPUT_FIELDS</string>
-    <boolean>false</boolean>
-  </entry>
-  <entry>
-    <string>VERSION</string>
-    <int>1</int>
-  </entry>
-  <entry>
-    <string>OBJECT_OUT_FIELD_NAME</string>
-    <string>object</string>
-  </entry>
-  <entry>
-    <string>MAP_TABLE</string>
-    <DataTable>
-      <Name>MAP_TABLE</Name>
-      <Header>
-        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
-        <string>MAP_TABLE_PREDICATE_URI</string>
-        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
-      </Header>
-      <Data>
-        <Row>
-          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_gt</MAP__TABLE__SUBJECT__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
-          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/member</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>uri_p</MAP__TABLE__OBJECT__FIELD__NAME>
-        </Row>
-      </Data>
-    </DataTable>
-  </entry>
-  <entry>
-    <string>PREDICATE_OUT_FIELD_NAME</string>
-    <string>predicate</string>
-  </entry>
-</map></DATA_ROOT_NODE>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>529</xloc>
-      <yloc>139</yloc>
+      <xloc>647</xloc>
+      <yloc>355</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1378,15 +1530,15 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     <name>Output - Banco de Triplas</name>
     <type>SparqlUpdateOutput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
 <RDF_CONTENT>ntriple</RDF_CONTENT>
-<GRAPH_URI>http:&#47;&#47;www.rnp.br</GRAPH_URI>
-<CLEAR_GRAPH>N</CLEAR_GRAPH>
+<GRAPH_URI>http:&#47;&#47;lattes.cnpq.br</GRAPH_URI>
+<CLEAR_GRAPH>Y</CLEAR_GRAPH>
 <ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
 <USERNAME>dba</USERNAME>
 <PASSWORD>dba</PASSWORD>
@@ -1394,8 +1546,47 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
 <OUT_MESSAGE>status_message</OUT_MESSAGE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>779</xloc>
-      <yloc>253</yloc>
+      <xloc>901</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Seleciona Props Pesquisador</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>pesquisador_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>pesquisador_nome</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>pesquisador_sexo</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>pesquisador_nivel</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>pesquisador_endereco_profissional</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>175</xloc>
+      <yloc>52</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1412,8 +1603,8 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>943</xloc>
-      <yloc>155</yloc>
+      <xloc>1079</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1440,36 +1631,8 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>946</xloc>
-      <yloc>253</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Verifica se eh Coordenador</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Adiciona Coordinator Type URI</send_true_to>
-<send_false_to>Dummy (do nothing)</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>tipo_participacao</leftvalue>
- <function>=</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>Coordenador</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>200</xloc>
-      <yloc>214</yloc>
+      <xloc>1080</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

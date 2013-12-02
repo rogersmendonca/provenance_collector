@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>transf_input_retrosp_step</name>
+    <name>transf_migracao_rnp_to_xml</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -60,10 +60,10 @@
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
-  <created_user>rogers</created_user>
-  <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
-  <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;12&#47;02 12:37:54.450</modified_date>
+  <created_user>-</created_user>
+  <created_date>2013&#47;11&#47;26 11:21:18.655</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2013&#47;11&#47;28 03:02:02.610</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -167,138 +167,75 @@
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
+  <connection>
+    <name>db_rnp</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>rnp</database>
+    <port>3306</port>
+    <username>kettle</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79a575ca86a3df</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
   <order>
-  <hop> <from>Input Proveniencia - Retrosp. Step</from><to>Gera URI - Recurso Step</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Step</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Proveniencia - Retrosp. Step</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input - GT</from><to>XML Output - GT</to><enabled>Y</enabled> </hop>  <hop> <from>Table input - Pesquisador</from><to>XML Output - Pesquisador</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Gera URI - Recurso Step</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>function defineName(pName)
-{
-  pName = replace(pName, &apos;-&apos;, &apos;_&apos;);
-  pName = replace(pName, &apos; &apos;, &apos;_&apos;);
-  pName = upper(pName);
-  return pName;
-}
-var prosp_name = defineName(name);
-var w_name2 = defineName(w_name);
-
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;;
-var uri_base_exec = uri_prefix + &apos;WorkflowExecutionProcess&#47;&lt;STEP_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;P_ID_STEP&gt;&lt;ID_SEQ&gt;&apos;;
-var uri_base_comp = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;STEP_NAME&gt;&lt;P_ID_STEP&gt;_&lt;W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&apos;;
-var uri_base_user = uri_prefix + &apos;Agent&#47;&lt;LOGIN&gt;&lt;P_ID_REPOSITORY&gt;&apos;;
-var uri_base_w_exec = uri_prefix + &apos;WorkflowExecution&#47;&lt;W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;ID_WORKFLOW&gt;&apos;;
-var title_fmt = &apos;&lt;STEP_NAME&gt;&lt;P_ID_STEP&gt;_&lt;W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt; : Execution &lt;ID_SEQ&gt;&apos;;
-
-var uri_exec = replace(uri_base_exec,&apos;&lt;STEP_NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;ID_SEQ&gt;&apos;,seq);
-var uri_comp = replace(uri_base_comp,&apos;&lt;STEP_NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow);
-var uri_user = replace(uri_base_user,&apos;&lt;LOGIN&gt;&apos;,login,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository);
-var uri_w_exec = replace(uri_base_w_exec,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
-var title = replace(title_fmt,&apos;&lt;STEP_NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;ID_SEQ&gt;&apos;,seq);</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri_exec</name>
-        <rename>uri_exec</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_comp</name>
-        <rename>uri_comp</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_user</name>
-        <rename>uri_user</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>title</name>
-        <rename>title</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_w_exec</name>
-        <rename>uri_w_exec</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>558</xloc>
-      <yloc>123</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input Proveniencia - Retrosp. Step</name>
+    <name>Table input - GT</name>
     <type>TableInput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>db_provenance</connection>
-    <sql>SELECT
-  t2.id_prosp_repository
-, t2.id_prosp_workflow
-, t2.id_workflow
-, t2.id_prosp_step
-, t2.seq
-, t2.start_date
-, t2.finish_date
-, t2.success
-, t2.id_user
-, t3.name
-, t4.login
-, t5.name as w_name
-FROM retrosp_workflow t1, retrosp_step t2, prosp_step t3, user t4, prosp_workflow t5
-WHERE t1.id_root_prosp_repository = ?
-AND t1.id_root_prosp_workflow = ?
-AND t1.id_root = ?
-AND t2.id_prosp_repository = t1.id_prosp_repository
-AND t2.id_prosp_workflow = t1.id_prosp_workflow
-AND t2.id_workflow = t1.id_workflow
-AND t3.id_repository = t2.id_prosp_repository
-AND t3.id_workflow = t2.id_prosp_workflow
-AND t3.id_step = t2.id_prosp_step
-AND t4.id_repository = t2.id_prosp_repository
-AND t4.id_user = t2.id_user
-AND t5.id_repository = t3.id_repository
-AND t5.id_workflow = t3.id_workflow
-ORDER BY t2.id_prosp_repository, t2.id_prosp_workflow, t2.id_workflow, t2.seq
+    <connection>db_rnp</connection>
+    <sql>SELECT DISTINCT
+  t1.id as id_gt
+, t1.nome as nome_gt
+, t1.sigla as sigla_gt
+, t2.fase as fase
+, t2.anoInicio as ano_inicio
+, t2.anoFim as ano_fim
+, t3.nome as nome_instituicao
+, t3.sigla as sigla_instituicao
+FROM gt t1, fase t2, instituicao t3, instituicaoemgt t4
+WHERE t2.idGT = t1.id
+AND t4.idGT = t1.id
+AND t4.idInstituicao = t3.id
+ORDER BY t1.id, t2.fase
 </sql>
     <limit>0</limit>
-    <lookup>Mapping input specification</lookup>
+    <lookup/>
     <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
+    <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>327</xloc>
-      <yloc>123</yloc>
+      <xloc>80</xloc>
+      <yloc>58</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Mapping input specification</name>
-    <type>MappingInput</type>
+    <name>Table input - Pesquisador</name>
+    <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -306,38 +243,172 @@ ORDER BY t2.id_prosp_repository, t2.id_prosp_workflow, t2.id_workflow, t2.seq
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <connection>db_rnp</connection>
+    <sql>SELECT DISTINCT
+  t1.id as id_pesquisador
+, t1.nome_completo as nome_pesquisador
+, t5.id as id_gt
+, t5.nome as nome_gt
+, t5.sigla as sigla_gt
+, t4.fase as fase
+, t3.tipo as tipo_participacao
+FROM pesquisador t1, participacaoemgt t2, tipoparticipacaoemgt t3, fase t4, gt t5
+WHERE t2.idPesquisador = t1.id
+AND  t2.idFase = t4.id
+AND  t2.idTipoParticipacao = t3.id
+AND  t4.idGT = t5.id
+ORDER BY t1.nome_completo, t5.nome, t4.fase, t3.tipo</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>81</xloc>
+      <yloc>136</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>XML Output - GT</name>
+    <type>XMLOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <encoding>UTF-8</encoding>
+    <name_space/>
+    <xml_main_element>Rows</xml_main_element>
+    <xml_repeat_element>Row</xml_repeat_element>
+    <file>
+      <name>D:\projetos\provenance_collector\rnp\grupo_trabalho</name>
+      <extention>xml</extention>
+      <servlet_output>N</servlet_output>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <split>N</split>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <omit_null_values>N</omit_null_values>
+      <date_time_format/>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <zipped>N</zipped>
+      <splitevery>0</splitevery>
+    </file>
     <fields>
       <field>
-        <name>id_prosp_repository</name>
+        <name>id_gt</name>
+        <element/>
         <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>id_prosp_workflow</name>
-        <type>Integer</type>
+        <name>nome_gt</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>id_workflow</name>
-        <type>Integer</type>
+        <name>sigla_gt</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <length>-1</length>
         <precision>-1</precision>
       </field>
-        <select_unspecified>N</select_unspecified>
+      <field>
+        <name>fase</name>
+        <element/>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ano_inicio</name>
+        <element/>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ano_fim</name>
+        <element/>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>nome_instituicao</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sigla_instituicao</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>114</xloc>
-      <yloc>123</yloc>
+      <xloc>347</xloc>
+      <yloc>58</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Mapping output specification</name>
-    <type>MappingOutput</type>
+    <name>XML Output - Pesquisador</name>
+    <type>XMLOutput</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -345,10 +416,115 @@ ORDER BY t2.id_prosp_repository, t2.id_prosp_workflow, t2.id_workflow, t2.seq
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <encoding>UTF-8</encoding>
+    <name_space/>
+    <xml_main_element>Rows</xml_main_element>
+    <xml_repeat_element>Row</xml_repeat_element>
+    <file>
+      <name>D:\projetos\provenance_collector\rnp\pesquisador</name>
+      <extention>xml</extention>
+      <servlet_output>N</servlet_output>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <split>N</split>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <omit_null_values>N</omit_null_values>
+      <date_time_format/>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <zipped>N</zipped>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>id_pesquisador</name>
+        <element/>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>nome_pesquisador</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>id_gt</name>
+        <element/>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>nome_gt</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sigla_gt</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>fase</name>
+        <element/>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tipo_participacao</name>
+        <element/>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>785</xloc>
-      <yloc>123</yloc>
+      <xloc>346</xloc>
+      <yloc>136</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

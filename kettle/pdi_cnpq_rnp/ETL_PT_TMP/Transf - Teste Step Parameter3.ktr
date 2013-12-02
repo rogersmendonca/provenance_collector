@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>transf_input_retrosp_step</name>
+    <name>Transf - Teste Step Parameter3</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -60,12 +60,75 @@
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
-  <created_user>rogers</created_user>
-  <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
-  <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;12&#47;02 12:37:54.450</modified_date>
+  <created_user>-</created_user>
+  <created_date>2013&#47;11&#47;27 12:14:36.194</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2013&#47;11&#47;28 03:01:59.111</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Extracao</note>
+      <xloc>77</xloc>
+      <yloc>0</yloc>
+      <width>61</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Transformacao</note>
+      <xloc>402</xloc>
+      <yloc>0</yloc>
+      <width>97</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Carga</note>
+      <xloc>767</xloc>
+      <yloc>0</yloc>
+      <width>45</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>db_cnpq</name>
@@ -167,140 +230,150 @@
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
+  <connection>
+    <name>db_test</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>test</database>
+    <port>3306</port>
+    <username>kettle</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79a575ca86a3df</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
   <order>
-  <hop> <from>Input Proveniencia - Retrosp. Step</from><to>Gera URI - Recurso Step</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Recurso Step</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Input Proveniencia - Retrosp. Step</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Data Property Mapping - GP</from><to>Gera NTriple - Objeto Literal </to><enabled>Y</enabled> </hop>  <hop> <from>Get Prefixos dos Recursos</from><to>Join Rows - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Get URI - GP</from><to>Data Property Mapping - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Grupo de Pesquisa</from><to>Join Rows - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows - GP</from><to>Get URI - GP</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal </from><to>Text file output</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Gera URI - Recurso Step</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>function defineName(pName)
-{
-  pName = replace(pName, &apos;-&apos;, &apos;_&apos;);
-  pName = replace(pName, &apos; &apos;, &apos;_&apos;);
-  pName = upper(pName);
-  return pName;
-}
-var prosp_name = defineName(name);
-var w_name2 = defineName(w_name);
-
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;;
-var uri_base_exec = uri_prefix + &apos;WorkflowExecutionProcess&#47;&lt;STEP_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;P_ID_STEP&gt;&lt;ID_SEQ&gt;&apos;;
-var uri_base_comp = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;STEP_NAME&gt;&lt;P_ID_STEP&gt;_&lt;W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&apos;;
-var uri_base_user = uri_prefix + &apos;Agent&#47;&lt;LOGIN&gt;&lt;P_ID_REPOSITORY&gt;&apos;;
-var uri_base_w_exec = uri_prefix + &apos;WorkflowExecution&#47;&lt;W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;ID_WORKFLOW&gt;&apos;;
-var title_fmt = &apos;&lt;STEP_NAME&gt;&lt;P_ID_STEP&gt;_&lt;W_NAME&gt;&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt; : Execution &lt;ID_SEQ&gt;&apos;;
-
-var uri_exec = replace(uri_base_exec,&apos;&lt;STEP_NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;ID_SEQ&gt;&apos;,seq);
-var uri_comp = replace(uri_base_comp,&apos;&lt;STEP_NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow);
-var uri_user = replace(uri_base_user,&apos;&lt;LOGIN&gt;&apos;,login,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository);
-var uri_w_exec = replace(uri_base_w_exec,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
-var title = replace(title_fmt,&apos;&lt;STEP_NAME&gt;&apos;,prosp_name,&apos;&lt;P_ID_STEP&gt;&apos;,id_prosp_step,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_prosp_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_prosp_workflow,&apos;&lt;ID_SEQ&gt;&apos;,seq);</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>uri_exec</name>
-        <rename>uri_exec</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_comp</name>
-        <rename>uri_comp</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_user</name>
-        <rename>uri_user</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>title</name>
-        <rename>title</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>uri_w_exec</name>
-        <rename>uri_w_exec</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>558</xloc>
-      <yloc>123</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Input Proveniencia - Retrosp. Step</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>db_provenance</connection>
-    <sql>SELECT
-  t2.id_prosp_repository
-, t2.id_prosp_workflow
-, t2.id_workflow
-, t2.id_prosp_step
-, t2.seq
-, t2.start_date
-, t2.finish_date
-, t2.success
-, t2.id_user
-, t3.name
-, t4.login
-, t5.name as w_name
-FROM retrosp_workflow t1, retrosp_step t2, prosp_step t3, user t4, prosp_workflow t5
-WHERE t1.id_root_prosp_repository = ?
-AND t1.id_root_prosp_workflow = ?
-AND t1.id_root = ?
-AND t2.id_prosp_repository = t1.id_prosp_repository
-AND t2.id_prosp_workflow = t1.id_prosp_workflow
-AND t2.id_workflow = t1.id_workflow
-AND t3.id_repository = t2.id_prosp_repository
-AND t3.id_workflow = t2.id_prosp_workflow
-AND t3.id_step = t2.id_prosp_step
-AND t4.id_repository = t2.id_prosp_repository
-AND t4.id_user = t2.id_user
-AND t5.id_repository = t3.id_repository
-AND t5.id_workflow = t3.id_workflow
-ORDER BY t2.id_prosp_repository, t2.id_prosp_workflow, t2.id_workflow, t2.seq
-</sql>
-    <limit>0</limit>
-    <lookup>Mapping input specification</lookup>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>327</xloc>
-      <yloc>123</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Mapping input specification</name>
-    <type>MappingInput</type>
+    <name>Data Property Mapping - GP</name>
+    <type>DataPropertyMappingPlugin</type>
     <description/>
     <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>LANGTAG_OUT_FIELD_NAME</string>
+    <string>langtag</string>
+  </entry>
+  <entry>
+    <string>DATATYPE_OUT_FIELD_NAME</string>
+    <string>datatype</string>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>3</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>SUBJECT_URI_FIELD_NAME</string>
+    <string>uri_rg</string>
+  </entry>
+  <entry>
+    <string>RDF_TYPE_URIS</string>
+    <list>
+      <string>http://www.cnpq.br/ontology/ResearchGroup</string>
+    </list>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_TYPED_LITERAL</string>
+        <string>MAP_TABLE_LANGUAGE_TAG</string>
+        <string>MAP_TABLE_LANGTAG_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://www.cnpq.br/property/identifier</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>grupo_id</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL>xsd:integer</MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__PREDICATE__URI>http://www.cnpq.br/property/name</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>grupo_nome</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
+          <MAP__TABLE__LANGUAGE__TAG>pt</MAP__TABLE__LANGUAGE__TAG>
+          <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>655</xloc>
+      <yloc>73</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Gera NTriple - Objeto Literal </name>
+    <type>NTripleGeneratorPlugin</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<INPUT_SUBJECT_FIELD_NAME>subject</INPUT_SUBJECT_FIELD_NAME>
+<INPUT_PREDICATE_FIELD_NAME>predicate</INPUT_PREDICATE_FIELD_NAME>
+<INPUT_OBJECT_FIELD_NAME>object</INPUT_OBJECT_FIELD_NAME>
+<INPUT_DATATYPE_FIELD_NAME>datatype</INPUT_DATATYPE_FIELD_NAME>
+<INPUT_LANGTAG_FIELD_NAME>langtag</INPUT_LANGTAG_FIELD_NAME>
+<OUTPUT_NTRIPLE_FIELD_NAME>ntriple</OUTPUT_NTRIPLE_FIELD_NAME>
+<INNER_IS_LITERAL_VALUE>Y</INNER_IS_LITERAL_VALUE>
+<INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>877</xloc>
+      <yloc>204</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get Prefixos dos Recursos</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -308,36 +381,40 @@ ORDER BY t2.id_prosp_repository, t2.id_prosp_workflow, t2.id_workflow, t2.seq
            </partitioning>
     <fields>
       <field>
-        <name>id_prosp_repository</name>
-        <type>Integer</type>
+        <name>prefix_group</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>id_prosp_workflow</name>
-        <type>Integer</type>
+        <name>prefix_researcher</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>id_workflow</name>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-        <select_unspecified>N</select_unspecified>
     </fields>
+    <data>
+      <line> <item>http:&#47;&#47;www.cnpq.br&#47;resource&#47;ResearchGroup&#47;</item><item>http:&#47;&#47;www.cnpq.br&#47;resource&#47;Researcher&#47;</item> </line>
+    </data>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>114</xloc>
-      <yloc>123</yloc>
+      <xloc>73</xloc>
+      <yloc>444</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Mapping output specification</name>
-    <type>MappingOutput</type>
+    <name>Get URI - GP</name>
+    <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -345,10 +422,183 @@ ORDER BY t2.id_prosp_repository, t2.id_prosp_workflow, t2.id_workflow, t2.seq
            <method>none</method>
            <schema_name/>
            </partitioning>
+       <calculation><field_name>uri_rg</field_name>
+<calc_type>ADD</calc_type>
+<field_a>prefix_group</field_a>
+<field_b>grupo_id</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>785</xloc>
-      <yloc>123</yloc>
+      <xloc>434</xloc>
+      <yloc>73</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input - Grupo de Pesquisa</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>db_cnpq</connection>
+    <sql>SELECT
+  grupo_id
+, grupo_nome
+FROM grupo
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>74</xloc>
+      <yloc>73</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows - GP</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>prefix_group</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>267</xloc>
+      <yloc>73</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Text file output</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>;</separator>
+    <enclosure>&quot;</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>C:\Users\rogers\Desktop\teste_ntriple</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>ntriple</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>795</xloc>
+      <yloc>324</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection/>
+    <schema/>
+    <table/>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>283</xloc>
+      <yloc>283</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

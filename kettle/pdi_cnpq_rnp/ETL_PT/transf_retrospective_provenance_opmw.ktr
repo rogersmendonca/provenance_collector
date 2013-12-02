@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;11&#47;26 17:19:08.862</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;25 13:37:59.290</modified_date>
+  <modified_date>2013&#47;12&#47;02 11:53:59.280</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -168,7 +168,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copia IDs para Result</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Object Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Param</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Param</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Row Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Workflow</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Copia IDs para Result</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Workflow</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Param</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Step Field</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Param</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Step Field</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Workflow</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Object Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Param</from><to>Data Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step Param</from><to>Object Property Mapping - Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Data Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Row Field</from><to>Object Property Mapping - Step Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Row Field</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step Param</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Step</to><enabled>Y</enabled> </hop>  <hop> <from>Get Prov Root IDs</from><to>Input - Retrosp. Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Workflow</from><to>Data Property Mapping - Workflow</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Object Property Mapping - Step</to><enabled>Y</enabled> </hop>  <hop> <from>Input - Retrosp. Step</from><to>Data Property Mapping - Step</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Copia IDs para Result</name>
     <type>RowsToResult</type>
@@ -247,7 +247,7 @@
       <Data>
         <Row>
           <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>name</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__OBJECT__FIELD__NAME>title</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
@@ -529,7 +529,7 @@
         </Row>
         <Row>
           <MAP__TABLE__PREDICATE__URI>http://purl.org/dc/terms/title</MAP__TABLE__PREDICATE__URI>
-          <MAP__TABLE__OBJECT__FIELD__NAME>name</MAP__TABLE__OBJECT__FIELD__NAME>
+          <MAP__TABLE__OBJECT__FIELD__NAME>title</MAP__TABLE__OBJECT__FIELD__NAME>
           <MAP__TABLE__TYPED__LITERAL></MAP__TABLE__TYPED__LITERAL>
           <MAP__TABLE__LANGUAGE__TAG></MAP__TABLE__LANGUAGE__TAG>
           <MAP__TABLE__LANGTAG__FIELD__NAME></MAP__TABLE__LANGTAG__FIELD__NAME>
@@ -951,6 +951,12 @@
           <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
           <MAP__TABLE__PREDICATE__URI>http://purl.org/net/opmv/ns#wasControlledBy</MAP__TABLE__PREDICATE__URI>
           <MAP__TABLE__OBJECT__FIELD__NAME>uri_user</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_exec</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://openprovenance.org/model/opmo#account</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>uri_w_exec</MAP__TABLE__OBJECT__FIELD__NAME>
         </Row>
       </Data>
     </DataTable>
