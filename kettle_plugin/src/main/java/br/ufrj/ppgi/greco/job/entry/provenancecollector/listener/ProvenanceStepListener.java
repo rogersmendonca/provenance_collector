@@ -17,8 +17,8 @@ import org.pentaho.di.trans.step.StepInterface;
 import org.pentaho.di.trans.step.StepListener;
 import org.pentaho.di.trans.step.StepMeta;
 
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.StepParameter;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.specialization.TransProv;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.DMLOperation.EnumDMLOperation;
@@ -115,7 +115,7 @@ public class ProvenanceStepListener extends ParentProvenanceListener implements
         // Insere os parametros do Step (caso seja fine-grained)
         try
         {
-            StepParameterCmd.execute(rootJob, db, stepMeta, workflowId, stepId);
+            StepParameter.execute(rootJob, db, stepMeta, workflowId, stepId);
             if (!db.getConnection().getAutoCommit())
                 db.commit(true);
         }

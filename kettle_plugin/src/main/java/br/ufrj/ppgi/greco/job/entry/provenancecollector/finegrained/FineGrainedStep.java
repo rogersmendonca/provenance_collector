@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.pentaho.di.i18n.BaseMessages;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.JobEntryProvenanceCollector;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.StepParameterCmd;
-import br.ufrj.ppgi.greco.job.entry.provenancecollector.command.impl.NullParamCmd;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.StepParameter;
+import br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.NullParam;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.util.EnumETLOperation;
 
 /**
@@ -32,7 +32,7 @@ public class FineGrainedStep
     private EnumETLOperation operation;
     private String smiClassName;
     private String cmdClassName;
-    private StepParameterCmd cmd;
+    private StepParameter cmd;
 
     public FineGrainedStep()
     {
@@ -96,26 +96,26 @@ public class FineGrainedStep
     }
 
     @Transient
-    public StepParameterCmd getCmd()
+    public StepParameter getCmd()
     {
         if (this.cmd == null)
         {
             try
             {
-                this.cmd = (StepParameterCmd) Class.forName(
+                this.cmd = (StepParameter) Class.forName(
                         cmdClassName).newInstance();
             }
             catch (InstantiationException e)
             {
-                cmd = new NullParamCmd();
+                cmd = new NullParam();
             }
             catch (IllegalAccessException e)
             {
-                cmd = new NullParamCmd();
+                cmd = new NullParam();
             }
             catch (ClassNotFoundException e)
             {
-                cmd = new NullParamCmd();
+                cmd = new NullParam();
             }
         }
         return cmd;

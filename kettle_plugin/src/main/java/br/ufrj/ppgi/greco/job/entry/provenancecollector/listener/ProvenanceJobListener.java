@@ -12,6 +12,7 @@ import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMeta;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.job.Job;
+import org.pentaho.di.repository.IUser;
 
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.JobEntryProvenanceCollector;
 import br.ufrj.ppgi.greco.job.entry.provenancecollector.decorator.JobDecorator;
@@ -51,6 +52,8 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
                 ValueMetaInterface.TYPE_DATE));
         fields.addValueMeta(new ValueMeta("success",
                 ValueMetaInterface.TYPE_BOOLEAN));
+        fields.addValueMeta(new ValueMeta("id_user",
+                ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_root_prosp_repository",
                 ValueMetaInterface.TYPE_INTEGER));
         fields.addValueMeta(new ValueMeta("id_root_prosp_workflow",
@@ -77,6 +80,15 @@ public class ProvenanceJobListener extends ParentProvenanceListener implements
         data[i++] = job.getBatchId();
         data[i++] = new Date(System.currentTimeMillis());
         data[i++] = false;
+        try
+        {
+            IUser user = job.getRep().getUserInfo();
+            data[i++] = rootJob.getUserId(db, user);
+        }
+        catch (KettleException e)
+        {
+            throw new RuntimeException(e.toString());
+        }
         data[i++] = rootJob.getProspRepoId();
         data[i++] = rootJob.getProspJobId();
         data[i++] = rootJob.getBatchId();
