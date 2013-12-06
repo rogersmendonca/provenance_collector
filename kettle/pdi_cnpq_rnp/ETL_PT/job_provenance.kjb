@@ -8,7 +8,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;09&#47;10 16:20:44.686</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;11&#47;30 19:46:10.919</modified_date>
+  <modified_date>2013&#47;12&#47;05 13:29:01.649</modified_date>
     <parameters>
     </parameters>
   <connection>
@@ -160,8 +160,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>997</xloc>
-      <yloc>175</yloc>
+      <xloc>1079</xloc>
+      <yloc>169</yloc>
       </entry>
     <entry>
       <name>Publicacao de Proveniencia (PROV-O)</name>
@@ -192,8 +192,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>344</xloc>
-      <yloc>261</yloc>
+      <xloc>304</xloc>
+      <yloc>260</yloc>
       </entry>
     <entry>
       <name>Agente Coletor de Proveniencia</name>
@@ -279,7 +279,7 @@
             </fine_grained_step>      </fine_grained_steps>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>179</xloc>
+      <xloc>166</xloc>
       <yloc>171</yloc>
       </entry>
     <entry>
@@ -311,8 +311,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>344</xloc>
-      <yloc>68</yloc>
+      <xloc>304</xloc>
+      <yloc>67</yloc>
       </entry>
     <entry>
       <name>Publicacao de Proveniencia Prospectiva (OPMW)</name>
@@ -343,7 +343,7 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>632</xloc>
+      <xloc>586</xloc>
       <yloc>69</yloc>
       </entry>
     <entry>
@@ -375,15 +375,15 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>633</xloc>
+      <xloc>587</xloc>
       <yloc>260</yloc>
       </entry>
     <entry>
-      <name>Publicacao de Proveniencia (Cogs)</name>
+      <name>Publicacao de Proveniencia Processo ETL (Cogs)</name>
       <description/>
       <type>TRANS</type>
       <specification_method>rep_ref</specification_method>
-      <trans_object_id>&#47;transf_provenance_cogs.ktr</trans_object_id>
+      <trans_object_id>&#47;transf_provenance_cogs_step_parameter.ktr</trans_object_id>
       <filename/>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
@@ -409,6 +409,38 @@
       <nr>0</nr>
       <xloc>904</xloc>
       <yloc>70</yloc>
+      </entry>
+    <entry>
+      <name>Publicacao de Proveniencia Sequencia ETL (Cogs)</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>rep_ref</specification_method>
+      <trans_object_id>&#47;transf_provenance_cogs_etl_sequence.ktr</trans_object_id>
+      <filename/>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>904</xloc>
+      <yloc>261</yloc>
       </entry>
   </entries>
   <hops>
@@ -459,7 +491,7 @@
     </hop>
     <hop>
       <from>Publicacao de Proveniencia Retrospectiva (OPMW)</from>
-      <to>Publicacao de Proveniencia (Cogs)</to>
+      <to>Publicacao de Proveniencia Processo ETL (Cogs)</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -467,7 +499,16 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Publicacao de Proveniencia (Cogs)</from>
+      <from>Publicacao de Proveniencia Processo ETL (Cogs)</from>
+      <to>Publicacao de Proveniencia Sequencia ETL (Cogs)</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Publicacao de Proveniencia Sequencia ETL (Cogs)</from>
       <to>Sucesso</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -479,8 +520,8 @@
   <notepads>
     <notepad>
       <note>1a Camada</note>
-      <xloc>315</xloc>
-      <yloc>11</yloc>
+      <xloc>273</xloc>
+      <yloc>10</yloc>
       <width>77</width>
       <heigth>25</heigth>
       <fontname/>
@@ -500,8 +541,8 @@
     </notepad>
     <notepad>
       <note>2a Camada</note>
-      <xloc>601</xloc>
-      <yloc>12</yloc>
+      <xloc>557</xloc>
+      <yloc>11</yloc>
       <width>77</width>
       <heigth>25</heigth>
       <fontname/>
@@ -522,7 +563,7 @@
     <notepad>
       <note>3a Camada</note>
       <xloc>874</xloc>
-      <yloc>12</yloc>
+      <yloc>11</yloc>
       <width>77</width>
       <heigth>25</heigth>
       <fontname/>

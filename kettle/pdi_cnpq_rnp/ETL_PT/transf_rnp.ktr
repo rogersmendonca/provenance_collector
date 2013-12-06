@@ -63,7 +63,7 @@
   <created_user>-</created_user>
   <created_date>2013&#47;11&#47;26 12:31:00.308</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2013&#47;12&#47;02 01:29:36.025</modified_date>
+  <modified_date>2013&#47;12&#47;05 22:59:55.411</modified_date>
   </info>
   <notepads>
     <notepad>
@@ -231,7 +231,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Input XML - Pesquisador</from><to>Gera URI - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Data Property Mapping - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Object Property Mapping - Pesq. x GT</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Verifica se eh Coordenador</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica se eh Coordenador</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Input XML - Grupo de Pesquisa</from><to>Gera URI - Grupo de Pesquisa</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Pesquisa</from><to>Data Property Mapping - Grupo de Pesquisa</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Pesquisa</from><to>Data Property Mapping - Instituicao</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Pesquisa</from><to>Object Property Mapping - GT x Inst.</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Pesquisador</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Grupo de Pesquisa</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Instituicao</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Pesq. x GT</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Coordenador</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - GT x Inst.</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica se eh Coordenador</from><to>Adiciona Coordinator Type URI</to><enabled>Y</enabled> </hop>  <hop> <from>Adiciona Coordinator Type URI</from><to>Object Property Mapping - Coordenador</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Input XML - Pesquisador</from><to>Gera URI - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Data Property Mapping - Pesquisador</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Object Property Mapping - Pesq. x GT</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Verifica se eh Coordenador</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica se eh Coordenador</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Input XML - Grupo de Trabalho</from><to>Gera URI - Grupo de Trabalho</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Trabalho</from><to>Data Property Mapping - Grupo de Trabalho</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Trabalho</from><to>Data Property Mapping - Instituicao</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Grupo de Trabalho</from><to>Object Property Mapping - GT x Inst.</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Pesquisador</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Grupo de Trabalho</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Data Property Mapping - Instituicao</from><to>Gera NTriple - Objeto Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Pesq. x GT</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - Coordenador</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - GT x Inst.</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Gera NTriple - Objeto Nao Literal</from><to>Output - Banco de Triplas</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Erro</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica Insercao</from><to>Sucesso</to><enabled>Y</enabled> </hop>  <hop> <from>Output - Banco de Triplas</from><to>Verifica Insercao</to><enabled>Y</enabled> </hop>  <hop> <from>Verifica se eh Coordenador</from><to>Adiciona Coordinator Type URI</to><enabled>Y</enabled> </hop>  <hop> <from>Adiciona Coordinator Type URI</from><to>Object Property Mapping - Coordenador</to><enabled>Y</enabled> </hop>  <hop> <from>Select values - Pesq. RNP</from><to>Sort Rows - Pesq. RNP</to><enabled>Y</enabled> </hop>  <hop> <from>Select values - Pesq. CNPq</from><to>Sort Rows - Pesq. CNPq</to><enabled>Y</enabled> </hop>  <hop> <from>Merge Grupos de Trabalho RNP x Grupos de Pesquisa CNPq</from><to>Object Property Mapping - GT x GP</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Rows - Pesq. RNP</from><to>Merge Grupos de Trabalho RNP x Grupos de Pesquisa CNPq</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Rows - Pesq. CNPq</from><to>Merge Grupos de Trabalho RNP x Grupos de Pesquisa CNPq</to><enabled>Y</enabled> </hop>  <hop> <from>Object Property Mapping - GT x GP</from><to>Gera NTriple - Objeto Nao Literal</to><enabled>Y</enabled> </hop>  <hop> <from>Input Sparql - Grupo de Pesquisa CNPq</from><to>Define Pesq Id 2</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq Id 2</from><to>Select values - Pesq. CNPq</to><enabled>Y</enabled> </hop>  <hop> <from>Gera URI - Pesquisador</from><to>Define Pesq Id 1</to><enabled>Y</enabled> </hop>  <hop> <from>Define Pesq Id 1</from><to>Select values - Pesq. RNP</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Adiciona Coordinator Type URI</name>
     <type>Constant</type>
@@ -257,14 +257,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>359</xloc>
-      <yloc>184</yloc>
+      <xloc>356</xloc>
+      <yloc>407</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Data Property Mapping - Grupo de Pesquisa</name>
+    <name>Data Property Mapping - Grupo de Trabalho</name>
     <type>DataPropertyMappingPlugin</type>
     <description/>
     <distribute>Y</distribute>
@@ -305,7 +305,7 @@
   <entry>
     <string>RDF_TYPE_URIS</string>
     <list>
-      <string>http://www.rnp.br/ontology/ResearchGroup</string>
+      <string>http://www.rnp.br/ontology/WorkingGroup</string>
     </list>
   </entry>
   <entry>
@@ -371,8 +371,8 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>532</xloc>
-      <yloc>316</yloc>
+      <xloc>525</xloc>
+      <yloc>70</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -457,8 +457,8 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>534</xloc>
-      <yloc>384</yloc>
+      <xloc>527</xloc>
+      <yloc>138</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -543,8 +543,58 @@
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>528</xloc>
-      <yloc>60</yloc>
+      <xloc>525</xloc>
+      <yloc>285</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Define Pesq Id 1</name>
+    <type>Janino</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <formula><field_name>id_rnp_p</field_name>
+<formula_string>java.text.Normalizer.normalize(nome_pesquisador, java.text.Normalizer.Form.NFD).replaceAll(&quot;\\p{InCombiningDiacriticalMarks}+&quot;, &quot;&quot;).toUpperCase().trim().replaceAll(&quot; &quot;, &quot;_&quot;)</formula_string>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>64</xloc>
+      <yloc>415</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Define Pesq Id 2</name>
+    <type>Janino</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <formula><field_name>id_cnpq_p</field_name>
+<formula_string>java.text.Normalizer.normalize(cnpq_p_name, java.text.Normalizer.Form.NFD).replaceAll(&quot;\\p{InCombiningDiacriticalMarks}+&quot;, &quot;&quot;).toUpperCase().trim().replaceAll(&quot; &quot;, &quot;_&quot;)</formula_string>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>329</xloc>
+      <yloc>706</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -561,8 +611,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>359</xloc>
-      <yloc>245</yloc>
+      <xloc>356</xloc>
+      <yloc>470</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -675,7 +725,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>780</xloc>
-      <yloc>152</yloc>
+      <yloc>138</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -700,14 +750,14 @@
 <INNER_KEEP_INPUT_VALUE>N</INNER_KEEP_INPUT_VALUE>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>778</xloc>
-      <yloc>367</yloc>
+      <xloc>779</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Gera URI - Grupo de Pesquisa</name>
+    <name>Gera URI - Grupo de Trabalho</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -730,7 +780,7 @@
   for (var i = 0; i &lt; varString.length; i++)
   {
     cString = varString.substring(i, i + 1);
-    if ((cString.charCodeAt(0) == 45) || (cString.charCodeAt(0) == 8211))
+    if ((cString.charCodeAt(0) == 45) || (cString.charCodeAt(0) == 8211) || (cString == &apos;,&apos;))
     {
       cString = &apos;&apos;;
     }
@@ -750,7 +800,7 @@
 }
 
 var uri_prefix = &apos;http:&#47;&#47;www.rnp.br&#47;resource&#47;&apos;;
-var uri_base_gt = uri_prefix + &apos;ResearchGroup&#47;&lt;NOME&gt;&lt;ID&gt;&lt;FASE&gt;&apos;;
+var uri_base_gt = uri_prefix + &apos;WorkingGroup&#47;&lt;NOME&gt;&lt;ID&gt;&lt;FASE&gt;&apos;;
 var uri_base_inst = uri_prefix + &apos;Institution&#47;&lt;SIGLA&gt;&apos;;
 
 var nome_gt = upper(replace(retirarAcento(nome_gt), &apos; &apos;, &apos;_&apos;));
@@ -772,8 +822,8 @@ var uri_inst = replace(uri_base_inst,&apos;&lt;SIGLA&gt;&apos;,sigla_instituicao
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>281</xloc>
-      <yloc>384</yloc>
+      <xloc>274</xloc>
+      <yloc>138</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -822,15 +872,15 @@ var uri_inst = replace(uri_base_inst,&apos;&lt;SIGLA&gt;&apos;,sigla_instituicao
 }
 
 var uri_prefix = &apos;http:&#47;&#47;www.rnp.br&#47;resource&#47;&apos;;
-var uri_base_p = uri_prefix + &apos;Researcher&#47;&lt;NOME&gt;&lt;ID&gt;&apos;;
-var uri_base_gt = uri_prefix + &apos;ResearchGroup&#47;&lt;NOME&gt;&lt;ID&gt;&lt;FASE&gt;&apos;;
+var uri_base_p = uri_prefix + &apos;Researcher&#47;&lt;ID&gt;&apos;;
+var uri_base_gt = uri_prefix + &apos;WorkingGroup&#47;&lt;NOME&gt;&lt;ID&gt;&lt;FASE&gt;&apos;;
 
 
 var nome_p = upper(replace(retirarAcento(nome_pesquisador), &apos; &apos;, &apos;_&apos;));
 var nome_gt = upper(replace(retirarAcento(nome_gt), &apos; &apos;, &apos;_&apos;));
 
 
-var uri_p = replace(uri_base_p,&apos;&lt;NOME&gt;&apos;,nome_p,&apos;&lt;ID&gt;&apos;,id_pesquisador);
+var uri_p = replace(uri_base_p,&apos;&lt;ID&gt;&apos;,nome_p);
 var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&gt;&apos;,id_gt,&apos;&lt;FASE&gt;&apos;,fase);</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>uri_p</name>
         <rename>uri_p</rename>
@@ -846,14 +896,141 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>268</xloc>
-      <yloc>60</yloc>
+      <xloc>265</xloc>
+      <yloc>285</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Input XML - Grupo de Pesquisa</name>
+    <name>Input Sparql - Grupo de Pesquisa CNPq</name>
+    <type>SparqlEndpoint</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><tree-map>
+  <no-comparator/>
+  <entry>
+    <string>DEFAULT_GRAPH</string>
+    <string>http://www.cnpq.br</string>
+  </entry>
+  <entry>
+    <string>ENDPOINT_URI</string>
+    <string>http://localhost:8890/sparql</string>
+  </entry>
+  <entry>
+    <string>PREFIXES</string>
+    <list>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>xsd</string>
+          <string>http://www.w3.org/2001/XMLSchema#</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>rdfs</string>
+          <string>http://www.w3.org/2000/01/rdf-schema#</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>rdf</string>
+          <string>http://www.w3.org/1999/02/22-rdf-syntax-ns#</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>owl</string>
+          <string>http://www.w3.org/2002/07/owl#</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>dbpedia</string>
+          <string>http://dbpedia.org/ontology/</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>dbpprop</string>
+          <string>http://dbpedia.org/property/</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>dc</string>
+          <string>http://purl.org/dc/elements/1.1/</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>foaf</string>
+          <string>http://xmlns.com/foaf/0.1/</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>vcard</string>
+          <string>http://www.w3.org/2006/vcard/ns#</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>cc</string>
+          <string>http://creativecommons.org/ns#</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>skos</string>
+          <string>http://www.w3.org/2004/02/skos/core#</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>lattes</string>
+          <string>http://lattes.cnpq.br/ontology/</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+      <java.util.Arrays_-ArrayList>
+        <a class="string-array">
+          <string>lattes-prop</string>
+          <string>http://lattes.cnpq.br/property/</string>
+        </a>
+      </java.util.Arrays_-ArrayList>
+    </list>
+  </entry>
+  <entry>
+    <string>QUERY_STRING</string>
+    <string>select *&#xd;
+from &lt;http://www.cnpq.br&gt;&#xd;
+where &#xd;
+{&#xd;
+   ?gp_uri a &lt;http://www.cnpq.br/ontology/ResearchGroup&gt; .&#xd;
+   ?gp_uri &lt;http://www.cnpq.br/property/member&gt; ?p_uri .&#xd;
+   ?gp_uri &lt;http://www.cnpq.br/property/name&gt; ?gp_name .&#xd;
+   ?p_uri &lt;http://www.cnpq.br/property/name&gt; ?p_name .&#xd;
+}</string>
+  </entry>
+  <entry>
+    <string>VAR_PREFIX</string>
+    <string>cnpq_</string>
+  </entry>
+</tree-map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>107</xloc>
+      <yloc>706</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Input XML - Grupo de Trabalho</name>
     <type>getXMLData</type>
     <description/>
     <distribute>Y</distribute>
@@ -1020,8 +1197,8 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>84</xloc>
-      <yloc>384</yloc>
+      <xloc>77</xloc>
+      <yloc>138</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1179,8 +1356,35 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>87</xloc>
-      <yloc>60</yloc>
+      <xloc>84</xloc>
+      <yloc>285</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Merge Grupos de Trabalho RNP x Grupos de Pesquisa CNPq</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>INNER</join_type>
+<step1>Sort Rows - Pesq. RNP</step1>
+<step2>Sort Rows - Pesq. CNPq</step2>
+    <keys_1>
+      <key>id_rnp_p</key>
+    </keys_1>
+    <keys_2>
+      <key>id_cnpq_p</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>563</xloc>
+      <yloc>609</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1244,8 +1448,73 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>533</xloc>
-      <yloc>214</yloc>
+      <xloc>530</xloc>
+      <yloc>439</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Object Property Mapping - GT x GP</name>
+    <type>ObjectPropertyMappingPlugin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<DATA_ROOT_NODE><map>
+  <entry>
+    <string>SUBJECT_OUT_FIELD_NAME</string>
+    <string>subject</string>
+  </entry>
+  <entry>
+    <string>KEEP_INPUT_FIELDS</string>
+    <boolean>false</boolean>
+  </entry>
+  <entry>
+    <string>VERSION</string>
+    <int>1</int>
+  </entry>
+  <entry>
+    <string>OBJECT_OUT_FIELD_NAME</string>
+    <string>object</string>
+  </entry>
+  <entry>
+    <string>MAP_TABLE</string>
+    <DataTable>
+      <Name>MAP_TABLE</Name>
+      <Header>
+        <string>MAP_TABLE_SUBJECT_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_FIELD_NAME</string>
+        <string>MAP_TABLE_PREDICATE_URI</string>
+        <string>MAP_TABLE_OBJECT_FIELD_NAME</string>
+      </Header>
+      <Data>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_gt</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://www.rnp.br/property/researchGroup</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>cnpq_gp_uri</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+        <Row>
+          <MAP__TABLE__SUBJECT__FIELD__NAME>uri_p</MAP__TABLE__SUBJECT__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__FIELD__NAME></MAP__TABLE__PREDICATE__FIELD__NAME>
+          <MAP__TABLE__PREDICATE__URI>http://www.w3.org/2002/07/owl#sameAs</MAP__TABLE__PREDICATE__URI>
+          <MAP__TABLE__OBJECT__FIELD__NAME>cnpq_p_uri</MAP__TABLE__OBJECT__FIELD__NAME>
+        </Row>
+      </Data>
+    </DataTable>
+  </entry>
+  <entry>
+    <string>PREDICATE_OUT_FIELD_NAME</string>
+    <string>predicate</string>
+  </entry>
+</map></DATA_ROOT_NODE>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>870</xloc>
+      <yloc>609</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1309,8 +1578,8 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>535</xloc>
-      <yloc>458</yloc>
+      <xloc>528</xloc>
+      <yloc>212</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1368,8 +1637,8 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
   </entry>
 </map></DATA_ROOT_NODE>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>529</xloc>
-      <yloc>139</yloc>
+      <xloc>526</xloc>
+      <yloc>364</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1396,6 +1665,132 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>779</xloc>
       <yloc>253</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values - Pesq. CNPq</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>cnpq_gp_uri</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>cnpq_p_uri</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>id_cnpq_p</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>105</xloc>
+      <yloc>637</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values - Pesq. RNP</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>uri_p</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>uri_gt</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>id_rnp_p</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>64</xloc>
+      <yloc>546</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort Rows - Pesq. CNPq</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>id_cnpq_p</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>331</xloc>
+      <yloc>637</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort Rows - Pesq. RNP</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>id_rnp_p</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>330</xloc>
+      <yloc>546</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1468,8 +1863,8 @@ var uri_gt = replace(uri_base_gt,&apos;&lt;NOME&gt;&apos;,nome_gt,&apos;&lt;ID&g
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>200</xloc>
-      <yloc>214</yloc>
+      <xloc>208</xloc>
+      <yloc>439</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

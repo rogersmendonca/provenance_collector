@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;12&#47;02 12:34:42.657</modified_date>
+  <modified_date>2013&#47;12&#47;05 18:19:56.613</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -190,15 +190,16 @@
   pName = upper(pName);
   return pName;
 }
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
-var uri_base = uri_prefix + &apos;ParameterVariable&#47;&lt;PARAM_NAME&gt;_&lt;ID_STEP_TYPE&gt;&lt;ID_PARAM&gt;&apos;;
+
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;;
+var uri_base_comp = uri_prefix + &apos;ParameterVariable&#47;&lt;PARAM_NAME&gt;_&lt;P_ID_REPOSITORY&gt;&lt;P_ID_WORKFLOW&gt;&lt;P_ID_STEP&gt;&lt;ID_PARAM&gt;&apos;;
 var uri_base_s = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;STEP_NAME&gt;&lt;ID_STEP&gt;_&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 
 var param_name2 = defineName(param_name);
 var w_name2 = defineName(w_name);
 var s_name2 = defineName(s_name);
 
-var uri = replace(uri_base,&apos;&lt;PARAM_NAME&gt;&apos;,param_name2,&apos;&lt;ID_STEP_TYPE&gt;&apos;,id_step_type,&apos;&lt;ID_PARAM&gt;&apos;,id_step_param);
+var uri = replace(uri_base,&apos;&lt;PARAM_NAME&gt;&apos;,param_name2,&apos;&lt;P_ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;P_ID_WORKFLOW&gt;&apos;,id_workflow,&apos;&lt;P_ID_STEP&gt;&apos;,id_step,&apos;&lt;ID_PARAM&gt;&apos;,id_step_param);
 var uri_s = replace(uri_base_s,&apos;&lt;STEP_NAME&gt;&apos;,s_name2,&apos;&lt;ID_STEP&gt;&apos;,id_step,&apos;&lt;W_NAME&gt;&apos;,w_name2,&apos;&lt;ID_REPOSITORY&gt;&apos;,id_repository,&apos;&lt;ID_WORKFLOW&gt;&apos;,id_workflow);
 
 

@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;11&#47;01 18:45:59.567</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;12&#47;02 12:30:28.527</modified_date>
+  <modified_date>2013&#47;12&#47;03 13:06:04.791</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -191,7 +191,7 @@
   return pName;
 }
 
-var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;
+var uri_prefix = &apos;http:&#47;&#47;greco.ppgi.ufrj.br&#47;provenance&#47;resource&#47;&apos;;
 var uri_base = uri_prefix + &apos;WorkflowTemplateProcess&#47;&lt;STEP_NAME&gt;&lt;ID_STEP&gt;_&lt;W_NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 var uri_base_w = uri_prefix + &apos;WorkflowTemplate&#47;&lt;NAME&gt;&lt;ID_REPOSITORY&gt;&lt;ID_WORKFLOW&gt;&apos;;
 
