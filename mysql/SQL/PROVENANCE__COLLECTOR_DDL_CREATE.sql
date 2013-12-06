@@ -190,6 +190,7 @@ CREATE TABLE IF NOT EXISTS retrosp_workflow (
   start_date timestamp NULL default NULL,
   finish_date timestamp NULL default NULL,
   success char(1) NOT NULL default 'N',
+  id_user int(11) NOT NULL,
   id_root_prosp_repository int(11) NOT NULL,
   id_root_prosp_workflow int(11) NOT NULL,
   id_root int(11) NOT NULL,
@@ -198,9 +199,11 @@ CREATE TABLE IF NOT EXISTS retrosp_workflow (
   id_parent int(11) NULL,    
   PRIMARY KEY (id_prosp_repository, id_prosp_workflow, id_workflow),  
   KEY fk_prosp_workflow (id_prosp_repository, id_prosp_workflow),
+  KEY fk_user (id_prosp_repository, id_user),
   KEY fk_retrosp_root (id_root_prosp_repository, id_root_prosp_workflow, id_root),
   KEY fk_retrosp_parent (id_parent_prosp_repository, id_parent_prosp_workflow, id_parent),
   CONSTRAINT cstr_retrosp_workflow_fk_prosp_workflow FOREIGN KEY (id_prosp_repository, id_prosp_workflow) REFERENCES prosp_workflow (id_repository, id_workflow),
+  CONSTRAINT cstr_retrosp_workflow_fk_user FOREIGN KEY (id_prosp_repository, id_user) REFERENCES user (id_repository, id_user),
   CONSTRAINT cstr_retrosp_workflow_fk_retrosp_root FOREIGN KEY (id_root_prosp_repository, id_root_prosp_workflow, id_root) REFERENCES retrosp_workflow (id_prosp_repository, id_prosp_workflow, id_workflow),
   CONSTRAINT cstr_retrosp_workflow_fk_retrosp_parent FOREIGN KEY (id_parent_prosp_repository, id_parent_prosp_workflow, id_parent) REFERENCES retrosp_workflow (id_prosp_repository, id_prosp_workflow, id_workflow)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
