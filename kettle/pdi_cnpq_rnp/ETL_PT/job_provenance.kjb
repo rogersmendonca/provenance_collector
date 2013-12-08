@@ -8,7 +8,7 @@
   <created_user>rogers</created_user>
   <created_date>2012&#47;09&#47;10 16:20:44.686</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;12&#47;05 13:29:01.649</modified_date>
+  <modified_date>2013&#47;12&#47;06 19:05:01.225</modified_date>
     <parameters>
     </parameters>
   <connection>
@@ -379,7 +379,7 @@
       <yloc>260</yloc>
       </entry>
     <entry>
-      <name>Publicacao de Proveniencia Processo ETL (Cogs)</name>
+      <name>Publicacao de Proveniencia Processos ETL (Cogs)</name>
       <description/>
       <type>TRANS</type>
       <specification_method>rep_ref</specification_method>
@@ -491,7 +491,7 @@
     </hop>
     <hop>
       <from>Publicacao de Proveniencia Retrospectiva (OPMW)</from>
-      <to>Publicacao de Proveniencia Processo ETL (Cogs)</to>
+      <to>Publicacao de Proveniencia Processos ETL (Cogs)</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -499,7 +499,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Publicacao de Proveniencia Processo ETL (Cogs)</from>
+      <from>Publicacao de Proveniencia Processos ETL (Cogs)</from>
       <to>Publicacao de Proveniencia Sequencia ETL (Cogs)</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

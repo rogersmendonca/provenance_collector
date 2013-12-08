@@ -63,7 +63,7 @@
   <created_user>-</created_user>
   <created_date>2013&#47;11&#47;26 12:31:00.308</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2013&#47;12&#47;05 22:59:55.411</modified_date>
+  <modified_date>2013&#47;12&#47;06 15:00:09.471</modified_date>
   </info>
   <notepads>
     <notepad>
@@ -852,7 +852,7 @@ var uri_inst = replace(uri_base_inst,&apos;&lt;SIGLA&gt;&apos;,sigla_instituicao
   for (var i = 0; i &lt; varString.length; i++)
   {
     cString = varString.substring(i, i + 1);
-    if ((cString.charCodeAt(0) == 45) || (cString.charCodeAt(0) == 8211))
+    if ((cString.charCodeAt(0) == 45) || (cString.charCodeAt(0) == 8211) || (cString == &apos;,&apos;))
     {
       cString = &apos;&apos;;
     }
