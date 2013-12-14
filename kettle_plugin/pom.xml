@@ -1,16 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<name>ProvenanceCollectorJob</name>
 	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 	<artifactId>provenancecollectorjob</artifactId>
-	<version>1.0-SNAPSHOT</version>	
+	<version>1.0</version>	
 	<packaging>jar</packaging>
 	<url>https://github.com/rogersmendonca/provenance_collector.git</url>
 	
 	<developers>
 		<developer>
-			<id>rogersmendonca</id>
+			<id>rogers.mendonca</id>
 			<name>Rogers Reiche de Mendonca</name>
 			<email>rogers.rj@gmail.com</email>
 			<organization>UFRJ (PPGI/GRECO)</organization>
@@ -27,12 +28,6 @@
 			<id>pentaho-third-party</id>
 			<url>http://repo.pentaho.org/artifactory/third-party/</url>
 		</repository>
-		<!-- Run ${basedir}/libs/maven_install_libs.bat to install the local libraries 
-			into maven local repository -->
-		<repository>
-			<id>local-repository</id>
-			<url>file://${basedir}/libs</url>
-		</repository>
 	</repositories>
 
 	<properties>
@@ -45,11 +40,11 @@
 		<pdi.version>4.3.0-stable</pdi.version>
 		<pdi.home>D:/programas/pdi-ce-4.3.0-stable</pdi.home>
 		<pdi.plugin.dir>plugins/jobentries/${project.name}</pdi.plugin.dir>
-		<pdi.plugin.lib_name>provenancecollectorjob</pdi.plugin.lib_name>
+		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
 	</properties>
 
 	<dependencies>
-		<!-- kettle core -->
+		<!-- Kettle dependencies (start) -->
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
 			<artifactId>kettle-core</artifactId>
@@ -98,29 +93,7 @@
 			<version>20100924-pentaho</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- local dependencies -->
-		<!-- obs: para instalar as dependencias locais, rodar o script maven_install_libs.bat -->
-		<dependency>
-			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
-			<artifactId>KettlePluginTools</artifactId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
-			<artifactId>SparqlPlugin</artifactId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
-			<artifactId>DataPropertyMapping</artifactId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- Kettle dependencies (end) -->
 	</dependencies>
 
 	<build>
@@ -144,6 +117,7 @@
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
+					<encoding>UTF-8</encoding>					
 				</configuration>
 			</plugin>
 
@@ -170,7 +144,7 @@
 								</copy>
 
 								<echo
-									message="Copying ${project.build.directory}\${project.build.finalName}.jar to ${pdi.home}/${pdi.plugin.dir}" />
+									message="Copying ${project.build.directory}\${project.build.finalName}.${project.packaging} to ${pdi.home}/${pdi.plugin.dir}" />
 								<copy
 									file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
 									tofile="${pdi.home}/${pdi.plugin.dir}/${pdi.plugin.lib_name}.${project.packaging}"

@@ -1,7 +1,0 @@
-mvn install:install-file -Dfile=D:/projetos/provenance_collector/kettle_plugin/libs/DataPropertyMapping.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=DataPropertyMapping -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=D:/projetos/provenance_collector/kettle_plugin/libs/KettlePluginTools.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=KettlePluginTools -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=D:/projetos/provenance_collector/kettle_plugin/libs/NTripleGenerator.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=NTripleGenerator -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=D:/projetos/provenance_collector/kettle_plugin/libs/ObjectPropertyMapping.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=ObjectPropertyMapping -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=D:/projetos/provenance_collector/kettle_plugin/libs/SparqlPlugin.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=SparqlPlugin -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=D:/projetos/provenance_collector/kettle_plugin/libs/SparqlUpdate.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=SparqlUpdate -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=D:/projetos/provenance_collector/kettle_plugin/libs/SparqlUpdatePlugin.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=SparqlUpdatePlugin -Dversion=1.0 -Dpackaging=jar
