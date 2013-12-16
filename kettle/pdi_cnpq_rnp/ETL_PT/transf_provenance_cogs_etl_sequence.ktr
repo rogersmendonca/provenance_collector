@@ -60,10 +60,10 @@
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
-  <created_user>-</created_user>
+  <created_user>rogers</created_user>
   <created_date>2013&#47;12&#47;05 12:39:05.574</created_date>
-  <modified_user>-</modified_user>
-  <modified_date>2013&#47;12&#47;06 00:19:25.636</modified_date>
+  <modified_user>rogers</modified_user>
+  <modified_date>2013&#47;12&#47;16 01:21:29.862</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -424,11 +424,11 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <specification_method>rep_ref</specification_method>
-    <trans_object_id>&#47;transf_input_prosp_step_endpoint.ktr</trans_object_id>
-    <trans_name/>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id/>
+    <trans_name>transf_input_prosp_step_endpoint</trans_name>
     <filename/>
-    <directory_path/>
+    <directory_path>&#47;</directory_path>
     <mappings>
       <input>
     <mapping>    <input_step/>
@@ -467,11 +467,11 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <specification_method>rep_ref</specification_method>
-    <trans_object_id>&#47;transf_input_prosp_step_startpoint.ktr</trans_object_id>
-    <trans_name/>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id/>
+    <trans_name>transf_input_prosp_step_startpoint</trans_name>
     <filename/>
-    <directory_path/>
+    <directory_path>&#47;</directory_path>
     <mappings>
       <input>
     <mapping>    <input_step/>
