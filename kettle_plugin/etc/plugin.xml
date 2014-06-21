@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <plugin
 	id="ProvenanceCollectorJobPlugin"
-   	iconfile="ufrj.png"
+   	iconfile="provenance.png"
    	description="Provenance Collector Agent"
    	tooltip="Collects provenance data during a Job execution to database tables."
    	category="UFRJ_PPGI_GRECO"
