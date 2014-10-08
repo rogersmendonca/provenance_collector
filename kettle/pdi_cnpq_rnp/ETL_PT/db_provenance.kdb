@@ -3,7 +3,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>pdi_provenance</database>
+    <database>pdi_provenance_sbbd_grossa</database>
     <port>3306</port>
     <username>kettle</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79a575ca86a3df</password>

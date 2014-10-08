@@ -63,7 +63,7 @@
   <created_user>rogers</created_user>
   <created_date>2013&#47;01&#47;20 20:19:35.807</created_date>
   <modified_user>rogers</modified_user>
-  <modified_date>2013&#47;12&#47;02 01:30:09.069</modified_date>
+  <modified_date>2014&#47;06&#47;18 20:53:55.993</modified_date>
   </info>
   <notepads>
     <notepad>
@@ -210,7 +210,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>pdi_provenance</database>
+    <database>pdi_provenance_sbbd</database>
     <port>3306</port>
     <username>kettle</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79a575ca86a3df</password>
@@ -1537,7 +1537,7 @@ FROM projeto
            <schema_name/>
            </partitioning>
 <RDF_CONTENT>ntriple</RDF_CONTENT>
-<GRAPH_URI>http:&#47;&#47;lattes.cnpq.br</GRAPH_URI>
+<GRAPH_URI>http:&#47;&#47;sbbd.grossa.lattes.cnpq.br</GRAPH_URI>
 <CLEAR_GRAPH>Y</CLEAR_GRAPH>
 <ENDPOINT_URL>http:&#47;&#47;localhost:8890&#47;sparql-auth</ENDPOINT_URL>
 <USERNAME>dba</USERNAME>

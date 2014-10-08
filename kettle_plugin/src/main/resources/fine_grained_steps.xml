@@ -25,6 +25,15 @@
 			<smiClassName>org.pentaho.di.trans.steps.getxmldata.GetXMLDataMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.GetXMLDataParam</cmdClassName>
 		</fineGrainedStep>
+		
+		<!-- ETL4LOD-Graph -->
+		<fineGrainedStep>
+			<id>Graph Sparql Query</id>
+			<descKey>CustomStep.TypeTooltipDesc.GraphSparqlQuery</descKey>
+			<operation>E</operation>			              
+			<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.graphsparql.GraphSparqlStepMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.GraphSparqlQueryParam</cmdClassName>
+		</fineGrainedStep>		
 				
 		<fineGrainedStep>
 			<id>Microsoft Excel Input</id>
@@ -41,14 +50,15 @@
 			<smiClassName>org.pentaho.di.trans.steps.propertyinput.PropertyInputMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.PropertyInputParam</cmdClassName>
 		</fineGrainedStep>
-				
+			
+		<!-- ETL4LOD 1.0 -->		
 		<fineGrainedStep>
 			<id>Sparql Endpoint</id>
 			<descKey>CustomStep.TypeTooltipDesc.SparqlEndpoint</descKey>
 			<operation>E</operation>
 			<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.sparql.SparqlStepMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.SparqlEndpointParam</cmdClassName>
-		</fineGrainedStep>
+		</fineGrainedStep>			
 
 		<fineGrainedStep>
 			<id>Table Input</id>
@@ -139,7 +149,16 @@
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.constant.ConstantMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.ConstantParam</cmdClassName>
-		</fineGrainedStep>	
+		</fineGrainedStep>
+		
+		<!-- ETL4LOD 2.0 -->
+		<fineGrainedStep>
+			<id>Annotator</id>
+			<descKey>CustomStep.TypeTooltipDesc.Annotator</descKey>
+			<operation>T</operation>
+			<smiClassName>br.ufrj.ppgi.greco.trans.step.Annotator.AnnotatorStepMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.AnnotatorParam</cmdClassName>
+		</fineGrainedStep>				
 		
 	    <fineGrainedStep>
 			<id>Calculator</id>
@@ -155,8 +174,34 @@
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.filterrows.FilterRowsMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.FilterRowsParam</cmdClassName>
-		</fineGrainedStep>							
+		</fineGrainedStep>
 		
+		<fineGrainedStep>
+			<id>Formula</id>
+			<descKey>BaseStep.TypeTooltipDesc.Formula</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.formula.FormulaMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.FormulaParam</cmdClassName>
+		</fineGrainedStep>
+		
+		<!-- ETL4LOD-Graph -->
+		<fineGrainedStep>
+			<id>Graph Sematic Level Marker</id>
+			<descKey>CustomStep.TypeTooltipDesc.GraphSematicLevelMarker</descKey>
+			<operation>T</operation>
+			<smiClassName>br.ufrj.ppgi.greco.trans.step.graphSemanticLevelMarker.GraphSemanticLevelMarkerStepMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.GraphSemanticLevelMarkerParam</cmdClassName>
+		</fineGrainedStep>		
+
+		<!-- ETL4LOD-Graph -->
+		<fineGrainedStep>
+			<id>Graph Triplify</id>
+			<descKey>CustomStep.TypeTooltipDesc.GraphTriplify</descKey>
+			<operation>T</operation>
+			<smiClassName>br.ufrj.ppgi.greco.trans.step.graphtriplify.GraphTriplifyStepMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.GraphTriplifyParam</cmdClassName>
+		</fineGrainedStep>		
+											
 		<fineGrainedStep>
 			<id>Join Rows</id>
 			<descKey>BaseStep.TypeTooltipDesc.JoinRows</descKey>
@@ -181,6 +226,7 @@
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.ScriptValuesParam</cmdClassName>
 		</fineGrainedStep>
 		
+		<!-- ETL4LOD 1.0 -->
 		<fineGrainedStep>
 			<id>NTriple Generator</id>
 			<descKey>CustomStep.TypeTooltipDesc.NTripleGenerator</descKey>
@@ -189,6 +235,7 @@
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.NTripleGeneratorParam</cmdClassName>
 		</fineGrainedStep>
 		
+		<!-- ETL4LOD 1.0 -->
 		<fineGrainedStep>
 			<id>RDF Data Property Mapping</id>
 			<descKey>CustomStep.TypeTooltipDesc.RDFDataMapping</descKey>
@@ -197,6 +244,7 @@
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.RDFDataPropertyMappingParam</cmdClassName>
 		</fineGrainedStep>				
 		
+		<!-- ETL4LOD 1.0 -->
 		<fineGrainedStep>
 			<id>RDF Object Property Mapping</id>
 			<descKey>CustomStep.TypeTooltipDesc.RDFObjectMapping</descKey>
@@ -222,12 +270,29 @@
 		</fineGrainedStep>
 		
 		<fineGrainedStep>
+			<id>Sequence</id>
+			<descKey>BaseStep.TypeTooltipDesc.Sequence</descKey>
+			<operation>T</operation>
+			<smiClassName>org.pentaho.di.trans.steps.addsequence.AddSequenceMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.SequenceParam</cmdClassName>
+		</fineGrainedStep>
+		
+		<fineGrainedStep>
 			<id>Sort Rows</id>
 			<descKey>BaseStep.TypeTooltipDesc.Sortrows</descKey>
 			<operation>T</operation>
 			<smiClassName>org.pentaho.di.trans.steps.sort.SortRowsMeta</smiClassName>
 			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.SortRowsParam</cmdClassName>
 		</fineGrainedStep>
+		
+		<!-- ETL4LOD 2.0 -->
+		<fineGrainedStep>
+			<id>Sparql Run Query</id>
+			<descKey>CustomStep.TypeTooltipDesc.SparqlRunQuery</descKey>
+			<operation>E</operation>
+			<smiClassName>br.ufrj.ppgi.greco.lodbr.plugin.sparqlrunquery.SparqlRunQueryStepMeta</smiClassName>
+			<cmdClassName>br.ufrj.ppgi.greco.job.entry.provenancecollector.finegrained.strategy.impl.SparqlRunQueryParam</cmdClassName>
+		</fineGrainedStep>	
 		
 		<fineGrainedStep>
 			<id>String Operations</id>
@@ -280,6 +345,7 @@
 		<!-- Transformation Steps (END) -->
 
 		<!-- Load Steps (START) -->
+		<!-- ETL4LOD 1.0 -->
 		<fineGrainedStep>
 			<id>Sparql Update Output</id>
 			<descKey>CustomStep.TypeTooltipDesc.SparqlUpdateInsert</descKey>
