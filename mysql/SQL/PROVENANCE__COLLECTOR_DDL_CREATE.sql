@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS prosp_workflow_note (
 -- --------------------------------------------------------
 
 --
--- CREATE TABLE prosp_step
+-- CREATE TABLE prosp_step_type
 --
 
 CREATE TABLE IF NOT EXISTS prosp_step_type (
